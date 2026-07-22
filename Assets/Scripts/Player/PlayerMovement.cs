@@ -23,8 +23,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         _rb.AddForce(_input * baseMoveSpeed, ForceMode2D.Force);
-        
-        Debug.Log(_rb.linearVelocity.magnitude);
     }
 
     public void OnMove(InputAction.CallbackContext context)
