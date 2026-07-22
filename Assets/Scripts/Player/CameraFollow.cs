@@ -24,6 +24,8 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!target)
+            return;
         // Return follow speed to default
         _followSpeed = Mathf.Lerp(_followSpeed, baseFollowSpeed, Time.deltaTime * returnToBaseFollowSpeed);
         _shakeAmount = Mathf.Lerp(_shakeAmount, 0, Time.deltaTime * _shakeResetTime);

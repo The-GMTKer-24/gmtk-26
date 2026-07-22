@@ -178,4 +178,9 @@ public class Room : MonoBehaviour
             door.SetActive(active);
         }
     }
+
+    public void OnRoomEnter()
+    {
+        Debug.Log("Enter room!");
+    }
 }
