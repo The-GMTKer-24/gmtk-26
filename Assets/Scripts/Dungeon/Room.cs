@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DefaultNamespace;
+using Dungeon;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -89,14 +90,14 @@ public class Room : MonoBehaviour
 
     public void HideDoor(Direction direction)
     {
-        SetDoorActive(GetDoorFromDir(direction), false);
+        GetDoorFromDir(direction).GetComponent<Door>().HideDoor();
     }
 
     public void ShowDoor(Direction direction)
     {
         if (SupportsDirection(direction))
         {
-            SetDoorActive(GetDoorFromDir(direction), true);
+            GetDoorFromDir(direction).GetComponent<Door>().OpenDoor();
         }
     }
 
@@ -107,7 +108,7 @@ public class Room : MonoBehaviour
         {
             return;
         }
-
+        GetDoorFromDir(direction).GetComponent<Door>().CloseDoor();
         // Close the door
     }
 

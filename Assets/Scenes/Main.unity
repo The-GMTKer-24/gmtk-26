@@ -719,8 +719,8 @@ MonoBehaviour:
   - room: {fileID: 5836369874643543531, guid: 97f8977f10abbb4409207f506c987467, type: 3}
     weight: 1
   - room: {fileID: 5836369874643543531, guid: bdd07978ed1e64748a87e622b14ea8ff, type: 3}
-    weight: 1
-  maxRoomTarget: 20
+    weight: 3
+  maxRoomTarget: 50
   minDistanceToExit: 4
   maxDistanceToExit: 10
   exitRoomChanceFromDistance:
