@@ -33,7 +33,7 @@ namespace Entity
         public void Heal(float time)
         {
             currentTime += time;
-            currentTime = Mathf.Max(currentTime, maxTime);
+            currentTime = Mathf.Min(currentTime, maxTime);
         }
 
         public float GetMaxTime()
