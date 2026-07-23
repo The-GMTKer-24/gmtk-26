@@ -33,7 +33,7 @@ namespace UI
             }
             
             // Rotate arrow
-            _currentArrowAngle = Mathf.Lerp(_currentArrowAngle, timeToDegrees(), tickToNewPositionSpeed * Time.deltaTime);
+            _currentArrowAngle = Mathf.Lerp(_currentArrowAngle, timeToDegrees(), tickToNewPositionSpeed * Time.unscaledDeltaTime);
             tickingArrow.localRotation = Quaternion.Euler(0f, 0f, _currentArrowAngle);
         }
 
