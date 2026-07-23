@@ -31,7 +31,7 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Secondary Attack",
@@ -134,8 +134,8 @@
                 },
                 {
                     "name": "",
-                    "id": "580e1aac-62c7-47b5-95aa-6381df424c47",
-                    "path": "<Mouse>/leftButton",
+                    "id": "bfdf66c5-dabe-4df8-b85e-83ebf0f4fe84",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -145,8 +145,8 @@
                 },
                 {
                     "name": "",
-                    "id": "bfdf66c5-dabe-4df8-b85e-83ebf0f4fe84",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "50a3104e-0f3c-43b7-940a-b510798323ce",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -186,6 +186,11 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }

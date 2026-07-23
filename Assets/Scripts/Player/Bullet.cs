@@ -1,0 +1,29 @@
+﻿using System;
+using Entity;
+using UnityEngine;
+
+namespace Player
+{
+    public class Bullet : MonoBehaviour
+    {
+        public Vector2 speed;
+        public float damage;
+        [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private GameObject deathParticles;
+        public void Start()
+        {
+            rb.linearVelocity = speed;
+        }
+
+        public void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.transform.CompareTag("Enemy"))
+            {
+                TimeEntity hp = other.gameObject.GetComponent<TimeEntity>();
+                hp.DealDamage(damage);
+            }
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
+}
