@@ -67,11 +67,41 @@ public class MeleeAttack : MonoBehaviour, IAttackTargeted
 
     public void Attack(GameObject target)
     {
-        TimeEntity timeEntity = target.GetComponent<TimeEntity>(); 
-        if (timeEntity == null)
+        TimeEntity targetTimeEntity = target.GetComponent<TimeEntity>(); 
+        if (targetTimeEntity == null)
         {
             throw new Exception("Target entity cannot take damage!");
         }
-        timeEntity.DealDamage(damage);
+        
+        bool success = true;
+
+        if (timeCost != 0)
+        {
+            TimeEntity timeEntity = this.gameObject.GetComponent<TimeEntity>();
+            if (timeEntity == null)
+            {
+                throw new Exception("Cannot apply a nonzero time-cost attack to an object with no TimeEntity!");
+            }
+            timeEntity.DealDamage(timeCost);
+        }
+
+        if (staminaCost != 0)
+        {
+            StaminaEntity staminaEntity = this.gameObject.GetComponent<StaminaEntity>();
+            if (staminaEntity == null)
+            {
+                throw new Exception("Cannot apply a nonzero stamina-cost attack to an object with no StaminaEntity!");
+            }
+
+            if (!staminaEntity.ConsumeStaminaIf(staminaCost))
+            {
+                success = false;
+            }
+        }
+
+        if (success)
+        {
+            targetTimeEntity.DealDamage(damage);
+        }
     }
 }

@@ -77,6 +77,37 @@ public class BulletAttack : MonoBehaviour, IAttackTargeted
             throw new Exception("Target entity cannot take damage!");
         }
         timeEntity.DealDamage(damage);*/
-        Instantiate(this.bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>().speed = this.speed * Vector2.Normalize(target.transform.position - transform.position);
+
+        bool success = true;
+
+        if (timeCost != 0)
+        {
+            TimeEntity timeEntity = this.gameObject.GetComponent<TimeEntity>();
+            if (timeEntity == null)
+            {
+                throw new Exception("Cannot apply a nonzero time-cost attack to an object with no TimeEntity!");
+            }
+            timeEntity.DealDamage(timeCost);
+        }
+
+        if (staminaCost != 0)
+        {
+            StaminaEntity staminaEntity = this.gameObject.GetComponent<StaminaEntity>();
+            if (staminaEntity == null)
+            {
+                throw new Exception("Cannot apply a nonzero stamina-cost attack to an object with no StaminaEntity!");
+            }
+
+            if (!staminaEntity.ConsumeStaminaIf(staminaCost))
+            {
+                success = false;
+            }
+        }
+
+        if (success)
+        {
+            Instantiate(this.bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>().speed =
+                this.speed * Vector2.Normalize(target.transform.position - transform.position);
+        }
     }
 }
