@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashCameraShakeResetSpeed = 5.0f;
     
     [Header("Sound Effects")]
-    [SerializeField] private AudioSource dashSound;
+    [SerializeField] private GameObject dashSoundPrefab;
     
     private Vector2 _input;
     private Rigidbody2D _rb;
@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnDash(InputAction.CallbackContext context)
     {
         // Don't do it again when we let go!
-        if (context.canceled)
+        if (!context.started)
         {
             return;
         }
@@ -78,6 +78,6 @@ public class PlayerMovement : MonoBehaviour
         _dashCooldownTime = dashCooldown;
         
         // Sound effect!
-        dashSound.Play();
+        SoundManager.Instance.CreateSoundAtPosition(dashSoundPrefab, transform.position);
     }
 }

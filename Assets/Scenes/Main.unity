@@ -119,6 +119,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &19697560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 19697562}
+  - component: {fileID: 19697561}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &19697561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19697560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc05dbf82df459bb11e6104b108d38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+--- !u!4 &19697562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19697560}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &390193277
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +487,7 @@ MonoBehaviour:
   minimumVelocityToDash: 0.05
   dashCameraShakeAmount: 0.1
   dashCameraShakeResetSpeed: 5
-  dashSound: {fileID: 1953024316}
+  dashSoundPrefab: {fileID: 3734932179283865293, guid: ac9ad95feca9d9148bbdebb8b7300784, type: 3}
 --- !u!58 &823347867
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -521,7 +565,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 592836103}
-  - {fileID: 1953024315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &823347870
@@ -618,7 +661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f343bcc49882470bae3e14960e27f2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity.TimeEntity
-  maxTime: 20
+  maxTime: 120
   currentTime: 0
   spawnOnDeath: {fileID: 6312313018138299983, guid: 67e2a57097e1c8043bcfa5c289ecfcfc, type: 3}
 --- !u!114 &823347872
@@ -1575,4 +1618,5 @@ SceneRoots:
   - {fileID: 1186192565}
   - {fileID: 1437090253}
   - {fileID: 1178932357}
+  - {fileID: 19697562}
   - {fileID: 2056180987}

@@ -34,7 +34,7 @@ public class SoundManager : MonoBehaviour
             source.Play();
         }
 
-        Destroy(placedSound, source.clip.length + 0.5f);
+        Destroy(placedSound, source.clip.length);
 
         return source;
     }
