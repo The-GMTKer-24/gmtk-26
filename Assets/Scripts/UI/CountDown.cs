@@ -11,8 +11,7 @@ namespace UI
         [SerializeField] private TimeEntity player;
         [SerializeField] private TMP_Text text;
         [SerializeField] private Gradient gradient;
-        [SerializeField] private float flashRate;
-        [SerializeField] private AnimationCurve flash;
+        
         
         [Header("Ticking Arrow")]
         [SerializeField] private RectTransform tickingArrow;
