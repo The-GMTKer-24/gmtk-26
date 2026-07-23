@@ -39,27 +39,25 @@ namespace Player
                 lastShotTimer = Mathf.Max(lastShotTimer, 0.0f);
             }
 
-            if (held)
+            if (!held) return;
+            if (reloadTimer > 0 || lastShotTimer > 0)
             {
-                if (reloadTimer > 0 || lastShotTimer > 0)
-                {
-                    return;
-                }
-
-                if (currentBullets == 0)
-                {
-                    Reload();
-                }
-            
-                currentBullets -= 1;
-                lastShotTimer = timeBetweenShots;
-                Vector2 mousePosition = Mouse.current.position.ReadValue();
-                Vector3 worldSpace = PlayerManager.Instance.playerCamera.ScreenToWorldPoint(mousePosition);
-                worldSpace.z = 0;
-                var b = Instantiate(bullet, transform.position, Quaternion.identity);
-                b.speed = (worldSpace - transform.position).normalized * speed;
-                b.damage = damage;
+                return;
             }
+
+            if (currentBullets == 0)
+            {
+                Reload();
+            }
+            
+            currentBullets -= 1;
+            lastShotTimer = timeBetweenShots;
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+            Vector3 worldSpace = PlayerManager.Instance.playerCamera.ScreenToWorldPoint(mousePosition);
+            worldSpace.z = 0;
+            var b = Instantiate(bullet, transform.position, Quaternion.identity);
+            b.speed = (worldSpace - transform.position).normalized * speed;
+            b.damage = damage;
         }
 
         public void OnShoot(InputAction.CallbackContext context)
