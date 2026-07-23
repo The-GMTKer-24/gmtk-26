@@ -4014,7 +4014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextParticleSystem2D
   particlePrefab: {fileID: -3926772996689640900, guid: 5de286debc5152640b29bcb33e2633ca, type: 3}
   prewarmCount: 16
-  defaultColor: {r: 1, g: 0.9441777, b: 0.3160377, a: 1}
+  defaultColor: {r: 0.6792453, g: 0.056601092, b: 0.0032039948, a: 1}
   fontSize: 4
   lifetime: 0.9
   startScale: 0.85
@@ -4052,7 +4052,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  initialVelocity: {x: 0, y: 1.5}
+  initialVelocity: {x: 0, y: -1}
   velocityRandomness: {x: 0.35, y: 0.2}
   gravity: 0
   sortingLayerName: Default
