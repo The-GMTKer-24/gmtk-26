@@ -8,6 +8,7 @@ namespace UI
         public static UIManager Instance;
 
         private bool paused = false;
+        private UIContext? ctx = null;
         public void Awake()
         {
             Instance = this;
@@ -17,6 +18,16 @@ namespace UI
         {
             paused = true;
             Time.timeScale = 0;
+        }
+
+        public void SetContext(UIContext? ctx)
+        {
+            this.ctx = ctx;
+        }
+
+        public UIContext? GetContext()
+        {
+            return ctx;
         }
 
         public void UnPause()

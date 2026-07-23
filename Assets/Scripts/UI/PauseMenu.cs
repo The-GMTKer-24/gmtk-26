@@ -10,6 +10,11 @@ namespace UI
         {
             if (context.started)
             {
+                if (UIManager.Instance.GetContext() == UIContext.ShopMenu)
+                {
+                    ShopManager.Instance.CancelShop();
+                    return;
+                }
                 if (UIManager.Instance.Paused)
                 {
                     UIManager.Instance.UnPause();
