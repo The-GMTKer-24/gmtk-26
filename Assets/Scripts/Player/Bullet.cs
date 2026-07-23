@@ -6,7 +6,7 @@ namespace Player
 {
     public class Bullet : MonoBehaviour
     {
-        public Vector2 speed;
+        public Vector2 speed; // This should be velocity, not speed!
         public float damage;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private GameObject deathParticles;
