@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity.TimeEntity
   maxTime: 90
   currentTime: 0
+  spawnOnDeath: {fileID: 6312313018138299983, guid: 493429378d2d28848b715c9dbac5935a, type: 3}
+  dropOnDeath: {fileID: 313304383076649194, guid: 921bcea2d77b9b64487ccb34243b21e3, type: 3}
 --- !u!61 &5143662622815544589
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -413,10 +415,5 @@ MonoBehaviour:
     m_ColorSpace: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  flashRate: 0
-  flash:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  tickingArrow: {fileID: 0}
+  tickToNewPositionSpeed: 10

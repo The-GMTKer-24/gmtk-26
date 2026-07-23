@@ -946,7 +946,7 @@ MonoBehaviour:
   baseMoveSpeed: 250
   dashVelocity: 20
   dashCooldown: 0.5
-  minimumVelocityToDash: 0.05
+  minimumVelocityToDash: 0
   dashCameraShakeAmount: 0.1
   dashCameraShakeResetSpeed: 5
   dashSoundPrefab: {fileID: 3734932179283865293, guid: ac9ad95feca9d9148bbdebb8b7300784, type: 3}
@@ -1143,6 +1143,7 @@ MonoBehaviour:
   maxTime: 120
   currentTime: 0
   spawnOnDeath: {fileID: 6312313018138299983, guid: 67e2a57097e1c8043bcfa5c289ecfcfc, type: 3}
+  dropOnDeath: {fileID: 0}
 --- !u!114 &823347872
 MonoBehaviour:
   m_ObjectHideFlags: 0
