@@ -1,5 +1,6 @@
 ﻿using System;
 using Entity;
+using Text_Particles;
 using UnityEngine;
 
 namespace Player
@@ -21,6 +22,7 @@ namespace Player
             {
                 TimeEntity hp = other.gameObject.GetComponent<TimeEntity>();
                 hp.DealDamage(damage);
+                TextParticleSystem2D.Instance.Spawn($"-{damage}s",transform.position);
                 Player.Instance.TimeEntity.Heal(damage * Player.Instance.PlayerModifier.Evaluate(PlayerStat.TimeSteal));
             }
             Instantiate(deathParticles, transform.position, Quaternion.identity);

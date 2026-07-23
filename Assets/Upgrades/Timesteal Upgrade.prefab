@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e226bd098f4325a22af938abd504d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.BasicStatUpgrade
-  factor: 1.5
+  factor: 0.1
   stat: 2
   type: 0
