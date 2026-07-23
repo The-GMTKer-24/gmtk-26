@@ -22,6 +22,7 @@ namespace UI
         [SerializeField] private Button upgrade1;
         [SerializeField] private Button upgrade2;
         [SerializeField] private Button upgrade3;
+        [SerializeField] private Button closeButton;
 
         private Upgrade option1;
         private Upgrade option2;
@@ -55,6 +56,7 @@ namespace UI
             upgrade1.gameObject.SetActive(true);
             upgrade2.gameObject.SetActive(true);
             upgrade3.gameObject.SetActive(true);
+            closeButton.gameObject.SetActive(true);
         }
 
         public void BuyUpgrade(int option)
@@ -105,6 +107,7 @@ namespace UI
             upgrade1.gameObject.SetActive(false);
             upgrade2.gameObject.SetActive(false);
             upgrade3.gameObject.SetActive(false);
+            closeButton.gameObject.SetActive(false);
         }
     }
 }
