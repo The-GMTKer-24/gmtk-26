@@ -11,7 +11,9 @@ namespace Player
         [SerializeField] private TimeEntity timeEntity;
 
         public TimeEntity TimeEntity => timeEntity;
+        public PlayerModifier PlayerModifier => playerModifier;
         
+        [SerializeField] private PlayerModifier playerModifier;
         public void Awake()
         {
             Instance = this;

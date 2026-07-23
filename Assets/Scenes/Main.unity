@@ -922,6 +922,7 @@ GameObject:
   - component: {fileID: 823347872}
   - component: {fileID: 823347873}
   - component: {fileID: 823347874}
+  - component: {fileID: 823347875}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1155,11 +1156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerShoot
   bullet: {fileID: 1970712963920005506, guid: e2f3b9dc39956d64fb4ef4e6935a13ad, type: 3}
-  speed: 20
-  maxBullets: 10
-  timeBetweenShots: 0.3
-  reloadTime: 1
-  damage: 20
 --- !u!114 &823347873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1185,7 +1181,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3953ad3ce960476e9b65057c40ba2ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Player
-  timeEntity: {fileID: 0}
+  timeEntity: {fileID: 823347871}
+  playerModifier: {fileID: 823347875}
+--- !u!114 &823347875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823347865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d62afc6ba544e4b5ffb788897818c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerModifier
+  baseStats:
+    stats:
+    - stat: 0
+      baseValue: 20
+      wholeNumber: 0
+    - stat: 1
+      baseValue: 20
+      wholeNumber: 0
+    - stat: 2
+      baseValue: 0
+      wholeNumber: 0
+    - stat: 3
+      baseValue: 1
+      wholeNumber: 0
+    - stat: 5
+      baseValue: 0.3
+      wholeNumber: 0
+    - stat: 4
+      baseValue: 10
+      wholeNumber: 1
 --- !u!1 &860931578
 GameObject:
   m_ObjectHideFlags: 0

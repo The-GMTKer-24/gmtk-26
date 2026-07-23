@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeName: Timesteal
   description: Gain time equal to 10% of damage dealt
   cost: 20
-  upgradePrefab: {fileID: 8970273558985301401, guid: 9009434f3e9c06e4ba5ffedf41653029, type: 3}
+  upgradePrefab: {fileID: 8970273558985301401, guid: 058c8c32ebc9365419a15b538a234a18, type: 3}

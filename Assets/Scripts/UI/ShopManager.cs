@@ -35,6 +35,7 @@ namespace UI
         public void ShowShop(Upgrade option1, Upgrade option2, Upgrade option3)
         {
             UIManager.Instance.Pause();
+            UIManager.Instance.SetContext(UIContext.ShopMenu);
             this.option1 = option1;
             this.option2 = option2;
             this.option3 = option3;
@@ -95,6 +96,9 @@ namespace UI
 
         public void CancelShop()
         {
+            UIManager.Instance.UnPause();
+            UIManager.Instance.SetContext(null);
+            Debug.Log("Canceled");
             option1 = null;
             option2 = null;
             option3 = null;

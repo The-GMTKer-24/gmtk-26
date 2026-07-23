@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeName: Last stand
   description: Deal 3 times damage when only 10 seconds remain
   cost: 20
-  upgradePrefab: {fileID: 8970273558985301401, guid: 9009434f3e9c06e4ba5ffedf41653029, type: 3}
+  upgradePrefab: {fileID: 8970273558985301401, guid: 7bab4946f3620894cb91ff964ffb2ea7, type: 3}
