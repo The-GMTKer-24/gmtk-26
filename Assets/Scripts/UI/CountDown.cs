@@ -18,7 +18,7 @@ namespace UI
             if (player)
             {
                 text.color = gradient.Evaluate(1 - (player.GetTime() / player.GetMaxTime()));
-                text.SetText(TimeSpan.FromSeconds(player.GetTime()).ToString("m\\:ss\\.fff"));    
+                text.SetText(TimeSpan.FromSeconds(player.GetTime()).ToString("m\\:ss"));    
             }
         }
     }
