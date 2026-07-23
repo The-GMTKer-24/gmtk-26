@@ -17,6 +17,11 @@ namespace Player
         private bool held;
         public void Awake()
         {
+
+        }
+
+        public void Start()
+        {
             currentBullets = Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBullets);
             reloadTimer = 0;
             lastShotTimer = 0;
