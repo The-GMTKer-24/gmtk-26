@@ -7,7 +7,7 @@ namespace Entity
     {
         [SerializeField] private float maxTime;
         [SerializeField] private float currentTime;
-
+        [SerializeField] private GameObject spawnOnDeath;
         public void Awake()
         {
             currentTime = maxTime;
@@ -16,10 +16,7 @@ namespace Entity
         public void Update()
         {
             currentTime -= Time.deltaTime;
-            if (currentTime <= 0)
-            {
-                Destroy(gameObject); // exploded
-            }
+            CheckDeath();
         }
 
         public float GetTime()
@@ -30,10 +27,7 @@ namespace Entity
         public void DealDamage(float damage)
         {
             currentTime -= damage;
-            if (currentTime <= 0)
-            {
-                Destroy(gameObject); // exploded
-            }
+            CheckDeath();
         }
 
         public void Heal(float time)
@@ -45,6 +39,14 @@ namespace Entity
         public float GetMaxTime()
         {
             return maxTime;
+        }
+        private void CheckDeath()
+        {
+            if (currentTime <= 0)
+            {
+                Instantiate(spawnOnDeath, transform.position, Quaternion.identity);
+                Destroy(gameObject); // exploded
+            }
         }
     }
 }
