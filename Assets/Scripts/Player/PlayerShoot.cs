@@ -8,11 +8,7 @@ namespace Player
     public class PlayerShoot : MonoBehaviour
     {
         [SerializeField] private Bullet bullet;
-        [SerializeField] private float speed;
-        [SerializeField] private int maxBullets;
-        [SerializeField] private float timeBetweenShots;
-        [SerializeField] private float reloadTime;
-        [SerializeField] private float damage;
+
 
         private int currentBullets;
         private float reloadTimer;
@@ -21,7 +17,7 @@ namespace Player
         private bool held;
         public void Awake()
         {
-            currentBullets = maxBullets;
+            currentBullets = Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBullets);
             reloadTimer = 0;
             lastShotTimer = 0;
         }
@@ -48,16 +44,17 @@ namespace Player
             if (currentBullets == 0)
             {
                 Reload();
+                return;
             }
             
             currentBullets -= 1;
-            lastShotTimer = timeBetweenShots;
+            lastShotTimer = Player.Instance.PlayerModifier.Evaluate(PlayerStat.TimeBetweenShots);
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Vector3 worldSpace = PlayerManager.Instance.playerCamera.ScreenToWorldPoint(mousePosition);
             worldSpace.z = 0;
             var b = Instantiate(bullet, transform.position, Quaternion.identity);
-            b.speed = (worldSpace - transform.position).normalized * speed;
-            b.damage = damage;
+            b.speed = (worldSpace - transform.position).normalized * Player.Instance.PlayerModifier.Evaluate(PlayerStat.BulletSpeed);
+            b.damage = Player.Instance.PlayerModifier.Evaluate(PlayerStat.Damage);
         }
 
         public void OnShoot(InputAction.CallbackContext context)
@@ -74,8 +71,8 @@ namespace Player
 
         private void Reload()
         {
-            reloadTimer = reloadTime;
-            currentBullets = maxBullets;
+            reloadTimer = Player.Instance.PlayerModifier.Evaluate(PlayerStat.ReloadSpeed);
+            currentBullets = Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBullets);
         }
 
         public int GetBullets()
@@ -84,12 +81,12 @@ namespace Player
         }
         public int GetMaxBullets()
         {
-            return maxBullets;
+            return Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBullets);
         }
 
         public float GetReloadPercentage()
         {
-            return reloadTimer / reloadTime;
+            return reloadTimer / Player.Instance.PlayerModifier.Evaluate(PlayerStat.ReloadSpeed);
         }
     }
 }

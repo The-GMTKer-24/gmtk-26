@@ -8,23 +8,22 @@ namespace UI
         [SerializeField] private GameObject ui;
         public void OnPause(InputAction.CallbackContext context)
         {
-            if (context.started)
+            if (!context.started) return;
+            
+            if (UIManager.Instance.GetContext() == UIContext.ShopMenu)
             {
-                if (UIManager.Instance.GetContext() == UIContext.ShopMenu)
-                {
-                    ShopManager.Instance.CancelShop();
-                    return;
-                }
-                if (UIManager.Instance.Paused)
-                {
-                    UIManager.Instance.UnPause();
-                    ui.SetActive(false);
-                }
-                else
-                {
-                    UIManager.Instance.Pause();
-                    ui.SetActive(true);
-                }
+                ShopManager.Instance.CancelShop();
+                return;
+            }
+            if (UIManager.Instance.Paused)
+            {
+                UIManager.Instance.UnPause();
+                ui.SetActive(false);
+            }
+            else
+            {
+                UIManager.Instance.Pause();
+                ui.SetActive(true);
             }
         }
     }

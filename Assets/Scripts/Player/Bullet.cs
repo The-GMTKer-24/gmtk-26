@@ -21,6 +21,7 @@ namespace Player
             {
                 TimeEntity hp = other.gameObject.GetComponent<TimeEntity>();
                 hp.DealDamage(damage);
+                Player.Instance.TimeEntity.Heal(damage * Player.Instance.PlayerModifier.Evaluate(PlayerStat.TimeSteal));
             }
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
