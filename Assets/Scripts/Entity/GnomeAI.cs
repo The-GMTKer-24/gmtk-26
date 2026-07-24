@@ -44,6 +44,7 @@ public class GnomeAI : MonoBehaviour
         _previousAttack = null;
         _animator = GetComponent<Animator>();
         _attacks = GetComponents<IAttack>(); // Can no longer edit attack set live in editor
+        staminaEntity.ResetStamina();
         GnomeTracker.Instance.AddGnome(this); // TODO: Gnome tags
     }
     

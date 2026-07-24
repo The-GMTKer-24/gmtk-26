@@ -51,5 +51,10 @@ namespace Entity
         {
             return maxStamina;
         }
+
+        public void ResetStamina()
+        {
+            currentStamina = 0f;
+        }
     }
 }
