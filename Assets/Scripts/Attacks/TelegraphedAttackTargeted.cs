@@ -21,11 +21,11 @@ public class TelegraphedAttackTargeted : MonoBehaviour, IAttackTargeted
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (_telegraphing)
         {
-            _remainingTime -= Time.deltaTime;
+            _remainingTime -= Time.fixedDeltaTime;
             if (_remainingTime <= 0)
             {
                 _telegraphing = false;

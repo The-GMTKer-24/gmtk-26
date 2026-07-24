@@ -15,9 +15,9 @@ namespace Entity
             currentTime = maxTime;
         }
 
-        public void Update()
+        public void FixedUpdate()
         {
-            currentTime -= Time.deltaTime;
+            currentTime -= Time.fixedDeltaTime;
             CheckDeath(true);
         }
 

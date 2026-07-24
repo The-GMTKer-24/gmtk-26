@@ -2,6 +2,7 @@ using System;
 using System.Collections.ObjectModel;
 using Entity;
 using Player;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletAttack : MonoBehaviour, IAttackTargeted
@@ -13,8 +14,6 @@ public class BulletAttack : MonoBehaviour, IAttackTargeted
     [SerializeField] public float speed = 10f;
     
     [SerializeField] public GameObject bulletPrefab;
-    
-    // TODO: Add sprite config
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -118,8 +117,11 @@ public class BulletAttack : MonoBehaviour, IAttackTargeted
 
         if (success)
         {
-            Instantiate(this.bulletPrefab, transform.position, Quaternion.identity).GetComponent<EnemyBullet>().velocity =
+            GameObject bullet = Instantiate(this.bulletPrefab, transform.position, Quaternion.identity);
+            bullet.GetComponent<EnemyBullet>().velocity =
                 this.speed * Vector2.Normalize(target.transform.position - transform.position);
+            bullet.GetComponent<EnemyBullet>().remainingTime = range / speed;
+            bullet.GetComponent<Rigidbody2D>().rotation = -Vector2.SignedAngle(target.transform.position - transform.position, Vector2.up);
         }
     }
 }

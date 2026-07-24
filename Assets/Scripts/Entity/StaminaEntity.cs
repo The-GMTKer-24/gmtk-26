@@ -14,9 +14,9 @@ namespace Entity
             currentStamina = maxStamina;
         }
 
-        public void Update()
+        public void FixedUpdate()
         {
-            currentStamina += Time.deltaTime * staminaRegenerationRate;
+            currentStamina += Time.fixedDeltaTime * staminaRegenerationRate;
             currentStamina = Mathf.Min(currentStamina, maxStamina);
         }
 

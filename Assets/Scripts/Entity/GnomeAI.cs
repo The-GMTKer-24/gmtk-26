@@ -40,6 +40,7 @@ public class GnomeAI : MonoBehaviour
         _player = Player.Player.Instance.gameObject;
         _previousAttack = null;
         _animator = GetComponent<Animator>();
+        GnomeTracker.Instance.AddGnome(this.GetEntityId()); // TODO: Gnome tags
     }
     
     void FixedUpdate()
@@ -96,17 +97,17 @@ public class GnomeAI : MonoBehaviour
             }
         }
 
-        if (chosenAttack == null) throw new Exception("Unreachable state");
+        if (chosenAttack == null) throw new Exception("No attack chosen! Did you give this gnome no attacks, or specify no repeat attacks on a gnome with only one attack?");
 
         currentLoss = attackLoss;
         
-        print("Chosen attack: " + chosenAttack.ToString());
-        print("Stamina: " + staminaEntity.GetStamina() + " / " + chosenAttack.GetStaminaCost());
-        print("Distance: " + Vector2.Distance(playerPos, _rb.transform.position));
+        //print("Chosen attack: " + chosenAttack.ToString());
+        //print("Stamina: " + staminaEntity.GetStamina() + " / " + chosenAttack.GetStaminaCost());
+        //print("Distance: " + Vector2.Distance(playerPos, _rb.transform.position));
 
-        if (chosenAttack.GetStaminaCost() >= staminaEntity.GetStamina() && chosenAttack.InRange(playerPos))
+        if (chosenAttack.GetStaminaCost() <= staminaEntity.GetStamina() && chosenAttack.InRange(playerPos))
         {
-            print("Attacking!");
+            print("Attacking! " + chosenAttack);
             _previousAttack = chosenAttack;
             if (chosenAttack is IAttackArea) { (chosenAttack as IAttackArea).Attack(); }
             else if (chosenAttack is IAttackTargeted) { (chosenAttack as IAttackTargeted).Attack(_player); }
@@ -151,7 +152,7 @@ public class GnomeAI : MonoBehaviour
         _rb.linearVelocity = moveVector;
         _animator.speed = curAnimationSpeed;
 
-        if (moveVector.magnitude > 0.01f)
+        if (moveVector.magnitude > 1f)
         {
             if (Math.Abs(moveVector.x) > Math.Abs(moveVector.y))
             {
@@ -162,6 +163,11 @@ public class GnomeAI : MonoBehaviour
                 _animator.SetBool(moveVector.y > 0 ? Up : Down, true);
             }
         }
+    }
+
+    void OnDestroy()
+    {
+        GnomeTracker.Instance.RemoveGnome(this.GetEntityId());
     }
 }
 
