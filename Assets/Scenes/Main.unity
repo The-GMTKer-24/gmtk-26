@@ -3029,11 +3029,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2877094149349487255, guid: dfc3c5cc70422c95394863da5e2402b8, type: 3}
       propertyPath: _spawnInterval
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1995495338452036191, guid: dfc3c5cc70422c95394863da5e2402b8, type: 3}
       propertyPath: m_Name
       value: TestSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995495338452036191, guid: dfc3c5cc70422c95394863da5e2402b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4489442761444102095, guid: dfc3c5cc70422c95394863da5e2402b8, type: 3}
       propertyPath: m_LocalPosition.x

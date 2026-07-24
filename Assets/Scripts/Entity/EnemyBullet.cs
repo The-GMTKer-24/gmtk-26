@@ -6,7 +6,6 @@ namespace Entity
     public class EnemyBullet : MonoBehaviour
     {
         public Vector2 velocity;
-        public float speed;
         public float damage;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private GameObject deathParticles;
@@ -15,7 +14,6 @@ namespace Entity
         public void Start()
         {
             rb.linearVelocity = velocity;
-            speed = velocity.magnitude;
         }
 
         public void FixedUpdate()
@@ -29,11 +27,16 @@ namespace Entity
 
         public void OnCollisionEnter2D(Collision2D other)
         {
+            
             if (other.transform.CompareTag("Player"))
             {
                 TimeEntity hp = other.gameObject.GetComponent<TimeEntity>();
                 hp.DealDamage(damage);
-
+                
+            }
+            else
+            {
+                print("I colided");
             }
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
