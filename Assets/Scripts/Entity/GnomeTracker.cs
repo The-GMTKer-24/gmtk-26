@@ -1,5 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Linq;
 using UnityEngine;
 
 namespace Entity
@@ -8,47 +12,77 @@ namespace Entity
     {
         public static GnomeTracker Instance;
         
-        private static Dictionary<String, SortedSet<EntityId>> _gnomeDict = new();
+        private Dictionary<String, SortedSet<EntityId>> _gnomeDict = new();
+        private Dictionary<EntityId, GnomeAI> _gnomes = new();
 
         public void Awake()
         {
             Instance = this;
         }
         
-        public bool IsGnomeOfType(EntityId id, String type)
+        public bool IsGnomeOfTag(GnomeAI gnomeAI, String tag)
         {
-            return _gnomeDict.ContainsKey(type) && _gnomeDict[type].Contains(id);
+            return _gnomeDict.ContainsKey(tag) && _gnomeDict[tag].Contains(gnomeAI.GetEntityId());
         }
 
-        public bool IsGnome(EntityId id)
+        public bool IsGnome(GnomeAI gnomeAI)
         {
-            return IsGnomeOfType(id, null);
+            return IsGnomeOfTag(gnomeAI, null);
         }
 
-        public void AddGnome(EntityId id, HashSet<String> types)
+        public void AddGnome(GnomeAI gnomeAI, HashSet<String> tags)
         {
-            HashSet<String> typesCopy = new HashSet<String>(types);
-            typesCopy.Add(null);
+            HashSet<String> tagsCopy = new HashSet<String>(tags);
+            tagsCopy.Add(null);
 
-            foreach (String type in typesCopy)
+            foreach (String tag in tagsCopy)
             {
-                if (!_gnomeDict.ContainsKey(type)) _gnomeDict.Add(type, new SortedSet<EntityId>());
-                _gnomeDict[type].Add(id);
+                if (!_gnomeDict.ContainsKey(tag)) _gnomeDict.Add(tag, new SortedSet<EntityId>());
+                _gnomeDict[tag].Add(gnomeAI.GetEntityId());
             }
+            
+            _gnomes.Add(gnomeAI.GetEntityId(), gnomeAI);
         }
 
-        public void AddGnome(EntityId id)
+        public void AddGnome(GnomeAI gnomeAI)
         {
-            AddGnome(id, new HashSet<String>());
+            AddGnome(gnomeAI, new HashSet<String>());
         }
 
-        public void RemoveGnome(EntityId id)
+        public void RemoveGnome(GnomeAI gnomeAI)
         {
             // Possibly a source of performance issues. Better to try every possible tag, or to store tags per entityid in another dict?
             foreach (KeyValuePair<String, SortedSet<EntityId>> entry in _gnomeDict)
             {
-                entry.Value.Remove(id);
+                entry.Value.Remove(gnomeAI.GetEntityId());
             }
+            
+            _gnomes.Remove(gnomeAI.GetEntityId());
+        }
+
+        public SortedSet<EntityId> GetGnomeIds(String tag)
+        {
+            return _gnomeDict[tag];
+        }
+
+        public SortedSet<EntityId> GetGnomeIds()
+        {
+            return GetGnomeIds(null);
+        }
+
+        /*public HashSet<GnomeAI> GetGnomes()
+        {
+            return _gnomes;
+        }*/
+
+        public IEnumerable<GnomeAI> GetGnomeEnumerator()
+        {
+            return _gnomes.Values.AsEnumerable();
+        }
+
+        public GnomeAI GetGnome(EntityId entityId)
+        {
+            return _gnomes[entityId];
         }
     }
 }
