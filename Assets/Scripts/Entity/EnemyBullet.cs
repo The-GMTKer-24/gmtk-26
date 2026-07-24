@@ -34,10 +34,6 @@ namespace Entity
                 hp.DealDamage(damage);
                 
             }
-            else
-            {
-                print("I colided");
-            }
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
