@@ -1,17 +1,16 @@
+using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private PlayerModifier stats;
+
     [Header("Objects")]
     [SerializeField] private GameObject cameraPosition;
     
-    [Header("Movement")]
-    [SerializeField] private float baseMoveSpeed = 250.0f;
     
     [Header("Dashing")]
-    [SerializeField] private float dashVelocity = 20.0f;
-    [SerializeField] private float dashCooldown = 0.5f;
     [SerializeField] private float minimumVelocityToDash = 0.05f;
     [SerializeField] private float dashCameraShakeAmount = 0.1f;
     [SerializeField] private float dashCameraShakeResetSpeed = 5.0f;
@@ -35,17 +34,18 @@ public class PlayerMovement : MonoBehaviour
         }
         
         _cameraFollowScript = cameraPosition.GetComponent<CameraFollow>();
+        stats = Player.Player.Instance.PlayerModifier;
     }
 
     void Update()
     {
         _dashCooldownTime -= Time.deltaTime;
-        _dashCooldownTime = Mathf.Clamp(_dashCooldownTime, 0, dashCooldown);
+        _dashCooldownTime = Mathf.Clamp(_dashCooldownTime, 0, stats.Evaluate(PlayerStat.DashCooldown));
     }
 
     void FixedUpdate()
     {
-        _rb.AddRelativeForce(_input * baseMoveSpeed, ForceMode2D.Force);
+        _rb.AddRelativeForce(_input * stats.Evaluate(PlayerStat.Speed), ForceMode2D.Force);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -72,10 +72,10 @@ public class PlayerMovement : MonoBehaviour
         _cameraFollowScript.StartCameraShake(dashCameraShakeAmount, dashCameraShakeResetSpeed);
         
         // Move!
-        _rb.AddRelativeForce(_input * dashVelocity, ForceMode2D.Impulse);
+        _rb.AddRelativeForce(_input * stats.Evaluate(PlayerStat.DashPower), ForceMode2D.Impulse);
         
         // Set the cooldown
-        _dashCooldownTime = dashCooldown;
+        _dashCooldownTime = stats.Evaluate(PlayerStat.DashCooldown);
         
         // Sound effect!
         SoundManager.Instance.CreateSoundAtPosition(dashSoundPrefab, transform.position);

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
   upgradeName: Increased Damage
   description: Attacks deal 50% more damage
-  cost: 20
+  cost: 15
   upgradePrefab: {fileID: 8970273558985301401, guid: 9009434f3e9c06e4ba5ffedf41653029, type: 3}

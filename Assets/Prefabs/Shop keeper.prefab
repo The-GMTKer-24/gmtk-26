@@ -156,6 +156,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d3337f6805911c84e8b419efc84ad579, type: 2}
   - {fileID: 11400000, guid: 0dbcc420a125a19499fe9fa30171b2f8, type: 2}
   - {fileID: 11400000, guid: c798727a52b17634b9827cdef057f6c0, type: 2}
+  - {fileID: 11400000, guid: f4b438e45f726ac4aa8f1ee8bf03d37a, type: 2}
+  - {fileID: 11400000, guid: 894afff3847e2f84aa7cf2f87f40efbc, type: 2}
+  - {fileID: 11400000, guid: 4fddebf6169dfce4282c556266ffc472, type: 2}
+  - {fileID: 11400000, guid: 19468e3f1e31fa74ba34bfba2332f15d, type: 2}
+  - {fileID: 11400000, guid: b005a8ab4857aa446872a76b33607bd3, type: 2}
+  - {fileID: 11400000, guid: 73a7d97b959583948a7f254038207168, type: 2}
+  - {fileID: 11400000, guid: b1d7bc75944acf34d9a4e8e31faf2e68, type: 2}
+  - {fileID: 11400000, guid: 17bb9fc2491e9c84a83b97a0facdefef, type: 2}
+  - {fileID: 11400000, guid: bc34c6b336481354fac8ba6458700e5d, type: 2}
   interactAction:
     m_Name: Interact
     m_Type: 0

@@ -5509,7 +5509,8 @@ MonoBehaviour:
   type: 1
   minDoors: 2
   maxDoors: 4
-  enemyPool: {fileID: 0}
+  enemyPool: {fileID: 11400000, guid: 96266b9c6236eca43b2f92ad00c312bd, type: 2}
+  spawnDistance: 3
 --- !u!1001 &594289712393945977
 PrefabInstance:
   m_ObjectHideFlags: 0

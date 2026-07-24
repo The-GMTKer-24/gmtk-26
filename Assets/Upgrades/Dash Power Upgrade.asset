@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6928e37b12f74ee492571f8ed886d358, type: 3}
-  m_Name: Last stand
+  m_Name: Dash Power Upgrade
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
-  upgradeName: Last stand
-  description: Deal 3 times damage when only 10 seconds remain
-  cost: 15
-  upgradePrefab: {fileID: 8970273558985301401, guid: 7bab4946f3620894cb91ff964ffb2ea7, type: 3}
+  upgradeName: Improved Dash
+  description: Moderately increase dash power
+  cost: 20
+  upgradePrefab: {fileID: 8970273558985301401, guid: d88da89ff27fc0641a53e3802db82a6d, type: 3}

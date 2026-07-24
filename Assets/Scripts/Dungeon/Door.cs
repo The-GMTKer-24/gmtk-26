@@ -10,22 +10,28 @@ namespace Dungeon
 
         [SerializeField] private SpriteRenderer rend;
         [SerializeField] private BoxCollider2D col;
+        
+        public bool Hidden { get; private set; }
+        
         public void OpenDoor()
         {
             rend.sprite = open;
             col.enabled = false;
+            Hidden = false;
         }
 
         public void CloseDoor()
         {
             rend.sprite = closed;
             col.enabled = true;
+            Hidden = false;
         }
 
         public void HideDoor()// maybe disable and replace with wall?
         {
             rend.sprite = noDoor;
             col.enabled = true;
+            Hidden = true;
         }
     }
 }

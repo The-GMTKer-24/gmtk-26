@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
   upgradeName: Timesteal
   description: Gain time equal to 10% of damage dealt
-  cost: 20
+  cost: 30
   upgradePrefab: {fileID: 8970273558985301401, guid: 058c8c32ebc9365419a15b538a234a18, type: 3}

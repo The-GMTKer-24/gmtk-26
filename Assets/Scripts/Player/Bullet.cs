@@ -22,8 +22,11 @@ namespace Player
             {
                 TimeEntity hp = other.gameObject.GetComponent<TimeEntity>();
                 hp.DealDamage(damage);
-                TextParticleSystem2D.Instance.Spawn($"-{damage}s",transform.position);
-                Player.Instance.TimeEntity.Heal(damage * Player.Instance.PlayerModifier.Evaluate(PlayerStat.TimeSteal));
+                float toHeal = damage * Player.Instance.PlayerModifier.Evaluate(PlayerStat.TimeSteal);
+                if (toHeal > 0)
+                {
+                    Player.Instance.TimeEntity.Heal(toHeal);
+                }
             }
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);

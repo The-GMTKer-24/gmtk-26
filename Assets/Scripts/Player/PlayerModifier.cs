@@ -13,7 +13,9 @@ namespace Player
         ReloadSpeed,
         MaxBullets,
         TimeBetweenShots,
-        
+        Speed,
+        DashPower,
+        DashCooldown
     }
 
     public enum ModifierType

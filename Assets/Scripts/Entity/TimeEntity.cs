@@ -1,4 +1,5 @@
 ﻿using System;
+using Text_Particles;
 using UnityEngine;
 
 namespace Entity
@@ -27,12 +28,14 @@ namespace Entity
 
         public void DealDamage(float damage)
         {
+            TextParticleSystem2D.Instance.Spawn($"-{damage}s", transform.position, Color.softRed);
             currentTime -= damage;
             CheckDeath(false);
         }
 
         public void Heal(float time)
         {
+            TextParticleSystem2D.Instance.Spawn($"+{time}s", transform.position, Color.lawnGreen);
             currentTime += time;
             currentTime = Mathf.Min(currentTime, maxTime);
         }

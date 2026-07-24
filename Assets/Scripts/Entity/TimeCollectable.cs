@@ -1,5 +1,6 @@
 ﻿using System;
 using Player;
+using Text_Particles;
 using UnityEngine;
 
 namespace Entity
