@@ -34,23 +34,26 @@ namespace Player
                 reloadTimer -= Time.deltaTime;
                 reloadTimer = Mathf.Max(reloadTimer, 0.0f);
             }
+            
             if (lastShotTimer > 0)
             {
                 lastShotTimer -= Time.deltaTime;
                 lastShotTimer = Mathf.Max(lastShotTimer, 0.0f);
             }
+            
 
-            if (!held) return;
             if (reloadTimer > 0 || lastShotTimer > 0)
             {
                 return;
             }
-
             if (currentBullets == 0)
             {
                 Reload();
                 return;
             }
+            if (!held) return;
+
+
             
             currentBullets -= 1;
             lastShotTimer = Player.Instance.PlayerModifier.Evaluate(PlayerStat.TimeBetweenShots);
@@ -74,8 +77,15 @@ namespace Player
             }
         }
 
+        public void Reload(InputAction.CallbackContext context)
+        {
+            if (!context.started) return;
+            Reload();
+        }
+
         private void Reload()
         {
+            if (reloadTimer > 0) return;
             reloadTimer = Player.Instance.PlayerModifier.Evaluate(PlayerStat.ReloadSpeed);
             currentBullets = Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBullets);
         }
