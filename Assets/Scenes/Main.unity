@@ -1500,8 +1500,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Player
   timeEntity: {fileID: 823347871}
-  bigBlackBox: {fileID: 0}
+  bigBlackBox: {fileID: 665944579}
   playerModifier: {fileID: 823347875}
+  mainMenu: Main Menu
+  delay: 1
 --- !u!114 &823347875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4823,6 +4825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerManager
   playerCamera: {fileID: 1184654864}
+  bigBlackBox: {fileID: 0}
 --- !u!1 &2091861719
 GameObject:
   m_ObjectHideFlags: 0
