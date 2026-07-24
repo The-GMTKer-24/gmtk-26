@@ -16,19 +16,17 @@ namespace Entity
         private Dictionary<String, SortedSet<EntityId>> _gnomeDict = new();
         private Dictionary<EntityId, GnomeAI> _gnomes = new();
 
-        private const int CycleSize = 4;
-        private List<GnomeAI>[] _cycleGroups;
-        private int _currentGroupIndex;
-        //
+        //public const int CycleSize = 4;
+        //public int cycleIndex = 0;
 
         public void Awake()
         {
             Instance = this;
-            _cycleGroups = new List<GnomeAI>[CycleSize];
-            for (var i = 0; i < CycleSize; i++)
-            {
-                _cycleGroups[i] = new List<GnomeAI>();
-            }
+        }
+
+        public void FixedUpdate()
+        {
+            //cycleIndex++; cycleIndex %= CycleSize;
         }
         
         public bool IsGnomeOfTag(GnomeAI gnomeAI, String tag)
@@ -44,13 +42,13 @@ namespace Entity
         public void AddGnome(GnomeAI gnomeAI, HashSet<String> tags)
         {
             _gnomeSet.Add(gnomeAI.GetEntityId());
+            _gnomes.Add(gnomeAI.GetEntityId(), gnomeAI);
+            
             foreach (String gnomeTag in tags)
             {
                 if (!_gnomeDict.ContainsKey(gnomeTag)) _gnomeDict.Add(gnomeTag, new SortedSet<EntityId>());
                 _gnomeDict[gnomeTag].Add(gnomeAI.GetEntityId());
             }
-            
-            _gnomes.Add(gnomeAI.GetEntityId(), gnomeAI);
         }
 
         public void AddGnome(GnomeAI gnomeAI)

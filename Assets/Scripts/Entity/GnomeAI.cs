@@ -27,7 +27,7 @@ public class GnomeAI : MonoBehaviour
     [SerializeField] private float minimumAttackInterval = 0.25f;
 
     [Tooltip("How often nearby gnomes are checked for crowd separation.")]
-    [SerializeField] private float crowdCheckInterval = 0.1f;
+    [SerializeField] private float crowdCheckInterval = 0.4f;
 
     [Header("Attack Preferences")]
     [SerializeField] public bool canRepeatAttacks;
@@ -57,11 +57,13 @@ public class GnomeAI : MonoBehaviour
     private Rigidbody2D _rb;
     private Animator _animator;
     private IAttack[] _attacks;
+    private int _group;
 
     private IAttack _previousAttack;
     private IAttack _chosenAttack;
 
-    private float _nextDecisionTime;
+    private float _nextAttackDecisionTime;
+    private float _nextMoveDecisionTime;
     private float _nextAttackTime;
     private float _nextCrowdCheckTime;
 
@@ -85,6 +87,8 @@ public class GnomeAI : MonoBehaviour
         _previousAttack = null;
         _animator = GetComponent<Animator>();
         _attacks = GetComponents<IAttack>(); // Can no longer edit attack set live in editor
+        //_group = GetEntityId().GetHashCode() % GnomeTracker.CycleSize;
+        
         staminaEntity.ResetStamina();
 
         _animator.speed = Mathf.Max(0f, animationSpeed);
@@ -108,14 +112,19 @@ public class GnomeAI : MonoBehaviour
 
         Vector2 playerPosition = _player.transform.position;
 
-        if (_chosenAttack == null || Time.fixedTime >= _nextDecisionTime)
+        if (_chosenAttack == null || Time.fixedTime >= _nextAttackDecisionTime)
         {
             _chosenAttack = ChooseAttack(playerPosition);
-            _nextDecisionTime = Time.fixedTime + Mathf.Max(0.02f, decisionInterval);
+            _nextAttackDecisionTime = Time.fixedTime + Mathf.Max(0.02f, decisionInterval);
         }
 
         TryAttack(_chosenAttack, playerPosition);
-        MoveForAttack(_chosenAttack, playerPosition);
+
+        if (Time.fixedTime >= _nextMoveDecisionTime)
+        {
+            MoveForAttack(_chosenAttack, playerPosition);
+            _nextMoveDecisionTime = Time.fixedTime + Mathf.Max(0.02f, decisionInterval);
+        }
     }
 
     private IAttack ChooseAttack(Vector2 playerPosition)
@@ -291,7 +300,7 @@ public class GnomeAI : MonoBehaviour
 
         if (!canRepeatAttacks)
         {
-            _nextDecisionTime = Time.fixedTime;
+            _nextAttackDecisionTime = Time.fixedTime;
         }
     }
 
@@ -373,10 +382,12 @@ public class GnomeAI : MonoBehaviour
 
             Vector2 awayFromGnome =
                 _rb.position - (Vector2)otherGnome.transform.position;
+            
+            float awayFromGnomeSqrMag = awayFromGnome.sqrMagnitude;
 
-            if (awayFromGnome.sqrMagnitude > 0.0001f)
+            if (awayFromGnomeSqrMag > 0.0001f)
             {
-                separation += awayFromGnome.normalized;
+                separation += awayFromGnome / awayFromGnomeSqrMag;
             }
         }
 
