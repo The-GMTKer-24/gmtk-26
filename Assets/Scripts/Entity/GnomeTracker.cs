@@ -82,7 +82,12 @@ namespace Entity
 
         public GnomeAI GetGnome(EntityId entityId)
         {
-            return _gnomes[entityId];
+            return _gnomes.ContainsKey(entityId) ? _gnomes[entityId] : null;
+        }
+
+        public bool DoesGnomeExist(EntityId entityId)
+        {
+            return _gnomes.ContainsKey(entityId);
         }
     }
 }
