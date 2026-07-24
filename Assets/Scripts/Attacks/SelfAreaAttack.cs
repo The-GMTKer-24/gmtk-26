@@ -43,6 +43,11 @@ public class SelfAreaAttack : MonoBehaviour, IAttackArea
     {
         return timeCost;
     }
+    
+    public float GetRange()
+    {
+        return range;
+    }
 
     public bool InRange(Vector2 targetPosition)
     {
@@ -52,15 +57,13 @@ public class SelfAreaAttack : MonoBehaviour, IAttackArea
     }
 
     // Returns all entities that can take damage within range
-    public Collection<GameObject> GetTargets()
+    public Collection<GameObject> GetAllInRange(float factor)
     {
         Collection<GameObject> targets = new Collection<GameObject>();
         foreach (GameObject target in FindObjectsByType<GameObject>())
         {
-            if (target.Equals(this.gameObject))
-            {
-                continue;
-            }
+            if (target.Equals(this.gameObject)) continue;
+            if (Vector2.Distance(target.transform.position, this.gameObject.transform.position) >= factor * range) continue;
 
             if (target.GetComponent<TimeEntity>() != null)
             {
@@ -70,9 +73,14 @@ public class SelfAreaAttack : MonoBehaviour, IAttackArea
         return targets;
     }
 
+    public Collection<GameObject> GetAllInRange()
+    {
+        return GetAllInRange(1f);
+    }
+
     public void Attack()
     {
-        foreach (GameObject target in GetTargets())
+        foreach (GameObject target in GetAllInRange())
         {
             TimeEntity targetTimeEntity = target.GetComponent<TimeEntity>();
             if (targetTimeEntity == null)

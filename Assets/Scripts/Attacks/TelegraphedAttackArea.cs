@@ -57,14 +57,24 @@ public class TelegraphedAttackArea : MonoBehaviour, IAttackArea
     {
         return InternalAttack.GetTimeCost();
     }
+    
+    public float GetRange()
+    {
+        return InternalAttack.GetRange();
+    }
 
     public bool InRange(Vector2 targetPosition)
     {
         return InternalAttack.InRange(targetPosition);
     }
 
-    public Collection<GameObject> GetTargets()
+    public Collection<GameObject> GetAllInRange(float factor)
     {
-        return InternalAttack.GetTargets();
+        return InternalAttack.GetAllInRange(factor);
+    }
+
+    public Collection<GameObject> GetAllInRange()
+    {
+        return InternalAttack.GetAllInRange();
     }
 }
