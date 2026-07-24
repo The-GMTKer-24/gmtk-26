@@ -17,6 +17,7 @@ namespace Entity
         public void Update()
         {
             currentStamina += Time.deltaTime * staminaRegenerationRate;
+            currentStamina = Mathf.Min(currentStamina, maxStamina);
         }
 
         public float GetStamina()
@@ -43,7 +44,7 @@ namespace Entity
         public void RegenerateStamina(float amount)
         {
             currentStamina += amount;
-            currentStamina = Mathf.Max(currentStamina, maxStamina);
+            currentStamina = Mathf.Min(currentStamina, maxStamina);
         }
 
         public float GetMaxStamina()
