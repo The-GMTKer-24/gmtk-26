@@ -82,43 +82,9 @@ public class GnomeAI : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _player = Player.Player.Instance.gameObject;
-        _attacks = GetComponents<IAttack>();
-
-        if (_rb == null)
-        {
-            throw new MissingComponentException(
-                $"{nameof(GnomeAI)} on {name} requires a Rigidbody2D."
-            );
-        }
-
-        if (_animator == null)
-        {
-            throw new MissingComponentException(
-                $"{nameof(GnomeAI)} on {name} requires an Animator."
-            );
-        }
-
-        if (_attacks == null || _attacks.Length == 0)
-        {
-            throw new InvalidOperationException(
-                $"{nameof(GnomeAI)} on {name} requires at least one component implementing IAttack."
-            );
-        }
-
-        if (timeEntity == null)
-        {
-            throw new MissingReferenceException(
-                $"{nameof(timeEntity)} has not been assigned on {name}."
-            );
-        }
-
-        if (staminaEntity == null)
-        {
-            throw new MissingReferenceException(
-                $"{nameof(staminaEntity)} has not been assigned on {name}."
-            );
-        }
-
+        _previousAttack = null;
+        _animator = GetComponent<Animator>();
+        _attacks = GetComponents<IAttack>(); // Can no longer edit attack set live in editor
         staminaEntity.ResetStamina();
 
         _animator.speed = Mathf.Max(0f, animationSpeed);
@@ -160,6 +126,9 @@ public class GnomeAI : MonoBehaviour
         bool currentAttackWasEvaluated = false;
         float currentAttackLoss = float.PositiveInfinity;
 
+        bool desperate = timeEntity.GetTime() <= desperationTimeCutoff;
+        float desperation = timeEntity.GetTime() / desperationTimeCutoff;
+        
         foreach (IAttack attack in _attacks)
         {
             if (attack == null)

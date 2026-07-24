@@ -46,7 +46,6 @@ namespace Entity
             }
             if (shrinking)
             {
-                print("shrinking");
                 shrinkTimer += Time.deltaTime;
                 var s = popout.Evaluate(shrinkTimer / shrinkTime);
                 transform.localScale = new Vector3(s, s, s) * scale;

@@ -12,12 +12,23 @@ namespace Entity
     {
         public static GnomeTracker Instance;
         
+        private SortedSet<EntityId> _gnomeSet = new SortedSet<EntityId>();
         private Dictionary<String, SortedSet<EntityId>> _gnomeDict = new();
         private Dictionary<EntityId, GnomeAI> _gnomes = new();
+
+        private const int CycleSize = 4;
+        private List<GnomeAI>[] _cycleGroups;
+        private int _currentGroupIndex;
+        //
 
         public void Awake()
         {
             Instance = this;
+            _cycleGroups = new List<GnomeAI>[CycleSize];
+            for (var i = 0; i < CycleSize; i++)
+            {
+                _cycleGroups[i] = new List<GnomeAI>();
+            }
         }
         
         public bool IsGnomeOfTag(GnomeAI gnomeAI, String tag)
@@ -27,18 +38,16 @@ namespace Entity
 
         public bool IsGnome(GnomeAI gnomeAI)
         {
-            return IsGnomeOfTag(gnomeAI, null);
+            return _gnomeSet.Contains(gnomeAI.GetEntityId());
         }
 
         public void AddGnome(GnomeAI gnomeAI, HashSet<String> tags)
         {
-            HashSet<String> tagsCopy = new HashSet<String>(tags);
-            tagsCopy.Add(null);
-
-            foreach (String tag in tagsCopy)
+            _gnomeSet.Add(gnomeAI.GetEntityId());
+            foreach (String gnomeTag in tags)
             {
-                if (!_gnomeDict.ContainsKey(tag)) _gnomeDict.Add(tag, new SortedSet<EntityId>());
-                _gnomeDict[tag].Add(gnomeAI.GetEntityId());
+                if (!_gnomeDict.ContainsKey(gnomeTag)) _gnomeDict.Add(gnomeTag, new SortedSet<EntityId>());
+                _gnomeDict[gnomeTag].Add(gnomeAI.GetEntityId());
             }
             
             _gnomes.Add(gnomeAI.GetEntityId(), gnomeAI);
@@ -57,6 +66,7 @@ namespace Entity
                 entry.Value.Remove(gnomeAI.GetEntityId());
             }
             
+            _gnomeSet.Remove(gnomeAI.GetEntityId());
             _gnomes.Remove(gnomeAI.GetEntityId());
         }
 
@@ -67,7 +77,7 @@ namespace Entity
 
         public SortedSet<EntityId> GetGnomeIds()
         {
-            return GetGnomeIds(null);
+            return _gnomeSet;
         }
 
         /*public HashSet<GnomeAI> GetGnomes()

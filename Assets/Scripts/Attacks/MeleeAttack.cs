@@ -6,11 +6,6 @@ using UnityEngine;
 
 public class MeleeAttack : GenericAttack, IAttackTargeted
 {
-    [SerializeField] public float damage = 20f;
-    [SerializeField] public float range = 1f;
-    [SerializeField] public float staminaCost = 10f;
-    [SerializeField] public float timeCost = 10f;
-    
     // TODO: Add sprite config
     
     private TimeEntity _timeEntity;
