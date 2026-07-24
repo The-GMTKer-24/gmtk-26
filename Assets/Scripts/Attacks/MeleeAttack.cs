@@ -23,6 +23,11 @@ public class MeleeAttack : MonoBehaviour, IAttackTargeted
     {
         
     }
+
+    public float GetDelay()
+    {
+        return 0;
+    }
     
     public float GetDamage()
     {
