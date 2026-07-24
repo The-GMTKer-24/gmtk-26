@@ -1701,7 +1701,7 @@ MonoBehaviour:
   timeEntity: {fileID: 823347871}
   bigBlackBox: {fileID: 665944579}
   playerModifier: {fileID: 823347875}
-  mainMenu: 
+  mainMenu: Main Menu
   delay: 0
 --- !u!114 &823347875
 MonoBehaviour:
@@ -2727,7 +2727,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
