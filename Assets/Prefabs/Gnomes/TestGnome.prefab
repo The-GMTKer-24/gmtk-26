@@ -128,9 +128,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677830866020430554}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
@@ -162,6 +162,7 @@ MonoBehaviour:
   animationSpeed: 1
   speed: 2
   forceDropoff: 0.2
+  canRepeatAttacks: 1
   timeConservationPreference: 0
   selfishness: 0.1
   outOfRangeLoss: 1
@@ -220,5 +221,5 @@ MonoBehaviour:
   range: 10
   staminaCost: 10
   timeCost: 5
-  speed: 10
+  speed: 30
   bulletPrefab: {fileID: 6960090236962132424, guid: 651f525069020e084b930e8b3c016878, type: 3}
