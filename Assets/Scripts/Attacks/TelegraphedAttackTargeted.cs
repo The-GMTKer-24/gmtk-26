@@ -34,11 +34,16 @@ public class TelegraphedAttackTargeted : MonoBehaviour, IAttackTargeted
             }
         }
     }
-
+    
     public void Attack(GameObject target)
     {
         _telegraphing = true;
         _telegraphedTarget = target;
+    }
+    
+    public float GetDelay()
+    {
+        return delay;
     }
 
     public float GetDamage()

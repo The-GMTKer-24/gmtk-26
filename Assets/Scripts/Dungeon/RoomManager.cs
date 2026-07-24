@@ -93,8 +93,7 @@ public class RoomManager : MonoBehaviour
         if (Instance != null && Instance != this)
         {
             Debug.LogWarning("A second RoomManager was destroyed.", this);
-            Destroy(gameObject);
-            return;
+            Destroy(Instance.gameObject);
         }
 
         Instance = this;
@@ -661,7 +660,7 @@ public class RoomManager : MonoBehaviour
 
     private static void ReleaseRoom(Room room)
     {
-        if (room == null)
+        if (!room)
         {
             return;
         }
@@ -679,7 +678,7 @@ public class RoomManager : MonoBehaviour
 
     private static void ReleaseRoot(Transform root)
     {
-        if (root == null)
+        if (!root)
         {
             return;
         }

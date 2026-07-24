@@ -4,5 +4,6 @@
     {
         PauseMenu,
         ShopMenu,
+        Transition
     }
 }

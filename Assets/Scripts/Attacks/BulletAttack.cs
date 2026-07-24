@@ -28,6 +28,10 @@ public class BulletAttack : MonoBehaviour, IAttackTargeted
         
     }
     
+    public float GetDelay() {
+        return 0f;
+    }
+    
     public float GetDamage()
     {
         return damage;

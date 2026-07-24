@@ -3,6 +3,7 @@ using UnityEngine;
 
 public interface IAttack
 {
+    public float GetDelay();
     public float GetDamage();
     public float GetStaminaCost();
     public float GetTimeCost();
