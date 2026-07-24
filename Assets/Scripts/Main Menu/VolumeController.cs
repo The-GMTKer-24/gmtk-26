@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
@@ -8,23 +9,24 @@ namespace Main_Menu
     {
         [SerializeField] private AudioMixerGroup gameAudio;
         [SerializeField] private AudioMixerGroup musicAudio;
-        
+
         [SerializeField] private Slider gameVolumeSlider;
         [SerializeField] private Slider musicVolumeSlider;
-        
+
         public static float gameVolume = 1.0f;
         public static float musicVolume = 1.0f;
-        
+
         private Slider slider;
+
         void Start()
         {
             gameVolume = PlayerPrefs.GetFloat("GameVolume", gameVolume);
             musicVolume = PlayerPrefs.GetFloat("MusicVolume", musicVolume);
-            
+
             gameVolumeSlider.value = gameVolume;
             musicVolumeSlider.value = musicVolume;
         }
-        
+
         public void ChangeMusicVolume()
         {
             musicVolume = musicVolumeSlider.value;
@@ -38,6 +40,6 @@ namespace Main_Menu
             gameAudio.audioMixer.SetFloat("Volume", gameVolume);
             PlayerPrefs.SetFloat("GameVolume", gameVolume);
         }
-    }
 
+    }
 }

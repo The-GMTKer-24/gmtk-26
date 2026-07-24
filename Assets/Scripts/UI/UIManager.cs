@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace UI
@@ -37,5 +38,18 @@ namespace UI
         }
 
         public bool Paused => paused;
+        
+        public void QuitGame()
+        {
+            
+            PlayerPrefs.Save();
+            Debug.Log("The system will shut down now!");
+            #if UNITY_EDITOR
+                EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
+        }
     }
+    
 }

@@ -17,14 +17,19 @@ namespace UI
             }
             if (UIManager.Instance.Paused)
             {
-                UIManager.Instance.UnPause();
-                ui.SetActive(false);
+                UnPause();
             }
             else
             {
                 UIManager.Instance.Pause();
                 ui.SetActive(true);
             }
+        }
+
+        public void UnPause()
+        {
+            UIManager.Instance.UnPause();
+            ui.SetActive(false);
         }
     }
 }
