@@ -15,6 +15,7 @@ namespace Dungeon
         
         public void OpenDoor()
         {
+            rend.sortingOrder = -1;
             rend.sprite = open;
             col.enabled = false;
             Hidden = false;
@@ -23,6 +24,7 @@ namespace Dungeon
         public void CloseDoor()
         {
             rend.sprite = closed;
+            rend.sortingOrder = 2;
             col.enabled = true;
             Hidden = false;
         }
