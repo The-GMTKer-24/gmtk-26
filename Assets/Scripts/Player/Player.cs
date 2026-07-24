@@ -12,7 +12,8 @@ namespace Player
 
         public TimeEntity TimeEntity => timeEntity;
         public PlayerModifier PlayerModifier => playerModifier;
-        
+        public SpriteRenderer BigBlackBox => bigBlackBox;
+        [SerializeField] private SpriteRenderer bigBlackBox;
         [SerializeField] private PlayerModifier playerModifier;
         public void Awake()
         {
