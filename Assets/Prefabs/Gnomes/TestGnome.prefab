@@ -129,14 +129,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677830866020430554}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -147,7 +147,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &7361123548121684838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +163,12 @@ MonoBehaviour:
   animationSpeed: 1
   speed: 2
   forceDropoff: 0.2
+  animationMovementThreshold: 0.05
+  directionHysteresis: 0.08
+  decisionInterval: 0.15
+  attackSwitchThreshold: 0.1
+  minimumAttackInterval: 0.25
+  crowdCheckInterval: 0.1
   canRepeatAttacks: 1
   timeConservationPreference: 0
   selfishness: 0.1
@@ -205,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity.StaminaEntity
   maxStamina: 50
   currentStamina: 50
-  staminaRegenerationRate: 1
+  staminaRegenerationRate: 5
 --- !u!114 &1191372915264739356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +227,7 @@ MonoBehaviour:
   damage: 10
   range: 10
   staminaCost: 10
-  timeCost: 5
+  timeCost: 0
   speed: 30
   bulletPrefab: {fileID: 6960090236962132424, guid: 651f525069020e084b930e8b3c016878, type: 3}
 --- !u!61 &7688476764850467404

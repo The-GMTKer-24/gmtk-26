@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2921621349321927094}
   - component: {fileID: -2716732152494494810}
   - component: {fileID: 8691236055437006072}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Gnome Shovel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

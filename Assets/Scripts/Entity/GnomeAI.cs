@@ -1,7 +1,5 @@
 using System;
-using System.Collections.ObjectModel;
 using Entity;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GnomeAI : MonoBehaviour
@@ -10,170 +8,485 @@ public class GnomeAI : MonoBehaviour
     private static readonly int Down = Animator.StringToHash("Down");
     private static readonly int Left = Animator.StringToHash("Left");
     private static readonly int Right = Animator.StringToHash("Right");
+
+    [Header("Movement and Animation")]
     [SerializeField] public float animationSpeed = 1f;
     [SerializeField] public float speed = 2f;
     [SerializeField] public float forceDropoff = 0.2f;
-    
+    [SerializeField] private float animationMovementThreshold = 0.05f;
+    [SerializeField] private float directionHysteresis = 0.08f;
+
+    [Header("AI Update Rates")]
+    [Tooltip("How often the gnome re-evaluates every available attack.")]
+    [SerializeField] private float decisionInterval = 0.15f;
+
+    [Tooltip("How much better a different attack must be before the gnome switches to it.")]
+    [SerializeField] private float attackSwitchThreshold = 0.1f;
+
+    [Tooltip("Minimum time between calls to Attack().")]
+    [SerializeField] private float minimumAttackInterval = 0.25f;
+
+    [Tooltip("How often nearby gnomes are checked for crowd separation.")]
+    [SerializeField] private float crowdCheckInterval = 0.1f;
+
+    [Header("Attack Preferences")]
     [SerializeField] public bool canRepeatAttacks;
-    
-    [SerializeField] public float timeConservationPreference = 0f; // -1 to 1. Negative means preferring to conserve stamina over time, positive prefers time over stamina.
-    [SerializeField] public float selfishness = 0.1f; // 0 to 1
-    [SerializeField] public float outOfRangeLoss = 1f; // 0.0+
-    [SerializeField] public float telegraphLoss = 1f; // 0.0 +, loss per second of telegraphing
-    [SerializeField] public float desperationTimeCutoff = 5f; // Time value
+
+    [SerializeField]
+    [Range(-1f, 1f)]
+    public float timeConservationPreference = 0f;
+
+    [SerializeField]
+    [Range(0f, 1f)]
+    public float selfishness = 0.1f;
+
+    [SerializeField] public float outOfRangeLoss = 1f;
+    [SerializeField] public float telegraphLoss = 1f;
+    [SerializeField] public float desperationTimeCutoff = 5f;
     [SerializeField] public float desperationInstantAttackPreference = 10f;
     [SerializeField] public float constantDecrowdingStrength = 0.1f;
     [SerializeField] public float aoeDecrowdingStrength = 0.5f;
-    
-    [SerializeField] public float currentLoss = 0f; // Debug readout - do not edit
-    
+
+    [Header("Debug")]
+    [SerializeField] public float currentLoss;
+
     public TimeEntity timeEntity;
     public StaminaEntity staminaEntity;
 
     private GameObject _player;
     private Rigidbody2D _rb;
-    private IAttack _previousAttack;
     private Animator _animator;
     private IAttack[] _attacks;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private IAttack _previousAttack;
+    private IAttack _chosenAttack;
+
+    private float _nextDecisionTime;
+    private float _nextAttackTime;
+    private float _nextCrowdCheckTime;
+
+    private Vector2 _cachedDisperseVector;
+    private FacingDirection _facingDirection = FacingDirection.Down;
+    private FacingDirection? _appliedFacingDirection;
+
+    private enum FacingDirection
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
+    private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _player = Player.Player.Instance.gameObject;
-        _previousAttack = null;
         _animator = GetComponent<Animator>();
-        _attacks = GetComponents<IAttack>(); // Can no longer edit attack set live in editor
+        _player = Player.Player.Instance.gameObject;
+        _attacks = GetComponents<IAttack>();
+
+        if (_rb == null)
+        {
+            throw new MissingComponentException(
+                $"{nameof(GnomeAI)} on {name} requires a Rigidbody2D."
+            );
+        }
+
+        if (_animator == null)
+        {
+            throw new MissingComponentException(
+                $"{nameof(GnomeAI)} on {name} requires an Animator."
+            );
+        }
+
+        if (_attacks == null || _attacks.Length == 0)
+        {
+            throw new InvalidOperationException(
+                $"{nameof(GnomeAI)} on {name} requires at least one component implementing IAttack."
+            );
+        }
+
+        if (timeEntity == null)
+        {
+            throw new MissingReferenceException(
+                $"{nameof(timeEntity)} has not been assigned on {name}."
+            );
+        }
+
+        if (staminaEntity == null)
+        {
+            throw new MissingReferenceException(
+                $"{nameof(staminaEntity)} has not been assigned on {name}."
+            );
+        }
+
         staminaEntity.ResetStamina();
-        GnomeTracker.Instance.AddGnome(this); // TODO: Gnome tags
+
+        _animator.speed = Mathf.Max(0f, animationSpeed);
+        ApplyFacingDirection();
+
+        GnomeTracker.Instance.AddGnome(this);
     }
-    
-    void FixedUpdate()
+
+    private void Update()
     {
-        // Choose attack to execute
+        UpdateAnimation();
+    }
 
-        if (_player.IsDestroyed()) return;
-        Vector2 playerPos = _player.transform.position;
+    private void FixedUpdate()
+    {
+        if (!_player)
+        {
+            _rb.linearVelocity = Vector2.zero;
+            return;
+        }
 
-        IAttack chosenAttack = null;
-        float attackLoss = float.PositiveInfinity;
-        
-        float timeGain = (timeConservationPreference + 1) / 2;
-        float staminaGain = 1 - timeGain;
+        Vector2 playerPosition = _player.transform.position;
 
-        bool desperate = timeEntity.GetTime() <= desperationTimeCutoff;
-        float desperation = timeEntity.GetTime() / desperationTimeCutoff;
-        
-        // TODO: I have no idea if you can getcomponents an interface
+        if (_chosenAttack == null || Time.fixedTime >= _nextDecisionTime)
+        {
+            _chosenAttack = ChooseAttack(playerPosition);
+            _nextDecisionTime = Time.fixedTime + Mathf.Max(0.02f, decisionInterval);
+        }
+
+        TryAttack(_chosenAttack, playerPosition);
+        MoveForAttack(_chosenAttack, playerPosition);
+    }
+
+    private IAttack ChooseAttack(Vector2 playerPosition)
+    {
+        IAttack bestAttack = null;
+        float bestLoss = float.PositiveInfinity;
+
+        bool currentAttackWasEvaluated = false;
+        float currentAttackLoss = float.PositiveInfinity;
+
         foreach (IAttack attack in _attacks)
         {
-            if (!canRepeatAttacks && attack == _previousAttack) continue;
-            
-            int friendlyFireCount = 0;
-            foreach (GameObject hit in attack.GetAllInRange())
+            if (attack == null)
             {
-                GnomeAI gnomeAI = GnomeTracker.Instance.GetGnome(hit.GetEntityId());
-
-                if (gnomeAI != null)
-                {
-                    friendlyFireCount ++;
-                }
-            }
-            float totalDamageLoss = (friendlyFireCount * (1 - selfishness)) + Math.Min(attack.GetTimeCost(), timeEntity.GetTime());
-            
-            float damagePerStamina = attack.GetDamage() / attack.GetStaminaCost();
-            float damagePerTimeLoss = attack.GetDamage() / totalDamageLoss;
-            
-            float totalLoss = damagePerStamina * staminaGain + damagePerTimeLoss * timeGain;
-            if (!attack.InRange(playerPos)) totalLoss += outOfRangeLoss;
-            totalLoss += attack.GetDelay() * telegraphLoss;
-
-            if (desperate)
-            {
-                bool canAttackNow = attack.GetStaminaCost() >= staminaEntity.GetStamina() && attack.InRange(playerPos);
-                float desperateLoss = damagePerStamina + attack.GetDelay() * telegraphLoss + (canAttackNow ? 0 : desperationInstantAttackPreference);
-                
-                totalLoss = desperation * desperateLoss + (1 - desperation) * totalLoss;
+                continue;
             }
 
-            if (totalLoss < attackLoss)
+            if (!canRepeatAttacks && attack == _previousAttack)
             {
-                chosenAttack = attack;
-                attackLoss = totalLoss;
+                continue;
+            }
+
+            float loss = EvaluateAttackLoss(attack, playerPosition);
+
+            if (attack == _chosenAttack)
+            {
+                currentAttackWasEvaluated = true;
+                currentAttackLoss = loss;
+            }
+
+            if (loss < bestLoss)
+            {
+                bestAttack = attack;
+                bestLoss = loss;
             }
         }
 
-        if (chosenAttack == null) throw new Exception("No attack chosen! Did you give this gnome no attacks, or specify no repeat attacks on a gnome with only one attack?");
-
-        currentLoss = attackLoss;
-        
-        //print("Chosen attack: " + chosenAttack.ToString());
-        //print("Stamina: " + staminaEntity.GetStamina() + " / " + chosenAttack.GetStaminaCost());
-        //print("Distance: " + Vector2.Distance(playerPos, _rb.transform.position));
-
-        if (chosenAttack.GetStaminaCost() <= staminaEntity.GetStamina() && chosenAttack.InRange(playerPos))
+        if (bestAttack == null)
         {
-            print("Attacking! " + chosenAttack);
-            _previousAttack = chosenAttack;
-            if (chosenAttack is IAttackArea) { (chosenAttack as IAttackArea).Attack(); }
-            else if (chosenAttack is IAttackTargeted) { (chosenAttack as IAttackTargeted).Attack(_player); }
-            else { throw new System.NotImplementedException("Couldn't attack using IAttack " + chosenAttack + "! Not implemented yet!"); }
+            throw new InvalidOperationException(
+                "No attack could be selected. A gnome with only one attack cannot use " +
+                "Can Repeat Attacks = false after that attack has been used."
+            );
         }
-        
-        // Determine movement
-        // TODO: implement pathfinding!
-        float targetDist = chosenAttack.GetRange() * 0.8f;
-        float currentDist = Vector2.Distance(playerPos, _rb.position);
-        float approachStrength = (currentDist / chosenAttack.GetRange() - 0.8f) / 0.2f;
 
-        Vector2 approachVector = Vector2.Normalize(approachStrength * (playerPos - _rb.position));
-        Vector2 disperseVector = Vector2.zero;
-
-        foreach (GameObject hit in chosenAttack.GetAllInRange())
+        if (_chosenAttack != null &&
+            currentAttackWasEvaluated &&
+            currentAttackLoss <= bestLoss + Mathf.Max(0f, attackSwitchThreshold))
         {
-            GnomeAI gnomeAI = GnomeTracker.Instance.GetGnome(hit.GetEntityId());
+            currentLoss = currentAttackLoss;
+            return _chosenAttack;
+        }
 
-            if (gnomeAI != null)
+        currentLoss = bestLoss;
+        _nextCrowdCheckTime = 0f;
+        return bestAttack;
+    }
+
+    private float EvaluateAttackLoss(IAttack attack, Vector2 playerPosition)
+    {
+        float timeGain = Mathf.Clamp01((timeConservationPreference + 1f) * 0.5f);
+        float staminaGain = 1f - timeGain;
+
+        float remainingTime = timeEntity.GetTime();
+        bool desperate = desperationTimeCutoff > 0f &&
+                         remainingTime <= desperationTimeCutoff;
+
+        float desperation = desperate
+            ? 1f - Mathf.Clamp01(remainingTime / desperationTimeCutoff)
+            : 0f;
+
+        int friendlyFireCount = 0;
+
+        foreach (GameObject hit in attack.GetAllInRange())
+        {
+            if (!hit || hit == gameObject)
             {
-                disperseVector += Vector2.Normalize(_rb.transform.position - gnomeAI.transform.position);
+                continue;
+            }
+
+            GnomeAI otherGnome =
+                GnomeTracker.Instance.GetGnome(hit.GetEntityId());
+
+            if (otherGnome)
+            {
+                friendlyFireCount++;
             }
         }
+
+        float damage = Mathf.Max(attack.GetDamage(), 0.001f);
+        float staminaCost = Mathf.Max(attack.GetStaminaCost(), 0f);
+        float timeCost = Mathf.Max(attack.GetTimeCost(), 0f);
+        float delay = Mathf.Max(attack.GetDelay(), 0f);
+
+        float friendlyFireLoss =
+            friendlyFireCount * (1f - Mathf.Clamp01(selfishness));
+
+        float effectiveTimeCost =
+            Mathf.Min(timeCost, Mathf.Max(remainingTime, 0f));
         
-        disperseVector = Vector2.Normalize(disperseVector);
-        approachStrength = Math.Clamp(Math.Abs(approachStrength), 0f, 1f);
-        float disperseStrength = (chosenAttack is IAttackArea) ? aoeDecrowdingStrength : constantDecrowdingStrength;
-        Vector2 moveVector = approachVector * approachStrength + disperseVector * disperseStrength;
-        float curAnimationSpeed = animationSpeed;
-        if (moveVector.magnitude >= forceDropoff)
+
+        float staminaLoss = staminaCost / damage;
+        float timeLoss = (friendlyFireLoss + effectiveTimeCost) / damage;
+
+        float totalLoss =
+            staminaLoss * staminaGain +
+            timeLoss * timeGain;
+
+        if (!attack.InRange(playerPosition))
         {
-            moveVector = Vector2.Normalize(moveVector) * speed;
+            totalLoss += outOfRangeLoss;
+        }
+
+        totalLoss += delay * telegraphLoss;
+
+        if (desperate)
+        {
+            bool canAttackNow =
+                staminaCost <= staminaEntity.GetStamina() &&
+                attack.InRange(playerPosition);
+
+            float desperateLoss =
+                staminaLoss +
+                delay * telegraphLoss +
+                (canAttackNow ? 0f : desperationInstantAttackPreference);
+
+            totalLoss = Mathf.Lerp(totalLoss, desperateLoss, desperation);
+        }
+
+        return totalLoss;
+    }
+
+    private void TryAttack(IAttack attack, Vector2 playerPosition)
+    {
+        if (attack == null || Time.fixedTime < _nextAttackTime)
+        {
+            return;
+        }
+
+        if (attack.GetStaminaCost() > staminaEntity.GetStamina() ||
+            !attack.InRange(playerPosition))
+        {
+            return;
+        }
+
+        _previousAttack = attack;
+
+        if (attack is IAttackArea areaAttack)
+        {
+            areaAttack.Attack();
+        }
+        else if (attack is IAttackTargeted targetedAttack)
+        {
+            targetedAttack.Attack(_player);
         }
         else
         {
-            curAnimationSpeed = animationSpeed * moveVector.magnitude / forceDropoff;
-            moveVector = moveVector * speed / forceDropoff; // Mathematical!
+            throw new NotImplementedException(
+                $"The attack {attack} implements IAttack but is neither " +
+                $"{nameof(IAttackArea)} nor {nameof(IAttackTargeted)}."
+            );
         }
-        
-        //print("Vector: " + moveVector.ToString());
-        _rb.linearVelocity = moveVector;
-        _animator.speed = curAnimationSpeed;
 
-        if (moveVector.magnitude > 1f)
+        float attackLockDuration = Mathf.Max(
+            minimumAttackInterval,
+            attack.GetDelay()
+        );
+
+        _nextAttackTime = Time.fixedTime + Mathf.Max(0.02f, attackLockDuration);
+
+        if (!canRepeatAttacks)
         {
-            if (Math.Abs(moveVector.x) > Math.Abs(moveVector.y))
-            {
-                _animator.SetBool(moveVector.x > 0 ? Right : Left, true);
-            }
-            else
-            {
-                _animator.SetBool(moveVector.y > 0 ? Up : Down, true);
-            }
+            _nextDecisionTime = Time.fixedTime;
         }
     }
 
-    void OnDestroy()
+    private void MoveForAttack(IAttack attack, Vector2 playerPosition)
     {
-        GnomeTracker.Instance.RemoveGnome(this);
+        if (attack == null)
+        {
+            _rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        float safeRange = Mathf.Max(attack.GetRange(), 0.001f);
+        float currentDistance = Vector2.Distance(playerPosition, _rb.position);
+
+        float signedApproachStrength =
+            (currentDistance / safeRange - 0.8f) / 0.2f;
+
+        Vector2 toPlayer = playerPosition - _rb.position;
+        Vector2 approachDirection = Vector2.zero;
+
+        if (toPlayer.sqrMagnitude > 0.0001f)
+        {
+            approachDirection =
+                toPlayer.normalized * Mathf.Sign(signedApproachStrength);
+        }
+
+        float approachMagnitude =
+            Mathf.Clamp01(Mathf.Abs(signedApproachStrength));
+
+        if (Time.fixedTime >= _nextCrowdCheckTime)
+        {
+            RefreshDisperseVector(attack);
+            _nextCrowdCheckTime =
+                Time.fixedTime + Mathf.Max(0.02f, crowdCheckInterval);
+        }
+
+        float disperseStrength =
+            attack is IAttackArea
+                ? aoeDecrowdingStrength
+                : constantDecrowdingStrength;
+
+        Vector2 desiredMovement =
+            approachDirection * approachMagnitude +
+            _cachedDisperseVector * disperseStrength;
+
+        float safeForceDropoff = Mathf.Max(forceDropoff, 0.001f);
+        Vector2 velocity;
+
+        if (desiredMovement.magnitude >= safeForceDropoff)
+        {
+            velocity = desiredMovement.normalized * speed;
+        }
+        else
+        {
+            velocity = desiredMovement * speed / safeForceDropoff;
+        }
+
+        _rb.linearVelocity = velocity;
+    }
+
+    private void RefreshDisperseVector(IAttack attack)
+    {
+        Vector2 separation = Vector2.zero;
+
+        foreach (GameObject hit in attack.GetAllInRange())
+        {
+            if (hit == null || hit == gameObject)
+            {
+                continue;
+            }
+
+            GnomeAI otherGnome =
+                GnomeTracker.Instance.GetGnome(hit.GetEntityId());
+
+            if (otherGnome == null)
+            {
+                continue;
+            }
+
+            Vector2 awayFromGnome =
+                _rb.position - (Vector2)otherGnome.transform.position;
+
+            if (awayFromGnome.sqrMagnitude > 0.0001f)
+            {
+                separation += awayFromGnome.normalized;
+            }
+        }
+
+        _cachedDisperseVector =
+            separation.sqrMagnitude > 0.0001f
+                ? separation.normalized
+                : Vector2.zero;
+    }
+
+    private void UpdateAnimation()
+    {
+        if (!_animator || !_rb)
+        {
+            return;
+        }
+
+        _animator.speed = Mathf.Max(0f, animationSpeed);
+
+        Vector2 velocity = _rb.linearVelocity;
+        float movementThreshold =
+            Mathf.Max(0f, animationMovementThreshold);
+
+        if (velocity.sqrMagnitude <
+            movementThreshold * movementThreshold)
+        {
+            return;
+        }
+
+        float absX = Mathf.Abs(velocity.x);
+        float absY = Mathf.Abs(velocity.y);
+        float bias = Mathf.Max(0f, directionHysteresis);
+
+        FacingDirection newDirection = _facingDirection;
+
+        // Dont spam random directions
+        if (absX > absY + bias)
+        {
+            newDirection =
+                velocity.x >= 0f
+                    ? FacingDirection.Right
+                    : FacingDirection.Left;
+        }
+        else if (absY > absX + bias)
+        {
+            newDirection =
+                velocity.y >= 0f
+                    ? FacingDirection.Up
+                    : FacingDirection.Down;
+        }
+
+        if (newDirection != _facingDirection)
+        {
+            _facingDirection = newDirection;
+            ApplyFacingDirection();
+        }
+    }
+
+    private void ApplyFacingDirection()
+    {
+        if (_animator == null ||
+            _appliedFacingDirection == _facingDirection)
+        {
+            return;
+        }
+
+        // Every direction is assigned every time, so only one can remain true.
+        _animator.SetBool(Up, _facingDirection == FacingDirection.Up);
+        _animator.SetBool(Down, _facingDirection == FacingDirection.Down);
+        _animator.SetBool(Left, _facingDirection == FacingDirection.Left);
+        _animator.SetBool(Right, _facingDirection == FacingDirection.Right);
+
+        _appliedFacingDirection = _facingDirection;
+    }
+
+    private void OnDestroy()
+    {
+        if (GnomeTracker.Instance != null)
+        {
+            GnomeTracker.Instance.RemoveGnome(this);
+        }
     }
 }
-
