@@ -64,7 +64,6 @@ public class GnomeAI : MonoBehaviour
         bool desperate = timeEntity.GetTime() <= desperationTimeCutoff;
         float desperation = timeEntity.GetTime() / desperationTimeCutoff;
         
-        // TODO: I have no idea if you can getcomponents an interface
         foreach (IAttack attack in _attacks)
         {
             if (!canRepeatAttacks && attack == _previousAttack) continue;
@@ -74,7 +73,7 @@ public class GnomeAI : MonoBehaviour
             {
                 GnomeAI gnomeAI = GnomeTracker.Instance.GetGnome(hit.GetEntityId());
 
-                if (gnomeAI != null)
+                if (gnomeAI)
                 {
                     friendlyFireCount ++;
                 }
@@ -133,9 +132,10 @@ public class GnomeAI : MonoBehaviour
         {
             GnomeAI gnomeAI = GnomeTracker.Instance.GetGnome(hit.GetEntityId());
 
-            if (gnomeAI != null)
+            if (gnomeAI)
             {
-                disperseVector += Vector2.Normalize(_rb.transform.position - gnomeAI.transform.position);
+                Vector2 offset = _rb.transform.position - gnomeAI.transform.position;
+                disperseVector += offset / offset.sqrMagnitude;
             }
         }
         

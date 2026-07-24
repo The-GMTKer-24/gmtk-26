@@ -49,12 +49,12 @@ namespace Attacks
             foreach (GnomeAI gnomeAI in GnomeTracker.Instance.GetGnomeEnumerator())
             {
                 if (gnomeAI.gameObject.Equals(this.gameObject)) continue;
-                if (Vector2.Distance(gnomeAI.gameObject.transform.position, this.gameObject.transform.position) >= factor * range) continue;
+                if (Vector2.SqrMagnitude(gnomeAI.gameObject.transform.position - this.gameObject.transform.position) >= factor * factor * range * range) continue;
     
                 targets.Add(gnomeAI.gameObject);
             }
             
-            if (Vector2.Distance(Player.Player.Instance.gameObject.transform.position, this.gameObject.transform.position) <= factor * range) { targets.Add(Player.Player.Instance.gameObject); }
+            if (Vector2.SqrMagnitude(Player.Player.Instance.gameObject.transform.position - this.gameObject.transform.position) <= factor * factor * range * range) { targets.Add(Player.Player.Instance.gameObject); }
             
             return targets;
         }

@@ -6,11 +6,6 @@ using UnityEngine;
 
 public class SelfAreaAttack : GenericAttack, IAttackArea
 {
-    [SerializeField] public float damage = 10f;
-    [SerializeField] public float range = 10f;
-    [SerializeField] public float staminaCost = 10f;
-    [SerializeField] public float timeCost = 10f;
-    
     // TODO: Add sprite config
     
     private TimeEntity _timeEntity;
@@ -39,7 +34,7 @@ public class SelfAreaAttack : GenericAttack, IAttackArea
             else
             {
                 GnomeAI potentialGnome = GnomeTracker.Instance.GetGnome(target.GetEntityId());
-                if (potentialGnome != null)
+                if (potentialGnome)
                 {
                     targetTimeEntity = potentialGnome.timeEntity;
                 }
@@ -49,7 +44,7 @@ public class SelfAreaAttack : GenericAttack, IAttackArea
                 }
             }
             
-            if (targetTimeEntity == null)
+            if (!targetTimeEntity)
             {
                 continue;
             }

@@ -78,7 +78,7 @@ namespace Text_Particles
             float customLifetime,
             Vector2 customVelocity)
         {
-            if (particlePrefab == null || string.IsNullOrEmpty(content))
+            if (!particlePrefab || string.IsNullOrEmpty(content))
             {
                 return null;
             }
