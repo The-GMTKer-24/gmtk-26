@@ -1,83 +1,32 @@
 using System;
 using System.Collections.ObjectModel;
+using Attacks;
 using Entity;
 using Player;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BulletAttack : MonoBehaviour, IAttackTargeted
+public class BulletAttack : GenericAttack, IAttackTargeted
 {
-    [SerializeField] public float damage = 10f;
-    [SerializeField] public float range = 10f;
-    [SerializeField] public float staminaCost = 10f;
-    [SerializeField] public float timeCost = 10f;
     [SerializeField] public float speed = 10f;
-    
+
     [SerializeField] public GameObject bulletPrefab;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private TimeEntity _timeEntity;
+    private StaminaEntity _staminaEntity;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
-    }
-    
-    public float GetDelay() {
-        return 0f;
-    }
-    
-    public float GetDamage()
-    {
-        return damage;
-    }
-
-    public float GetStaminaCost()
-    {
-        return staminaCost;
-    }
-
-    public float GetTimeCost()
-    {
-        return timeCost;
-    }
-
-    public float GetRange()
-    {
-        return range;
-    }
-
-    public bool InRange(Vector2 targetPosition)
-    {
-        Vector2 thisPosition = this.gameObject.transform.position;
-        float distance = Vector2.Distance(thisPosition, targetPosition);
-        return distance <= range;
-    }
-
-    // Returns all entities that can take damage within range
-    public Collection<GameObject> GetAllInRange(float factor)
-    {
-        Collection<GameObject> targets = new Collection<GameObject>();
-        foreach (GameObject target in FindObjectsByType<GameObject>())
+        _timeEntity = this.gameObject.GetComponent<TimeEntity>();
+        if (_timeEntity == null && timeCost != 0)
         {
-            if (target.Equals(this.gameObject)) continue;
-            if (Vector2.Distance(target.transform.position, this.gameObject.transform.position) >= factor * range) continue;
-
-            if (target.GetComponent<TimeEntity>() != null)
-            {
-                targets.Add(target);
-            }
+            throw new Exception("Cannot apply a nonzero time-cost attack to an object with no TimeEntity!");
         }
-        return targets;
-    }
-
-    public Collection<GameObject> GetAllInRange()
-    {
-        return GetAllInRange(1f);
+        _staminaEntity = this.gameObject.GetComponent<StaminaEntity>();
+        if (_staminaEntity == null && staminaCost != 0)
+        {
+            throw new Exception("Cannot apply a nonzero stamina-cost attack to an object with no StaminaEntity!");
+        }
     }
 
     public void Attack(GameObject target)
@@ -93,23 +42,12 @@ public class BulletAttack : MonoBehaviour, IAttackTargeted
 
         if (timeCost != 0)
         {
-            TimeEntity timeEntity = this.gameObject.GetComponent<TimeEntity>();
-            if (timeEntity == null)
-            {
-                throw new Exception("Cannot apply a nonzero time-cost attack to an object with no TimeEntity!");
-            }
-            timeEntity.DealDamage(timeCost);
+            _timeEntity.DealDamage(timeCost);
         }
 
         if (staminaCost != 0)
         {
-            StaminaEntity staminaEntity = this.gameObject.GetComponent<StaminaEntity>();
-            if (staminaEntity == null)
-            {
-                throw new Exception("Cannot apply a nonzero stamina-cost attack to an object with no StaminaEntity!");
-            }
-
-            if (!staminaEntity.ConsumeStaminaIf(staminaCost))
+            if (!_staminaEntity.ConsumeStaminaIf(staminaCost))
             {
                 success = false;
             }

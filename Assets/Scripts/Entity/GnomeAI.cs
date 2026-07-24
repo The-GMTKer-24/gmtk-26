@@ -1,5 +1,7 @@
 using System;
+using System.Collections.ObjectModel;
 using Entity;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GnomeAI : MonoBehaviour
@@ -32,6 +34,7 @@ public class GnomeAI : MonoBehaviour
     private Rigidbody2D _rb;
     private IAttack _previousAttack;
     private Animator _animator;
+    private IAttack[] _attacks;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,13 +43,15 @@ public class GnomeAI : MonoBehaviour
         _player = Player.Player.Instance.gameObject;
         _previousAttack = null;
         _animator = GetComponent<Animator>();
-        GnomeTracker.Instance.AddGnome(this.GetEntityId()); // TODO: Gnome tags
+        _attacks = GetComponents<IAttack>(); // Can no longer edit attack set live in editor
+        GnomeTracker.Instance.AddGnome(this); // TODO: Gnome tags
     }
     
     void FixedUpdate()
     {
         // Choose attack to execute
-        
+
+        if (_player.IsDestroyed()) return;
         Vector2 playerPos = _player.transform.position;
 
         IAttack chosenAttack = null;
@@ -59,14 +64,14 @@ public class GnomeAI : MonoBehaviour
         float desperation = timeEntity.GetTime() / desperationTimeCutoff;
         
         // TODO: I have no idea if you can getcomponents an interface
-        foreach (IAttack attack in GetComponents<IAttack>())
+        foreach (IAttack attack in _attacks)
         {
             if (!canRepeatAttacks && attack == _previousAttack) continue;
             
             int friendlyFireCount = 0;
             foreach (GameObject hit in attack.GetAllInRange())
             {
-                GnomeAI gnomeAI = hit.GetComponent<GnomeAI>();
+                GnomeAI gnomeAI = GnomeTracker.Instance.GetGnome(hit.GetEntityId());
 
                 if (gnomeAI != null)
                 {
@@ -125,7 +130,7 @@ public class GnomeAI : MonoBehaviour
 
         foreach (GameObject hit in chosenAttack.GetAllInRange())
         {
-            GnomeAI gnomeAI = hit.GetComponent<GnomeAI>();
+            GnomeAI gnomeAI = GnomeTracker.Instance.GetGnome(hit.GetEntityId());
 
             if (gnomeAI != null)
             {
@@ -167,7 +172,7 @@ public class GnomeAI : MonoBehaviour
 
     void OnDestroy()
     {
-        GnomeTracker.Instance.RemoveGnome(this.GetEntityId());
+        GnomeTracker.Instance.RemoveGnome(this);
     }
 }
 

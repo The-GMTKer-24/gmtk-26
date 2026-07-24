@@ -1,9 +1,10 @@
 using System;
 using System.Collections.ObjectModel;
+using Attacks;
 using Entity;
 using UnityEngine;
 
-public class SelfAreaAttack : MonoBehaviour, IAttackArea
+public class SelfAreaAttack : GenericAttack, IAttackArea
 {
     [SerializeField] public float damage = 10f;
     [SerializeField] public float range = 10f;
@@ -12,77 +13,42 @@ public class SelfAreaAttack : MonoBehaviour, IAttackArea
     
     // TODO: Add sprite config
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private TimeEntity _timeEntity;
+    private StaminaEntity _staminaEntity;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
-    }
-    
-    public float GetDelay()
-    {
-        return 0;
-    }
-    
-    public float GetDamage()
-    {
-        return damage;
-    }
-
-    public float GetStaminaCost()
-    {
-        return staminaCost;
-    }
-
-    public float GetTimeCost()
-    {
-        return timeCost;
-    }
-    
-    public float GetRange()
-    {
-        return range;
-    }
-
-    public bool InRange(Vector2 targetPosition)
-    {
-        Vector2 thisPosition = this.gameObject.transform.position;
-        float distance = Vector2.Distance(thisPosition, targetPosition);
-        return distance <= range;
-    }
-
-    // Returns all entities that can take damage within range
-    public Collection<GameObject> GetAllInRange(float factor)
-    {
-        Collection<GameObject> targets = new Collection<GameObject>();
-        foreach (GameObject target in FindObjectsByType<GameObject>())
+        _timeEntity = this.gameObject.GetComponent<TimeEntity>();
+        if (_timeEntity == null && timeCost != 0)
         {
-            if (target.Equals(this.gameObject)) continue;
-            if (Vector2.Distance(target.transform.position, this.gameObject.transform.position) >= factor * range) continue;
-
-            if (target.GetComponent<TimeEntity>() != null)
-            {
-                targets.Add(target);
-            }
+            throw new Exception("Cannot apply a nonzero time-cost attack to an object with no TimeEntity!");
         }
-        return targets;
-    }
-
-    public Collection<GameObject> GetAllInRange()
-    {
-        return GetAllInRange(1f);
+        _staminaEntity = this.gameObject.GetComponent<StaminaEntity>();
+        if (_staminaEntity == null && staminaCost != 0)
+        {
+            throw new Exception("Cannot apply a nonzero stamina-cost attack to an object with no StaminaEntity!");
+        }
     }
 
     public void Attack()
     {
         foreach (GameObject target in GetAllInRange())
         {
-            TimeEntity targetTimeEntity = target.GetComponent<TimeEntity>();
+            TimeEntity targetTimeEntity;
+            if (Player.Player.Instance.gameObject.Equals(target)) targetTimeEntity = Player.Player.Instance.TimeEntity;
+            else
+            {
+                GnomeAI potentialGnome = GnomeTracker.Instance.GetGnome(target.GetEntityId());
+                if (potentialGnome != null)
+                {
+                    targetTimeEntity = potentialGnome.timeEntity;
+                }
+                else
+                {
+                    targetTimeEntity = target.GetComponent<TimeEntity>(); 
+                }
+            }
+            
             if (targetTimeEntity == null)
             {
                 continue;
@@ -92,23 +58,12 @@ public class SelfAreaAttack : MonoBehaviour, IAttackArea
 
             if (timeCost != 0)
             {
-                TimeEntity timeEntity = this.gameObject.GetComponent<TimeEntity>();
-                if (timeEntity == null)
-                {
-                    throw new Exception("Cannot apply a nonzero time-cost attack to an object with no TimeEntity!");
-                }
-                timeEntity.DealDamage(timeCost);
+                _timeEntity.DealDamage(timeCost);
             }
 
             if (staminaCost != 0)
             {
-                StaminaEntity staminaEntity = this.gameObject.GetComponent<StaminaEntity>();
-                if (staminaEntity == null)
-                {
-                    throw new Exception("Cannot apply a nonzero stamina-cost attack to an object with no StaminaEntity!");
-                }
-
-                if (!staminaEntity.ConsumeStaminaIf(staminaCost))
+                if (!_staminaEntity.ConsumeStaminaIf(staminaCost))
                 {
                     success = false;
                 }
