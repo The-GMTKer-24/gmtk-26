@@ -26,7 +26,6 @@ public class PoisionTrapDamage : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        print("Damaging someone in a poision cloud");
         EntityId id = other.gameObject.GetEntityId();
         times[id] -= Time.fixedDeltaTime;
         if (times[id] < 0)

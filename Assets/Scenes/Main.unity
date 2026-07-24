@@ -1701,8 +1701,8 @@ MonoBehaviour:
   timeEntity: {fileID: 823347871}
   bigBlackBox: {fileID: 665944579}
   playerModifier: {fileID: 823347875}
-  mainMenu: Main Menu
-  delay: 1
+  mainMenu: 
+  delay: 0
 --- !u!114 &823347875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1759,7 +1759,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 8273608187144377990, guid: bc52d85a0463a8d4192c95fe3af3d0a2, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 256546074e421f843b2f99b9535a743a, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.221
   m_Pitch: 1
   Loop: 0

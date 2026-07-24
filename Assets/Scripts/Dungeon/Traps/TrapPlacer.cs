@@ -8,7 +8,7 @@ public class TrapPlacer : MonoBehaviour
     [SerializeField] private int maxTraps;
     [SerializeField] private float trapSpawnRate;
 
-    private readonly List<Vector3> spawnedPoints = new List<Vector3>();
+    private readonly List<Vector3> spawnedPoints = new();
     void Start()
     {
         if (Random.value > trapSpawnRate)
@@ -32,9 +32,9 @@ public class TrapPlacer : MonoBehaviour
     private static Vector3 GetRandomPoint(Bounds bounds)
     {
         return new Vector3(
-            Mathf.Floor(Random.Range(bounds.min.x, bounds.max.x)),
-            Mathf.Floor(Random.Range(bounds.min.y, bounds.max.y)),
-            Mathf.Floor(Random.Range(bounds.min.z, bounds.max.z))
+            Mathf.Floor(Random.Range(bounds.min.x, bounds.max.x))+.5f,
+            Mathf.Floor(Random.Range(bounds.min.y, bounds.max.y))+.5f,
+            Mathf.Floor(Random.Range(bounds.min.z, bounds.max.z))+.5f
         );
     }
 }
