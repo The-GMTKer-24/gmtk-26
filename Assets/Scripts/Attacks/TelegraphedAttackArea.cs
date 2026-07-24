@@ -37,6 +37,11 @@ public class TelegraphedAttackArea : MonoBehaviour, IAttackArea
     {
         _telegraphing = true;
     }
+    
+    public float GetDelay()
+    {
+        return delay;
+    }
 
     public float GetDamage()
     {

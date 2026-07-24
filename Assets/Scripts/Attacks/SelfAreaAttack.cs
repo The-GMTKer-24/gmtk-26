@@ -24,6 +24,11 @@ public class SelfAreaAttack : MonoBehaviour, IAttackArea
         
     }
     
+    public float GetDelay()
+    {
+        return 0;
+    }
+    
     public float GetDamage()
     {
         return damage;
