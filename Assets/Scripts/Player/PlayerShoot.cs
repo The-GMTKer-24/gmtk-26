@@ -8,7 +8,7 @@ namespace Player
     public class PlayerShoot : MonoBehaviour
     {
         [SerializeField] private Bullet bullet;
-
+        private AudioSource audioSource;
 
         private int currentBullets;
         private float reloadTimer;
@@ -17,7 +17,7 @@ namespace Player
         private bool held;
         public void Awake()
         {
-
+            audioSource = GetComponent<AudioSource>();
         }
 
         public void Start()
@@ -63,6 +63,7 @@ namespace Player
             var b = Instantiate(bullet, transform.position, Quaternion.identity);
             b.velocity = (worldSpace - transform.position).normalized * Player.Instance.PlayerModifier.Evaluate(PlayerStat.BulletSpeed);
             b.damage = Player.Instance.PlayerModifier.Evaluate(PlayerStat.Damage);
+            audioSource.Play();
         }
 
         public void OnShoot(InputAction.CallbackContext context)
@@ -75,6 +76,7 @@ namespace Player
             {
                 held = false;
             }
+
         }
 
         public void Reload(InputAction.CallbackContext context)

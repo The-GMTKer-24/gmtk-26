@@ -27,6 +27,7 @@ public class Trap : MonoBehaviour
             time.DealDamage( (float) Math.Round( time.GetTime()/4));
             print("Player!");
             gameObject.GetComponent<SpriteRenderer>().sprite = triggeredSprite;
+            gameObject.GetComponent<AudioSource>().Play();
             hasTriggered = true;
         }
     }

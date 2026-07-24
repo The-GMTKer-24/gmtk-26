@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace Dungeon
 {
@@ -10,7 +12,14 @@ namespace Dungeon
 
         [SerializeField] private SpriteRenderer rend;
         [SerializeField] private BoxCollider2D col;
-        
+
+        private ShadowCaster2D shadowCaster;
+
+        private void Awake()
+        {
+            shadowCaster = GetComponent<ShadowCaster2D>();
+        }
+
         public bool Hidden { get; private set; }
         
         public void OpenDoor()
@@ -19,6 +28,7 @@ namespace Dungeon
             rend.sprite = open;
             col.enabled = false;
             Hidden = false;
+            shadowCaster.enabled = false;
         }
 
         public void CloseDoor()
@@ -27,6 +37,7 @@ namespace Dungeon
             rend.sortingOrder = 2;
             col.enabled = true;
             Hidden = false;
+            shadowCaster.enabled = true;
         }
 
         public void HideDoor()// maybe disable and replace with wall?
@@ -34,6 +45,7 @@ namespace Dungeon
             rend.sprite = noDoor;
             col.enabled = true;
             Hidden = true;
+            shadowCaster.enabled = true;
         }
     }
 }

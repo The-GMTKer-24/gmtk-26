@@ -4287,6 +4287,7 @@ GameObject:
   - component: {fileID: 1680431787219827708}
   - component: {fileID: 7003772726826665070}
   - component: {fileID: 8753044967697324045}
+  - component: {fileID: 4087882394084624963}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -5439,6 +5440,224 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &4087882394084624963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6277200695174158994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
+  m_ShadowGroup: 0
+  m_Priority: 1
+  m_ComponentVersion: 6
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -12, y: -9, z: 0}
+  - {x: -12, y: 18, z: 0}
+  - {x: 11, y: 18, z: 0}
+  - {x: 11, y: -9, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 8753044967697324045}
+  m_ShadowShape2DProvider:
+    rid: 5296362366967742602
+  m_ShadowCastingSource: 2
+  m_ShadowMesh:
+    rid: 5296362366967742603
+  m_CastingOption: 1
+  m_PreviousTrimEdge: -1
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 2
+  m_PreviousShadowShape2DSource: {fileID: 0}
+  m_SelectionSources:
+    rid: 5296362366967742604
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 5296362366967742602
+      type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data: 
+    - rid: 5296362366967742603
+      type: {class: ShadowMesh2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data:
+        m_Vertices:
+        - position: {x: -1, y: 2, z: 0}
+          tangent: {x: -1, y: 0, z: -2, w: 2}
+        - position: {x: -2, y: 2, z: 0}
+          tangent: {x: -1, y: 0, z: -2, w: -3}
+        - position: {x: -2, y: -3, z: 0}
+          tangent: {x: -1, y: 0, z: -1, w: -3}
+        - position: {x: -1, y: -3, z: 0}
+          tangent: {x: -1, y: 0, z: -1, w: 2}
+        - position: {x: -1, y: 2, z: 0}
+          tangent: {x: 0, y: 0, z: -2, w: 2}
+        - position: {x: -2, y: 2, z: 0}
+          tangent: {x: 0, y: 0, z: -1, w: 2}
+        - position: {x: -1, y: 2, z: 0}
+          tangent: {x: 1, y: 0, z: -2, w: 2}
+        - position: {x: -1, y: 2, z: 0}
+          tangent: {x: 3, y: 0, z: -2, w: 2}
+        - position: {x: -2, y: 2, z: 0}
+          tangent: {x: 0, y: 0, z: -2, w: -3}
+        - position: {x: -2, y: -3, z: 0}
+          tangent: {x: 0, y: 0, z: -2, w: 2}
+        - position: {x: -2, y: 2, z: 0}
+          tangent: {x: 1, y: 0, z: -2, w: -3}
+        - position: {x: -2, y: 2, z: 0}
+          tangent: {x: 3, y: 0, z: -2, w: -3}
+        - position: {x: -2, y: -3, z: 0}
+          tangent: {x: 0, y: 0, z: -1, w: -3}
+        - position: {x: -1, y: -3, z: 0}
+          tangent: {x: 0, y: 0, z: -2, w: -3}
+        - position: {x: -2, y: -3, z: 0}
+          tangent: {x: 1, y: 0, z: -1, w: -3}
+        - position: {x: -2, y: -3, z: 0}
+          tangent: {x: 3, y: 0, z: -1, w: -3}
+        - position: {x: -1, y: -3, z: 0}
+          tangent: {x: 0, y: 0, z: -1, w: 2}
+        - position: {x: -1, y: 2, z: 0}
+          tangent: {x: 0, y: 0, z: -1, w: -3}
+        - position: {x: -1, y: -3, z: 0}
+          tangent: {x: 1, y: 0, z: -1, w: 2}
+        - position: {x: -1, y: -3, z: 0}
+          tangent: {x: 3, y: 0, z: -1, w: 2}
+        m_Indices: 000000000400000005000000050000000100000000000000010000000800000009000000090000000200000001000000020000000c0000000d0000000d0000000300000002000000030000001000000011000000110000000000000003000000000000000600000007000000010000000a0000000b000000020000000e0000000f000000030000001200000013000000
+        m_LocalBounds:
+          m_Center: {x: -1.5, y: -0.5, z: 0}
+          m_Extent: {x: 0.5, y: 2.5, z: 0}
+        m_EdgeProcessing: 1
+        m_TrimEdge: 0
+        m_FlipX: 0
+        m_FlipY: 0
+        m_InitialTrim: 0
+    - rid: 5296362366967742604
+      type: {class: Shadow2DProviderSources, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data:
+        m_SelectedHashCode: 0
+        m_SelectedSource:
+          rid: -2
+        m_Provider2DCache:
+          rid: 5296362366967742607
+    - rid: 5296362366967742607
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data:
+        m_Cache:
+        - m_Key:
+            m_TypeName: ShadowShape2DProvider_Collider2D
+            m_Component: {fileID: 8753044967697324045}
+            m_UsesComponent: 1
+          m_Value:
+            m_Provider:
+              rid: 5296362366967742608
+    - rid: 5296362366967742608
+      type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data: 
+--- !u!1 &6874507015797526445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6769225269949987010}
+  - component: {fileID: 2794924686182913446}
+  - component: {fileID: 5647655506126494725}
+  m_Layer: 0
+  m_Name: Poision Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6769225269949987010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6874507015797526445}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.5, y: 9.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 706747796363999956}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2794924686182913446
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6874507015797526445}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -2.5538476, y: -4.725877}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 8.007694, y: 20.986113}
+  m_EdgeRadius: 0
+--- !u!114 &5647655506126494725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6874507015797526445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f890313a65fe90d4ba553514f2c8bdb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrapPlacer
+  trap: {fileID: 5677806244303535313, guid: 37c53b6a9504c524bab9d012a8219b48, type: 3}
+  maxTraps: 5
+  trapSpawnRate: 0
 --- !u!1 &8832024438128494661
 GameObject:
   m_ObjectHideFlags: 0
@@ -5476,6 +5695,7 @@ Transform:
   - {fileID: 1865178537301421696}
   - {fileID: 7250412809689907532}
   - {fileID: 4372990531575669046}
+  - {fileID: 6769225269949987010}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &2543845425110322211
