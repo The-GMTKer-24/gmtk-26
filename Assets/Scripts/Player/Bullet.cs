@@ -7,13 +7,17 @@ namespace Player
 {
     public class Bullet : MonoBehaviour
     {
-        public Vector2 speed; // This should be velocity, not speed!
+        public Vector2 velocity; // This should be velocity, not speed!
+        public float speed;
         public float damage;
+        public int bounces;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private GameObject deathParticles;
         public void Start()
         {
-            rb.linearVelocity = speed;
+            rb.linearVelocity = velocity;
+            speed = velocity.magnitude;
+            bounces = Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.BulletBounces);
         }
 
         public void OnCollisionEnter2D(Collision2D other)
@@ -29,7 +33,16 @@ namespace Player
                 }
             }
             Instantiate(deathParticles, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            if (bounces > 0)
+            {
+                bounces--;
+                rb.linearVelocity = Vector2.Reflect(rb.linearVelocity, other.contacts[0].normal);
+                rb.linearVelocity = rb.linearVelocity.normalized * speed;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -106,7 +106,7 @@ public class BulletAttack : MonoBehaviour, IAttackTargeted
 
         if (success)
         {
-            Instantiate(this.bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>().speed =
+            Instantiate(this.bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>().velocity =
                 this.speed * Vector2.Normalize(target.transform.position - transform.position);
         }
     }

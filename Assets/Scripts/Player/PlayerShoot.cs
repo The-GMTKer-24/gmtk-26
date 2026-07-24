@@ -58,7 +58,7 @@ namespace Player
             Vector3 worldSpace = PlayerManager.Instance.playerCamera.ScreenToWorldPoint(mousePosition);
             worldSpace.z = 0;
             var b = Instantiate(bullet, transform.position, Quaternion.identity);
-            b.speed = (worldSpace - transform.position).normalized * Player.Instance.PlayerModifier.Evaluate(PlayerStat.BulletSpeed);
+            b.velocity = (worldSpace - transform.position).normalized * Player.Instance.PlayerModifier.Evaluate(PlayerStat.BulletSpeed);
             b.damage = Player.Instance.PlayerModifier.Evaluate(PlayerStat.Damage);
         }
 

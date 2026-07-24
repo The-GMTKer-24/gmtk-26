@@ -165,6 +165,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1d7bc75944acf34d9a4e8e31faf2e68, type: 2}
   - {fileID: 11400000, guid: 17bb9fc2491e9c84a83b97a0facdefef, type: 2}
   - {fileID: 11400000, guid: bc34c6b336481354fac8ba6458700e5d, type: 2}
+  - {fileID: 11400000, guid: d53374de8f2672d48b03ae1fb53ef1bd, type: 2}
   interactAction:
     m_Name: Interact
     m_Type: 0

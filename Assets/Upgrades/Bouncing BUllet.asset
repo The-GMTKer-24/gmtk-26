@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6928e37b12f74ee492571f8ed886d358, type: 3}
+  m_Name: Bouncing BUllet
+  m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
+  upgradeName: Bouncing Bullets
+  description: Bullets bounce 3 addional times
+  cost: 30
+  upgradePrefab: {fileID: 8970273558985301401, guid: 7f7ba56efb459b4468ffcb2d43a48fdd, type: 3}

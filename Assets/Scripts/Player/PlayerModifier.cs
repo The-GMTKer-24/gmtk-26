@@ -15,7 +15,8 @@ namespace Player
         TimeBetweenShots,
         Speed,
         DashPower,
-        DashCooldown
+        DashCooldown,
+        BulletBounces
     }
 
     public enum ModifierType

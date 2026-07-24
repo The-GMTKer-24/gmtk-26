@@ -157,8 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cabde79963d46138ff96168d8a47b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Bullet
-  speed: {x: 0, y: 0}
+  velocity: {x: 0, y: 0}
+  speed: 0
   damage: 0
+  bounces: 0
   rb: {fileID: 602223840276083783}
   deathParticles: {fileID: 6312313018138299983, guid: 493429378d2d28848b715c9dbac5935a, type: 3}
 --- !u!50 &602223840276083783
@@ -177,7 +179,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3fa32a1091c70f641a610529d8666750, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -186,5 +188,5 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_CollisionDetection: 1
+  m_Constraints: 0
