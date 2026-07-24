@@ -24,7 +24,7 @@ public class TrapPlacer : MonoBehaviour
                 }
                 spawnedPoints.Add(position);
                 Vector3 offsetSpawn = position + transform.position;
-                Instantiate(trap, offsetSpawn, Quaternion.identity);
+                Instantiate(trap, offsetSpawn, Quaternion.identity, transform);
             }
         }
     }
