@@ -1,17 +1,20 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Entity
 {
     public class StaminaEntity : MonoBehaviour
     {
         [SerializeField] private float maxStamina;
+        [SerializeField] private float minStartingStamina;
+        [SerializeField] private float maxStartingStamina;
         [SerializeField] private float currentStamina = 0f;
         [SerializeField] private float staminaRegenerationRate;
         
         public void Awake()
         {
-            currentStamina = maxStamina;
+            currentStamina = Random.Range(minStartingStamina, maxStartingStamina);
         }
 
         public void FixedUpdate()

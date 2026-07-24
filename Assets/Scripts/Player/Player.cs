@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using Entity;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -15,6 +17,8 @@ namespace Player
         public SpriteRenderer BigBlackBox => bigBlackBox;
         [SerializeField] private SpriteRenderer bigBlackBox;
         [SerializeField] private PlayerModifier playerModifier;
+        [SerializeField] private string mainMenu;
+        [SerializeField] private float delay;
         public void Awake()
         {
             Instance = this;
@@ -24,5 +28,11 @@ namespace Player
         {
             timeEntity = GetComponent<TimeEntity>();
         }
+
+        public void OnDestroy()
+        {
+            PlayerManager.Instance.LoadSceneAfterDelay(mainMenu, delay);
+        }
+
     }
 }
