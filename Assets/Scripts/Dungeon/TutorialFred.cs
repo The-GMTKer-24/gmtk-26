@@ -5,12 +5,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class TutorialFred : MonoBehaviour
 {
     [SerializeField] private TMP_Text textField;
     [SerializeField] private GameObject interactPrompt;
     [SerializeField] private GameObject textBox;
+    
+    [SerializeField] private List<GameObject> grumbles;
     
     [SerializeField] private InputAction interactAction;
     
@@ -19,6 +22,7 @@ public class TutorialFred : MonoBehaviour
     [SerializeField] private string exhaustedDialogueText;
 
     private int lineCount;
+    private int grumbleCount;
     private int currentLine;
     private bool isTalking;
     private bool held;
@@ -26,6 +30,7 @@ public class TutorialFred : MonoBehaviour
     private void Start()
     {
         lineCount = privateDialoguesList.Count;
+        grumbleCount = grumbles.Count;
         textField.text = privateDialoguesList[0];
     }
 
@@ -40,6 +45,7 @@ public class TutorialFred : MonoBehaviour
     {
         if (interactAction.IsPressed())
         {
+            SoundManager.Instance.CreateSoundAtPosition(grumbles[Random.Range(0, grumbleCount)], transform.position);
             if (isTalking && !held)
             {
                 held = true;

@@ -57,6 +57,7 @@ public class GnomeAI : MonoBehaviour
     private GameObject _player;
     private Rigidbody2D _rb;
     private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
     private IAttack[] _attacks;
     private int _group;
 
@@ -71,6 +72,11 @@ public class GnomeAI : MonoBehaviour
     private Vector2 _cachedDisperseVector;
     private FacingDirection _facingDirection = FacingDirection.Down;
     private FacingDirection? _appliedFacingDirection;
+
+    public int GetSortingOrder()
+    {
+        return _spriteRenderer.sortingOrder;
+    }
 
     private enum FacingDirection
     {
@@ -87,6 +93,7 @@ public class GnomeAI : MonoBehaviour
         _player = Player.Player.Instance.gameObject;
         _previousAttack = null;
         _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _attacks = GetComponents<IAttack>(); // Can no longer edit attack set live in editor
         //_group = GetEntityId().GetHashCode() % GnomeTracker.CycleSize;
         

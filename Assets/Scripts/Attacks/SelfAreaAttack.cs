@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class SelfAreaAttack : GenericAttack, IAttackArea
 {
-    // TODO: Add sprite config
+    [SerializeField] private GameObject frontAnimation;
+    [SerializeField] private GameObject backAnimation;
     
     private TimeEntity _timeEntity;
     private StaminaEntity _staminaEntity;
@@ -66,7 +67,11 @@ public class SelfAreaAttack : GenericAttack, IAttackArea
 
             if (success)
             {
+                print (GnomeTracker.Instance.GetGnome(target.GetEntityId()));
+                int layer = GnomeTracker.Instance.GetGnome(this.gameObject.GetEntityId()).GetSortingOrder();
                 targetTimeEntity.DealDamage(damage);
+                if (frontAnimation) Instantiate(frontAnimation, transform.position, Quaternion.identity).GetComponent<SpriteRenderer>().sortingOrder = layer + 1;
+                if (backAnimation) Instantiate(backAnimation, transform.position, Quaternion.identity).GetComponent<SpriteRenderer>().sortingOrder = layer - 1;
             }
         }
     }
