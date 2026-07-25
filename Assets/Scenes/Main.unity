@@ -785,7 +785,7 @@ MonoBehaviour:
     rid: -2
   m_SelectionSources:
     rid: 5296362366967742546
-  m_FalloffIntensity: 0.4
+  m_FalloffIntensity: 0.049
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 8.14
-  m_PointLightOuterRadius: 16
+  m_PointLightOuterRadius: 9.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -877,7 +877,7 @@ MonoBehaviour:
     rid: 5296362366967742548
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.02
+  m_Intensity: 0.07
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -1428,6 +1428,7 @@ GameObject:
   - component: {fileID: 823347872}
   - component: {fileID: 823347877}
   - component: {fileID: 823347878}
+  - component: {fileID: 823347879}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1972,11 +1973,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player.WeaponManager
   gunEnabled: 1
   shotgunEnabled: 1
-  bombEnabled: 0
+  bombEnabled: 1
   playerShoot: {fileID: 823347872}
   shotgun: {fileID: 823347877}
-  bomb: {fileID: 0}
+  bomb: {fileID: 823347879}
   Active: 0
+--- !u!114 &823347879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823347865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7d592c41fd74b45bb898fe4f9c2511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBomb
 --- !u!1 &860931578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2861,7 +2874,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
