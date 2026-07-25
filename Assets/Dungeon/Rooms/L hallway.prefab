@@ -2277,8 +2277,8 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1712510019
+  m_SortingLayer: -1
   m_SortingOrder: -1
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -3284,8 +3284,8 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 975122801
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -4000,6 +4000,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 6840114316049377805, guid: 29d4398b79141e140bf686352722deed, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840114316049377805, guid: 29d4398b79141e140bf686352722deed, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 18837903
+      objectReference: {fileID: 0}
     - target: {fileID: 9178116056332150417, guid: 29d4398b79141e140bf686352722deed, type: 3}
       propertyPath: m_Name
       value: North
@@ -4185,6 +4193,14 @@ PrefabInstance:
     - target: {fileID: 6705941170197164384, guid: 29d4398b79141e140bf686352722deed, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840114316049377805, guid: 29d4398b79141e140bf686352722deed, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840114316049377805, guid: 29d4398b79141e140bf686352722deed, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 18837903
       objectReference: {fileID: 0}
     - target: {fileID: 9178116056332150417, guid: 29d4398b79141e140bf686352722deed, type: 3}
       propertyPath: m_Name
@@ -4372,6 +4388,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6840114316049377805, guid: 29d4398b79141e140bf686352722deed, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840114316049377805, guid: 29d4398b79141e140bf686352722deed, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 18837903
+      objectReference: {fileID: 0}
     - target: {fileID: 9178116056332150417, guid: 29d4398b79141e140bf686352722deed, type: 3}
       propertyPath: m_Name
       value: West
@@ -4553,6 +4577,14 @@ PrefabInstance:
     - target: {fileID: 6705941170197164384, guid: 29d4398b79141e140bf686352722deed, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840114316049377805, guid: 29d4398b79141e140bf686352722deed, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840114316049377805, guid: 29d4398b79141e140bf686352722deed, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 18837903
       objectReference: {fileID: 0}
     - target: {fileID: 9178116056332150417, guid: 29d4398b79141e140bf686352722deed, type: 3}
       propertyPath: m_Name

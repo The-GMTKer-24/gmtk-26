@@ -10,8 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1004450177123190508, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: m_Name
-      value: Room1
+      value: Level1
       objectReference: {fileID: 0}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: startRoom
+      value: 
+      objectReference: {fileID: 5836369874643543531, guid: 6e42751a3ceda99488f44fddefe5ea6d, type: 3}
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: maxRoomTarget
       value: 7

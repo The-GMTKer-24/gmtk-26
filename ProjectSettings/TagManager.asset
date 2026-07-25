@@ -39,11 +39,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Floor
+    uniqueID: 2582457277
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Game Objects
     uniqueID: 18837903
+    locked: 0
+  - name: Walls
+    uniqueID: 975122801
     locked: 0
   - name: UI
     uniqueID: 1870263605
