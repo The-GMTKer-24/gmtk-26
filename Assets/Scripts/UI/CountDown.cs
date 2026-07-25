@@ -25,6 +25,11 @@ namespace UI
         private float _currentArrowAngle = 0f;
         private int _currentSeconds = -1;
         private int _previousSeconds = -1;
+
+        private int _soundSeconds = -1;
+        private int _previousSoundSeconds = -1;
+        
+        private float _soundTimer = 0f;
         private Transform _parentUI;
         private Vector3 _parentUIOriginalScale;
         private bool ticked;
@@ -49,12 +54,21 @@ namespace UI
                 text.SetText(TimeSpan.FromSeconds(player.GetTime()).ToString("m\\:ss"));    
             }
             
-            // Tick the clock
+            // Tick the clock animation
             _previousSeconds = _currentSeconds;
             _currentSeconds = (int)player.GetTime();
             if (_currentSeconds < _previousSeconds || _currentSeconds > _previousSeconds)
             {
-                TickClock();
+                _parentUI.localScale *= growMultiplier;
+            }
+
+            _soundTimer += Time.deltaTime;
+            _previousSoundSeconds = _soundSeconds;
+            _soundSeconds = (int)_soundTimer;
+            // Tick Sound
+            if (_previousSoundSeconds < _soundSeconds)
+            {
+                TickSound();
             }
             
             // Rotate arrow
@@ -65,10 +79,8 @@ namespace UI
             _parentUI.localScale = Vector3.Lerp(_parentUI.localScale, _parentUIOriginalScale, resetClockSpeed * Time.unscaledDeltaTime);
         }
 
-        private void TickClock()
+        private void TickSound()
         {
-            _parentUI.localScale *= growMultiplier;
-
             _soundManager.CreateSound(ticked ? tickUpSound : tickDownSound);
             ticked = !ticked;
         }
