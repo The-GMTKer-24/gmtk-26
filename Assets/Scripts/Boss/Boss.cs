@@ -9,6 +9,8 @@ namespace Boss
 {
     public class Boss : MonoBehaviour
     {
+        public static Boss Instance;
+        
         [SerializeField] private TimeEntity health;
         [Header("Stats")]
         [SerializeField] private List<AttackInfo> attackStats;
@@ -32,6 +34,11 @@ namespace Boss
         private float attackTimer;
         private float cooldownTimer;
         private bool attacking;
+
+        public void Awake()
+        {
+            Instance = this;
+        }
 
         public void Update()
         {
