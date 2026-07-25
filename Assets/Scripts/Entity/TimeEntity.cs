@@ -10,6 +10,7 @@ namespace Entity
         [SerializeField] private float currentTime;
         [SerializeField] private GameObject spawnOnDeath;
         [SerializeField] private GameObject dropOnDeath;
+        private bool dead;
         public void Awake()
         {
             currentTime = maxTime;
@@ -35,7 +36,7 @@ namespace Entity
 
         public void Heal(float time)
         {
-            TextParticleSystem2D.Instance.Spawn($"+{time}s", transform.position, Color.lawnGreen);
+            TextParticleSystem2D.Instance.Spawn($"+{time}s", transform.position, Color.lightGreen);
             currentTime += time;
             currentTime = Mathf.Min(currentTime, maxTime);
         }
@@ -46,12 +47,17 @@ namespace Entity
         }
         private void CheckDeath(bool natural)
         {
+            if (dead)
+            {
+                return;
+            }
             if (currentTime <= 0)
             {
                 if (!natural)
                     Instantiate(dropOnDeath, transform.position, Quaternion.identity);
                 if (spawnOnDeath)
                     Instantiate(spawnOnDeath, transform.position, Quaternion.identity);
+                dead = true;
                 Destroy(gameObject); // exploded
             }
         }

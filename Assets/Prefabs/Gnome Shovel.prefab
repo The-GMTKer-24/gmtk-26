@@ -50,7 +50,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   damage: 5
   rb: {fileID: -2921621349321927094}
-  deathParticles: {fileID: 7045642629215955798, guid: 5de286debc5152640b29bcb33e2633ca, type: 3}
+  deathParticles: {fileID: 6312313018138299983, guid: 65d01e06825ab92418ffe150fbb33173, type: 3}
   remainingTime: 0
 --- !u!50 &-2921621349321927094
 Rigidbody2D:
@@ -177,7 +177,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.12, y: 0.3}
+    oldSize: {x: 0.375, y: 0.9375}
     newSize: {x: 0.53125, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
