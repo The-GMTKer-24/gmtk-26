@@ -10,8 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1004450177123190508, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: m_Name
-      value: Level2
+      value: Level 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: endRoom
+      value: 
+      objectReference: {fileID: 5836369874643543531, guid: 0d12b755e925802469653249c30cd115, type: 3}
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: maxRoomTarget
       value: 12

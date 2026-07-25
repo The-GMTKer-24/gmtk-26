@@ -95,7 +95,7 @@ AnimatorStateMachine:
     m_Position: {x: 420, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5016975948069189351}
-    m_Position: {x: 650, y: 60, z: 0}
+    m_Position: {x: 640, y: 50, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -103,7 +103,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 80, z: 0}
-  m_ExitPosition: {x: 900, y: 70, z: 0}
+  m_ExitPosition: {x: 730, y: 220, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 8037449167078090146}
 --- !u!1101 &-6007642196308627540
@@ -137,7 +137,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gnome
+  m_Name: Purple Gnome
   serializedVersion: 6
   m_AnimatorParameters:
   - m_Name: Up
@@ -251,7 +251,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ecd7ba6ea9b46d54bbb2a9684268917a, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3f78f2310ba242b4d83b8e5b7b2d14f5, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -380,7 +380,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 709977396b829e84ca920684dcb695d8, type: 2}
+  m_Motion: {fileID: 7400000, guid: 638f1f2acd4e01041ae5a9e108d2e5b6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -434,7 +434,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 52179dc176142ce47996ce4b0064415a, type: 2}
+  m_Motion: {fileID: 7400000, guid: 742106b3f11017e4f895e9b158045cf9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -488,7 +488,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 19d933edf804c184aaaea3788e7e39d7, type: 2}
+  m_Motion: {fileID: 7400000, guid: bc1ff3105d3fcb549adf12924b80e3e9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

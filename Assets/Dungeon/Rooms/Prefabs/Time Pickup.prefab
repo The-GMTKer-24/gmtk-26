@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8720496480751298415}
   - component: {fileID: 3589852894373379597}
   - component: {fileID: 6320164744718351135}
+  - component: {fileID: 8927636690562869165}
   m_Layer: 0
   m_Name: Time Pickup
   m_TagString: Untagged
@@ -218,3 +219,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &8927636690562869165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313304383076649194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c17ca866a2c418aa1d226b3c052834f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity.SortingOrderHandler
+  spriteRenderer: {fileID: 7379681343166512426}
