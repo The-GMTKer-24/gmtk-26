@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class Shotgun : MonoBehaviour
+    public class Shotgun : MonoBehaviour, IShoot
     {
         [SerializeField] private Bullet bullet;
         private AudioSource audioSource;
