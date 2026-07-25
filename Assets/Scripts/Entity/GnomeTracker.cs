@@ -33,23 +33,24 @@ namespace Entity
         
         public bool IsGnomeOfTag(GnomeAI gnomeAI, String tag)
         {
-            return _gnomeDict.ContainsKey(tag) && _gnomeDict[tag].Contains(gnomeAI.GetEntityId());
+            return _gnomeDict.ContainsKey(tag) && _gnomeDict[tag].Contains(gnomeAI.gameObject.GetEntityId());
         }
 
         public bool IsGnome(GnomeAI gnomeAI)
         {
-            return _gnomeSet.Contains(gnomeAI.GetEntityId());
+            return _gnomeSet.Contains(gnomeAI.gameObject.GetEntityId());
         }
 
         public void AddGnome(GnomeAI gnomeAI, HashSet<String> tags)
         {
-            _gnomeSet.Add(gnomeAI.GetEntityId());
-            _gnomes.Add(gnomeAI.GetEntityId(), gnomeAI);
+            print("AddGnome: " + gnomeAI.ToString() + ", " + gnomeAI.gameObject.GetEntityId());
+            _gnomeSet.Add(gnomeAI.gameObject.GetEntityId());
+            _gnomes.Add(gnomeAI.gameObject.GetEntityId(), gnomeAI);
             
             foreach (String gnomeTag in tags)
             {
                 if (!_gnomeDict.ContainsKey(gnomeTag)) _gnomeDict.Add(gnomeTag, new SortedSet<EntityId>());
-                _gnomeDict[gnomeTag].Add(gnomeAI.GetEntityId());
+                _gnomeDict[gnomeTag].Add(gnomeAI.gameObject.GetEntityId());
             }
             
             gnomeCount = _gnomeSet.Count;
@@ -65,11 +66,11 @@ namespace Entity
             // Possibly a source of performance issues. Better to try every possible tag, or to store tags per entityid in another dict?
             foreach (KeyValuePair<String, SortedSet<EntityId>> entry in _gnomeDict)
             {
-                entry.Value.Remove(gnomeAI.GetEntityId());
+                entry.Value.Remove(gnomeAI.gameObject.GetEntityId());
             }
             
-            _gnomeSet.Remove(gnomeAI.GetEntityId());
-            _gnomes.Remove(gnomeAI.GetEntityId());
+            _gnomeSet.Remove(gnomeAI.gameObject.GetEntityId());
+            _gnomes.Remove(gnomeAI.gameObject.GetEntityId());
             
             gnomeCount = _gnomeSet.Count;
         }
@@ -96,11 +97,13 @@ namespace Entity
 
         public GnomeAI GetGnome(EntityId entityId)
         {
+            //print("GetGnome: " + _gnomeSet.Count + ", " + _gnomes.Count + ", " + entityId.ToString());
             return _gnomes.ContainsKey(entityId) ? _gnomes[entityId] : null;
         }
 
         public bool DoesGnomeExist(EntityId entityId)
         {
+            print("DoesGnomeExist: " + _gnomeSet.Count + ", " + _gnomes.Count + ", " + entityId.ToString());
             return _gnomes.ContainsKey(entityId);
         }
     }
