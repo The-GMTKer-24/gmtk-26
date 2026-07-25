@@ -826,7 +826,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: -2
-      type: {class: , ns: , asm: }
+      type: {class: '', ns: '', asm: ''}
     - rid: 5296362366967742546
       type: {class: Light2DProviderSources, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
@@ -836,7 +836,8 @@ MonoBehaviour:
         m_Provider2DCache:
           rid: 5296362366967742547
     - rid: 5296362366967742547
-      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider,
+          Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
         m_Cache: []
 --- !u!1 &606989584
@@ -916,7 +917,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: -2
-      type: {class: , ns: , asm: }
+      type: {class: '', ns: '', asm: ''}
     - rid: 5296362366967742548
       type: {class: Light2DProviderSources, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
@@ -926,7 +927,8 @@ MonoBehaviour:
         m_Provider2DCache:
           rid: 5296362366967742549
     - rid: 5296362366967742549
-      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider,
+          Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
         m_Cache: []
 --- !u!4 &606989586
@@ -1185,11 +1187,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_Pivot.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1209,11 +1211,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1067
+      value: 241.38
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 600
+      value: 227.86
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1245,7 +1247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 425.12573
+      value: -120.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 113.92999
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1271,6 +1277,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 823347871}
+    - target: {fileID: 9002676389333899587, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 24.600006
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1577,7 +1587,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 720ba568-b2c3-4e19-af8c-bbe13febb856
-    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347866}
@@ -1593,7 +1603,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: d22da971-499a-4d90-9a0e-9210645ef90a
-    m_ActionName: 'Player/Dash[/Keyboard/leftShift]'
+    m_ActionName: Player/Dash[/Keyboard/leftShift]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347872}
@@ -1633,11 +1643,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 835979f0-10bd-4a0c-80bc-4c372f60d0c3
-    m_ActionName: 'Player/Primary Attack[/Mouse/leftButton]'
+    m_ActionName: Player/Primary Attack[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: f5619c6d-4330-45dd-a016-2eb51270967a
-    m_ActionName: 'Player/Secondary Attack[/Mouse/rightButton]'
+    m_ActionName: Player/Secondary Attack[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347873}
@@ -1653,7 +1663,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 9d286121-81c1-44b1-bc71-dd6d38291470
-    m_ActionName: 'Player/Pause[/Keyboard/escape]'
+    m_ActionName: Player/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347872}
@@ -1693,7 +1703,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: a20be78f-7260-4d26-bce8-9874593e5d96
-    m_ActionName: 'Player/Reload[/Keyboard/r]'
+    m_ActionName: Player/Reload[/Keyboard/r]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347878}
@@ -1709,7 +1719,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 4dc3376f-b319-43bc-82eb-1468a3130fd6
-    m_ActionName: 'Player/Equip gun[/Keyboard/1]'
+    m_ActionName: Player/Equip gun[/Keyboard/1]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347878}
@@ -1725,7 +1735,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: a8d0c091-4b2d-401c-9412-4e64bf005c90
-    m_ActionName: 'Player/Equip Shotgun[/Keyboard/2]'
+    m_ActionName: Player/Equip Shotgun[/Keyboard/2]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347878}
@@ -1741,7 +1751,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 20668f43-2052-47e7-a110-bdc216f95fde
-    m_ActionName: 'Player/Equip Bomb[/Keyboard/3]'
+    m_ActionName: Player/Equip Bomb[/Keyboard/3]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1876,6 +1886,21 @@ MonoBehaviour:
       wholeNumber: 0
     - stat: 18
       baseValue: 0.3
+      wholeNumber: 0
+    - stat: 19
+      baseValue: 22
+      wholeNumber: 0
+    - stat: 20
+      baseValue: 5
+      wholeNumber: 1
+    - stat: 21
+      baseValue: 35
+      wholeNumber: 0
+    - stat: 22
+      baseValue: 0.5
+      wholeNumber: 0
+    - stat: 23
+      baseValue: 3
       wholeNumber: 0
 --- !u!82 &823347876
 AudioSource:
