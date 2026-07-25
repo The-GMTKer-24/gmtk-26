@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: -5037666064111075310}
   - component: {fileID: 95159770385088884}
   m_Layer: 6
-  m_Name: TestGnome
+  m_Name: BoomGnome
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ Animator:
   m_GameObject: {fileID: 677830866020430554}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a8efcda11c8fb9f4ea3d08f029e5ffd7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 166cbd03cf25c3a41a28091f1cfe802b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -112,7 +112,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 6128299156075563123, guid: e2d5853765a5b3724b15f37e5f5b9e44, type: 3}
+  m_Sprite: {fileID: 435713356028904246, guid: aa970012c771cd648af55774a35aca53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
