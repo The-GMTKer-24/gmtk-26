@@ -71,6 +71,7 @@ namespace Player
 
         public void OnShoot(InputAction.CallbackContext context)
         {
+            if (!enabled) return;
             if (context.started || context.performed)
             {
                 held = true;
@@ -84,7 +85,7 @@ namespace Player
 
         public void Reload(InputAction.CallbackContext context)
         {
-            if (!context.started) return;
+            if (!context.started || !enabled) return;
             Reload();
         }
 

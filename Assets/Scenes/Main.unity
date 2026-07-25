@@ -2013,12 +2013,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823347865}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e7d592c41fd74b45bb898fe4f9c2511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBomb
-  bomb: {fileID: 0}
+  bomb: {fileID: 8635062270993689860, guid: 9e5da768304949443a871a64f7c08495, type: 3}
 --- !u!1 &860931578
 GameObject:
   m_ObjectHideFlags: 0
