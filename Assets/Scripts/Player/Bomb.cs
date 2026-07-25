@@ -31,7 +31,8 @@ public class Bomb : MonoBehaviour
         currentTime -= Time.fixedDeltaTime;
         if (currentTime <= 0)
         {
-            Instantiate(explosionParticles, transform.position, transform.rotation);
+            GameObject obj = Instantiate(explosionParticles, transform.position, transform.rotation);
+            obj.GetComponent<BombExplosion>().poisionDamage = damage;
             Destroy(gameObject);
         }
         

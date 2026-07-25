@@ -25,7 +25,12 @@ namespace Player
         ShotgunRecoil,
         ShotgunReloadSpeed,
         ShotgunMaxBullets,
-        ShotgunDamageFactor
+        ShotgunDamageFactor,
+        BombSpeed,
+        MaxBombAmmo,
+        BombDamage,
+        TimeBetweenBombs,
+        BombReloadSpeed
     }
 
     public enum ModifierType

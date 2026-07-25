@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f343bcc49882470bae3e14960e27f2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity.TimeEntity
-  maxTime: 120
+  maxTime: 48
   currentTime: 120
   spawnOnDeath: {fileID: 6312313018138299983, guid: 67e2a57097e1c8043bcfa5c289ecfcfc, type: 3}
   dropOnDeath: {fileID: 313304383076649194, guid: 921bcea2d77b9b64487ccb34243b21e3, type: 3}
