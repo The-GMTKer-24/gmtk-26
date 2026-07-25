@@ -12,16 +12,38 @@ namespace UI
         [SerializeField] private TMP_Text text;
         [SerializeField] private Gradient gradient;
         
+        [Header("Grow when time tick")]
+        [SerializeField] private GameObject tickUpSound;
+        [SerializeField] private GameObject tickDownSound;
+        [SerializeField] private float resetClockSpeed = 7f;
+        [SerializeField] private float growMultiplier = 1.1f;
         
         [Header("Ticking Arrow")]
         [SerializeField] private RectTransform tickingArrow;
         [SerializeField] private float tickToNewPositionSpeed = 10.0f;
         
         private float _currentArrowAngle = 0f;
+        private int _currentSeconds = -1;
+        private int _previousSeconds = -1;
 
+        private int _soundSeconds = -1;
+        private int _previousSoundSeconds = -1;
+        
+        private float _soundTimer = 0f;
+        private Transform _parentUI;
+        private Vector3 _parentUIOriginalScale;
+        private bool ticked;
+        
+        private SoundManager _soundManager;
+        
+        
         public void Start()
         {
+            _parentUI = transform.parent;
+            _parentUIOriginalScale = _parentUI.localScale;
             _currentArrowAngle = timeToDegrees();
+            
+            _soundManager = SoundManager.Instance;
         }
         
         public void Update()
@@ -32,9 +54,35 @@ namespace UI
                 text.SetText(TimeSpan.FromSeconds(player.GetTime()).ToString("m\\:ss"));    
             }
             
+            // Tick the clock animation
+            _previousSeconds = _currentSeconds;
+            _currentSeconds = (int)player.GetTime();
+            if (_currentSeconds < _previousSeconds || _currentSeconds > _previousSeconds)
+            {
+                _parentUI.localScale *= growMultiplier;
+            }
+
+            _soundTimer += Time.deltaTime;
+            _previousSoundSeconds = _soundSeconds;
+            _soundSeconds = (int)_soundTimer;
+            // Tick Sound
+            if (_previousSoundSeconds < _soundSeconds)
+            {
+                TickSound();
+            }
+            
             // Rotate arrow
             _currentArrowAngle = Mathf.Lerp(_currentArrowAngle, timeToDegrees(), tickToNewPositionSpeed * Time.unscaledDeltaTime);
             tickingArrow.localRotation = Quaternion.Euler(0f, 0f, _currentArrowAngle);
+            
+            // Lerp back to correct scaling
+            _parentUI.localScale = Vector3.Lerp(_parentUI.localScale, _parentUIOriginalScale, resetClockSpeed * Time.unscaledDeltaTime);
+        }
+
+        private void TickSound()
+        {
+            _soundManager.CreateSound(ticked ? tickUpSound : tickDownSound);
+            ticked = !ticked;
         }
 
         private float timeToDegrees()
