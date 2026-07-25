@@ -22,7 +22,6 @@ namespace Entity
         
         private void Update()
         {
-            print(gameObject.transform.position.y + ", " + Mathf.RoundToInt(gameObject.transform.position.y * -Factor) + ", " + (Mathf.RoundToInt(gameObject.transform.position.y * -Factor) + Offset));
             spriteRenderer.sortingOrder = Mathf.RoundToInt(gameObject.transform.position.y * -Factor) + Offset;
         }
 

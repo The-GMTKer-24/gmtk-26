@@ -23,11 +23,16 @@ namespace Boss
         [SerializeField] private float bombDelay;
         [SerializeField] private float bombVelocity;
         [SerializeField] private int bombsToThrow;
+        [Header("Bullet Ships")]
+        [SerializeField] private float bulletShipDelay;
+        [SerializeField] private float bulletShipSpeed;
+        [SerializeField] private int bulletShips;
         [Header("Spawn Locations")]
         [SerializeField] private List<Transform> clockBoulderPositions;
         [SerializeField] private Transform bulletWavePosition;
-        [SerializeField] private List<Transform> bulletShipPositions;
-
+        [SerializeField] private List<Transform> leftBulletShipPositions;
+        [SerializeField] private List<Transform> rightBulletShipPositions;
+        
         [Header("Attack Prefabs")] 
         [SerializeField] private ClockBoulder clockBoulder;
         [SerializeField] private EnemyBullet bossBullet;
@@ -121,7 +126,29 @@ namespace Boss
 
         private void BulletShips(AttackInfo info)
         {
-            
+            print("Printing bullet ships");
+            IEnumerator Ships(AttackInfo shipInfo)
+            {
+                for (int i = 0; i < bulletShips; i++)
+                {
+                    Vector2 position;
+                    Vector2 velocity;
+                    if (i % 2 == 0) {
+                        position = leftBulletShipPositions[Random.Range(0, leftBulletShipPositions.Count)].transform.position;
+                        velocity = new Vector2(bulletShipSpeed, 0);
+                    }
+                    else {
+                        position = rightBulletShipPositions[Random.Range(0, rightBulletShipPositions.Count)].transform.position;
+                        velocity = new Vector2(-bulletShipSpeed, 0);
+                    }
+                    BulletShip ship = Instantiate(bulletShip, position, Quaternion.identity);
+                    ship.damage = shipInfo.damage;
+                    ship.velocity = velocity;
+                    
+                    yield return new WaitForSeconds(bulletShipDelay);
+                }
+            }
+            StartCoroutine(Ships(info));
         }
 
         private void BulletWave(AttackInfo info)
