@@ -54,23 +54,6 @@ namespace UI
                 text.SetText(TimeSpan.FromSeconds(player.GetTime()).ToString("m\\:ss"));    
             }
             
-            // Tick the clock animation
-            _previousSeconds = _currentSeconds;
-            _currentSeconds = (int)player.GetTime();
-            if (_currentSeconds < _previousSeconds || _currentSeconds > _previousSeconds)
-            {
-                _parentUI.localScale *= growMultiplier;
-            }
-
-            _soundTimer += Time.deltaTime;
-            _previousSoundSeconds = _soundSeconds;
-            _soundSeconds = (int)_soundTimer;
-            // Tick Sound
-            if (_previousSoundSeconds < _soundSeconds)
-            {
-                TickSound();
-            }
-            
             // Rotate arrow
             _currentArrowAngle = Mathf.Lerp(_currentArrowAngle, timeToDegrees(), tickToNewPositionSpeed * Time.unscaledDeltaTime);
             tickingArrow.localRotation = Quaternion.Euler(0f, 0f, _currentArrowAngle);
@@ -79,10 +62,16 @@ namespace UI
             _parentUI.localScale = Vector3.Lerp(_parentUI.localScale, _parentUIOriginalScale, resetClockSpeed * Time.unscaledDeltaTime);
         }
 
-        private void TickSound()
+        public void TickSound()
         {
             _soundManager.CreateSound(ticked ? tickUpSound : tickDownSound);
             ticked = !ticked;
+        }
+
+        // Grows the clock to then shrink back down
+        public void TickPulse()
+        {
+            _parentUI.localScale *= growMultiplier;
         }
 
         private float timeToDegrees()

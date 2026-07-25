@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc05dbf82df459bb11e6104b108d38e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  maxInstancesPerSound: 2
+  maxInstancesPerSound: 5
 --- !u!4 &19697562
 Transform:
   m_ObjectHideFlags: 0
@@ -1811,6 +1811,7 @@ MonoBehaviour:
   playerModifier: {fileID: 823347875}
   mainMenu: YOU DIED
   delay: 0.5
+  countdownClock: {fileID: 941580431}
 --- !u!114 &823347875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2215,6 +2216,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916420720}
   m_CullTransparentMesh: 1
+--- !u!114 &941580431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8833120265944339782, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
+  m_PrefabInstance: {fileID: 756974708}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 920d652f0ac648dd90ba5bc91ec87fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.CountDown
 --- !u!1 &953354813
 GameObject:
   m_ObjectHideFlags: 0
