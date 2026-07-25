@@ -168,6 +168,7 @@ MonoBehaviour:
   forceDropoff: 0.2
   animationMovementThreshold: 0.05
   directionHysteresis: 0.08
+  dispersionRadius: 5
   decisionInterval: 0.15
   attackSwitchThreshold: 0.1
   minimumAttackInterval: 0.25
@@ -179,8 +180,8 @@ MonoBehaviour:
   telegraphLoss: 1
   desperationTimeCutoff: 5
   desperationInstantAttackPreference: 10
-  constantDecrowdingStrength: 0.8
-  aoeDecrowdingStrength: 1.5
+  constantDecrowdingStrength: 0.38
+  aoeDecrowdingStrength: 0.64
   currentLoss: 0
   timeEntity: {fileID: 6058647677417873946}
   staminaEntity: {fileID: 935281606156217579}
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity.StaminaEntity
   maxStamina: 50
   minStartingStamina: 0
-  maxStartingStamina: 0
+  maxStartingStamina: 10
   currentStamina: 50
   staminaRegenerationRate: 5
 --- !u!114 &1191372915264739356

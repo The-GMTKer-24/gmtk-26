@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (cameraPosition == null)
         {
-            cameraPosition = GameObject.FindGameObjectWithTag("MainCamera");
+            cameraPosition = Camera.main.gameObject;
         }
         
         _cameraFollowScript = cameraPosition.GetComponent<CameraFollow>();
