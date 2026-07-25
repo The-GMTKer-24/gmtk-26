@@ -15,6 +15,8 @@ namespace Player
         public TimeEntity TimeEntity => timeEntity;
         public PlayerModifier PlayerModifier => playerModifier;
         public SpriteRenderer BigBlackBox => bigBlackBox;
+        public Rigidbody2D RigidBody { get; private set; }
+
         [SerializeField] private SpriteRenderer bigBlackBox;
         [SerializeField] private PlayerModifier playerModifier;
         [SerializeField] private string mainMenu;
@@ -27,6 +29,7 @@ namespace Player
         public void Start()
         {
             timeEntity = GetComponent<TimeEntity>();
+            RigidBody = GetComponent<Rigidbody2D>();
         }
 
         public void OnDestroy()

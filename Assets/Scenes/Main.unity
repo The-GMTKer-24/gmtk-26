@@ -785,7 +785,7 @@ MonoBehaviour:
     rid: -2
   m_SelectionSources:
     rid: 5296362366967742546
-  m_FalloffIntensity: 0.049
+  m_FalloffIntensity: 0.4
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 8.14
-  m_PointLightOuterRadius: 9.5
+  m_PointLightOuterRadius: 16
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -877,7 +877,7 @@ MonoBehaviour:
     rid: 5296362366967742548
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.07
+  m_Intensity: 0.02
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -1421,11 +1421,13 @@ GameObject:
   - component: {fileID: 823347866}
   - component: {fileID: 823347870}
   - component: {fileID: 823347871}
-  - component: {fileID: 823347872}
   - component: {fileID: 823347873}
   - component: {fileID: 823347874}
   - component: {fileID: 823347875}
   - component: {fileID: 823347876}
+  - component: {fileID: 823347872}
+  - component: {fileID: 823347877}
+  - component: {fileID: 823347878}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1601,6 +1603,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 823347877}
+        m_TargetAssemblyTypeName: Player.Shotgun, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 835979f0-10bd-4a0c-80bc-4c372f60d0c3
     m_ActionName: 'Player/Primary Attack[/Mouse/leftButton]'
   - m_PersistentCalls:
@@ -1637,8 +1651,68 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 823347877}
+        m_TargetAssemblyTypeName: Player.Shotgun, Assembly-CSharp
+        m_MethodName: Reload
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a20be78f-7260-4d26-bce8-9874593e5d96
     m_ActionName: 'Player/Reload[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 823347878}
+        m_TargetAssemblyTypeName: Player.WeaponManager, Assembly-CSharp
+        m_MethodName: ActivateGun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4dc3376f-b319-43bc-82eb-1468a3130fd6
+    m_ActionName: 'Player/Equip gun[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 823347878}
+        m_TargetAssemblyTypeName: Player.WeaponManager, Assembly-CSharp
+        m_MethodName: ActivateShotgun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a8d0c091-4b2d-401c-9412-4e64bf005c90
+    m_ActionName: 'Player/Equip Shotgun[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 823347878}
+        m_TargetAssemblyTypeName: Player.WeaponManager, Assembly-CSharp
+        m_MethodName: ActivateBomb
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 20668f43-2052-47e7-a110-bdc216f95fde
+    m_ActionName: 'Player/Equip Bomb[/Keyboard/3]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1747,6 +1821,33 @@ MonoBehaviour:
     - stat: 9
       baseValue: 0
       wholeNumber: 1
+    - stat: 10
+      baseValue: 5
+      wholeNumber: 1
+    - stat: 11
+      baseValue: 1
+      wholeNumber: 0
+    - stat: 12
+      baseValue: 10
+      wholeNumber: 1
+    - stat: 13
+      baseValue: 45
+      wholeNumber: 0
+    - stat: 14
+      baseValue: 25
+      wholeNumber: 0
+    - stat: 15
+      baseValue: 2000
+      wholeNumber: 0
+    - stat: 16
+      baseValue: 3
+      wholeNumber: 0
+    - stat: 17
+      baseValue: 8
+      wholeNumber: 0
+    - stat: 18
+      baseValue: 0.3
+      wholeNumber: 0
 --- !u!82 &823347876
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1844,6 +1945,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &823347877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823347865}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650e343394184a57bb3f1a915f8e7ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.Shotgun
+  bullet: {fileID: 1970712963920005506, guid: c3c4e92357b52ee4980080716c9aac79, type: 3}
+--- !u!114 &823347878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823347865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef9f99c5b6640c9bfbb27a8a3567a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.WeaponManager
+  gunEnabled: 1
+  shotgunEnabled: 1
+  bombEnabled: 0
+  playerShoot: {fileID: 823347872}
+  shotgun: {fileID: 823347877}
+  bomb: {fileID: 0}
+  Active: 0
 --- !u!1 &860931578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,7 +2443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9298bc5e85412c83473b867ec8980f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.CountDown
-  player: {fileID: 823347872}
+  player: {fileID: 0}
   text: {fileID: 961920873}
   gradient:
     serializedVersion: 2
@@ -2600,6 +2733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d7c6b01d2c4197be45c1f2fc052496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity.GnomeTracker
+  gnomeCount: 0
 --- !u!4 &1123215547
 Transform:
   m_ObjectHideFlags: 0
@@ -2727,7 +2861,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

@@ -9,7 +9,7 @@ namespace UI
 {
     public class BulletCounter : MonoBehaviour
     {
-        [SerializeField] private PlayerShoot player;
+        [SerializeField] private WeaponManager player;
         [SerializeField] private TMP_Text text;
         [SerializeField] private Gradient gradient;
         [SerializeField] private Gradient reloadGradient;
