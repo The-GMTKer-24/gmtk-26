@@ -44,13 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ceaee1a69c69364982dfb3393407ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomManager
-  startRoom: {fileID: 5836369874643543531, guid: 6e42751a3ceda99488f44fddefe5ea6d, type: 3}
+  startRoom: {fileID: 5836369874643543531, guid: 7115686b99bb582408e424ced2a644a3, type: 3}
   endRoom: {fileID: 5836369874643543531, guid: 267f1a5edfc500e4eb27c35f1ad28ea6, type: 3}
   roomChances:
-  - room: {fileID: 5836369874643543531, guid: 97f8977f10abbb4409207f506c987467, type: 3}
+  - room: {fileID: 5836369874643543531, guid: b57848aa26788504983123420464cc81, type: 3}
     weight: 1
-  maxRoomTarget: 5
-  minDistanceToExit: 2
+    targetCount: 0
+  maxRoomTarget: 3
+  minDistanceToExit: 1
   maxDistanceToExit: 4
   exitRoomChanceFromDistance:
     serializedVersion: 2

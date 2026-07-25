@@ -2946,7 +2946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f140729899bb444e903f8328d318c552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dungeon.ExitTrigger
-  toSpawn: {fileID: 1004450177123190508, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+  toSpawn: {fileID: 1373779722613244534, guid: 3cbe82735f0614441aca607fbdbcf889, type: 3}
   fadeInTime: 1
   fadeIn:
     serializedVersion: 2
@@ -2984,7 +2984,7 @@ GameObject:
   - component: {fileID: 2543845425110322211}
   - component: {fileID: 5836369874643543531}
   m_Layer: 0
-  m_Name: End Room
+  m_Name: End Room 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
