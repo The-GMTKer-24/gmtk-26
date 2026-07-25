@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 616147720972777101}
@@ -252,8 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba24ebedcbbfd954ca27d49f15b22614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoisionTrapTrigger2
-  triggeredSprite: {fileID: -560636173200275826, guid: 556158442fb691a41bfa40c3e61f4b71, type: 3}
-  untriggeredSprite: {fileID: 704295922642706227, guid: 50cdce5da3795b14090b2e37d3bcfbf2, type: 3}
+  triggeredSprite: {fileID: -3736794578492650720, guid: 77bb8003f29624d4dbf760640ac4adf4, type: 3}
+  untriggeredSprite: {fileID: 3405718936931860813, guid: 1b6f49b7d4ff6d548a88ea2fd88b040a, type: 3}
   particleObject: {fileID: 7574212331292567666}
   triggerParticle: {fileID: 8405317578421630583}
 --- !u!1 &7574212331292567666

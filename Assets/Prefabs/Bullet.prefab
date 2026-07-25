@@ -163,6 +163,8 @@ MonoBehaviour:
   bounces: 0
   rb: {fileID: 602223840276083783}
   deathParticles: {fileID: 6312313018138299983, guid: 493429378d2d28848b715c9dbac5935a, type: 3}
+  hitWallSound: {fileID: 3734932179283865293, guid: e046444d9f3333543b5a06fc6b41044e, type: 3}
+  hitEnemySound: {fileID: 3734932179283865293, guid: fb69d74b48ef8ef40b661f3d4b2f3e1d, type: 3}
 --- !u!50 &602223840276083783
 Rigidbody2D:
   serializedVersion: 5

@@ -10,6 +10,8 @@ public class Bomb : MonoBehaviour
     [SerializeField] private float radius;
     [SerializeField] private float stoppingForce;
     [SerializeField] private GameObject explosionParticles;
+    [SerializeField] private GameObject clinkSound;
+    [SerializeField] private GameObject boomSound;
     
     public Vector2 velocity; // This should be velocity, not speed!
     public float speed;
@@ -33,6 +35,7 @@ public class Bomb : MonoBehaviour
         {
             GameObject obj = Instantiate(explosionParticles, transform.position, transform.rotation);
             obj.GetComponent<BombExplosion>().poisionDamage = damage;
+            SoundManager.Instance.CreateSoundAtPosition(boomSound, transform.position);
             Destroy(gameObject);
         }
         
@@ -43,6 +46,10 @@ public class Bomb : MonoBehaviour
         }
 
         rb.AddForce(-v.normalized * stoppingForce);
+    }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        SoundManager.Instance.CreateSoundAtPosition(clinkSound, other.transform.position);
     }
 }
