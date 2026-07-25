@@ -28,6 +28,7 @@ public class Bomb : MonoBehaviour
     {
         Vector2 v = rb.linearVelocity;
 
+        currentTime -= Time.fixedDeltaTime;
         if (v.sqrMagnitude < 0.001f)
         {
             rb.linearVelocity = Vector2.zero;
@@ -41,6 +42,5 @@ public class Bomb : MonoBehaviour
             Destroy(gameObject);
         }
 
-        currentTime -= Time.fixedDeltaTime;
     }
 }
