@@ -16,9 +16,8 @@ GameObject:
   - component: {fileID: 6058647677417873946}
   - component: {fileID: 935281606156217579}
   - component: {fileID: 7688476764850467404}
-  - component: {fileID: 742227794949890290}
-  - component: {fileID: -5037666064111075310}
   - component: {fileID: 95159770385088884}
+  - component: {fileID: 2932769972421947415}
   m_Layer: 6
   m_Name: BoomGnome
   m_TagString: Enemy
@@ -163,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GnomeAI
   animationSpeed: 1
-  speed: 2
+  speed: 4
   forceDropoff: 0.2
   animationMovementThreshold: 0.05
   directionHysteresis: 0.08
@@ -263,42 +262,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6, y: 0.5822099}
   m_EdgeRadius: 0
---- !u!114 &742227794949890290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677830866020430554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eda5e2afac3e76536828d71aebd75112, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SelfAreaAttack
-  damage: 40
-  range: 1
-  staminaCost: 20
-  timeCost: 5
-  frontAnimation: {fileID: 6598099158003896902, guid: 5d5fcd4b55aba0328b51cec90eb41bc2, type: 3}
-  backAnimation: {fileID: 820019722568866527, guid: 828786aa91aec0926aa3933985d6695b, type: 3}
---- !u!114 &-5037666064111075310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677830866020430554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d24d9eb5944b6629b9e7ab9db5f6f4dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletAttack
-  damage: 10
-  range: 7
-  staminaCost: 10
-  timeCost: 0
-  speed: 10
-  bulletPrefab: {fileID: 6960090236962132424, guid: 651f525069020e084b930e8b3c016878, type: 3}
 --- !u!114 &95159770385088884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,3 +275,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity.SortingOrderHandler
   spriteRenderer: {fileID: 5740027886592393214}
+--- !u!114 &2932769972421947415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677830866020430554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbfe79e5e824cc48a4b503864d28f0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SelfExplosion
+  damage: 30
+  range: 1
+  staminaCost: 0
+  timeCost: 1000
+  explosion: {fileID: 9097299396504398017, guid: 42441a5de0deb6f48824029f850c899d, type: 3}
