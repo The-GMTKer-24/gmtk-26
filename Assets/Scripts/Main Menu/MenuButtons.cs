@@ -10,7 +10,7 @@ namespace Main_Menu
         [SerializeField] private GameObject creditsMenuObjects;
         
         [SerializeField] private string sceneToLoad = "Cutscene";
-
+        [SerializeField] private string mainMenu = "Main Menu";
         public void Awake()
         {
             mainMenuObjects.SetActive(true);
@@ -45,6 +45,14 @@ namespace Main_Menu
             
             mainMenuObjects.SetActive(false);
             creditsMenuObjects.SetActive(true);
+        }
+        public void MainMenu()
+        {
+            PlayerPrefs.Save();
+            
+            Debug.Log("The system will MainMenu now!");
+            
+            SceneManager.LoadScene(mainMenu);
         }
 
         public void CloseCredits()
