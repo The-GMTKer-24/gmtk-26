@@ -1,6 +1,7 @@
 using System;
 using Entity;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BombExplosion : MonoBehaviour{
     private void Start()
@@ -9,13 +10,13 @@ public class BombExplosion : MonoBehaviour{
         Invoke(nameof(DisableParticles), .2f);
     }
     
-    public float poisionDamage;
+    [FormerlySerializedAs("poisionDamage")] public float explosionDamage;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<TimeEntity>().DealDamage(poisionDamage);
+            other.gameObject.GetComponent<TimeEntity>().DealDamage(explosionDamage);
         }
     }
 

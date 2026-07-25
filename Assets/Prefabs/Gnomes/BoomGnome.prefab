@@ -291,4 +291,6 @@ MonoBehaviour:
   range: 1
   staminaCost: 0
   timeCost: 1000
-  explosion: {fileID: 9097299396504398017, guid: 42441a5de0deb6f48824029f850c899d, type: 3}
+  explosion: {fileID: 9097299396504398017, guid: 4364e6610bc098a499f0466fa4c6a156, type: 3}
+  explosionSound: {fileID: 3734932179283865293, guid: 6760a4b4bd0f69b4498adc4923ca31cb, type: 3}
+  boomGnomeAttack: {fileID: 3734932179283865293, guid: 383cacf831896a0499d8a932f782d054, type: 3}
