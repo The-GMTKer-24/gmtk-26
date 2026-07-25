@@ -22,7 +22,7 @@ namespace Player
 
         public void Start()
         {
-            currentBullets = Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxShotgunAmmo);
+            currentBullets = Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBombAmmo);
             reloadTimer = 0;
             lastShotTimer = 0;
         }
