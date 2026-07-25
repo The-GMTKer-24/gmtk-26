@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3670673793275854171}
   - component: {fileID: 7907242618752451364}
   - component: {fileID: 5534820384219873044}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Poision Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 616147720972777101}
   - component: {fileID: 494868153009018613}
   - component: {fileID: 804151630780816897}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5113,7 +5113,7 @@ GameObject:
   - component: {fileID: 5445551364741798333}
   - component: {fileID: 8698413589533850606}
   - component: {fileID: 992821514094544612}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Poision Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

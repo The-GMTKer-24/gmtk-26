@@ -20,31 +20,52 @@ public class PoisionTrapDamage : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("New collision");
-        times[other.gameObject.GetEntityId()] = .5f;
+        if (CheckIfInLos(other))
+        {
+            times.Add(other.gameObject.GetEntityId(),.5f);
+        }
+    }
+
+    private bool CheckIfInLos(Collider2D other)
+    {
+        GameObject colliderGameObject = Physics2D.Raycast(transform.position, other.transform.position - transform.position).collider.gameObject;
+        print($"Checking los against {other.name} found {colliderGameObject.name}");
+        return colliderGameObject ==
+               other.gameObject;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (times.ContainsKey(other.gameObject.GetEntityId()))
+        {
+            if (CheckIfInLos(other))
+            {
+                times.Remove(other.gameObject.GetEntityId());
+                return;
+            }
+        }
+        else
+        {
+            if (CheckIfInLos(other))
+            {
+                times.Add(other.gameObject.GetEntityId(), .5f);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+
         EntityId id = other.gameObject.GetEntityId();
         times[id] -= Time.fixedDeltaTime;
         if (times[id] < 0)
         {
-            if (other.gameObject.CompareTag("Player"))
+            TimeEntity timeEntity = other.gameObject.GetComponent<TimeEntity>();
+            if (timeEntity != null)
             {
-                other.gameObject.GetComponent<TimeEntity>().DealDamage(DPS);
+                timeEntity.DealDamage(DPS);
             }
-            else
-            {
-                GnomeAI gnome = gnomeTracker.GetGnome(id);
-                if (gnome is null)
-                {
-                    times.Remove(other.gameObject.GetEntityId());
-                    return;
-                }
-                gnome.timeEntity.DealDamage(DPS);
-            }
-
             times[id] = 1f;
         }
     }
