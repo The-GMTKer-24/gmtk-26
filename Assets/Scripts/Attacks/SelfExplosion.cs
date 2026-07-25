@@ -53,7 +53,6 @@ public class SelfExplosion : GenericAttack, IAttackArea
             
             bool success = true;
 
-                // _timeEntity.DealDamage(_timeEntity.GetTime());
 
             if (staminaCost != 0)
             {
