@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a10bbc2a5ae740fb8032045303fba4b3, type: 3}
-  m_Name: Enemy Pool
+  m_Name: L1 Large Room
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.EnemyPool
-  minCost: 10
-  maxCost: 50
+  minCost: 25
+  maxCost: 40
   spawnCost:
   - cost: 10
     enemy: {fileID: 677830866020430554, guid: d8a2cae8d0b61d6f994a82e0d40ee5ba, type: 3}
-  - cost: 1
+  - cost: 15
     enemy: {fileID: 677830866020430554, guid: e59ae63f1de6267419f8a862275f0ccd, type: 3}

@@ -12,6 +12,7 @@ public class RoomManager : MonoBehaviour
         [Min(0)] public int weight;
         [Tooltip("0 = no exact requirement. A positive value requires exactly this many.")]
         [Min(0)] public int targetCount;
+        public EnemyPool EnemyPool;
     }
 
     private sealed class GeneratedRoom
@@ -377,14 +378,16 @@ public class RoomManager : MonoBehaviour
 
         candidates.RemoveAt(candidateIndex);
 
+        Room placed;
         if (TryPlaceRoom(
                 selectedChance.room,
                 socket,
                 false,
                 root,
-                out _))
+                out placed))
         {
             RecordNormalRoomPlacement(selectedChance.room);
+            placed.enemyPool = selectedChance.EnemyPool;
             return true;
         }
     }

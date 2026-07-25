@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: roomChances.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: roomChances.Array.data[4].room
@@ -40,6 +40,10 @@ PrefabInstance:
       propertyPath: roomChances.Array.data[6].room
       value: 
       objectReference: {fileID: 5836369874643543531, guid: b416c893840c92042a173f548a9141dd, type: 3}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: roomChances.Array.data[7].room
+      value: 
+      objectReference: {fileID: 5836369874643543531, guid: f07f9deb830ab214295c382e44b9b1a0, type: 3}
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: roomChances.Array.data[1].weight
       value: 1
@@ -61,12 +65,52 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: roomChances.Array.data[7].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: roomChances.Array.data[0].EnemyPool
+      value: 
+      objectReference: {fileID: 11400000, guid: fe048ccd3c5fabe46af17de64d4a08cf, type: 2}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: roomChances.Array.data[1].EnemyPool
+      value: 
+      objectReference: {fileID: 11400000, guid: 625c0a3e69eccd44f8970489b383c152, type: 2}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: roomChances.Array.data[2].EnemyPool
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d88d924eec9b4e439b0f4fbd4560bf4, type: 2}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: roomChances.Array.data[3].EnemyPool
+      value: 
+      objectReference: {fileID: 11400000, guid: fe048ccd3c5fabe46af17de64d4a08cf, type: 2}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: roomChances.Array.data[4].EnemyPool
+      value: 
+      objectReference: {fileID: 11400000, guid: 625c0a3e69eccd44f8970489b383c152, type: 2}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: roomChances.Array.data[5].EnemyPool
+      value: 
+      objectReference: {fileID: 11400000, guid: 625c0a3e69eccd44f8970489b383c152, type: 2}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: roomChances.Array.data[6].EnemyPool
+      value: 
+      objectReference: {fileID: 11400000, guid: fe048ccd3c5fabe46af17de64d4a08cf, type: 2}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: roomChances.Array.data[7].EnemyPool
+      value: 
+      objectReference: {fileID: 11400000, guid: fe048ccd3c5fabe46af17de64d4a08cf, type: 2}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: roomChances.Array.data[4].targetCount
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: roomChances.Array.data[5].targetCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: roomChances.Array.data[7].targetCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6441160507127902320, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: m_LocalPosition.x

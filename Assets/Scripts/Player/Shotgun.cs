@@ -6,17 +6,18 @@ namespace Player
     public class Shotgun : MonoBehaviour, IShoot
     {
         [SerializeField] private Bullet bullet;
-        private AudioSource audioSource;
+        [SerializeField] private GameObject shotgunSound;
+        // private AudioSource audioSource;
 
         private int currentBullets;
         private float reloadTimer;
         private float lastShotTimer;
 
         private bool held;
-        public void Awake()
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
+        // public void Awake()
+        // {
+        //     audioSource = GetComponent<AudioSource>();
+        // }
 
         public void Start()
         {
@@ -68,7 +69,8 @@ namespace Player
             }
             Player.Instance.RigidBody.AddForce((worldSpace - transform.position).normalized * (Player.Instance.PlayerModifier.Evaluate(PlayerStat.ShotgunRecoil) * -1));
             
-            audioSource.Play();
+            SoundManager.Instance.CreateSoundAtPosition(shotgunSound, transform.position);
+            // audioSource.Play();
         }
 
         public void OnShoot(InputAction.CallbackContext context)

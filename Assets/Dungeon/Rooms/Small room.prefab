@@ -3551,7 +3551,7 @@ MonoBehaviour:
   type: 1
   minDoors: 1
   maxDoors: 3
-  enemyPool: {fileID: 11400000, guid: 96266b9c6236eca43b2f92ad00c312bd, type: 2}
+  enemyPool: {fileID: 11400000, guid: e2e9e7c659c04ba47805ceb9101dd539, type: 2}
   spawnLocations:
   - {fileID: 706747796363999956}
   spawnDistance: 2

@@ -7139,7 +7139,7 @@ MonoBehaviour:
   type: 1
   minDoors: 1
   maxDoors: 3
-  enemyPool: {fileID: 11400000, guid: 96266b9c6236eca43b2f92ad00c312bd, type: 2}
+  enemyPool: {fileID: 11400000, guid: 72c5b75e0569fae4f889e1b69ecaed98, type: 2}
   spawnLocations:
   - {fileID: 1617612921891476544}
   - {fileID: 5191079171080895972}

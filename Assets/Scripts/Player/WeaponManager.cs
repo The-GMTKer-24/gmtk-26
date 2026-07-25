@@ -18,8 +18,11 @@ namespace Player
         
         public Weapon Active = Weapon.Gun;
 
+        public static WeaponManager Instance;
+        
         public void Awake()
         {
+            Instance = this;
             active = playerShoot;
         }
 
@@ -36,7 +39,7 @@ namespace Player
         public void ActivateShotgun(InputAction.CallbackContext context)
         {
             if (!context.started) return;
-            if (!shotgun) return;
+            if (!shotgunEnabled) return;
             Active = Weapon.Shotgun;
             active = shotgun;
             playerShoot.enabled = false;

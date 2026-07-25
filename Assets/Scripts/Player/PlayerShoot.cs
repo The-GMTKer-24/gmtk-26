@@ -8,17 +8,14 @@ namespace Player
     public class PlayerShoot : MonoBehaviour, IShoot
     {
         [SerializeField] private Bullet bullet;
-        private AudioSource audioSource;
+        [SerializeField] private GameObject shootSound;
 
         private int currentBullets;
         private float reloadTimer;
         private float lastShotTimer;
 
         private bool held;
-        public void Awake()
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
+
 
         public void Start()
         {
@@ -63,7 +60,8 @@ namespace Player
             var b = Instantiate(bullet, transform.position, Quaternion.identity);
             b.velocity = (worldSpace - transform.position).normalized * Player.Instance.PlayerModifier.Evaluate(PlayerStat.BulletSpeed);
             b.damage = Player.Instance.PlayerModifier.Evaluate(PlayerStat.Damage);
-            audioSource.Play();
+
+            SoundManager.Instance.CreateSoundAtPosition(shootSound, transform.position);
         }
 
         public void OnShoot(InputAction.CallbackContext context)

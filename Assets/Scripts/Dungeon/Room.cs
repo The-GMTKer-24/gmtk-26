@@ -18,7 +18,7 @@ public class Room : MonoBehaviour
     [SerializeField] private RoomType type;
     [SerializeField] private int minDoors;
     [SerializeField] private int maxDoors;
-    [SerializeField] private EnemyPool enemyPool;
+    [SerializeField] public EnemyPool enemyPool;
     [SerializeField] private List<Transform> spawnLocations;
     [SerializeField] private float spawnDistance;
 
