@@ -29,4 +29,9 @@ public class PlayerBomb : MonoBehaviour, IShoot
     {
         return 1;
     }
+
+    public float GetGunReadyToFirePercentage()
+    {
+        return 1;
+    }
 }

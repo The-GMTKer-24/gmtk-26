@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Player
@@ -16,7 +17,12 @@ namespace Player
         private IShoot active;
         
         public Weapon Active = Weapon.Gun;
-        
+
+        public void Awake()
+        {
+            active = playerShoot;
+        }
+
         public void ActivateGun(InputAction.CallbackContext context)
         {
             if (!context.started) return;
@@ -61,6 +67,11 @@ namespace Player
         public float GetMaxBullets()
         {
             return active.GetMaxBullets();
+        }
+
+        public float GetGunReadyToFirePercentage()
+        {
+            return active.GetGunReadyToFirePercentage();
         }
     }
 

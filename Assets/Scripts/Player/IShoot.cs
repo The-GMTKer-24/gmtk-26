@@ -5,5 +5,6 @@
         float GetReloadPercentage();
         int GetBullets();
         int GetMaxBullets();
+        float GetGunReadyToFirePercentage();
     }
 }
