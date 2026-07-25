@@ -19,6 +19,10 @@ namespace Boss
         [SerializeField] private float bulletWaveOffsetTime;
         [SerializeField] private float bulletWaveVelocity;
         [SerializeField] private int bulletWaveBullets;
+        [Header("Bomb lobbing")]
+        [SerializeField] private float bombDelay;
+        [SerializeField] private float bombVelocity;
+        [SerializeField] private int bombsToThrow;
         [Header("Spawn Locations")]
         [SerializeField] private List<Transform> clockBoulderPositions;
         [SerializeField] private Transform bulletWavePosition;
@@ -28,7 +32,7 @@ namespace Boss
         [SerializeField] private ClockBoulder clockBoulder;
         [SerializeField] private EnemyBullet bossBullet;
         [SerializeField] private BulletShip bulletShip;
-        [SerializeField] private Bomb bomb;
+        [SerializeField] private Bomb bossBomb;
         
         private AttackInfo currentAttack;
         private float attackTimer;
@@ -99,7 +103,20 @@ namespace Boss
 
         private void Bombs(AttackInfo info)
         {
-            
+            IEnumerator Bombs(AttackInfo bombInfo)
+            {
+                for (int i = 0; i < bombsToThrow; i++)
+                {
+                    Bomb bomb = Instantiate(bossBomb, bulletWavePosition.position, Quaternion.identity);
+                    bomb.damage = bombInfo.damage;
+                    Vector2 target = Player.Player.Instance.RigidBody.position;
+                    bomb.velocity = bombVelocity *
+                                    (target - (Vector2)bulletWavePosition.position).normalized;
+                    
+                    yield return new WaitForSeconds(bombDelay);
+                }
+            }
+            StartCoroutine(Bombs(info));
         }
 
         private void BulletShips(AttackInfo info)
@@ -109,12 +126,12 @@ namespace Boss
 
         private void BulletWave(AttackInfo info)
         {
-            IEnumerator Wave(AttackInfo info)
+            IEnumerator Wave(AttackInfo waveInfo)
             {
                 for (int i = 0; i < bulletWaveBullets; i++)
                 {
                     EnemyBullet bullet = Instantiate(bossBullet, bulletWavePosition.position, Quaternion.identity, transform);
-                    bullet.damage = info.damage;
+                    bullet.damage = waveInfo.damage;
                     Vector2 target = Player.Player.Instance.RigidBody.position;
                     bullet.velocity = bulletWaveVelocity *
                                       (target - (Vector2)bulletWavePosition.position).normalized;

@@ -15,7 +15,7 @@ namespace Boss
             if (bossHealth)
             {
                 var scale = rend.transform.localScale;
-                scale.y = bossHealth.GetTime() / bossHealth.GetMaxTime();
+                scale.x = bossHealth.GetTime() / bossHealth.GetMaxTime();
                 rend.transform.localScale = scale;
             }
             else
@@ -24,6 +24,12 @@ namespace Boss
                 {
                     bossHealth = Boss.Instance.GetComponent<TimeEntity>();
                     rend.gameObject.SetActive(true);
+                }
+                else
+                {
+                    var scale = rend.transform.localScale;
+                    scale.x = 0;
+                    rend.transform.localScale = scale;
                 }
             }
         }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6560439722402383684}
   - component: {fileID: 105187133312622467}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 823926319392411350}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spawn Location
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,9 +88,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8241034431672223162}
   - component: {fileID: 4105167878288317720}
-  m_Layer: 0
+  - component: {fileID: 7717738918913918571}
+  - component: {fileID: 5751078616513339351}
+  m_Layer: 6
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,18 +130,86 @@ MonoBehaviour:
   attackStats:
   - attack: 1
     damage: 5
-    duration: 10
+    duration: 5
+  - attack: 3
+    damage: 40
+    duration: 5
   attackCooldown: 3
   bulletWaveOffsetTime: 0.1
   bulletWaveVelocity: 10
-  bulletWaveBullets: 500
+  bulletWaveBullets: 50
+  bombDelay: 1
+  bombVelocity: 50
+  bombsToThrow: 5
   clockBoulderPositions: []
   bulletWavePosition: {fileID: 823926319392411350}
   bulletShipPositions: []
   clockBoulder: {fileID: 0}
   bossBullet: {fileID: 1931428187712777673, guid: 651f525069020e084b930e8b3c016878, type: 3}
   bulletShip: {fileID: 0}
-  bomb: {fileID: 0}
+  bossBomb: {fileID: 8635062270993689860, guid: 64769afc0f4ea1f4a9ddaa7c527b983b, type: 3}
+--- !u!61 &7717738918913918571
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6684926995132866024}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3, y: 8}
+  m_EdgeRadius: 0
+--- !u!114 &5751078616513339351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6684926995132866024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f343bcc49882470bae3e14960e27f2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity.TimeEntity
+  maxTime: 300
+  currentTime: 300
+  spawnOnDeath: {fileID: 0}
+  dropOnDeath: {fileID: 0}
 --- !u!1 &7507245487366125582
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7388580269392650277}
   - component: {fileID: 6853228281421267434}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7464037116338934527}
   - component: {fileID: 8311050611472539668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pendulum
   m_TagString: Untagged
   m_Icon: {fileID: 0}

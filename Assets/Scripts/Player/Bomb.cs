@@ -50,6 +50,10 @@ public class Bomb : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log(
+            $"Bomb hit {other.collider.name}, " +
+            $"layer: {LayerMask.LayerToName(other.gameObject.layer)}"
+        );
         SoundManager.Instance.CreateSoundAtPosition(clinkSound, other.transform.position);
     }
 }

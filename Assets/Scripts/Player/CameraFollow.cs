@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private GameObject target;
+    [SerializeField] public GameObject target;
     [SerializeField] private float baseFollowSpeed = 10.0f;
     [SerializeField] private float returnToBaseFollowSpeed = 2.0f;
     [SerializeField] private float defaultCameraShakeSpeed = 0.02f;
