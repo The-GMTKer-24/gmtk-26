@@ -107,6 +107,7 @@ public class GnomeAI : MonoBehaviour
 
     private void Update()
     {
+        _spriteRenderer.sortingOrder = Mathf.RoundToInt(gameObject.transform.position.y * -100 + 100000);
         UpdateAnimation();
     }
 

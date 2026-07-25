@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -2921621349321927094}
   - component: {fileID: -2716732152494494810}
   - component: {fileID: 8691236055437006072}
+  - component: {fileID: 8706790930932356086}
   m_Layer: 8
   m_Name: Gnome Shovel
   m_TagString: Untagged
@@ -185,3 +186,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.3, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &8706790930932356086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6960090236962132424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c17ca866a2c418aa1d226b3c052834f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity.SortingOrderHandler
+  spriteRenderer: {fileID: -2716732152494494810}
