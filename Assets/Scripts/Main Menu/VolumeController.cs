@@ -30,14 +30,14 @@ namespace Main_Menu
         public void ChangeMusicVolume()
         {
             musicVolume = musicVolumeSlider.value;
-            musicAudio.audioMixer.SetFloat("Volume", musicVolume);
+            musicAudio.audioMixer.SetFloat("musicVol", musicVolume);
             PlayerPrefs.SetFloat("MusicVolume", musicVolume);
         }
 
         public void ChangeGameVolume()
         {
             gameVolume = gameVolumeSlider.value;
-            gameAudio.audioMixer.SetFloat("Volume", gameVolume);
+            gameAudio.audioMixer.SetFloat("sfxVol", gameVolume);
             PlayerPrefs.SetFloat("GameVolume", gameVolume);
         }
 

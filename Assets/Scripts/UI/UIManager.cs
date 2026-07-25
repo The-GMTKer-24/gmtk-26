@@ -1,12 +1,15 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UI
 {
     public class UIManager : MonoBehaviour
     {
         public static UIManager Instance;
+        
+        [SerializeField] private string mainMenu = "Main Menu";
 
         private bool paused = false;
         private UIContext? ctx = null;
@@ -49,6 +52,11 @@ namespace UI
             #else
                 Application.Quit();
             #endif
+        }
+
+        public void ExitToMenu()
+        {
+            SceneManager.LoadScene(mainMenu);
         }
     }
     
