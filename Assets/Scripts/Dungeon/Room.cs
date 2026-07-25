@@ -19,6 +19,7 @@ public class Room : MonoBehaviour
     [SerializeField] private int minDoors;
     [SerializeField] private int maxDoors;
     [SerializeField] private EnemyPool enemyPool;
+    [SerializeField] private List<Transform> spawnLocations;
     [SerializeField] private float spawnDistance;
 
     private Door northDoorComponent;
@@ -247,7 +248,7 @@ public class Room : MonoBehaviour
 
             Vector2 spawnPosition =
                 Random.insideUnitCircle * spawnDistance +
-                (Vector2)transform.position;
+                (Vector2)spawnLocations[Random.Range(0,spawnLocations.Count)].position;
 
             GameObject spawned = Instantiate(
                 toSpawn.enemy,
