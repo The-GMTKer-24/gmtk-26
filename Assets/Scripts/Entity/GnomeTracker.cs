@@ -43,7 +43,7 @@ namespace Entity
 
         public void AddGnome(GnomeAI gnomeAI, HashSet<String> tags)
         {
-            print("AddGnome: " + gnomeAI.ToString() + ", " + gnomeAI.gameObject.GetEntityId());
+            //print("AddGnome: " + gnomeAI.ToString() + ", " + gnomeAI.gameObject.GetEntityId());
             _gnomeSet.Add(gnomeAI.gameObject.GetEntityId());
             _gnomes.Add(gnomeAI.gameObject.GetEntityId(), gnomeAI);
             
@@ -103,7 +103,7 @@ namespace Entity
 
         public bool DoesGnomeExist(EntityId entityId)
         {
-            print("DoesGnomeExist: " + _gnomeSet.Count + ", " + _gnomes.Count + ", " + entityId.ToString());
+            //print("DoesGnomeExist: " + _gnomeSet.Count + ", " + _gnomes.Count + ", " + entityId.ToString());
             return _gnomes.ContainsKey(entityId);
         }
     }
