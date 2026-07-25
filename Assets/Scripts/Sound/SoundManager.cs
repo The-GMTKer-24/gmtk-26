@@ -15,7 +15,6 @@ public class SoundManager : MonoBehaviour
         }
     }
     
-    
     private Dictionary<GameObject, int> activeSounds = new();
 
     [SerializeField] private int maxInstancesPerSound = 5;

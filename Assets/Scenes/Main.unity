@@ -1421,6 +1421,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 823347871}
+    - target: {fileID: 8833120265944339782, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
+      propertyPath: renderingVolume
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f9215ea0144899419cfbc0957140d3f, type: 2}
     - target: {fileID: 9002676389333899587, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 24.600006

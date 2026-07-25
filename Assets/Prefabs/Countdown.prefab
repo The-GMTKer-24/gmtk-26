@@ -293,6 +293,13 @@ MonoBehaviour:
     m_ColorSpace: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  renderingVolume: {fileID: 0}
+  mainMixer: {fileID: 24300002, guid: bc52d85a0463a8d4192c95fe3af3d0a2, type: 2}
+  timeLowWhenLessThanThis: 20
+  almostDeadTime: 10
+  duckSpeed: 10
+  moveToCenterSpeed: 0.02
+  returnFromCenterSpeed: 10
   tickUpSound: {fileID: 3734932179283865293, guid: eb9499cdce413f04c8cd0d6766f27161, type: 3}
   tickDownSound: {fileID: 3734932179283865293, guid: 0522434eb8853eb4987d3a717557434b, type: 3}
   resetClockSpeed: 7
