@@ -16,7 +16,16 @@ namespace Player
         Speed,
         DashPower,
         DashCooldown,
-        BulletBounces
+        BulletBounces,
+        MaxShotgunAmmo,
+        TimeBetweenShotgunShots,
+        ShotgunPellets,
+        ShotgunSpread,
+        ShotgunBulletSpeed,
+        ShotgunRecoil,
+        ShotgunReloadSpeed,
+        ShotgunMaxBullets,
+        ShotgunDamageFactor
     }
 
     public enum ModifierType

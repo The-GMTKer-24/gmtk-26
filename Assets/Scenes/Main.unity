@@ -1426,6 +1426,7 @@ GameObject:
   - component: {fileID: 823347874}
   - component: {fileID: 823347875}
   - component: {fileID: 823347876}
+  - component: {fileID: 823347877}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1601,6 +1602,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 823347877}
+        m_TargetAssemblyTypeName: Player.Shotgun, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 835979f0-10bd-4a0c-80bc-4c372f60d0c3
     m_ActionName: 'Player/Primary Attack[/Mouse/leftButton]'
   - m_PersistentCalls:
@@ -1627,6 +1640,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 823347872}
         m_TargetAssemblyTypeName: Player.PlayerShoot, Assembly-CSharp
+        m_MethodName: Reload
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 823347877}
+        m_TargetAssemblyTypeName: Player.Shotgun, Assembly-CSharp
         m_MethodName: Reload
         m_Mode: 0
         m_Arguments:
@@ -1667,7 +1692,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823347865}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0ceeda3dbab45b98f0cc0532e233133, type: 3}
   m_Name: 
@@ -1747,6 +1772,33 @@ MonoBehaviour:
     - stat: 9
       baseValue: 0
       wholeNumber: 1
+    - stat: 10
+      baseValue: 5
+      wholeNumber: 1
+    - stat: 11
+      baseValue: 1
+      wholeNumber: 0
+    - stat: 12
+      baseValue: 10
+      wholeNumber: 1
+    - stat: 13
+      baseValue: 45
+      wholeNumber: 0
+    - stat: 14
+      baseValue: 25
+      wholeNumber: 0
+    - stat: 15
+      baseValue: 2000
+      wholeNumber: 0
+    - stat: 16
+      baseValue: 3
+      wholeNumber: 0
+    - stat: 17
+      baseValue: 8
+      wholeNumber: 0
+    - stat: 18
+      baseValue: 0.3
+      wholeNumber: 0
 --- !u!82 &823347876
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1844,6 +1896,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &823347877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823347865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650e343394184a57bb3f1a915f8e7ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.Shotgun
+  bullet: {fileID: 1970712963920005506, guid: c3c4e92357b52ee4980080716c9aac79, type: 3}
 --- !u!1 &860931578
 GameObject:
   m_ObjectHideFlags: 0
