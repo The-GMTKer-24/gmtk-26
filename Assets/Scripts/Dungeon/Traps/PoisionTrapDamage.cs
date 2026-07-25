@@ -28,7 +28,8 @@ public class PoisionTrapDamage : MonoBehaviour
 
     private bool CheckIfInLos(Collider2D other)
     {
-        GameObject colliderGameObject = Physics2D.Raycast(transform.position, other.transform.position - transform.position,~Physics.IgnoreRaycastLayer).collider.gameObject;
+        GameObject colliderGameObject = Physics2D.Raycast(transform.position,  transform.position - other.transform.position,~Physics.IgnoreRaycastLayer).collider?.gameObject;
+        if (colliderGameObject == null) return false;
         print($"Checking los against {other.name} found {colliderGameObject.name}");
         return colliderGameObject ==
                other.gameObject;
@@ -38,7 +39,7 @@ public class PoisionTrapDamage : MonoBehaviour
     {
         if (times.ContainsKey(other.gameObject.GetEntityId()))
         {
-            if (CheckIfInLos(other))
+            if (!CheckIfInLos(other))
             {
                 times.Remove(other.gameObject.GetEntityId());
                 return;
