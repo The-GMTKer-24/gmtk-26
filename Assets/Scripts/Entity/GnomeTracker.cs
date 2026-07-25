@@ -12,6 +12,8 @@ namespace Entity
     {
         public static GnomeTracker Instance;
         
+        [SerializeField] public int gnomeCount; // Readout only
+        
         private SortedSet<EntityId> _gnomeSet = new SortedSet<EntityId>();
         private Dictionary<String, SortedSet<EntityId>> _gnomeDict = new();
         private Dictionary<EntityId, GnomeAI> _gnomes = new();
@@ -49,6 +51,8 @@ namespace Entity
                 if (!_gnomeDict.ContainsKey(gnomeTag)) _gnomeDict.Add(gnomeTag, new SortedSet<EntityId>());
                 _gnomeDict[gnomeTag].Add(gnomeAI.GetEntityId());
             }
+            
+            gnomeCount = _gnomeSet.Count;
         }
 
         public void AddGnome(GnomeAI gnomeAI)
@@ -66,6 +70,8 @@ namespace Entity
             
             _gnomeSet.Remove(gnomeAI.GetEntityId());
             _gnomes.Remove(gnomeAI.GetEntityId());
+            
+            gnomeCount = _gnomeSet.Count;
         }
 
         public SortedSet<EntityId> GetGnomeIds(String tag)

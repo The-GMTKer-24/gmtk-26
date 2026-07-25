@@ -15,6 +15,7 @@ public class GnomeAI : MonoBehaviour
     [SerializeField] public float forceDropoff = 0.2f;
     [SerializeField] private float animationMovementThreshold = 0.05f;
     [SerializeField] private float directionHysteresis = 0.08f;
+    [SerializeField] private float dispersionRadius = 5f;
 
     [Header("AI Update Rates")]
     [Tooltip("How often the gnome re-evaluates every available attack.")]
@@ -316,7 +317,7 @@ public class GnomeAI : MonoBehaviour
         float currentDistance = Vector2.Distance(playerPosition, _rb.position);
 
         float signedApproachStrength =
-            (currentDistance / safeRange - 0.8f) / 0.2f;
+            (currentDistance / safeRange - 0.8f) / 0.4f;
 
         Vector2 toPlayer = playerPosition - _rb.position;
         Vector2 approachDirection = Vector2.zero;
@@ -341,6 +342,8 @@ public class GnomeAI : MonoBehaviour
             attack is IAttackArea
                 ? aoeDecrowdingStrength
                 : constantDecrowdingStrength;
+        
+        //print("ApproachDirection: " + approachDirection + ", DisperseVector: " + _cachedDisperseVector + ", ApproachStrength: " + approachMagnitude + ", DisperseStrength: " + disperseStrength);
 
         Vector2 desiredMovement =
             approachDirection * approachMagnitude +
@@ -365,25 +368,23 @@ public class GnomeAI : MonoBehaviour
     {
         Vector2 separation = Vector2.zero;
 
-        foreach (GameObject hit in attack.GetAllInRange())
+        foreach (GnomeAI gnomeAI in GnomeTracker.Instance.GetGnomeEnumerator())
         {
-            if (hit == null || hit == gameObject)
-            {
-                continue;
-            }
+            if (gnomeAI.gameObject.Equals(this.gameObject)) continue;
+            if (Vector2.SqrMagnitude(gnomeAI.gameObject.transform.position - this.gameObject.transform.position) >= dispersionRadius * dispersionRadius) continue;
+            GameObject hit = gnomeAI.gameObject;
 
-            GnomeAI otherGnome =
-                GnomeTracker.Instance.GetGnome(hit.GetEntityId());
-
-            if (otherGnome == null)
+            if (!hit || hit == gameObject)
             {
                 continue;
             }
 
             Vector2 awayFromGnome =
-                _rb.position - (Vector2)otherGnome.transform.position;
+                _rb.position - (Vector2)gnomeAI.transform.position;
             
             float awayFromGnomeSqrMag = awayFromGnome.sqrMagnitude;
+            
+            //print("Away: " + awayFromGnome + ", " + awayFromGnomeSqrMag);
 
             if (awayFromGnomeSqrMag > 0.0001f)
             {
@@ -395,6 +396,8 @@ public class GnomeAI : MonoBehaviour
             separation.sqrMagnitude > 0.0001f
                 ? separation.normalized
                 : Vector2.zero;
+        
+        //print("Refreshed: " + separation + " to " + _cachedDisperseVector);
     }
 
     private void UpdateAnimation()
@@ -447,7 +450,7 @@ public class GnomeAI : MonoBehaviour
 
     private void ApplyFacingDirection()
     {
-        if (_animator == null ||
+        if (!_animator ||
             _appliedFacingDirection == _facingDirection)
         {
             return;
