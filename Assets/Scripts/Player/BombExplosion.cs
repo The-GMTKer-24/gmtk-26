@@ -8,12 +8,14 @@ public class BombExplosion : MonoBehaviour{
         Invoke(nameof(Teardown), .4f);
         Invoke(nameof(DisableParticles), .2f);
     }
+    
+    public float poisionDamage;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<TimeEntity>().DealDamage(40);
+            other.gameObject.GetComponent<TimeEntity>().DealDamage(poisionDamage);
         }
     }
 

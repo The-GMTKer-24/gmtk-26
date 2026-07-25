@@ -1245,11 +1245,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 425.12573
+      value: 425.12576
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -174.99997
+      value: -175
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1876,6 +1876,21 @@ MonoBehaviour:
       wholeNumber: 0
     - stat: 18
       baseValue: 0.3
+      wholeNumber: 0
+    - stat: 19
+      baseValue: 22
+      wholeNumber: 0
+    - stat: 20
+      baseValue: 5
+      wholeNumber: 1
+    - stat: 21
+      baseValue: 35
+      wholeNumber: 0
+    - stat: 22
+      baseValue: 0.5
+      wholeNumber: 0
+    - stat: 23
+      baseValue: 3
       wholeNumber: 0
 --- !u!82 &823347876
 AudioSource:

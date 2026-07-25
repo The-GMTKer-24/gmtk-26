@@ -58,14 +58,14 @@ namespace Player
 
 
             currentBullets -= 1;
-            lastShotTimer = Player.Instance.PlayerModifier.Evaluate(PlayerStat.TimeBetweenShots);
+            lastShotTimer = Player.Instance.PlayerModifier.Evaluate(PlayerStat.TimeBetweenBombs);
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Vector3 worldSpace = PlayerManager.Instance.playerCamera.ScreenToWorldPoint(mousePosition);
             worldSpace.z = 0;
             var b = Instantiate(bomb, transform.position, Quaternion.identity);
             b.velocity = (worldSpace - transform.position).normalized *
-                         Player.Instance.PlayerModifier.Evaluate(PlayerStat.BulletSpeed);
-            b.damage = Player.Instance.PlayerModifier.Evaluate(PlayerStat.Damage);
+                         Player.Instance.PlayerModifier.Evaluate(PlayerStat.BombSpeed);
+            b.damage = Player.Instance.PlayerModifier.Evaluate(PlayerStat.BombDamage);
             audioSource.Play();
         }
 
@@ -92,8 +92,8 @@ namespace Player
         private void Reload()
         {
             if (reloadTimer > 0) return;
-            reloadTimer = Player.Instance.PlayerModifier.Evaluate(PlayerStat.ReloadSpeed);
-            currentBullets = Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBullets);
+            reloadTimer = Player.Instance.PlayerModifier.Evaluate(PlayerStat.BombReloadSpeed);
+            currentBullets = Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBombAmmo);
         }
 
         public int GetBullets()
@@ -103,12 +103,12 @@ namespace Player
 
         public int GetMaxBullets()
         {
-            return Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBullets);
+            return Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBombAmmo);
         }
 
         public float GetReloadPercentage()
         {
-            return reloadTimer / Player.Instance.PlayerModifier.Evaluate(PlayerStat.ReloadSpeed);
+            return reloadTimer / Player.Instance.PlayerModifier.Evaluate(PlayerStat.BombReloadSpeed);
         }
         
         public float GetGunReadyToFirePercentage()
