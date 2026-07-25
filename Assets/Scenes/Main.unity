@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc05dbf82df459bb11e6104b108d38e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  maxInstancesPerSound: 2
 --- !u!4 &19697562
 Transform:
   m_ObjectHideFlags: 0

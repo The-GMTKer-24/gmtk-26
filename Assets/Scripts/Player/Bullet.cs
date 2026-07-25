@@ -13,6 +13,8 @@ namespace Player
         public int bounces;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private GameObject deathParticles;
+        [SerializeField] private GameObject hitWallSound;
+        [SerializeField] private GameObject hitEnemySound;
         public void Start()
         {
             rb.linearVelocity = velocity;
@@ -31,6 +33,8 @@ namespace Player
                 {
                     Player.Instance.TimeEntity.Heal(toHeal);
                 }
+
+                SoundManager.Instance.CreateSoundAtPosition(hitEnemySound, transform.position);
             }
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             if (bounces > 0)
@@ -42,6 +46,7 @@ namespace Player
             else
             {
                 Destroy(gameObject);
+                SoundManager.Instance.CreateSoundAtPosition(hitWallSound, transform.position);
             }
         }
     }

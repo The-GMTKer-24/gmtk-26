@@ -113,6 +113,8 @@ MonoBehaviour:
   radius: 0
   stoppingForce: 56.6
   explosionParticles: {fileID: 9097299396504398017, guid: 42441a5de0deb6f48824029f850c899d, type: 3}
+  clinkSound: {fileID: 3734932179283865293, guid: fceb7f83efaec4b4580ce78d3b9995ca, type: 3}
+  boomSound: {fileID: 3734932179283865293, guid: 6760a4b4bd0f69b4498adc4923ca31cb, type: 3}
   velocity: {x: 0, y: 0}
   speed: 0
   damage: 0
