@@ -1,4 +1,5 @@
 using System;
+using System.Transactions;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -6,9 +7,9 @@ namespace Dungeon
 {
     public class Door : MonoBehaviour
     {
-        [SerializeField] private Sprite open;
-        [SerializeField] private Sprite closed;
-        [SerializeField] private Sprite noDoor;
+        [SerializeField] public Sprite open;
+        [SerializeField] public Sprite closed;
+        [SerializeField] public Sprite noDoor;
 
         [SerializeField] private SpriteRenderer rend;
         [SerializeField] private BoxCollider2D col;
@@ -45,7 +46,10 @@ namespace Dungeon
             rend.sprite = noDoor;
             col.enabled = true;
             Hidden = true;
-            shadowCaster.enabled = true;
+            if (shadowCaster)
+            {
+                shadowCaster.enabled = true;
+            }
         }
     }
 }
