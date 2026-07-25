@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour
     /// <param name="prefab"></param>
     /// <param name="position"></param>
     /// <returns></returns>
-    public AudioSource CreateSoundAtPosition(GameObject prefab, Vector3 position)
+    public AudioSource CreateSoundAtPosition(GameObject prefab, Vector3 position, float volume = -1f)
     {
         // Check current count
         if (activeSounds.TryGetValue(prefab, out int count))
@@ -60,6 +60,11 @@ public class SoundManager : MonoBehaviour
             source.Play();
         }
 
+        if (volume > 0f)
+        {
+            source.volume = volume;
+        }
+
         // Remove count when destroyed
         StartCoroutine(RemoveAfterPlaying(placedSound, prefab, source.clip.length));
         
@@ -80,9 +85,9 @@ public class SoundManager : MonoBehaviour
     /// Spawn a sound prefab with no position provided, will be played entirely 2D.
     /// </summary>
     /// <param name="prefab">Prefab with audio source component</param>
-    public void CreateSound(GameObject prefab)
+    public void CreateSound(GameObject prefab, float volume = -1f)
     {
-        AudioSource source = CreateSoundAtPosition(prefab, Vector3.zero);
+        AudioSource source = CreateSoundAtPosition(prefab, Vector3.zero, volume);
 
         if (source == null)
         {

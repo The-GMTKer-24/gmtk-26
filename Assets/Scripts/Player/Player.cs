@@ -44,6 +44,9 @@ namespace Player
         public void OnDestroy()
         {
             PlayerManager.Instance.LoadSceneAfterDelay(mainMenu, delay);
+            
+            countdownClock.TickPulse();
+            countdownClock.TickSound();
         }
 
         public void FixedUpdate()

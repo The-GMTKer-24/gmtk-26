@@ -8,6 +8,7 @@ public class SelfExplosion : GenericAttack, IAttackArea
 {
     [SerializeField] private GameObject explosion;
     [SerializeField] private GameObject explosionSound;
+    [SerializeField] private GameObject boomGnomeAttack;
     
     private TimeEntity _timeEntity;
     private StaminaEntity _staminaEntity;
@@ -52,7 +53,6 @@ public class SelfExplosion : GenericAttack, IAttackArea
             
             bool success = true;
 
-                _timeEntity.DealDamage(_timeEntity.GetTime());
 
             if (staminaCost != 0)
             {
@@ -66,7 +66,8 @@ public class SelfExplosion : GenericAttack, IAttackArea
             {
                 print (GnomeTracker.Instance.GetGnome(target.GetEntityId()));
                 int layer = GnomeTracker.Instance.GetGnome(this.gameObject.GetEntityId()).GetSortingOrder();
-                targetTimeEntity.DealDamage(damage);
+                // targetTimeEntity.DealDamage(damage);
+                SoundManager.Instance.CreateSoundAtPosition(boomGnomeAttack, transform.position);
                 Invoke(nameof(Explode),.5f);
             }
         }
@@ -74,7 +75,8 @@ public class SelfExplosion : GenericAttack, IAttackArea
 
     private void Explode()
     {
+        Instantiate(explosion,transform.position,Quaternion.identity);
         SoundManager.Instance.CreateSoundAtPosition(explosionSound, transform.position);
-        Instantiate(explosion);
+        Destroy(gameObject);
     }
 }

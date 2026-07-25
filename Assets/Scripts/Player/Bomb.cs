@@ -34,7 +34,7 @@ public class Bomb : MonoBehaviour
         if (currentTime <= 0)
         {
             GameObject obj = Instantiate(explosionParticles, transform.position, transform.rotation);
-            obj.GetComponent<BombExplosion>().poisionDamage = damage;
+            obj.GetComponent<BombExplosion>().explosionDamage = damage;
             SoundManager.Instance.CreateSoundAtPosition(boomSound, transform.position);
             Destroy(gameObject);
         }

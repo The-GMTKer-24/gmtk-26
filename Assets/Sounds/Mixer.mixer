@@ -14,6 +14,26 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &-1794497894753048008
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 812b6b183a33ce64fbd57c7bd8872e87
+  m_EffectName: ParamEQ
+  m_MixLevel: 8c9077f9e8b0cf448a34bff35604ff19
+  m_Parameters:
+  - m_ParameterName: Center freq
+    m_GUID: 66c516bb738ad8c469e0280b74eb0521
+  - m_ParameterName: Octave range
+    m_GUID: 9c0e022cc2773c340ab7fce9e6edf7cc
+  - m_ParameterName: Frequency gain
+    m_GUID: 9c3321e699a0e79438c4abb5eda3cf38
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -30,10 +50,10 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
-  - guid: 62825ceb051f02440b5877cae4e8e210
-    name: eqDuck
   - guid: 9563e2f3d1bd788438ef2dd4bfdc2d0b
     name: musicVol
+  - guid: 9c3321e699a0e79438c4abb5eda3cf38
+    name: eqDuck
   - guid: 71699d24606fb4c41a89846e61d9ff6a
     name: sfxVol
   m_AudioMixerGroupViews:
@@ -94,7 +114,10 @@ AudioMixerSnapshotController:
     855a49242561f70448e63ca1d6aff33c: 3876.5547
     71699d24606fb4c41a89846e61d9ff6a: -0.02577656
     869794d4ba607a249bc35a0d90fbcf75: 3777
+    9c3321e699a0e79438c4abb5eda3cf38: 1
+    66c516bb738ad8c469e0280b74eb0521: 3267
     62825ceb051f02440b5877cae4e8e210: 1
+    9c0e022cc2773c340ab7fce9e6edf7cc: 3.63
     918bf5ad13b9cac4dbc19e933f120e6c: 1
     f662866e5d0086a45b505b3f89d2ca84: 3.5
     8c4b2c7f94d7d6945898184c42058c87: 3.5
@@ -148,6 +171,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -5683791009986443059}
+  - {fileID: -1794497894753048008}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0

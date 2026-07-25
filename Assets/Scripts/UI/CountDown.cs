@@ -24,52 +24,49 @@ namespace UI
         [SerializeField] private float duckSpeed = 10f;
         [SerializeField] private float moveToCenterSpeed = 0.02f;
         [SerializeField] private float returnFromCenterSpeed = 10f;
+        [SerializeField] private float baseTickVolume = 0.1f;
         
         [Header("Grow when time tick")]
         [SerializeField] private GameObject tickUpSound;
         [SerializeField] private GameObject tickDownSound;
         [SerializeField] private float resetClockSpeed = 7f;
         [SerializeField] private float growMultiplier = 1.1f;
+        [SerializeField] private float newBaseScaleWhenLosing = 2f;
         
         [Header("Ticking Arrow")]
         [SerializeField] private RectTransform tickingArrow;
         [SerializeField] private float tickToNewPositionSpeed = 10.0f;
         
-        private float _currentArrowAngle = 0f;
-        private int _currentSeconds = -1;
-        private int _previousSeconds = -1;
+        private float currentArrowAngle = 0f;
 
-        private int _soundSeconds = -1;
-        private int _previousSoundSeconds = -1;
+        private Transform parentUI;
+        private Vector3 parentUIOriginalScale;
+        private Vector3 currentParentUIScale;
+        private bool ticked;
+
+        private float currentDuckedAudioValue = 1f;
+        private Vignette vignette;
+
+        private Vector3 startingPosition;
         
-        private float _soundTimer = 0f;
-        private Transform _parentUI;
-        private Vector3 _parentUIOriginalScale;
-        private bool _ticked;
-
-        private float _currentDuckedAudioValue = 1f;
-        private Vignette _vignette;
-
-        private Vector3 _startingPosition;
-        
-        private SoundManager _soundManager;
+        private SoundManager soundManager;
         
         public void Start()
         {
-            _parentUI = transform.parent;
-            _parentUIOriginalScale = _parentUI.localScale;
-            _currentArrowAngle = timeToDegrees(player.GetTime());
+            parentUI = transform.parent;
+            parentUIOriginalScale = parentUI.localScale;
+            currentArrowAngle = timeToDegrees(player.GetTime());
             
-            _startingPosition = _parentUI.localPosition;
+            startingPosition = parentUI.localPosition;
             
-            _soundManager = SoundManager.Instance;
+            soundManager = SoundManager.Instance;
             
             // get the vignette effect
             for (int i = 0; i < renderingVolume.components.Count; i++)
             {
                 if (renderingVolume.components[i].name == "Vignette")
                 {
-                    _vignette = (Vignette)renderingVolume.components[i];
+                    vignette = (Vignette)renderingVolume.components[i];
                 }
             }
         }
@@ -82,42 +79,46 @@ namespace UI
             if (player)
             {
                 text.color = gradient.Evaluate(1 - (player.GetTime() / player.GetMaxTime()));
-                text.SetText(TimeSpan.FromSeconds(time).ToString("m\\:ss"));    
+                text.SetText(TimeSpan.FromSeconds(time).ToString("m\\:ss"));
             }
 
             // Duck the EQ when the time is low
             float duckedAudioValue = Mathf.Clamp(time / timeLowWhenLessThanThis, 0f, 1f);
-            _currentDuckedAudioValue = Mathf.Lerp(_currentDuckedAudioValue, duckedAudioValue, duckSpeed * Time.unscaledDeltaTime);
-            mainMixer.audioMixer.SetFloat("eqDuck", _currentDuckedAudioValue);
-            _vignette.intensity.value = (-1 * _currentDuckedAudioValue) + 1;
+            currentDuckedAudioValue = Mathf.Lerp(currentDuckedAudioValue, duckedAudioValue, duckSpeed * Time.unscaledDeltaTime);
+            mainMixer.audioMixer.SetFloat("eqDuck", currentDuckedAudioValue);
+            vignette.intensity.value = (-1 * currentDuckedAudioValue) + 1;
             
             if (time < almostDeadTime)
             {
-                _parentUI.localPosition = Vector3.Lerp(_parentUI.localPosition, new Vector3(0, 0, transform.position.z), moveToCenterSpeed * Time.deltaTime);
+                parentUI.localPosition = Vector3.Lerp(parentUI.localPosition, new Vector3(0, 0, transform.position.z), moveToCenterSpeed * Time.deltaTime);
+                
+                currentParentUIScale = Vector3.Lerp(currentParentUIScale, new Vector3(newBaseScaleWhenLosing * parentUIOriginalScale.x, newBaseScaleWhenLosing * parentUIOriginalScale.y, parentUIOriginalScale.z), moveToCenterSpeed * Time.deltaTime);
             }
             else
             {
-                _parentUI.localPosition = Vector3.Lerp(_parentUI.localPosition, _startingPosition, returnFromCenterSpeed * Time.deltaTime);
+                parentUI.localPosition = Vector3.Lerp(parentUI.localPosition, startingPosition, returnFromCenterSpeed * Time.deltaTime);
+                
+                currentParentUIScale = Vector3.Lerp(currentParentUIScale, parentUIOriginalScale, returnFromCenterSpeed * Time.deltaTime);
             }
             
             // Rotate arrow
-            _currentArrowAngle = Mathf.Lerp(_currentArrowAngle, timeToDegrees(time), tickToNewPositionSpeed * Time.unscaledDeltaTime);
-            tickingArrow.localRotation = Quaternion.Euler(0f, 0f, _currentArrowAngle);
+            currentArrowAngle = Mathf.Lerp(currentArrowAngle, timeToDegrees(time), tickToNewPositionSpeed * Time.unscaledDeltaTime);
+            tickingArrow.localRotation = Quaternion.Euler(0f, 0f, currentArrowAngle);
             
             // Lerp back to correct scaling
-            _parentUI.localScale = Vector3.Lerp(_parentUI.localScale, _parentUIOriginalScale, resetClockSpeed * Time.unscaledDeltaTime);
+            parentUI.localScale = Vector3.Lerp(parentUI.localScale, currentParentUIScale, resetClockSpeed * Time.unscaledDeltaTime);
         }
 
         public void TickSound()
         {
-            _soundManager.CreateSound(_ticked ? tickUpSound : tickDownSound);
-            _ticked = !_ticked;
+            soundManager.CreateSound(ticked ? tickUpSound : tickDownSound);
+            ticked = !ticked;
         }
 
         // Grows the clock to then shrink back down
         public void TickPulse()
         {
-            _parentUI.localScale *= growMultiplier;
+            parentUI.localScale *= growMultiplier;
         }
 
         private float timeToDegrees(float time)
