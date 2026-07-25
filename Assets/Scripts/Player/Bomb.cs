@@ -29,6 +29,12 @@ public class Bomb : MonoBehaviour
         Vector2 v = rb.linearVelocity;
 
         currentTime -= Time.fixedDeltaTime;
+        if (currentTime <= 0)
+        {
+            Instantiate(explosionParticles, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+        
         if (v.sqrMagnitude < 0.001f)
         {
             rb.linearVelocity = Vector2.zero;
@@ -36,11 +42,6 @@ public class Bomb : MonoBehaviour
         }
 
         rb.AddForce(-v.normalized * stoppingForce);
-        if (currentTime <= 0)
-        {
-            Instantiate(explosionParticles, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
 
     }
 }
