@@ -41,5 +41,7 @@ namespace UI
         {
             return -6 * player.GetTime();
         }
+        
+        
     }
 }
