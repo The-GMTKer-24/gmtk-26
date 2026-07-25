@@ -8,7 +8,7 @@ namespace Entity
         [SerializeField] private SpriteRenderer spriteRenderer;
 
         private const float Factor = 100f;
-        private const int Offset = 5000;
+        private const int Offset = 0;
 
         private void Awake()
         {
@@ -16,6 +16,8 @@ namespace Entity
             {
                 spriteRenderer = GetComponent<SpriteRenderer>();
             }
+
+            spriteRenderer.sortingLayerName = "Game Objects";
         }
         
         private void Update()
