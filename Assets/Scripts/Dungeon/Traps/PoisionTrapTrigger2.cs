@@ -10,10 +10,13 @@ public class PoisionTrapTrigger2 : MonoBehaviour
     [SerializeField] public Sprite untriggeredSprite;
     [SerializeField] private GameObject particleObject;
     [SerializeField] private GameObject triggerParticle;
+    [SerializeField] public GameObject poisonTrapSoundEffect;
     
+    private SoundManager _soundManager;
     
     private void Start()
     {
+        _soundManager = SoundManager.Instance;
         gameObject.GetComponent<SpriteRenderer>().sprite = untriggeredSprite;
     }
 
@@ -29,7 +32,8 @@ public class PoisionTrapTrigger2 : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = triggeredSprite;
             particleObject.SetActive(true);
             triggerParticle.SetActive(true);
-            gameObject.GetComponent<AudioSource>().Play();
+            // Play sound
+            _soundManager.CreateSoundAtPosition(poisonTrapSoundEffect, transform.position);
             hasTriggered = true;
             Invoke(nameof(ShutdownParticles),8f);
         }

@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Trap
   triggeredSprite: {fileID: -3885095532336870388, guid: 7d9500841fc4c514c9528e993bdea6fc, type: 3}
   untriggeredSprite: {fileID: -457594167591024947, guid: 764135adefb1ea84b9df52434f3b75a0, type: 3}
+  timeTrapSound: {fileID: 3734932179283865293, guid: 3e1b995c9124fbf4db456b1698f63915, type: 3}
 --- !u!82 &6474539993775749467
 AudioSource:
   m_ObjectHideFlags: 0

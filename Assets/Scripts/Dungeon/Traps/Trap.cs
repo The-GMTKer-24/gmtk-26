@@ -8,9 +8,13 @@ public class Trap : MonoBehaviour
 
     [SerializeField] public Sprite triggeredSprite;
     [SerializeField] public Sprite untriggeredSprite;
+    [SerializeField] public GameObject timeTrapSound;
+    
+    private SoundManager _soundManager;
 
     private void Start()
     {
+        _soundManager = SoundManager.Instance;
         gameObject.GetComponent<SpriteRenderer>().sprite = untriggeredSprite;
     }
 
@@ -27,7 +31,7 @@ public class Trap : MonoBehaviour
             time.DealDamage( (float) Math.Round( time.GetTime()/4));
             print("Player!");
             gameObject.GetComponent<SpriteRenderer>().sprite = triggeredSprite;
-            gameObject.GetComponent<AudioSource>().Play();
+            _soundManager.CreateSoundAtPosition(timeTrapSound, transform.position);
             hasTriggered = true;
         }
     }
