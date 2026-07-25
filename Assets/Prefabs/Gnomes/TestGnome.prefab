@@ -232,9 +232,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletAttack
   damage: 4
   range: 10
-  staminaCost: 5
+  staminaCost: 3
   timeCost: 0
-  speed: 20
+  speed: 8
   bulletPrefab: {fileID: 6960090236962132424, guid: 651f525069020e084b930e8b3c016878, type: 3}
 --- !u!61 &7688476764850467404
 BoxCollider2D:
