@@ -109,10 +109,12 @@ namespace Player
         {
             return reloadTimer / Player.Instance.PlayerModifier.Evaluate(PlayerStat.ReloadSpeed);
         }
+        
+        public float GetGunReadyToFirePercentage()
+        {
+            return 1;
+        }
     }
 
-    public float GetGunReadyToFirePercentage()
-    {
-        return 1;
-    }
+
 }
