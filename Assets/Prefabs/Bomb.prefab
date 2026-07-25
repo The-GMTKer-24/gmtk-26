@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a823546fe551f2f45b3e28839c6121bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bomb
-  startingTime: 3
+  startingTime: 0.97
   currentTime: 0
   damageRadius: 4
   radius: 0

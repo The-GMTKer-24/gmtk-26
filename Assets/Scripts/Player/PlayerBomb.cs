@@ -1,32 +1,113 @@
 using Player;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerBomb : MonoBehaviour, IShoot
+namespace Player
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class PlayerBomb : MonoBehaviour, IShoot
     {
-        
-    }
+        [SerializeField] private Bomb bomb;
+        private AudioSource audioSource;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        private int currentBullets;
+        private float reloadTimer;
+        private float lastShotTimer;
 
-    public float GetReloadPercentage()
-    {
-        return 1;
-    }
+        private bool held;
 
-    public int GetBullets()
-    {
-        return 1;
-    }
+        public void Awake()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
 
-    public int GetMaxBullets()
-    {
-        return 1;
+        public void Start()
+        {
+            currentBullets = Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBullets);
+            reloadTimer = 0;
+            lastShotTimer = 0;
+        }
+
+        public void Update()
+        {
+            if (reloadTimer > 0)
+            {
+                reloadTimer -= Time.deltaTime;
+                reloadTimer = Mathf.Max(reloadTimer, 0.0f);
+            }
+
+            if (lastShotTimer > 0)
+            {
+                lastShotTimer -= Time.deltaTime;
+                lastShotTimer = Mathf.Max(lastShotTimer, 0.0f);
+            }
+
+
+            if (reloadTimer > 0 || lastShotTimer > 0)
+            {
+                return;
+            }
+
+            if (currentBullets == 0)
+            {
+                Reload();
+                return;
+            }
+
+            if (!held) return;
+
+
+
+            currentBullets -= 1;
+            lastShotTimer = Player.Instance.PlayerModifier.Evaluate(PlayerStat.TimeBetweenShots);
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+            Vector3 worldSpace = PlayerManager.Instance.playerCamera.ScreenToWorldPoint(mousePosition);
+            worldSpace.z = 0;
+            var b = Instantiate(bomb, transform.position, Quaternion.identity);
+            b.velocity = (worldSpace - transform.position).normalized *
+                         Player.Instance.PlayerModifier.Evaluate(PlayerStat.BulletSpeed);
+            b.damage = Player.Instance.PlayerModifier.Evaluate(PlayerStat.Damage);
+            audioSource.Play();
+        }
+
+        public void OnShoot(InputAction.CallbackContext context)
+        {
+            if (context.started || context.performed)
+            {
+                held = true;
+            }
+            else if (context.canceled)
+            {
+                held = false;
+            }
+
+        }
+
+        public void Reload(InputAction.CallbackContext context)
+        {
+            if (!context.started) return;
+            Reload();
+        }
+
+        private void Reload()
+        {
+            if (reloadTimer > 0) return;
+            reloadTimer = Player.Instance.PlayerModifier.Evaluate(PlayerStat.ReloadSpeed);
+            currentBullets = Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBullets);
+        }
+
+        public int GetBullets()
+        {
+            return currentBullets;
+        }
+
+        public int GetMaxBullets()
+        {
+            return Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBullets);
+        }
+
+        public float GetReloadPercentage()
+        {
+            return reloadTimer / Player.Instance.PlayerModifier.Evaluate(PlayerStat.ReloadSpeed);
+        }
     }
 }
