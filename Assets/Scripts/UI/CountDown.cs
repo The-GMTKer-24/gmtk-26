@@ -41,21 +41,24 @@ namespace UI
         {
             _parentUI = transform.parent;
             _parentUIOriginalScale = _parentUI.localScale;
-            _currentArrowAngle = timeToDegrees();
+            _currentArrowAngle = timeToDegrees(player.GetTime());
             
             _soundManager = SoundManager.Instance;
         }
         
         public void Update()
         {
+            // Clamped time so it doesn't go negative
+            float time = Mathf.Clamp(player.GetTime(), 0, player.GetMaxTime());
+
             if (player)
             {
                 text.color = gradient.Evaluate(1 - (player.GetTime() / player.GetMaxTime()));
-                text.SetText(TimeSpan.FromSeconds(player.GetTime()).ToString("m\\:ss"));    
+                text.SetText(TimeSpan.FromSeconds(time).ToString("m\\:ss"));    
             }
             
             // Rotate arrow
-            _currentArrowAngle = Mathf.Lerp(_currentArrowAngle, timeToDegrees(), tickToNewPositionSpeed * Time.unscaledDeltaTime);
+            _currentArrowAngle = Mathf.Lerp(_currentArrowAngle, timeToDegrees(time), tickToNewPositionSpeed * Time.unscaledDeltaTime);
             tickingArrow.localRotation = Quaternion.Euler(0f, 0f, _currentArrowAngle);
             
             // Lerp back to correct scaling
@@ -74,9 +77,9 @@ namespace UI
             _parentUI.localScale *= growMultiplier;
         }
 
-        private float timeToDegrees()
+        private float timeToDegrees(float time)
         {
-            return -6 * player.GetTime();
+            return -6 * time;
         }
         
         
