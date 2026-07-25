@@ -10,6 +10,8 @@ public class RoomManager : MonoBehaviour
     {
         public Room room;
         [Min(0)] public int weight;
+        [Tooltip("0 = no exact requirement. A positive value requires exactly this many.")]
+        [Min(0)] public int targetCount;
     }
 
     private sealed class GeneratedRoom
@@ -79,6 +81,8 @@ public class RoomManager : MonoBehaviour
 
     private readonly List<Room> rooms = new List<Room>();
     private readonly List<GeneratedRoom> generatedRooms = new List<GeneratedRoom>();
+    private readonly Dictionary<Room, int> placedNormalRoomCounts =
+        new Dictionary<Room, int>();
 
     private Transform generatedRoot;
     private Room exitInstance;
@@ -130,6 +134,7 @@ public class RoomManager : MonoBehaviour
 
             rooms.Clear();
             generatedRooms.Clear();
+            placedNormalRoomCounts.Clear();
             exitInstance = null;
 
             Transform attemptRoot = new GameObject($"Generated Dungeon [{attemptSeed}]").transform;
@@ -176,7 +181,8 @@ public class RoomManager : MonoBehaviour
 
         while (rooms.Count < maxRoomTarget && safetyCounter-- > 0)
         {
-            if (!MinimumDoorCountsAreStillPossible())
+            if (!MinimumDoorCountsAreStillPossible() ||
+                !TargetRoomCountsAreStillPossible())
             {
                 return false;
             }
@@ -219,7 +225,71 @@ public class RoomManager : MonoBehaviour
 
         return safetyCounter > 0 && ValidateFinishedLayout();
     }
+    private int GetPlacedNormalRoomCount(Room prefab)
+    {
+        if (prefab == null)
+        {
+            return 0;
+        }
 
+        return placedNormalRoomCounts.TryGetValue(prefab, out int count)
+            ? count
+            : 0;
+    }
+
+    private void RecordNormalRoomPlacement(Room prefab)
+    {
+        if (prefab == null)
+        {
+            return;
+        }
+
+        placedNormalRoomCounts.TryGetValue(prefab, out int currentCount);
+        placedNormalRoomCounts[prefab] = currentCount + 1;
+    }
+
+    private int GetRemainingTargetRoomCount()
+    {
+        int remaining = 0;
+
+        if (roomChances == null)
+        {
+            return remaining;
+        }
+
+        foreach (RoomChance chance in roomChances)
+        {
+            if (chance.room == null || chance.targetCount <= 0)
+            {
+                continue;
+            }
+
+            int placedCount = GetPlacedNormalRoomCount(chance.room);
+
+            remaining += Mathf.Max(
+                0,
+                chance.targetCount - placedCount);
+        }
+
+        return remaining;
+    }
+
+    private int GetRemainingNormalRoomSlots()
+    {
+        // One slot must remain reserved for the exit until it is placed.
+        int reservedExitSlots = exitInstance == null ? 1 : 0;
+
+        return maxRoomTarget -
+               rooms.Count -
+               reservedExitSlots;
+    }
+
+    private bool TargetRoomCountsAreStillPossible()
+    {
+        return GetRemainingTargetRoomCount() <=
+               GetRemainingNormalRoomSlots();
+    }
+    
     private bool TryForcePlaceExit(System.Random random, Transform root)
     {
         List<DoorSocket> exitSockets = GetPreferredOpenSockets(exitOnly: true);
@@ -237,49 +307,90 @@ public class RoomManager : MonoBehaviour
     }
 
     private bool TryPlaceWeightedNormalRoom(
-        DoorSocket socket,
-        System.Random random,
-        Transform root)
+    DoorSocket socket,
+    System.Random random,
+    Transform root)
+{
+    Direction requiredEntrance = Opposite(socket.Direction);
+    List<RoomChance> candidates = new List<RoomChance>();
+
+    int remainingTargets = GetRemainingTargetRoomCount();
+    int remainingNormalSlots = GetRemainingNormalRoomSlots();
+
+    if (remainingTargets > remainingNormalSlots)
     {
-        Direction requiredEntrance = Opposite(socket.Direction);
-        List<RoomChance> candidates = new List<RoomChance>();
-
-        foreach (RoomChance chance in roomChances)
-        {
-            Room prefab = chance.room;
-
-            if (prefab == null ||
-                chance.weight <= 0 ||
-                prefab.MaxDoors < 1 ||
-                prefab.MinDoors < 0 ||
-                prefab.MinDoors > prefab.MaxDoors ||
-                prefab.MinDoors > prefab.SupportedDoorCount ||
-                !prefab.HasCompleteBounds ||
-                !prefab.SupportsDirection(requiredEntrance) ||
-                !CanAffordNewRoom(socket, prefab))
-            {
-                continue;
-            }
-
-            candidates.Add(chance);
-        }
-
-        int attempts = Mathf.Min(placementAttemptsPerDoor, candidates.Count);
-
-        for (int attempt = 0; attempt < attempts; attempt++)
-        {
-            int candidateIndex = GetWeightedIndex(candidates, random);
-            Room prefab = candidates[candidateIndex].room;
-            candidates.RemoveAt(candidateIndex);
-
-            if (TryPlaceRoom(prefab, socket, false, root, out _))
-            {
-                return true;
-            }
-        }
-
         return false;
     }
+
+    // When these values are equal, every remaining normal room must
+    // be one of the rooms that still has an unfinished target.
+    bool mustPlaceTargetRoom =
+        remainingTargets > 0 &&
+        remainingTargets == remainingNormalSlots;
+
+    foreach (RoomChance chance in roomChances)
+    {
+        Room prefab = chance.room;
+
+        if (prefab == null ||
+            chance.weight <= 0 ||
+            prefab.MaxDoors < 1 ||
+            prefab.MinDoors < 0 ||
+            prefab.MinDoors > prefab.MaxDoors ||
+            prefab.MinDoors > prefab.SupportedDoorCount ||
+            !prefab.HasCompleteBounds ||
+            !prefab.SupportsDirection(requiredEntrance) ||
+            !CanAffordNewRoom(socket, prefab))
+        {
+            continue;
+        }
+
+        bool hasExactTarget = chance.targetCount > 0;
+        int placedCount = GetPlacedNormalRoomCount(prefab);
+        bool stillNeedsInstances =
+            hasExactTarget &&
+            placedCount < chance.targetCount;
+
+        // Never exceed an exact target.
+        if (hasExactTarget && !stillNeedsInstances)
+        {
+            continue;
+        }
+
+        // All remaining normal slots are required for unfinished targets.
+        if (mustPlaceTargetRoom && !stillNeedsInstances)
+        {
+            continue;
+        }
+
+        candidates.Add(chance);
+    }
+
+    int attempts = Mathf.Min(
+        placementAttemptsPerDoor,
+        candidates.Count);
+
+    for (int attempt = 0; attempt < attempts; attempt++)
+    {
+        int candidateIndex = GetWeightedIndex(candidates, random);
+        RoomChance selectedChance = candidates[candidateIndex];
+
+        candidates.RemoveAt(candidateIndex);
+
+        if (TryPlaceRoom(
+                selectedChance.room,
+                socket,
+                false,
+                root,
+                out _))
+        {
+            RecordNormalRoomPlacement(selectedChance.room);
+            return true;
+        }
+    }
+
+    return false;
+}
 
     private bool TryPlaceRoom(
         Room prefab,
@@ -517,7 +628,7 @@ public class RoomManager : MonoBehaviour
 
     private bool ValidateFinishedLayout()
     {
-        if (rooms.Count != maxRoomTarget || exitInstance == null)
+        if (rooms.Count != maxRoomTarget || exitInstance == null || !ValidateTargetRoomCounts())
         {
             return false;
         }
@@ -542,6 +653,31 @@ public class RoomManager : MonoBehaviour
         return exitState != null && IsValidExitDistance(exitState.DistanceFromStart);
     }
 
+    private bool ValidateTargetRoomCounts()
+    {
+        if (roomChances == null)
+        {
+            return true;
+        }
+
+        foreach (RoomChance chance in roomChances)
+        {
+            if (chance.room == null || chance.targetCount <= 0)
+            {
+                continue;
+            }
+
+            int placedCount = GetPlacedNormalRoomCount(chance.room);
+
+            if (placedCount != chance.targetCount)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+    
     private bool ValidateConfiguration()
     {
         if (startRoom == null || endRoom == null)
