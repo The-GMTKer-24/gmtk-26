@@ -25,6 +25,7 @@ namespace Dungeon
         {
             if (other.CompareTag("Player"))
             {
+                Player.Player.Instance.TimeEntity.Heal(30);
                 started = true;
                 UIManager.Instance.Pause();
                 UIManager.Instance.SetContext(UIContext.Transition);

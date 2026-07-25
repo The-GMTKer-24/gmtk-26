@@ -54,6 +54,9 @@ TagManager:
   - name: UI
     uniqueID: 1870263605
     locked: 0
+  - name: FTB
+    uniqueID: 553444363
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

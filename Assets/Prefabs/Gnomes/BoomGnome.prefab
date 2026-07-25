@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity.TimeEntity
   maxTime: 50
   currentTime: 50
-  spawnOnDeath: {fileID: 6312313018138299983, guid: 67e2a57097e1c8043bcfa5c289ecfcfc, type: 3}
+  spawnOnDeath: {fileID: 6312313018138299983, guid: 879752367e0b4a84ba56ad9428125ccb, type: 3}
   dropOnDeath: {fileID: 313304383076649194, guid: 921bcea2d77b9b64487ccb34243b21e3, type: 3}
 --- !u!114 &935281606156217579
 MonoBehaviour:
@@ -294,3 +294,4 @@ MonoBehaviour:
   explosion: {fileID: 9097299396504398017, guid: 4364e6610bc098a499f0466fa4c6a156, type: 3}
   explosionSound: {fileID: 3734932179283865293, guid: 6760a4b4bd0f69b4498adc4923ca31cb, type: 3}
   boomGnomeAttack: {fileID: 3734932179283865293, guid: 383cacf831896a0499d8a932f782d054, type: 3}
+  boomDelay: 0.5
