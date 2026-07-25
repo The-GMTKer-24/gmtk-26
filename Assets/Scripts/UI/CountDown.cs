@@ -31,6 +31,7 @@ namespace UI
         [SerializeField] private GameObject tickDownSound;
         [SerializeField] private float resetClockSpeed = 7f;
         [SerializeField] private float growMultiplier = 1.1f;
+        [SerializeField] private float newBaseScaleWhenLosing = 2f;
         
         [Header("Ticking Arrow")]
         [SerializeField] private RectTransform tickingArrow;
@@ -40,6 +41,7 @@ namespace UI
 
         private Transform parentUI;
         private Vector3 parentUIOriginalScale;
+        private Vector3 currentParentUIScale;
         private bool ticked;
 
         private float currentDuckedAudioValue = 1f;
@@ -77,7 +79,7 @@ namespace UI
             if (player)
             {
                 text.color = gradient.Evaluate(1 - (player.GetTime() / player.GetMaxTime()));
-                text.SetText(TimeSpan.FromSeconds(time).ToString("m\\:ss"));    
+                text.SetText(TimeSpan.FromSeconds(time).ToString("m\\:ss"));
             }
 
             // Duck the EQ when the time is low
@@ -89,10 +91,14 @@ namespace UI
             if (time < almostDeadTime)
             {
                 parentUI.localPosition = Vector3.Lerp(parentUI.localPosition, new Vector3(0, 0, transform.position.z), moveToCenterSpeed * Time.deltaTime);
+                
+                currentParentUIScale = Vector3.Lerp(currentParentUIScale, new Vector3(newBaseScaleWhenLosing * parentUIOriginalScale.x, newBaseScaleWhenLosing * parentUIOriginalScale.y, parentUIOriginalScale.z), moveToCenterSpeed * Time.deltaTime);
             }
             else
             {
                 parentUI.localPosition = Vector3.Lerp(parentUI.localPosition, startingPosition, returnFromCenterSpeed * Time.deltaTime);
+                
+                currentParentUIScale = Vector3.Lerp(currentParentUIScale, parentUIOriginalScale, returnFromCenterSpeed * Time.deltaTime);
             }
             
             // Rotate arrow
@@ -100,7 +106,7 @@ namespace UI
             tickingArrow.localRotation = Quaternion.Euler(0f, 0f, currentArrowAngle);
             
             // Lerp back to correct scaling
-            parentUI.localScale = Vector3.Lerp(parentUI.localScale, parentUIOriginalScale, resetClockSpeed * Time.unscaledDeltaTime);
+            parentUI.localScale = Vector3.Lerp(parentUI.localScale, currentParentUIScale, resetClockSpeed * Time.unscaledDeltaTime);
         }
 
         public void TickSound()
