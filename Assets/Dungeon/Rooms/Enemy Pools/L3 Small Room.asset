@@ -15,7 +15,7 @@ MonoBehaviour:
   minCost: 15
   maxCost: 35
   spawnCost:
-  - cost: 10
+  - cost: 5
     enemy: {fileID: 677830866020430554, guid: d8a2cae8d0b61d6f994a82e0d40ee5ba, type: 3}
-  - cost: 15
+  - cost: 10
     enemy: {fileID: 677830866020430554, guid: e59ae63f1de6267419f8a862275f0ccd, type: 3}
