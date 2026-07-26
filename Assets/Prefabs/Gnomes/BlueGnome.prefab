@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GnomeAI
   attackContainer: {fileID: 5095756338674659169}
+  controlsMovement: 1
   animationSpeed: 2
   speed: 3
   forceDropoff: 0.2
@@ -318,26 +319,36 @@ MonoBehaviour:
   staminaCost: 3
   timeCost: 0
   turnSpeed: 30
+  sound: {fileID: 3734932179283865293, guid: 9811fbec001e9e14098116af0c0b574f, type: 3}
   growthRate:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 0.0035516354
+      outSlope: 0.0035516354
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.2552747
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      time: 0.6910312
+      value: 0.088066526
+      inSlope: 0.16964096
+      outSlope: 0.16964096
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.3783818
+    - serializedVersion: 3
+      time: 1.0792847
+      value: 0.20124435
+      inSlope: 0.52706844
+      outSlope: 0.52706844
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.12505755
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
