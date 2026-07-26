@@ -1245,7 +1245,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 553444363
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 32767
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
@@ -1719,7 +1719,7 @@ MonoBehaviour:
   bigBlackBox: {fileID: 665944579}
   playerModifier: {fileID: 823347875}
   mainMenu: YOU DIED
-  delay: 0.5
+  delay: 4
   countdownClock: {fileID: 1753513171}
 --- !u!114 &823347875
 MonoBehaviour:

@@ -51,6 +51,9 @@ TagManager:
   - name: Game Objects
     uniqueID: 18837903
     locked: 0
+  - name: Explosions
+    uniqueID: 1291971887
+    locked: 0
   - name: UI
     uniqueID: 1870263605
     locked: 0

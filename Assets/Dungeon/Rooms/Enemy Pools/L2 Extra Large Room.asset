@@ -19,3 +19,5 @@ MonoBehaviour:
     enemy: {fileID: 677830866020430554, guid: d8a2cae8d0b61d6f994a82e0d40ee5ba, type: 3}
   - cost: 15
     enemy: {fileID: 677830866020430554, guid: e59ae63f1de6267419f8a862275f0ccd, type: 3}
+  - cost: 30
+    enemy: {fileID: 677830866020430554, guid: 8f99998ada2465f41816ac754143ee7f, type: 3}
