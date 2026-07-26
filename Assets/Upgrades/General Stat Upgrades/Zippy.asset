@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Zippy
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
   upgradeName: Short Dash
-  description: Greatly reduce time between dashes BUT decrease dash distance
+  description: Greatly reduce time between dashes, decreases dash distance
   cost: 30
   upgradePrefab: {fileID: 8970273558985301401, guid: aeca82bfbd3d4394c9db340be3386444, type: 3}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Speed Upgrade
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
   upgradeName: Faster Run
-  description: Somewhat increase movement speed
+  description: Increase movement speed by 20%
   cost: 20
   upgradePrefab: {fileID: 8970273558985301401, guid: 9347b0f215424a6429e24540b374dd42, type: 3}

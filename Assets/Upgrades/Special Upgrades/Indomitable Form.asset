@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Indomitable Form
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
   upgradeName: Indomitable Form
-  description: +20% Timesteal +100% Damage\n Cannot move normally
+  description: +5% Timesteal, +50% Damage, +50% Dash Distance\nDisables the ability
+    to walk normally
   cost: 30
   upgradePrefab: {fileID: 8970273558985301401, guid: f3e6c2af099a4db4681fabeeca91f90c, type: 3}
