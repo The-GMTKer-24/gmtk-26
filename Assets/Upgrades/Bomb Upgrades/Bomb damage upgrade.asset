@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6928e37b12f74ee492571f8ed886d358, type: 3}
   m_Name: Bomb damage upgrade
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
-  upgradeName: Bomb Reload Speed
+  upgradeName: Bomb Power
   description: Bombs deal 10 extra damage
   cost: 15
   upgradePrefab: {fileID: 8970273558985301401, guid: 01c4d48e6213f964eace881dfad66256, type: 3}
