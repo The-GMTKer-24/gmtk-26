@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: 935281606156217579}
   - component: {fileID: 7688476764850467404}
   - component: {fileID: 742227794949890290}
-  - component: {fileID: -5037666064111075310}
   - component: {fileID: 95159770385088884}
+  - component: {fileID: 6765739591262860595}
   m_Layer: 6
   m_Name: GreenGnome
   m_TagString: Enemy
@@ -36,7 +36,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -135,7 +135,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1bd1a69c2cf9d13941819ac27c5e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GnomeAI
+  attackContainer: {fileID: 0}
   animationSpeed: 1
   speed: 2
   forceDropoff: 0.2
@@ -169,19 +170,19 @@ MonoBehaviour:
   directionHysteresis: 0.08
   dispersionRadius: 5
   decisionInterval: 0.15
-  attackSwitchThreshold: 0.1
   minimumAttackInterval: 0.25
   crowdCheckInterval: 0.1
   canRepeatAttacks: 1
   timeConservationPreference: 0
   selfishness: 0.1
-  outOfRangeLoss: 1
+  outOfRangeLossPerUnit: 1
   telegraphLoss: 1
   desperationTimeCutoff: 5
   desperationInstantAttackPreference: 10
   constantDecrowdingStrength: 0.38
   aoeDecrowdingStrength: 0.64
   currentLoss: 0
+  chosenAttackType: {fileID: 0}
   timeEntity: {fileID: 6058647677417873946}
   staminaEntity: {fileID: 935281606156217579}
 --- !u!114 &6058647677417873946
@@ -196,10 +197,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f343bcc49882470bae3e14960e27f2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity.TimeEntity
-  maxTime: 50
-  currentTime: 50
+  maxTime: 150
+  currentTime: 100
   spawnOnDeath: {fileID: 6312313018138299983, guid: 879752367e0b4a84ba56ad9428125ccb, type: 3}
   dropOnDeath: {fileID: 313304383076649194, guid: 921bcea2d77b9b64487ccb34243b21e3, type: 3}
+  deathSound: {fileID: 3734932179283865293, guid: 81e53fc3c4fe00644bec23a7c3800b5e, type: 3}
+  healSound: {fileID: 0}
+  damageSounds: []
 --- !u!114 &935281606156217579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,29 +280,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelfAreaAttack
   damage: 40
-  range: 1
-  staminaCost: 20
-  timeCost: 5
+  range: 1.5
+  staminaCost: 5
+  timeCost: 0
   frontAnimation: {fileID: 6598099158003896902, guid: 5d5fcd4b55aba0328b51cec90eb41bc2, type: 3}
   backAnimation: {fileID: 820019722568866527, guid: 828786aa91aec0926aa3933985d6695b, type: 3}
---- !u!114 &-5037666064111075310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677830866020430554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d24d9eb5944b6629b9e7ab9db5f6f4dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletAttack
-  damage: 10
-  range: 7
-  staminaCost: 10
-  timeCost: 0
-  speed: 10
-  bulletPrefab: {fileID: 6960090236962132424, guid: 651f525069020e084b930e8b3c016878, type: 3}
+  soundEffect: {fileID: 3734932179283865293, guid: 6ce98ad345a5baf4181f6c0aad912258, type: 3}
 --- !u!114 &95159770385088884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,3 +299,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity.SortingOrderHandler
   spriteRenderer: {fileID: 5740027886592393214}
+--- !u!114 &6765739591262860595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677830866020430554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ef53cf6a8b4eb1b10d556189434de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackContainer
+  randomProportion: 0
+  attacks:
+  - {fileID: 742227794949890290}
