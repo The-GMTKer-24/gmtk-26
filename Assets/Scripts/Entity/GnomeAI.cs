@@ -12,6 +12,7 @@ public class GnomeAI : MonoBehaviour
     private static readonly int Right = Animator.StringToHash("Right");
 
     [SerializeField] private AttackContainer attackContainer;
+    [SerializeField] private bool controlsMovement = true;
     
     [Header("Movement and Animation")]
     [SerializeField] public float animationSpeed = 1f;
@@ -241,7 +242,7 @@ public class GnomeAI : MonoBehaviour
 
         if (Time.fixedTime >= _nextMoveDecisionTime)
         {
-            MoveForAttack(_chosenAttack, playerPosition);
+            if (controlsMovement) MoveForAttack(_chosenAttack, playerPosition);
             _nextMoveDecisionTime = Time.fixedTime + Mathf.Max(0.02f, decisionInterval);
         }
     }
@@ -384,10 +385,7 @@ public class GnomeAI : MonoBehaviour
 
         attack.Attack(_player);
 
-        float attackLockDuration = Mathf.Max(
-            minimumAttackInterval,
-            attack.GetDelay()
-        );
+        float attackLockDuration = minimumAttackInterval;
 
         _nextAttackTime = Time.fixedTime + Mathf.Max(0.02f, attackLockDuration);
 
