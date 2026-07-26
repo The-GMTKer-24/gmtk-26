@@ -12,7 +12,7 @@ namespace UI
         public void Update()
         {
             text.SetText(
-                $"Last time: {TimeSpan.FromSeconds(PersistentData.Instance.CurrentTime):m\\:ss\\.ff} Best Time: {TimeSpan.FromSeconds(PersistentData.Instance.BestTime):m\\:ss\\.ff}");
+                $"Last time: {TimeSpan.FromSeconds(PersistentData.Instance.CurrentTime):m\\:ss\\.ff} Best Time: {TimeSpan.FromSeconds(PersistentData.Instance.CurrentTime):m\\:ss\\.ff}");
         }
     }
 }
