@@ -9,7 +9,8 @@ namespace Upgrades
 
         public void Awake()
         {
-            Player.Player.Instance.TimeEntity.SetMaxTime(Player.Player.Instance.TimeEntity.GetMaxTime() + amount);
+            if (Player.Player.Instance)
+                Player.Player.Instance.TimeEntity.SetMaxTime(Player.Player.Instance.TimeEntity.GetMaxTime() + amount);
         }
     }
 }
