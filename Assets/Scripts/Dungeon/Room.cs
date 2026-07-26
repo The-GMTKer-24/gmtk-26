@@ -21,6 +21,8 @@ public class Room : MonoBehaviour
     [SerializeField] public EnemyPool enemyPool;
     [SerializeField] private List<Transform> spawnLocations;
     [SerializeField] private float spawnDistance;
+    [SerializeField] private GameObject clearSound;
+    [SerializeField] private GameObject lockSound;
 
     private Door northDoorComponent;
     private Door eastDoorComponent;
@@ -78,6 +80,11 @@ public class Room : MonoBehaviour
         foreach (Direction direction in EnabledDirections())
         {
             GetDoorComponent(direction)?.OpenDoor();
+        }
+
+        if (clearSound)
+        {
+            SoundManager.Instance.CreateSound(clearSound);
         }
 
         locked = false;
@@ -265,6 +272,10 @@ public class Room : MonoBehaviour
             GetDoorComponent(direction)?.CloseDoor();
         }
 
+        if (lockSound)
+        {
+            SoundManager.Instance.CreateSound(lockSound);
+        }
         locked = true;
     }
 

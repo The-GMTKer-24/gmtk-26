@@ -1987,8 +1987,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.WeaponManager
   gunEnabled: 1
-  shotgunEnabled: 1
-  bombEnabled: 1
+  shotgunEnabled: 0
+  bombEnabled: 0
   playerShoot: {fileID: 823347872}
   shotgun: {fileID: 823347877}
   bomb: {fileID: 823347879}
