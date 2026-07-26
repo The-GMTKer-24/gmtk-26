@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6928e37b12f74ee492571f8ed886d358, type: 3}
-  m_Name: Timesteal
+  m_Name: Additive damage
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
-  upgradeName: Timesteal
-  description: Gain time equal to 1% of damage dealt
-  cost: 30
-  upgradePrefab: {fileID: 8970273558985301401, guid: 058c8c32ebc9365419a15b538a234a18, type: 3}
+  upgradeName: Increased Damage
+  description: Attacks cause enemies to lose 5 extra seconds of time
+  cost: 10
+  upgradePrefab: {fileID: 8970273558985301401, guid: 691867691fed8874b98adb4780a45c49, type: 3}

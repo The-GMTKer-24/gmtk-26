@@ -504,13 +504,13 @@ MonoBehaviour:
   health: {fileID: 5751078616513339351}
   attackStats:
   - attack: 1
-    damage: 5
+    damage: 25
     duration: 5
   - attack: 3
     damage: 40
     duration: 5
   - attack: 2
-    damage: 10
+    damage: 25
     duration: 3
   attackCooldown: 0
   bulletWaveOffsetTime: 0.1
@@ -594,7 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f343bcc49882470bae3e14960e27f2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity.TimeEntity
-  maxTime: 2000
+  maxTime: 2500
   currentTime: 0
   spawnOnDeath: {fileID: 8978867740599437789, guid: e8a5ac586f12a2c42a397a47f7b75c2c, type: 3}
   dropOnDeath: {fileID: 8978867740599437789, guid: e8a5ac586f12a2c42a397a47f7b75c2c, type: 3}
