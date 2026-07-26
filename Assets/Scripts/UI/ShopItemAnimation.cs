@@ -3,8 +3,8 @@ using UnityEngine.EventSystems;
 
 public class ShopItemAnimation : MonoBehaviour
 {
-    [SerializeField] private float scaleFactor = 2f;
-    [SerializeField] private float scaleSpeed = 2f;
+    [SerializeField] private float scaleFactor = 1.05f;
+    [SerializeField] private float scaleSpeed = 10f;
     
     private Vector3 startingScale;
     private Vector3 targetScale;
@@ -13,12 +13,13 @@ public class ShopItemAnimation : MonoBehaviour
     void Start()
     {
         startingScale = transform.localScale;
+        targetScale = startingScale;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, scaleSpeed * Time.deltaTime);
+        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, scaleSpeed * Time.unscaledDeltaTime);
     }
 
     public void PointerEnter(BaseEventData eventData)

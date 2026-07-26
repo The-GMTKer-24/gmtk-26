@@ -1,4 +1,5 @@
 ﻿using System;
+using UI;
 using Unity.U2D.Physics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,10 +16,14 @@ namespace Player
         private float lastShotTimer;
 
         private bool held;
+        
+        private UIManager uiManager;
 
 
         public void Start()
         {
+            uiManager = UIManager.Instance;
+            
             currentBullets = Player.Instance.PlayerModifier.EvaluateInt(PlayerStat.MaxBullets);
             reloadTimer = 0;
             lastShotTimer = 0;
@@ -66,7 +71,7 @@ namespace Player
 
         public void OnShoot(InputAction.CallbackContext context)
         {
-            if (!enabled) return;
+            if (!enabled || uiManager.Paused) return;
             if (context.started || context.performed)
             {
                 held = true;
@@ -80,7 +85,7 @@ namespace Player
 
         public void Reload(InputAction.CallbackContext context)
         {
-            if (!context.started || !enabled) return;
+            if (!context.started || !enabled || uiManager) return;
             Reload();
         }
 
