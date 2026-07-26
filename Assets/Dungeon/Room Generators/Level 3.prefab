@@ -43,7 +43,7 @@ PrefabInstance:
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: roomChances.Array.data[7].room
       value: 
-      objectReference: {fileID: 5836369874643543531, guid: f07f9deb830ab214295c382e44b9b1a0, type: 3}
+      objectReference: {fileID: 5836369874643543531, guid: 4d4470213a22a8c4dbc647d798789b7a, type: 3}
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: roomChances.Array.data[1].weight
       value: 1

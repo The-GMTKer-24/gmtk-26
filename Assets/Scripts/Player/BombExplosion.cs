@@ -14,8 +14,10 @@ public class BombExplosion : MonoBehaviour{
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        print("Bomb explision triggered" + other.name);
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy"))
         {
+            print("Blowing up something");
             other.gameObject.GetComponent<TimeEntity>().DealDamage(explosionDamage);
         }
     }
