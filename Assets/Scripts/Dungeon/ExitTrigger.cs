@@ -53,6 +53,7 @@ namespace Dungeon
                         UIManager.Instance.SetContext(null);
                         bigBlackBox.gameObject.SetActive(false);
                         UIManager.Instance.UnPause();
+                        Camera.main.orthographicSize = 0.5f;
                         Instantiate(toSpawn, transform.position, Quaternion.identity);
                     }
                 }

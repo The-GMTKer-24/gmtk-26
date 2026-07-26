@@ -7,14 +7,27 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float baseFollowSpeed = 10.0f;
     [SerializeField] private float returnToBaseFollowSpeed = 2.0f;
     [SerializeField] private float defaultCameraShakeSpeed = 0.02f;
-    
-    private float _followSpeed;
-    private float _shakeAmount;
-    private float _shakeResetTime;
+    [SerializeField] private float zoomOutSpeed = 2f;
+
+    private float cameraScale;
+    private float followSpeed;
+    private float shakeAmount;
+    private float shakeResetTime;
+
+    private Camera camera;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        camera = GetComponent<Camera>();
+        if (camera == null)
+        {
+            Debug.LogError("What the hell no camera??");
+        }
+        
+        cameraScale = camera.orthographicSize;
+        camera.orthographicSize = 0.5f;
+        
         if (target == null)
         {
             target = GameObject.FindGameObjectWithTag("Player");
@@ -27,26 +40,27 @@ public class CameraFollow : MonoBehaviour
         if (!target)
             return;
         // Return follow speed to default
-        _followSpeed = Mathf.Lerp(_followSpeed, baseFollowSpeed, Time.deltaTime * returnToBaseFollowSpeed);
-        _shakeAmount = Mathf.Lerp(_shakeAmount, 0, Time.deltaTime * _shakeResetTime);
+        followSpeed = Mathf.Lerp(followSpeed, baseFollowSpeed, Time.deltaTime * returnToBaseFollowSpeed);
+        shakeAmount = Mathf.Lerp(shakeAmount, 0, Time.deltaTime * shakeResetTime);
         
         // Move to target
-        Vector3 targetPosition = Vector3.Lerp(transform.position, target.transform.position, _followSpeed * Time.deltaTime);
+        Vector3 targetPosition = Vector3.Lerp(transform.position, target.transform.position, followSpeed * Time.deltaTime);
         
-        targetPosition += Random.insideUnitSphere * _shakeAmount;
+        targetPosition += Random.insideUnitSphere * shakeAmount;
         // Set the position without changing the Z
         transform.position = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
+        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, cameraScale, Time.deltaTime * zoomOutSpeed);
     }
 
     public void FreezeCameraTemporarily()
     {
         // I love me some hard coded numbers
-        _followSpeed = 0.0f;
+        followSpeed = 0.0f;
     }
 
     public void StartCameraShake(float shakeAmount = 0.02f, float shakeResetTime = 0.5f)
     {
-        _shakeAmount = shakeAmount;
-        _shakeResetTime = shakeResetTime;
+        this.shakeAmount = shakeAmount;
+        this.shakeResetTime = shakeResetTime;
     }
 }
