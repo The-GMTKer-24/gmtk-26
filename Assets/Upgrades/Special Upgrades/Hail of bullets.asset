@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Shoot 1000% faster but bullets are 70% slower and deal 20% of the
     original damage
   cost: 30
-  upgradePrefab: {fileID: 8970273558985301401, guid: bf3b359ac6fdb4149b9e11c3a38c728d, type: 3}
+  upgradePrefab: {fileID: 8970273558985301401, guid: d32235dd7d23777408347b0bb518d192, type: 3}
