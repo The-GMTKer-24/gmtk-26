@@ -170,7 +170,9 @@ MonoBehaviour:
   mainMenuObjects: {fileID: 48574912}
   creditsMenuObjects: {fileID: 1101770501}
   sceneToLoad: Main
+  mainScene: Main
   mainMenu: Main Menu
+  speedrunTimerToggle: {fileID: 1101687436}
   musicDuckInMenu: 0.1
 --- !u!114 &46889064
 MonoBehaviour:
@@ -287,6 +289,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1101687435}
   - {fileID: 356056354}
   - {fileID: 1023874051}
   - {fileID: 856478123}
@@ -1325,6 +1328,127 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080882439}
   m_CullTransparentMesh: 1
+--- !u!1001 &1101687434
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 48574913}
+    m_Modifications:
+    - target: {fileID: 4050596862131120460, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_Name
+      value: Enable Speedrun Timer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 169.2458
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 25.9437
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 178
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226468582172518358, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 46889063}
+    - target: {fileID: 8226468582172518358, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleSpeedrunTimer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+--- !u!224 &1101687435 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8204960670185361334, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+  m_PrefabInstance: {fileID: 1101687434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1101687436 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8226468582172518358, guid: 74720590a34e0144fb8030f525efab51, type: 3}
+  m_PrefabInstance: {fileID: 1101687434}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Toggle
 --- !u!1 &1101770501
 GameObject:
   m_ObjectHideFlags: 0
