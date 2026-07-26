@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DefaultNamespace;
+using Dungeon;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
@@ -109,6 +110,7 @@ public class RoomManager : MonoBehaviour
     {
         if (Instance == this)
         {
+            DungeonMinimap.ClearActive();
             Instance = null;
         }
     }

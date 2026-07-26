@@ -222,6 +222,7 @@ public class Room : MonoBehaviour
 
     public void OnRoomEnter()
     {
+        DungeonMinimap.RoomEntered(this);
         if (triggered || type != RoomType.Enemy)
         {
             return;
