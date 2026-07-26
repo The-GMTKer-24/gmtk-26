@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -2716732152494494810}
   - component: {fileID: 8706790930932356086}
   - component: {fileID: 2654759513684923418}
+  - component: {fileID: 753596775340580231}
   m_Layer: 8
   m_Name: Boss Gear
   m_TagString: Untagged
@@ -189,3 +190,16 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.25
+--- !u!114 &753596775340580231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6960090236962132424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beba29ee00594011a609c1652e7f347b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity.Speen
+  speed: 0
