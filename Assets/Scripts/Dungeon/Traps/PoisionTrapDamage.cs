@@ -1,78 +1,94 @@
-using System;
 using System.Collections.Generic;
 using Entity;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PoisionTrapDamage : MonoBehaviour
+namespace Dungeon.Traps
 {
-    [SerializeField] private float DPS;
-    private bool isRunningDamage;
-    private float startTime = 0;
-    private GnomeTracker gnomeTracker;
-
-    private Dictionary<EntityId, float> times = new();
-
-    private void Start()
+    public sealed class PoisonTrapDamage : MonoBehaviour
     {
-        gnomeTracker = GnomeTracker.Instance;
-    }
-    
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (CheckIfInLos(other))
+        [SerializeField, Min(0f)]
+        private float damagePerSecond = 10f;
+
+        [SerializeField, Min(0.01f)]
+        private float damageInterval = 1f;
+
+        [SerializeField, Min(0f)]
+        private float initialDamageDelay = 0.5f;
+
+        [Tooltip("Layers that block the poison, such as Walls and Terrain. " +
+                 "Do not include the trap or target layers.")]
+        [SerializeField]
+        private LayerMask lineOfSightBlockingLayers;
+
+        private readonly Dictionary<TimeEntity, float> damageTimers = new();
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            times.Add(other.gameObject.GetEntityId(),.5f);
-        }
-    }
+            TimeEntity target = other.GetComponentInParent<TimeEntity>();
 
-    private bool CheckIfInLos(Collider2D other)
-    {
-        GameObject colliderGameObject = Physics2D.Raycast(transform.position,  transform.position - other.transform.position,~Physics.IgnoreRaycastLayer).collider?.gameObject;
-        if (colliderGameObject == null) return false;
-        print($"Checking los against {other.name} found {colliderGameObject.name}");
-        return colliderGameObject ==
-               other.gameObject;
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (times.ContainsKey(other.gameObject.GetEntityId()))
-        {
-            if (!CheckIfInLos(other))
+            if (target != null && HasLineOfSight(other))
             {
-                times.Remove(other.gameObject.GetEntityId());
-                return;
+                // Assignment avoids an exception if the target is already tracked.
+                damageTimers[target] = initialDamageDelay;
             }
         }
-        else
+
+        private void OnTriggerStay2D(Collider2D other)
         {
-            if (CheckIfInLos(other))
-            {
-                times.Add(other.gameObject.GetEntityId(), .5f);
-            }
-            else
+            TimeEntity target = other.GetComponentInParent<TimeEntity>();
+
+            if (target == null)
             {
                 return;
             }
-        }
 
-
-        EntityId id = other.gameObject.GetEntityId();
-        times[id] -= Time.fixedDeltaTime;
-        if (times[id] < 0)
-        {
-            TimeEntity timeEntity = other.gameObject.GetComponent<TimeEntity>();
-            if (timeEntity != null)
+            if (!HasLineOfSight(other))
             {
-                timeEntity.DealDamage(DPS);
+                damageTimers.Remove(target);
+                return;
             }
-            times[id] = 1f;
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        times.Remove(other.gameObject.GetEntityId());
+            if (!damageTimers.TryGetValue(target, out float timeRemaining))
+            {
+                timeRemaining = initialDamageDelay;
+            }
+
+            timeRemaining -= Time.fixedDeltaTime;
+
+            if (timeRemaining <= 0f)
+            {
+                float damage = damagePerSecond * damageInterval;
+                target.DealDamage(damage);
+
+                // Adding the interval retains any small timing overrun.
+                timeRemaining += damageInterval;
+            }
+
+            damageTimers[target] = timeRemaining;
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            TimeEntity target = other.GetComponentInParent<TimeEntity>();
+
+            if (target != null)
+            {
+                damageTimers.Remove(target);
+            }
+        }
+
+        private bool HasLineOfSight(Collider2D target)
+        {
+            Vector2 origin = transform.position;
+            Vector2 destination = target.bounds.center;
+
+            RaycastHit2D obstruction = Physics2D.Linecast(
+                origin,
+                destination,
+                lineOfSightBlockingLayers
+            );
+
+            return obstruction.collider == null;
+        }
     }
 }

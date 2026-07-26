@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Shotgun Damage Scale Upgrade
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
   upgradeName: Improved Shotgun
-  description: Increase shotgun damage by 1.2%
+  description: Increase shotgun damage by 130%
   cost: 30
   upgradePrefab: {fileID: 8970273558985301401, guid: f895c126d251fd540b813c939c581762, type: 3}

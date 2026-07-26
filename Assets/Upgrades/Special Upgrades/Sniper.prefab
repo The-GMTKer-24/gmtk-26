@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -8743036059430817074}
   - component: {fileID: 823870075769557994}
   - component: {fileID: 8725370339985276176}
+  - component: {fileID: 7811197029951012066}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Untagged
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e226bd098f4325a22af938abd504d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.BasicStatUpgrade
-  factor: 5
+  factor: 3
   stat: 5
   type: 1
 --- !u!114 &823870075769557994
@@ -78,4 +79,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.BasicStatUpgrade
   factor: 2
   stat: 1
+  type: 1
+--- !u!114 &7811197029951012066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8970273558985301401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e226bd098f4325a22af938abd504d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Upgrades.BasicStatUpgrade
+  factor: 3
+  stat: 11
   type: 1
