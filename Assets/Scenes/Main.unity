@@ -1719,7 +1719,7 @@ MonoBehaviour:
   bigBlackBox: {fileID: 665944579}
   playerModifier: {fileID: 823347875}
   mainMenu: YOU DIED
-  delay: 4
+  delay: 5
   countdownClock: {fileID: 1753513171}
 --- !u!114 &823347875
 MonoBehaviour:
@@ -4230,7 +4230,25 @@ MonoBehaviour:
   bigBlackBox: {fileID: 665944579}
   fadeOutCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

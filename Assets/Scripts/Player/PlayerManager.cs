@@ -20,9 +20,10 @@ namespace Player
             PersistentData.Instance.CurrentTime = 0;
         }
 
-        public void LoadSceneAfterDelay(string scene, float delay)
+        public void LoadSceneAfterDelay(string scene, float startDelay)
         {
-            StartCoroutine(LoadScene(scene,delay));
+            this.delay = startDelay;
+            StartCoroutine(LoadScene(scene,startDelay));
         }
 
         public void Update()
@@ -40,7 +41,6 @@ namespace Player
         private IEnumerator LoadScene(string scene, float startDelay)
         {
             bigBlackBox.gameObject.SetActive(true);
-            delay = startDelay;
             fadingOut = true;
             yield return new WaitForSeconds(startDelay);
             SceneManager.LoadScene(scene);
