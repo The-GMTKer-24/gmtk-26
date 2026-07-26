@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 2761554404612323565}
   - component: {fileID: 3891027044589331484}
   - component: {fileID: 1863605281320474850}
+  - component: {fileID: 7484295923137142545}
   m_Layer: 0
   m_Name: Tutorial Fred 1
   m_TagString: Untagged
@@ -269,3 +270,16 @@ MonoBehaviour:
   - They'll tell you a lot about what the sneaky bugger does!
   - There's even one down there you can get the feel on...
   - Good luck and stay sharp!
+--- !u!114 &7484295923137142545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8728428021391500160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c17ca866a2c418aa1d226b3c052834f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity.SortingOrderHandler
+  spriteRenderer: {fileID: 2761554404612323565}
