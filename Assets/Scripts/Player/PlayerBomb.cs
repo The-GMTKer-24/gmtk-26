@@ -63,8 +63,14 @@ namespace Player
             Vector3 worldSpace = PlayerManager.Instance.playerCamera.ScreenToWorldPoint(mousePosition);
             worldSpace.z = 0;
             var b = Instantiate(bomb, transform.position, Quaternion.identity);
-            b.velocity = (worldSpace - transform.position).normalized *
+            Vector3 velocity = (worldSpace - transform.position).normalized *
                          Player.Instance.PlayerModifier.Evaluate(PlayerStat.BombSpeed);
+            if (BehindTheBack.Instance)
+            {
+                velocity *= -1;
+            }
+
+            b.velocity = velocity;
             b.damage = Player.Instance.PlayerModifier.Evaluate(PlayerStat.BombDamage);
             audioSource.Play();
         }

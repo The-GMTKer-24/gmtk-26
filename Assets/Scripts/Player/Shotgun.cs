@@ -64,7 +64,13 @@ namespace Player
             {
                 var b = Instantiate(bullet, transform.position, Quaternion.identity);
                 Quaternion angle = Quaternion.Euler(0,0,Random.Range(-Player.Instance.PlayerModifier.Evaluate(PlayerStat.ShotgunSpread)/2,Player.Instance.PlayerModifier.Evaluate(PlayerStat.ShotgunSpread)/2));
-                b.velocity = angle * (worldSpace - transform.position).normalized * Player.Instance.PlayerModifier.Evaluate(PlayerStat.ShotgunBulletSpeed);
+                Vector3 velocity = angle * (worldSpace - transform.position).normalized * Player.Instance.PlayerModifier.Evaluate(PlayerStat.ShotgunBulletSpeed);
+                if (BehindTheBack.Instance)
+                {
+                    velocity *= -1;
+                }
+
+                b.velocity = velocity;
                 b.damage = Player.Instance.PlayerModifier.Evaluate(PlayerStat.Damage) * Player.Instance.PlayerModifier.Evaluate(PlayerStat.ShotgunDamageFactor);
             }
             Player.Instance.RigidBody.AddForce((worldSpace - transform.position).normalized * (Player.Instance.PlayerModifier.Evaluate(PlayerStat.ShotgunRecoil) * -1));
