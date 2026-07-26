@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6928e37b12f74ee492571f8ed886d358, type: 3}
+  m_Name: Behind The Back
+  m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
+  upgradeName: Behind The Back
+  description: You deal double damage but you always shoot backwards.
+  cost: 30
+  upgradePrefab: {fileID: 5251069704376885664, guid: ccb2fdff2413c46458c71147822e742a, type: 3}
