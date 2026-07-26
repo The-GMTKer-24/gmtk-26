@@ -20,13 +20,14 @@ namespace Main_Menu
         [SerializeField] private float musicDuckInMenu = 0.1f;
         private MusicManager musicManager;
 
-        public void Awake()
+        public void Start()
         {
             mainMenuObjects.SetActive(true);
             creditsMenuObjects.SetActive(false);
 
             musicManager = MusicManager.Instance;
-            musicManager.DuckEQToValue(musicDuckInMenu);
+            if (musicManager)
+                musicManager.DuckEQToValue(musicDuckInMenu);
             
             speedrunTimerToggle.isOn = PlayerPrefs.GetInt("SpeedrunTimer") > 0;
         }

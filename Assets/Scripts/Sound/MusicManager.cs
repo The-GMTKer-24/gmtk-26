@@ -15,7 +15,7 @@ public class MusicManager : MonoBehaviour
     private float mostRecentDuckedAudioValue;
     private AudioSource musicSource;
 
-    void Awake()
+    void Start()
     {
         if (Instance == null)
         {
