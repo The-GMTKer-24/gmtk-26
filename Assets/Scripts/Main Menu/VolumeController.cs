@@ -25,6 +25,9 @@ namespace Main_Menu
 
             gameVolumeSlider.value = gameVolume;
             musicVolumeSlider.value = musicVolume;
+            
+            ChangeGameVolume();
+            ChangeMusicVolume();
         }
 
         public void ChangeMusicVolume()
@@ -40,6 +43,5 @@ namespace Main_Menu
             gameAudio.audioMixer.SetFloat("sfxVol", gameVolume);
             PlayerPrefs.SetFloat("GameVolume", gameVolume);
         }
-
     }
 }
