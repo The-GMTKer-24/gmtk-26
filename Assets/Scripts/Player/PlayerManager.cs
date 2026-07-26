@@ -17,6 +17,7 @@ namespace Player
         public void Awake()
         {
             Instance = this;
+            PersistentData.Instance.CurrentTime = 0;
         }
 
         public void LoadSceneAfterDelay(string scene, float delay)
@@ -26,6 +27,7 @@ namespace Player
 
         public void Update()
         {
+            PersistentData.Instance.CurrentTime += Time.unscaledDeltaTime;
             if (fadingOut)
             {
                 prog += Time.deltaTime;

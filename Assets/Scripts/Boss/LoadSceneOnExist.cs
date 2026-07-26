@@ -1,4 +1,5 @@
 ﻿using System;
+using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,8 @@ namespace Boss
 
         public void Awake()
         {
+            PersistentData.Instance.BestTime =
+                Math.Min(PersistentData.Instance.BestTime, PersistentData.Instance.CurrentTime);
             SceneManager.LoadScene(scene);
         }
     }
