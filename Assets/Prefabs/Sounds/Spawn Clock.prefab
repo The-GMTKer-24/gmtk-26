@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7667213019859427849}
   - component: {fileID: 7718972039177687556}
   m_Layer: 0
-  m_Name: Windup
+  m_Name: Spawn Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8273608187144377990, guid: bc52d85a0463a8d4192c95fe3af3d0a2, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: c6973331f038393458cc16bff560079b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 0657c5f47af103546ba7891af4afdf7c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.221
   m_Pitch: 1

@@ -45,7 +45,7 @@ namespace Entity
             TextParticleSystem2D.Instance.Spawn($"+{time} s", transform.position, Color.lightGreen);
             currentTime += time;
             currentTime = Mathf.Min(currentTime, maxTime);
-            if (healSound)
+            if (healSound && time > 4f)
             {
                 SoundManager.Instance.CreateSoundAtPosition(healSound, transform.position);
             }
