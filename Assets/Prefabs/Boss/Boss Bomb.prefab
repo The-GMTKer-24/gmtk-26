@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8635062270993689860}
   - component: {fileID: 7245857472173684946}
   - component: {fileID: -1942916102284101639}
+  - component: {fileID: -3207455049774981139}
   m_Layer: 8
   m_Name: Boss Bomb
   m_TagString: Untagged
@@ -181,3 +182,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.46875
+--- !u!114 &-3207455049774981139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6819357873154718348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded66c963d0c33649b1fa8f3303764bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  obj: {fileID: 313304383076649194, guid: 921bcea2d77b9b64487ccb34243b21e3, type: 3}
+  dropChance: 0.1
