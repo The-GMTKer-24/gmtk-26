@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI.MainMenu.MenuButtons
   mainMenuObjects: {fileID: 48574912}
   creditsMenuObjects: {fileID: 1101770501}
-  sceneToLoad: Main
+  sceneToLoad: Intro Sequence
   mainMenu: Main Menu
   musicDuckInMenu: 0.1
 --- !u!114 &46889064
@@ -3454,7 +3454,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
