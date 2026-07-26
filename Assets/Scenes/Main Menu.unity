@@ -3842,19 +3842,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MaximumMaxx - Programmer, Sound Design
+  m_text: 'Maxwell Windland - Programmer, Sound Design
 
-    RogueFirework - Programmer,
-    Art (unfortunately)
+    Atticus "Rogue" Pak -
+    Programmer, Some Art (unfortunately)
 
-    In Da Nile - Programmer
+    Lily "Nile" Eilebrecht - Programmer,
+    Some Art (fortunately)
 
-    Plaonder - Programmer,
-    Music, Voice Acting
+    Plaonder - Programmer, Music, Voice Acting, Crashing
+    Things
 
-    Pierson Brooks - Artist
+    Pierson Brooks - Artist (Good)
 
-    Mushroom - Intro Artist'
+    Mushroom - Intro Artist (Good)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 537d6a3925cd6844d941d08774a8154b, type: 2}
   m_sharedMaterial: {fileID: 1878564257042844555, guid: 537d6a3925cd6844d941d08774a8154b, type: 2}

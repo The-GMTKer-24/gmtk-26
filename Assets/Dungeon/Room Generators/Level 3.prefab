@@ -17,6 +17,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5836369874643543531, guid: 0d12b755e925802469653249c30cd115, type: 3}
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: startRoom
+      value: 
+      objectReference: {fileID: 5836369874643543531, guid: b975948fd3c1ecc4cad41b6511bfc774, type: 3}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: maxRoomTarget
       value: 12
       objectReference: {fileID: 0}
