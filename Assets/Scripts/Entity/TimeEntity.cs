@@ -46,6 +46,10 @@ namespace Entity
         {
             return maxTime;
         }
+        public void SetMaxTime(float time)
+        {
+            maxTime = time;
+        }
         private void CheckDeath(bool natural)
         {
             if (dead)
