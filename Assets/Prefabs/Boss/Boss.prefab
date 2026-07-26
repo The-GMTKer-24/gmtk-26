@@ -503,6 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss.Boss
   health: {fileID: 5751078616513339351}
+  startSound: {fileID: 3734932179283865293, guid: bd4b3d2337871e545920569d55f1613f, type: 3}
   attackStats:
   - attack: 1
     damage: 25
@@ -517,12 +518,16 @@ MonoBehaviour:
   bulletWaveOffsetTime: 0.1
   bulletWaveVelocity: 10
   bulletWaveBullets: 50
+  bulletWaveSound: {fileID: 0}
+  bulletShootSound: {fileID: 3734932179283865293, guid: ceafff393fed8fc4c92ad60d17216708, type: 3}
   bombDelay: 1
   bombVelocity: 50
   bombsToThrow: 5
+  bombSound: {fileID: 3734932179283865293, guid: 10325ee275c191240b605155275dd959, type: 3}
   bulletShipDelay: 0.5
   bulletShipSpeed: 5
   bulletShips: 6
+  bulletShipSound: {fileID: 3734932179283865293, guid: a42dcabc5f653894a95b628546e8b3bc, type: 3}
   clockBoulderPositions: []
   bulletWavePosition: {fileID: 823926319392411350}
   leftBulletShipPositions:
@@ -600,7 +605,9 @@ MonoBehaviour:
   spawnOnDeath: {fileID: 8978867740599437789, guid: e8a5ac586f12a2c42a397a47f7b75c2c, type: 3}
   dropOnDeath: {fileID: 8978867740599437789, guid: e8a5ac586f12a2c42a397a47f7b75c2c, type: 3}
   deathSound: {fileID: 0}
-  damageSounds: []
+  healSound: {fileID: 0}
+  damageSounds:
+  - {fileID: 3734932179283865293, guid: 5af1abffd7b0e614c9cd3aeb378e9af2, type: 3}
 --- !u!50 &3035981580480660701
 Rigidbody2D:
   serializedVersion: 5

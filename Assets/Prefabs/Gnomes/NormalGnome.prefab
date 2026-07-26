@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 742227794949890290}
   - component: {fileID: -5037666064111075310}
   - component: {fileID: 95159770385088884}
+  - component: {fileID: 7100465497131156576}
   m_Layer: 6
   m_Name: NormalGnome
   m_TagString: Enemy
@@ -162,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1bd1a69c2cf9d13941819ac27c5e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GnomeAI
+  attackContainer: {fileID: 7100465497131156576}
   animationSpeed: 1
   speed: 2
   forceDropoff: 0.2
@@ -169,7 +171,6 @@ MonoBehaviour:
   directionHysteresis: 0.08
   dispersionRadius: 5
   decisionInterval: 0.15
-  attackSwitchThreshold: 0.1
   minimumAttackInterval: 0.25
   crowdCheckInterval: 0.1
   canRepeatAttacks: 1
@@ -315,3 +316,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity.SortingOrderHandler
   spriteRenderer: {fileID: 5740027886592393214}
+--- !u!114 &7100465497131156576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677830866020430554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ef53cf6a8b4eb1b10d556189434de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Attacks.AttackContainer
+  randomProportion: 0.748
+  attacks:
+  - {fileID: 742227794949890290}
+  - {fileID: -5037666064111075310}

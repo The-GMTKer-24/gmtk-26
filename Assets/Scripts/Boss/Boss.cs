@@ -12,6 +12,7 @@ namespace Boss
         public static Boss Instance;
         
         [SerializeField] private TimeEntity health;
+        [SerializeField] private GameObject startSound;
         [Header("Stats")]
         [SerializeField] private List<AttackInfo> attackStats;
         [SerializeField] private float attackCooldown;
@@ -19,14 +20,18 @@ namespace Boss
         [SerializeField] private float bulletWaveOffsetTime;
         [SerializeField] private float bulletWaveVelocity;
         [SerializeField] private int bulletWaveBullets;
+        [SerializeField] private GameObject bulletWaveSound;
+        [SerializeField] private GameObject bulletShootSound;
         [Header("Bomb lobbing")]
         [SerializeField] private float bombDelay;
         [SerializeField] private float bombVelocity;
         [SerializeField] private int bombsToThrow;
+        [SerializeField] private GameObject bombSound;
         [Header("Bullet Ships")]
         [SerializeField] private float bulletShipDelay;
         [SerializeField] private float bulletShipSpeed;
         [SerializeField] private int bulletShips;
+        [SerializeField] private GameObject bulletShipSound;
         [Header("Spawn Locations")]
         [SerializeField] private List<Transform> clockBoulderPositions;
         [SerializeField] private Transform bulletWavePosition;
@@ -83,6 +88,10 @@ namespace Boss
             currentAttack = attackStats[Random.Range(0, attackStats.Count)];
             attackTimer = currentAttack.duration;
             TriggerAttack();
+            if (startSound)
+            {
+                SoundManager.Instance.CreateSoundAtPosition(startSound, transform.position);
+            }   
         }
 
         private void TriggerAttack()
@@ -113,6 +122,10 @@ namespace Boss
                 for (int i = 0; i < bombsToThrow; i++)
                 {
                     Bomb bomb = Instantiate(bossBomb, bulletWavePosition.position, Quaternion.identity);
+                    if (bombSound)
+                    {
+                        SoundManager.Instance.CreateSoundAtPosition(bombSound, transform.position);
+                    }   
                     bomb.damage = bombInfo.damage;
                     Vector2 target = Player.Player.Instance.RigidBody.position;
                     bomb.velocity = bombVelocity *
@@ -126,6 +139,10 @@ namespace Boss
 
         private void BulletShips(AttackInfo info)
         {
+            if (bulletShipSound)
+            {
+                SoundManager.Instance.CreateSoundAtPosition(bulletShipSound, transform.position);
+            }   
             IEnumerator Ships(AttackInfo shipInfo)
             {
                 for (int i = 0; i < bulletShips; i++)
@@ -157,11 +174,19 @@ namespace Boss
 
         private void BulletWave(AttackInfo info)
         {
+            if (bulletWaveSound)
+            {
+                SoundManager.Instance.CreateSoundAtPosition(bulletWaveSound, transform.position);
+            }   
             IEnumerator Wave(AttackInfo waveInfo)
             {
                 for (int i = 0; i < bulletWaveBullets; i++)
                 {
                     EnemyBullet bullet = Instantiate(bossBullet, bulletWavePosition.position, Quaternion.identity, transform);
+                    if (bulletShootSound)
+                    {
+                        SoundManager.Instance.CreateSoundAtPosition(bulletShootSound, transform.position);
+                    }   
                     bullet.damage = waveInfo.damage;
                     Vector2 target = Player.Player.Instance.RigidBody.position;
                     bullet.velocity = bulletWaveVelocity *

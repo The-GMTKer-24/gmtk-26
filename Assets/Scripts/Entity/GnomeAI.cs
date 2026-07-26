@@ -1,4 +1,5 @@
 using System;
+using Attacks;
 using Entity;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class GnomeAI : MonoBehaviour
     private static readonly int Left = Animator.StringToHash("Left");
     private static readonly int Right = Animator.StringToHash("Right");
 
+    [SerializeField] private AttackContainer attackContainer;
+    
     [Header("Movement and Animation")]
     [SerializeField] public float animationSpeed = 1f;
     [SerializeField] public float speed = 2f;
@@ -21,8 +24,8 @@ public class GnomeAI : MonoBehaviour
     [Tooltip("How often the gnome re-evaluates every available attack.")]
     [SerializeField] private float decisionInterval = 0.15f;
 
-    [Tooltip("How much better a different attack must be before the gnome switches to it.")]
-    [SerializeField] private float attackSwitchThreshold = 0.1f;
+    //[Tooltip("How much better a different attack must be before the gnome switches to it.")]
+    //[SerializeField] private float attackSwitchThreshold = 0.1f;
 
     [Tooltip("Minimum time between calls to Attack().")]
     [SerializeField] private float minimumAttackInterval = 0.25f;
@@ -41,7 +44,7 @@ public class GnomeAI : MonoBehaviour
     [Range(0f, 1f)]
     public float selfishness = 0.1f;
 
-    [SerializeField] public float outOfRangeLoss = 1f;
+    [SerializeField] public float outOfRangeLossPerUnit = 1f;
     [SerializeField] public float telegraphLoss = 1f;
     [SerializeField] public float desperationTimeCutoff = 5f;
     [SerializeField] public float desperationInstantAttackPreference = 10f;
@@ -51,6 +54,8 @@ public class GnomeAI : MonoBehaviour
     [Header("Debug")]
     [SerializeField] public float currentLoss;
 
+    [SerializeField] public MonoBehaviour chosenAttackType;
+
     public TimeEntity timeEntity;
     public StaminaEntity staminaEntity;
 
@@ -58,7 +63,6 @@ public class GnomeAI : MonoBehaviour
     private Rigidbody2D _rb;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
-    private IAttack[] _attacks;
     private int _group;
 
     private IAttack _previousAttack;
@@ -94,7 +98,6 @@ public class GnomeAI : MonoBehaviour
         _previousAttack = null;
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _attacks = GetComponents<IAttack>(); // Can no longer edit attack set live in editor
         //_group = GetEntityId().GetHashCode() % GnomeTracker.CycleSize;
         
         staminaEntity.ResetStamina();
@@ -107,6 +110,11 @@ public class GnomeAI : MonoBehaviour
 
     private void Update()
     {
+        if (_chosenAttack is MonoBehaviour chosenAttackMB)
+        {
+            chosenAttackType = chosenAttackMB;
+        }
+
         _spriteRenderer.sortingOrder = Mathf.RoundToInt(gameObject.transform.position.y * -100 + 100000);
         UpdateAnimation();
     }
@@ -120,6 +128,7 @@ public class GnomeAI : MonoBehaviour
         }
 
         Vector2 playerPosition = _player.transform.position;
+        //print("A: " + playerPosition);
 
         if (_chosenAttack == null || Time.fixedTime >= _nextAttackDecisionTime)
         {
@@ -147,7 +156,7 @@ public class GnomeAI : MonoBehaviour
         bool desperate = timeEntity.GetTime() <= desperationTimeCutoff;
         float desperation = timeEntity.GetTime() / desperationTimeCutoff;
         
-        foreach (IAttack attack in _attacks)
+        foreach (IAttack attack in attackContainer.GetAttacks())
         {
             if (attack == null)
             {
@@ -159,6 +168,7 @@ public class GnomeAI : MonoBehaviour
                 continue;
             }
 
+            //print("B: " + playerPosition);
             float loss = EvaluateAttackLoss(attack, playerPosition);
 
             if (attack == _chosenAttack)
@@ -182,13 +192,13 @@ public class GnomeAI : MonoBehaviour
             );
         }
 
-        if (_chosenAttack != null &&
+        /*if (_chosenAttack != null &&
             currentAttackWasEvaluated &&
             currentAttackLoss <= bestLoss + Mathf.Max(0f, attackSwitchThreshold))
         {
             currentLoss = currentAttackLoss;
             return _chosenAttack;
-        }
+        }*/
 
         currentLoss = bestLoss;
         _nextCrowdCheckTime = 0f;
@@ -208,23 +218,8 @@ public class GnomeAI : MonoBehaviour
             ? 1f - Mathf.Clamp01(remainingTime / desperationTimeCutoff)
             : 0f;
 
-        int friendlyFireCount = 0;
-
-        foreach (GameObject hit in attack.GetAllInRange())
-        {
-            if (!hit || hit == gameObject)
-            {
-                continue;
-            }
-
-            GnomeAI otherGnome =
-                GnomeTracker.Instance.GetGnome(hit.GetEntityId());
-
-            if (otherGnome)
-            {
-                friendlyFireCount++;
-            }
-        }
+        //print("C: " + playerPosition);
+        float friendlyFireCount = attack.CountFriendlyFires(playerPosition);
 
         float damage = Mathf.Max(attack.GetDamage(), 0.001f);
         float staminaCost = Mathf.Max(attack.GetStaminaCost(), 0f);
@@ -244,10 +239,10 @@ public class GnomeAI : MonoBehaviour
         float totalLoss =
             staminaLoss * staminaGain +
             timeLoss * timeGain;
-
-        if (!attack.InRange(playerPosition))
+        
+        if (!attack.CanHit(playerPosition))
         {
-            totalLoss += outOfRangeLoss;
+            totalLoss += outOfRangeLossPerUnit * attack.OutOfRangeDistance(playerPosition);
         }
 
         totalLoss += delay * telegraphLoss;
@@ -256,7 +251,7 @@ public class GnomeAI : MonoBehaviour
         {
             bool canAttackNow =
                 staminaCost <= staminaEntity.GetStamina() &&
-                attack.InRange(playerPosition);
+                attack.CanHit(playerPosition);
 
             float desperateLoss =
                 staminaLoss +
@@ -277,28 +272,14 @@ public class GnomeAI : MonoBehaviour
         }
 
         if (attack.GetStaminaCost() > staminaEntity.GetStamina() ||
-            !attack.InRange(playerPosition))
+            !attack.CanHit(playerPosition))
         {
             return;
         }
 
         _previousAttack = attack;
 
-        if (attack is IAttackArea areaAttack)
-        {
-            areaAttack.Attack();
-        }
-        else if (attack is IAttackTargeted targetedAttack)
-        {
-            targetedAttack.Attack(_player);
-        }
-        else
-        {
-            throw new NotImplementedException(
-                $"The attack {attack} implements IAttack but is neither " +
-                $"{nameof(IAttackArea)} nor {nameof(IAttackTargeted)}."
-            );
-        }
+        attack.Attack(_player);
 
         float attackLockDuration = Mathf.Max(
             minimumAttackInterval,
@@ -347,7 +328,7 @@ public class GnomeAI : MonoBehaviour
         }
 
         float disperseStrength =
-            attack is IAttackArea
+            attack.IsAoe()
                 ? aoeDecrowdingStrength
                 : constantDecrowdingStrength;
         
