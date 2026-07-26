@@ -7,34 +7,42 @@ public class TrapPlacer : MonoBehaviour
     [SerializeField] private GameObject trap;
     [SerializeField] private int maxTraps;
     [SerializeField] private float trapSpawnRate;
+    
+    private  BoxCollider2D spawnArea;
 
     private readonly List<Vector3> spawnedPoints = new();
     void Start()
     {
+        this.spawnArea = gameObject.GetComponent<BoxCollider2D>();
         if (Random.value > trapSpawnRate)
         {
-            Bounds bounds = gameObject.GetComponent<Collider2D>().bounds;
+            // Bounds bounds = col.bounds;
             
             for (int i = 0; i < Random.Range(1, maxTraps); i++)
             {
-                Vector3 position = GetRandomPoint(bounds);
+                Vector3 position = GetRandomPoint(spawnArea);
                 while (spawnedPoints.Contains(position))
                 {
-                    position = GetRandomPoint(bounds);
+                    position = GetRandomPoint(spawnArea);
                 }
                 spawnedPoints.Add(position);
-                Vector3 offsetSpawn = position;
-                Instantiate(trap, offsetSpawn, Quaternion.identity, transform);
+                Instantiate(trap, position, Quaternion.identity, transform);
             }
         }
     }
     
-    private static Vector3 GetRandomPoint(Bounds bounds)
+    private Vector3 GetRandomPoint(BoxCollider2D box)
     {
-        return new Vector3(
-            Mathf.Floor(Random.Range(bounds.min.x, bounds.max.x))+.5f,
-            Mathf.Floor(Random.Range(bounds.min.y, bounds.max.y))+.5f,
-            Mathf.Floor(Random.Range(bounds.min.z, bounds.max.z))+.5f
+        Vector2 halfSize = box.size * 0.5f;
+
+        Vector2 localPoint = box.offset + new Vector2(
+            Random.Range(-halfSize.x, halfSize.x),
+            Random.Range(-halfSize.y, halfSize.y)
         );
+
+        return box.transform.TransformPoint(
+            new Vector3(localPoint.x, localPoint.y, 0f)
+        );
+
     }
 }
