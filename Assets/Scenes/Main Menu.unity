@@ -4014,8 +4014,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "MaximumMaxx - Programmer\nRogueFirework - Programmer\nIn Da Nile - Programmer\nPlaonder
-    - Programmer and Music\nBleuCheese - Artist\n "
+  m_text: 'MaximumMaxx - Programmer, Sound Design
+
+    RogueFirework - Programmer,
+    Art (unfortunately)
+
+    In Da Nile - Programmer
+
+    Plaonder - Programmer,
+    Music, Voice Acting
+
+    Pierson Brooks - Artist
+
+    Mushroom - Intro Artist'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 537d6a3925cd6844d941d08774a8154b, type: 2}
   m_sharedMaterial: {fileID: 1878564257042844555, guid: 537d6a3925cd6844d941d08774a8154b, type: 2}
@@ -4042,8 +4053,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.1
-  m_fontSizeBase: 45.1
+  m_fontSize: 32.3
+  m_fontSizeBase: 32.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
