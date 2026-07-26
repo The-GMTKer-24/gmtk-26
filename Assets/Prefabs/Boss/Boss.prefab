@@ -534,7 +534,7 @@ MonoBehaviour:
   - {fileID: 2315779600662523642}
   - {fileID: 4456638750930231851}
   clockBoulder: {fileID: 0}
-  bossBullet: {fileID: 1931428187712777673, guid: 651f525069020e084b930e8b3c016878, type: 3}
+  bossBullet: {fileID: 1931428187712777673, guid: 619c2d0a3518b8043b047a665e17ad76, type: 3}
   bulletShip: {fileID: 3142912593321412227, guid: 4947d7b842547354d876ee12a2d6581d, type: 3}
   bossBomb: {fileID: 8635062270993689860, guid: 64769afc0f4ea1f4a9ddaa7c527b983b, type: 3}
 --- !u!61 &7717738918913918571
