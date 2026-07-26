@@ -4,6 +4,7 @@ using Attacks;
 using Entity;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.Tilemaps;
 
 public class TelegraphedLaserBeamAttack : MonoBehaviour, IAttack
 {
@@ -14,6 +15,7 @@ public class TelegraphedLaserBeamAttack : MonoBehaviour, IAttack
     [SerializeField, Min(0f)] public float turnSpeed = 10f;
 
     [Header("Line Appearance")]
+    [SerializeField] private GameObject sound;
     [SerializeField] private AnimationCurve growthRate;
     [SerializeField, Min(0f)] private float width;
     [SerializeField] private AnimationCurve fadeInRate =
@@ -268,6 +270,10 @@ public class TelegraphedLaserBeamAttack : MonoBehaviour, IAttack
             Mathf.Max(0f, turnSpeed)
         );
 
+        if (sound != null)
+        {
+            SoundManager.Instance.CreateSoundAtPosition(sound, transform.position);
+        }
         _attackInstances.Add(instance);
         UpdateTelegraph(instance);
     }
@@ -354,7 +360,7 @@ public class TelegraphedLaserBeamAttack : MonoBehaviour, IAttack
         float rotationDegrees = instance.DirectionController.direction;
         Vector2 direction = DirectionFromRotation(rotationDegrees);
         Vector2 origin = transform.position;
-        float attackRange = GetRange();
+        float attackRange = range;
 
         float wallDistance = GetWallDistance(
             origin,
@@ -363,9 +369,11 @@ public class TelegraphedLaserBeamAttack : MonoBehaviour, IAttack
             out bool blocked
         );
 
-        float visualRange = blocked
+        /*float visualRange = blocked
             ? Mathf.Max(0f, wallDistance - wallEndPadding)
-            : attackRange;
+            : attackRange;*/
+        float visualRange = wallDistance;
+        print(visualRange);
 
         instance.DisplayObject.transform.SetPositionAndRotation(
             transform.position,
@@ -492,7 +500,27 @@ public class TelegraphedLaserBeamAttack : MonoBehaviour, IAttack
         out bool blocked
     )
     {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            origin,
+            direction.normalized,
+            maxDistance
+        );
+        
+        float distance = maxDistance + 0.5f;
         blocked = false;
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.gameObject.GetComponent<TilemapCollider2D>() != null)
+            {
+                distance = Vector2.Distance(hit.point, origin);
+                blocked = true;
+            }
+        }
+        
+        return distance;
+        
+        /*blocked = false;
 
         float safeDistance = Mathf.Max(0f, maxDistance);
 
@@ -516,7 +544,7 @@ public class TelegraphedLaserBeamAttack : MonoBehaviour, IAttack
         }
 
         blocked = true;
-        return Mathf.Clamp(wallHit.distance, 0f, safeDistance);
+        return Mathf.Clamp(wallHit.distance, 0f, safeDistance);*/
     }
 
     private static void SetLinePositions(

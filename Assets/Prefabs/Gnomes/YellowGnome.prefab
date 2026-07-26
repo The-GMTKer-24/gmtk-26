@@ -162,8 +162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GnomeAI
   attackContainer: {fileID: 0}
+  controlsMovement: 1
   animationSpeed: 1
-  speed: 6
+  speed: 8
   forceDropoff: 0.2
   animationMovementThreshold: 0.05
   directionHysteresis: 0.08

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7667213019859427849}
   - component: {fileID: 7718972039177687556}
   m_Layer: 0
-  m_Name: Laser Sound
+  m_Name: 2 second laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8273608187144377990, guid: bc52d85a0463a8d4192c95fe3af3d0a2, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 1d3597b20055e6245b3519e2a1ca2507, type: 3}
+  m_Resource: {fileID: 8300000, guid: 1dee05ac7bc8df148a7e1736f8d6a349, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.12
   m_Pitch: 1

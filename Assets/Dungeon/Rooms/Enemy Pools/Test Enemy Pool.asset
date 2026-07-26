@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10bbc2a5ae740fb8032045303fba4b3, type: 3}
   m_Name: Test Enemy Pool
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.EnemyPool
-  minCost: 10
-  maxCost: 50
+  minCost: 1
+  maxCost: 1
   spawnCost:
-  - cost: 10
-    enemy: {fileID: 677830866020430554, guid: d8a2cae8d0b61d6f994a82e0d40ee5ba, type: 3}
-  - cost: 15
-    enemy: {fileID: 677830866020430554, guid: e59ae63f1de6267419f8a862275f0ccd, type: 3}
+  - cost: 3
+    enemy: {fileID: 677830866020430554, guid: 8f99998ada2465f41816ac754143ee7f, type: 3}
+  - cost: 1
+    enemy: {fileID: 677830866020430554, guid: a8de9402513f7b245b1a004ef6868761, type: 3}
