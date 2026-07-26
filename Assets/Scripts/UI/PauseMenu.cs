@@ -17,10 +17,12 @@ namespace UI
             }
             if (UIManager.Instance.Paused)
             {
+                MusicManager.Instance.DuckEQToHigh();
                 UnPause();
             }
             else
             {
+                MusicManager.Instance.DuckEQToLow();
                 UIManager.Instance.Pause();
                 ui.SetActive(true);
             }

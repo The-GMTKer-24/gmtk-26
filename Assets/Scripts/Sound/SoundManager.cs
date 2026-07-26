@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     private Dictionary<GameObject, int> instances = new();
+    [SerializeField] private GameObject musicPrefab;
     
     void Awake()
     {

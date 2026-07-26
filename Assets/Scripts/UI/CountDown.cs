@@ -44,12 +44,13 @@ namespace UI
         private Vector3 currentParentUIScale;
         private bool ticked;
 
-        private float currentDuckedAudioValue = 1f;
+        private float vignetteIntensity = 1f;
         private Vignette vignette;
 
         private Vector3 startingPosition;
         
         private SoundManager soundManager;
+        private MusicManager musicManager;
         
         public void Start()
         {
@@ -60,6 +61,7 @@ namespace UI
             startingPosition = parentUI.localPosition;
             
             soundManager = SoundManager.Instance;
+            musicManager = MusicManager.Instance;
             
             // get the vignette effect
             for (int i = 0; i < renderingVolume.components.Count; i++)
@@ -84,9 +86,14 @@ namespace UI
 
             // Duck the EQ when the time is low
             float duckedAudioValue = Mathf.Clamp(time / timeLowWhenLessThanThis, 0f, 1f);
-            currentDuckedAudioValue = Mathf.Lerp(currentDuckedAudioValue, duckedAudioValue, duckSpeed * Time.unscaledDeltaTime);
-            mainMixer.audioMixer.SetFloat("eqDuck", currentDuckedAudioValue);
-            vignette.intensity.value = (-1 * currentDuckedAudioValue) + 1;
+            if (musicManager != null && !UIManager.Instance.Paused)
+            {
+                musicManager.DuckEQToValue(duckedAudioValue);
+            }
+            
+            // Vignette
+            vignetteIntensity = Mathf.Lerp(vignetteIntensity, duckedAudioValue, duckSpeed * Time.unscaledDeltaTime);
+            vignette.intensity.value = (-1 * vignetteIntensity) + 1;
             
             if (time < almostDeadTime)
             {

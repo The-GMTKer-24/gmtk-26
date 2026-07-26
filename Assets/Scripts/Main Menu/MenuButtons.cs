@@ -11,10 +11,17 @@ namespace Main_Menu
         
         [SerializeField] private string sceneToLoad = "Cutscene";
         [SerializeField] private string mainMenu = "Main Menu";
+        
+        [SerializeField] private float musicDuckInMenu = 0.1f;
+        private MusicManager musicManager;
+
         public void Awake()
         {
             mainMenuObjects.SetActive(true);
             creditsMenuObjects.SetActive(false);
+
+            musicManager = MusicManager.Instance;
+            musicManager.DuckEQToValue(musicDuckInMenu);
         }
         
         public void PlayGame()

@@ -70,6 +70,8 @@ namespace UI
             upgrade3.gameObject.SetActive(true);
             closeButton.gameObject.SetActive(true);
             background.gameObject.SetActive(true);
+            
+            MusicManager.Instance.DuckEQToLow();
         }
 
         public void BuyUpgrade(int option)
@@ -126,6 +128,7 @@ namespace UI
             option3 = null;
             purchaseCount = 0;
             HideShop();
+            MusicManager.Instance.DuckEQToHigh();
         }
 
         public void HideShop()

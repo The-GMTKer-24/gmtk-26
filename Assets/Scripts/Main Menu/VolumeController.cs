@@ -12,12 +12,12 @@ namespace Main_Menu
 
         [SerializeField] private Slider gameVolumeSlider;
         [SerializeField] private Slider musicVolumeSlider;
-
+        
         public static float gameVolume = 1.0f;
         public static float musicVolume = 1.0f;
 
         private Slider slider;
-
+        
         void Start()
         {
             gameVolume = PlayerPrefs.GetFloat("GameVolume", gameVolume);

@@ -293,7 +293,7 @@ MonoBehaviour:
     m_ColorSpace: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  renderingVolume: {fileID: 0}
+  renderingVolume: {fileID: 11400000, guid: eba82b549cf4eb643b65e9f324fe8bde, type: 2}
   mainMixer: {fileID: 24300002, guid: bc52d85a0463a8d4192c95fe3af3d0a2, type: 2}
   timeLowWhenLessThanThis: 25
   almostDeadTime: 10
