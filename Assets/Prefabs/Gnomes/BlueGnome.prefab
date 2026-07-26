@@ -318,8 +318,64 @@ MonoBehaviour:
   staminaCost: 3
   timeCost: 0
   turnSpeed: 30
-  telegraphAnimation: {fileID: 7758415006854322333, guid: 0badae4903b1a914489afa70c1642283, type: 3}
-  beamAnimation: {fileID: 6317827133369900117, guid: 6b2d1644bc4db5e3bb2c558f599ddd8e, type: 3}
+  growthRate:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  width: 1
+  fadeInRate:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  telegraphFadeInDuration: 0.15
+  beamFadeInDuration: 0.03
+  telegraphAnimation: {fileID: 5209156350092898379, guid: 0badae4903b1a914489afa70c1642283, type: 3}
+  beamAnimation: {fileID: 639465248192909292, guid: 6b2d1644bc4db5e3bb2c558f599ddd8e, type: 3}
+  beamDuration: 0.1
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 0
+  wallEndPadding: 0.02
   attackDelay: 2
 --- !u!114 &3038697424607162105
 MonoBehaviour:
@@ -355,6 +411,7 @@ MonoBehaviour:
   timeCost: 0
   speed: 20
   bulletPrefab: {fileID: 6960090236962132424, guid: 651f525069020e084b930e8b3c016878, type: 3}
+  spawnOffset: 0.6
 --- !u!114 &9089388246351712275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,3 +430,4 @@ MonoBehaviour:
   timeCost: 0
   speed: 25
   bulletPrefab: {fileID: 6960090236962132424, guid: 651f525069020e084b930e8b3c016878, type: 3}
+  spawnOffset: 0.6
