@@ -4720,6 +4720,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8776724590614737569, guid: ee061e6eff3ca054cbab5bf3ee8c898f, type: 3}
+      propertyPath: 'privateDialoguesList.Array.data[0]'
+      value: I heard there's some bombs somewhere in this level...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8776724590614737569, guid: ee061e6eff3ca054cbab5bf3ee8c898f, type: 3}
       propertyPath: 'privateDialoguesList.Array.data[1]'
       value: Use 1,2,3 to switch between unlocked weapons
       objectReference: {fileID: 0}
