@@ -21,8 +21,12 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
-      propertyPath: minDistanceToExit
+      propertyPath: maxDistanceToExit
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
+      propertyPath: minDistanceToExit
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: roomChances.Array.size
