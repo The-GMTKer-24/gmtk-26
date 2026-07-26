@@ -16,9 +16,12 @@ GameObject:
   - component: {fileID: 6058647677417873946}
   - component: {fileID: 935281606156217579}
   - component: {fileID: 7688476764850467404}
-  - component: {fileID: 742227794949890290}
-  - component: {fileID: -5037666064111075310}
   - component: {fileID: 95159770385088884}
+  - component: {fileID: 5095756338674659169}
+  - component: {fileID: -6828976935044384695}
+  - component: {fileID: 3038697424607162105}
+  - component: {fileID: -7974618639250216049}
+  - component: {fileID: 9089388246351712275}
   m_Layer: 6
   m_Name: BlueGnome
   m_TagString: Enemy
@@ -162,26 +165,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1bd1a69c2cf9d13941819ac27c5e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GnomeAI
-  animationSpeed: 1
-  speed: 2
+  attackContainer: {fileID: 5095756338674659169}
+  animationSpeed: 2
+  speed: 4
   forceDropoff: 0.2
   animationMovementThreshold: 0.05
   directionHysteresis: 0.08
   dispersionRadius: 5
   decisionInterval: 0.15
-  attackSwitchThreshold: 0.1
   minimumAttackInterval: 0.25
   crowdCheckInterval: 0.1
   canRepeatAttacks: 1
   timeConservationPreference: 0
   selfishness: 0.1
-  outOfRangeLoss: 1
-  telegraphLoss: 1
+  outOfRangeLossPerUnit: 1
+  telegraphLoss: 3
   desperationTimeCutoff: 5
   desperationInstantAttackPreference: 10
   constantDecrowdingStrength: 0.38
   aoeDecrowdingStrength: 0.64
   currentLoss: 0
+  chosenAttackType: {fileID: 0}
   timeEntity: {fileID: 6058647677417873946}
   staminaEntity: {fileID: 935281606156217579}
 --- !u!114 &6058647677417873946
@@ -200,6 +204,9 @@ MonoBehaviour:
   currentTime: 50
   spawnOnDeath: {fileID: 6312313018138299983, guid: 879752367e0b4a84ba56ad9428125ccb, type: 3}
   dropOnDeath: {fileID: 313304383076649194, guid: 921bcea2d77b9b64487ccb34243b21e3, type: 3}
+  deathSound: {fileID: 0}
+  healSound: {fileID: 0}
+  damageSounds: []
 --- !u!114 &935281606156217579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,42 +270,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6, y: 0.5822099}
   m_EdgeRadius: 0
---- !u!114 &742227794949890290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677830866020430554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eda5e2afac3e76536828d71aebd75112, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SelfAreaAttack
-  damage: 40
-  range: 1
-  staminaCost: 20
-  timeCost: 5
-  frontAnimation: {fileID: 6598099158003896902, guid: 5d5fcd4b55aba0328b51cec90eb41bc2, type: 3}
-  backAnimation: {fileID: 820019722568866527, guid: 828786aa91aec0926aa3933985d6695b, type: 3}
---- !u!114 &-5037666064111075310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677830866020430554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d24d9eb5944b6629b9e7ab9db5f6f4dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletAttack
-  damage: 10
-  range: 7
-  staminaCost: 10
-  timeCost: 0
-  speed: 10
-  bulletPrefab: {fileID: 6960090236962132424, guid: 651f525069020e084b930e8b3c016878, type: 3}
 --- !u!114 &95159770385088884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,3 +283,93 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity.SortingOrderHandler
   spriteRenderer: {fileID: 5740027886592393214}
+--- !u!114 &5095756338674659169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677830866020430554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ef53cf6a8b4eb1b10d556189434de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackContainer
+  randomProportion: 0.869
+  attacks:
+  - {fileID: -6828976935044384695}
+  - {fileID: 3038697424607162105}
+  - {fileID: -7974618639250216049}
+  - {fileID: 9089388246351712275}
+--- !u!114 &-6828976935044384695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677830866020430554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bdc2318c594de69e61197a2d205b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TelegraphedLaserBeamAttack
+  damage: 30
+  range: 10
+  staminaCost: 3
+  timeCost: 0
+  turnSpeed: 30
+  telegraphAnimation: {fileID: 7758415006854322333, guid: 0badae4903b1a914489afa70c1642283, type: 3}
+  beamAnimation: {fileID: 6317827133369900117, guid: 6b2d1644bc4db5e3bb2c558f599ddd8e, type: 3}
+  attackDelay: 2
+--- !u!114 &3038697424607162105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677830866020430554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ef5ea2612b41acb4207941fce82d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeAttack
+  damage: 30
+  range: 1.5
+  staminaCost: 1
+  timeCost: 0.5
+--- !u!114 &-7974618639250216049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677830866020430554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24d9eb5944b6629b9e7ab9db5f6f4dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletAttack
+  damage: 30
+  range: 4
+  staminaCost: 3
+  timeCost: 0
+  speed: 25
+  bulletPrefab: {fileID: 6960090236962132424, guid: 651f525069020e084b930e8b3c016878, type: 3}
+--- !u!114 &9089388246351712275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677830866020430554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24d9eb5944b6629b9e7ab9db5f6f4dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletAttack
+  damage: 5
+  range: 15
+  staminaCost: 2
+  timeCost: 0
+  speed: 35
+  bulletPrefab: {fileID: 6960090236962132424, guid: 651f525069020e084b930e8b3c016878, type: 3}

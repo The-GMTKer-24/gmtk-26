@@ -4,29 +4,38 @@ using Attacks;
 using Entity;
 using UnityEngine;
 
-public class MeleeAttack : GenericAttack, IAttackTargeted
+public class MeleeAttack : GenericAttack, IAttack
 {
     // TODO: Add sprite config
     
-    private TimeEntity _timeEntity;
-    private StaminaEntity _staminaEntity;
-
-    private void Awake()
+    public override bool IsAoe()
     {
-        _timeEntity = this.gameObject.GetComponent<TimeEntity>();
-        if (_timeEntity == null && timeCost != 0)
-        {
-            throw new Exception("Cannot apply a nonzero time-cost attack to an object with no TimeEntity!");
-        }
-        _staminaEntity = this.gameObject.GetComponent<StaminaEntity>();
-        if (_staminaEntity == null && staminaCost != 0)
-        {
-            throw new Exception("Cannot apply a nonzero stamina-cost attack to an object with no StaminaEntity!");
-        }
+        return false;
+    }
+    
+    public override bool CanHit(Vector2 targetPosition)
+    {
+        float distanceSq = Vector2.SqrMagnitude(targetPosition - (Vector2)transform.position);
+        
+        return distanceSq <= range * range;
+    }
+    
+    public override float OutOfRangeDistance(Vector2 targetPosition)
+    {
+        float distance = Vector2.Distance(targetPosition, (Vector2)transform.position);
+        
+        return distance - GetRange();
     }
 
-    public void Attack(GameObject target)
+    public override float CountFriendlyFires(Vector2 targetPosition)
     {
+        return 0f;
+    }
+
+    public override void Attack(GameObject target)
+    {
+        if (!(StaminaEntity.GetStamina() >= staminaCost)) return;
+            
         TimeEntity targetTimeEntity;
         if (Player.Player.Instance.gameObject.Equals(target)) targetTimeEntity = Player.Player.Instance.TimeEntity;
         else
@@ -38,33 +47,18 @@ public class MeleeAttack : GenericAttack, IAttackTargeted
             }
             else
             {
-                targetTimeEntity = target.GetComponent<TimeEntity>(); 
+                targetTimeEntity = target.GetComponent<TimeEntity>();
             }
         }
-        
+
         if (targetTimeEntity == null)
         {
             throw new Exception("Target entity cannot take damage!");
         }
+            
+        targetTimeEntity.DealDamage(damage);
         
-        bool success = true;
-
-        if (timeCost != 0)
-        {
-            _timeEntity.DealDamage(timeCost);
-        }
-
-        if (staminaCost != 0)
-        {
-            if (!_staminaEntity.ConsumeStaminaIf(staminaCost))
-            {
-                success = false;
-            }
-        }
-
-        if (success)
-        {
-            targetTimeEntity.DealDamage(damage);
-        }
+        TimeEntity.DealDamage(timeCost);
+        StaminaEntity.ConsumeStaminaIf(staminaCost);
     }
 }
