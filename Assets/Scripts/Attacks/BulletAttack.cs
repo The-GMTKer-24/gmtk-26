@@ -21,12 +21,23 @@ public class BulletAttack : GenericAttack, IAttack
     {
         if (Vector2.SqrMagnitude(targetPosition - (Vector2)this.transform.position) > range * range) return false;
         
-        RaycastHit2D rayHit = Physics2D.Raycast(this.gameObject.transform.position,
+        RaycastHit2D[] rayHits = Physics2D.RaycastAll(this.gameObject.transform.position,
             targetPosition - (Vector2)this.gameObject.transform.position, range);
+        if (rayHits.Length == 0) return false;
+        RaycastHit2D rayHit = rayHits[0];
+        if (rayHits[0].collider.gameObject == this.gameObject)
+        {
+            if (rayHits.Length == 1) return false;
+            rayHit = rayHits[1];
+        }
+        
         //print(rayHit);
-        if (rayHit) return false;
-        GameObject hit = rayHit.rigidbody.gameObject;
+        print("CanHit A - " + rayHit);
+        if (rayHit.IsUnityNull()) return false;
+        GameObject hit = rayHit.collider.gameObject;
+        print("CanHit B - " + hit);
         if (!hit) return false;
+        print("CanHit C - " + Player.Player.Instance.gameObject.GetEntityId().Equals(hit.gameObject.GetEntityId()));
         
         return Player.Player.Instance.gameObject.GetEntityId().Equals(hit.gameObject.GetEntityId());
     }
