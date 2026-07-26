@@ -866,7 +866,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: -2
-      type: {class: , ns: , asm: }
+      type: {class: '', ns: '', asm: ''}
     - rid: 5296362366967742546
       type: {class: Light2DProviderSources, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
@@ -876,7 +876,8 @@ MonoBehaviour:
         m_Provider2DCache:
           rid: 5296362366967742547
     - rid: 5296362366967742547
-      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider,
+          Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
         m_Cache: []
 --- !u!114 &592836106
@@ -969,7 +970,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: -2
-      type: {class: , ns: , asm: }
+      type: {class: '', ns: '', asm: ''}
     - rid: 5296362366967742548
       type: {class: Light2DProviderSources, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
@@ -979,7 +980,8 @@ MonoBehaviour:
         m_Provider2DCache:
           rid: 5296362366967742549
     - rid: 5296362366967742549
-      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider,
+          Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
         m_Cache: []
 --- !u!4 &606989586
@@ -1372,7 +1374,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 720ba568-b2c3-4e19-af8c-bbe13febb856
-    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347866}
@@ -1388,7 +1390,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: d22da971-499a-4d90-9a0e-9210645ef90a
-    m_ActionName: 'Player/Dash[/Keyboard/leftShift]'
+    m_ActionName: Player/Dash[/Keyboard/leftShift]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347872}
@@ -1428,11 +1430,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 835979f0-10bd-4a0c-80bc-4c372f60d0c3
-    m_ActionName: 'Player/Primary Attack[/Mouse/leftButton]'
+    m_ActionName: Player/Primary Attack[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: f5619c6d-4330-45dd-a016-2eb51270967a
-    m_ActionName: 'Player/Secondary Attack[/Mouse/rightButton]'
+    m_ActionName: Player/Secondary Attack[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347873}
@@ -1448,7 +1450,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 9d286121-81c1-44b1-bc71-dd6d38291470
-    m_ActionName: 'Player/Pause[/Keyboard/escape]'
+    m_ActionName: Player/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347872}
@@ -1488,7 +1490,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: a20be78f-7260-4d26-bce8-9874593e5d96
-    m_ActionName: 'Player/Reload[/Keyboard/r]'
+    m_ActionName: Player/Reload[/Keyboard/r]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347878}
@@ -1504,7 +1506,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 4dc3376f-b319-43bc-82eb-1468a3130fd6
-    m_ActionName: 'Player/Equip gun[/Keyboard/1]'
+    m_ActionName: Player/Equip gun[/Keyboard/1]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347878}
@@ -1520,7 +1522,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: a8d0c091-4b2d-401c-9412-4e64bf005c90
-    m_ActionName: 'Player/Equip Shotgun[/Keyboard/2]'
+    m_ActionName: Player/Equip Shotgun[/Keyboard/2]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 823347878}
@@ -1536,7 +1538,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 20668f43-2052-47e7-a110-bdc216f95fde
-    m_ActionName: 'Player/Equip Bomb[/Keyboard/3]'
+    m_ActionName: Player/Equip Bomb[/Keyboard/3]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1558,6 +1560,7 @@ MonoBehaviour:
   currentTime: 0
   spawnOnDeath: {fileID: 6312313018138299983, guid: 67e2a57097e1c8043bcfa5c289ecfcfc, type: 3}
   dropOnDeath: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!114 &823347872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1818,6 +1821,7 @@ MonoBehaviour:
   playerShoot: {fileID: 823347872}
   shotgun: {fileID: 823347877}
   bomb: {fileID: 823347879}
+  changeWeaponSound: {fileID: 3734932179283865293, guid: 5d54324d6830978458ed60f8b1e0b017, type: 3}
   Active: 0
 --- !u!114 &823347879
 MonoBehaviour:
