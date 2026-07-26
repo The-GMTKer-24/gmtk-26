@@ -9,11 +9,13 @@ namespace Main_Menu
     {
         [SerializeField] private GameObject mainMenuObjects;
         [SerializeField] private GameObject creditsMenuObjects;
+        [SerializeField] private GameObject easyModeUpgrade;
         
         [SerializeField] private string sceneToLoad = "Cutscene";
         [SerializeField] private string mainScene = "Main";
         [SerializeField] private string mainMenu = "Main Menu";
         [SerializeField] private Toggle speedrunTimerToggle;
+        [SerializeField] private Toggle easyModeToggle;
         
         [SerializeField] private float musicDuckInMenu = 0.1f;
         private MusicManager musicManager;
@@ -34,6 +36,12 @@ namespace Main_Menu
             PlayerPrefs.Save();
             
             Debug.Log("The system will play game now!");
+
+            if (easyModeToggle.isOn)
+            {
+                Instantiate(easyModeUpgrade);
+            }
+            
             if (speedrunTimerToggle.isOn)
             {
                 SceneManager.LoadScene(mainScene);
