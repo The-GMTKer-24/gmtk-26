@@ -8,6 +8,7 @@ public class SelfAreaAttack : GenericAttack, IAttackArea
 {
     [SerializeField] private GameObject frontAnimation;
     [SerializeField] private GameObject backAnimation;
+    [SerializeField] private GameObject soundEffect;
     
     private TimeEntity _timeEntity;
     private StaminaEntity _staminaEntity;
@@ -70,6 +71,7 @@ public class SelfAreaAttack : GenericAttack, IAttackArea
                 print (GnomeTracker.Instance.GetGnome(target.GetEntityId()));
                 int layer = GnomeTracker.Instance.GetGnome(this.gameObject.GetEntityId()).GetSortingOrder();
                 targetTimeEntity.DealDamage(damage);
+                if (soundEffect) SoundManager.Instance.CreateSoundAtPosition(soundEffect, transform.position);
                 if (frontAnimation) Instantiate(frontAnimation, transform.position, Quaternion.identity).GetComponent<SpriteRenderer>().sortingOrder = layer + SortingOrderHandler.RecommendedOffset(-0.3f);
                 if (backAnimation) Instantiate(backAnimation, transform.position, Quaternion.identity).GetComponent<SpriteRenderer>().sortingOrder = layer - 1;
             }

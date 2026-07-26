@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Objects")]
     [SerializeField] private GameObject cameraPosition;
+
+    public bool restartAnimationOnDash;
     
     
     [Header("Dashing")]
@@ -17,7 +19,8 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Sound Effects")]
     [SerializeField] private GameObject dashSoundPrefab;
-    
+
+    private Animator animation;
     private Vector2 _input;
     private Rigidbody2D _rb;
     private CameraFollow _cameraFollowScript;
@@ -26,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
+        animation = gameObject.GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
 
         if (cameraPosition == null)
@@ -70,6 +74,11 @@ public class PlayerMovement : MonoBehaviour
         // Freeze Camera for a sec and shake
         _cameraFollowScript.FreezeCameraTemporarily();
         _cameraFollowScript.StartCameraShake(dashCameraShakeAmount, dashCameraShakeResetSpeed);
+
+        if (restartAnimationOnDash)
+        {
+            animation.Play("Player",0,0f);
+        }
         
         // Move!
         _rb.AddRelativeForce(_input * stats.Evaluate(PlayerStat.DashPower), ForceMode2D.Impulse);

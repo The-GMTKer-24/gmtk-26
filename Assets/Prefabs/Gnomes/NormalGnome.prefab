@@ -201,6 +201,7 @@ MonoBehaviour:
   spawnOnDeath: {fileID: 6312313018138299983, guid: 879752367e0b4a84ba56ad9428125ccb, type: 3}
   dropOnDeath: {fileID: 313304383076649194, guid: 921bcea2d77b9b64487ccb34243b21e3, type: 3}
   deathSound: {fileID: 3734932179283865293, guid: 81e53fc3c4fe00644bec23a7c3800b5e, type: 3}
+  damageSounds: []
 --- !u!114 &935281606156217579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +283,7 @@ MonoBehaviour:
   timeCost: 5
   frontAnimation: {fileID: 6598099158003896902, guid: 5d5fcd4b55aba0328b51cec90eb41bc2, type: 3}
   backAnimation: {fileID: 820019722568866527, guid: 828786aa91aec0926aa3933985d6695b, type: 3}
+  soundEffect: {fileID: 3734932179283865293, guid: 6ce98ad345a5baf4181f6c0aad912258, type: 3}
 --- !u!114 &-5037666064111075310
 MonoBehaviour:
   m_ObjectHideFlags: 0
