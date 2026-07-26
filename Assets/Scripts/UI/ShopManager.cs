@@ -35,6 +35,8 @@ namespace UI
         private Upgrade option2;
         private Upgrade option3;
 
+        private int purchaseCount;
+
         public void Awake()
         {
             Instance = this;
@@ -88,6 +90,13 @@ namespace UI
                     default:
                         throw new ArgumentOutOfRangeException(nameof(option), option, null);
                 }
+            }
+
+            purchaseCount++;
+            // Exit when all are purchased
+            if (purchaseCount >= 3)
+            {
+                CancelShop();
             }
         }
 
