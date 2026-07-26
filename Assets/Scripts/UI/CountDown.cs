@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using Upgrades;
 
 namespace UI
 {
@@ -119,6 +120,10 @@ namespace UI
         public void TickSound()
         {
             soundManager.CreateSound(ticked ? tickUpSound : tickDownSound);
+            if (FatalTempo.Instance)
+            {
+                FatalTempo.Instance.Tick();
+            }
             ticked = !ticked;
         }
 
