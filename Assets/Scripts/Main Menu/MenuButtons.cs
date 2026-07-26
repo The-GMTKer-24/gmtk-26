@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Main_Menu
 {
@@ -10,7 +11,9 @@ namespace Main_Menu
         [SerializeField] private GameObject creditsMenuObjects;
         
         [SerializeField] private string sceneToLoad = "Cutscene";
+        [SerializeField] private string mainScene = "Main";
         [SerializeField] private string mainMenu = "Main Menu";
+        [SerializeField] private Toggle speedrunTimerToggle;
         
         [SerializeField] private float musicDuckInMenu = 0.1f;
         private MusicManager musicManager;
@@ -22,6 +25,8 @@ namespace Main_Menu
 
             musicManager = MusicManager.Instance;
             musicManager.DuckEQToValue(musicDuckInMenu);
+            
+            speedrunTimerToggle.isOn = PlayerPrefs.GetInt("SpeedrunTimer") > 0;
         }
         
         public void PlayGame()
@@ -29,7 +34,14 @@ namespace Main_Menu
             PlayerPrefs.Save();
             
             Debug.Log("The system will play game now!");
-            SceneManager.LoadScene(sceneToLoad);
+            if (speedrunTimerToggle.isOn)
+            {
+                SceneManager.LoadScene(mainScene);
+            }
+            else
+            {
+                SceneManager.LoadScene(sceneToLoad);
+            }
         }
         
         public void QuitGame()
@@ -68,6 +80,13 @@ namespace Main_Menu
             
             mainMenuObjects.SetActive(true);
             creditsMenuObjects.SetActive(false);
+        }
+
+        public void ToggleSpeedrunTimer()
+        {
+            bool speedrunTimer = speedrunTimerToggle.isOn;
+            PlayerPrefs.SetInt("SpeedrunTimer", speedrunTimer ? 1 : 0);
+            PlayerPrefs.Save();
         }
     }
 }
