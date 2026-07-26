@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeName: Take it slow
   description: Increase maximum time by 1 minute
   cost: 30
-  upgradePrefab: {fileID: 0}
+  upgradePrefab: {fileID: 8970273558985301401, guid: 49889a17ee8c7f6469f146d37ef6dead, type: 3}

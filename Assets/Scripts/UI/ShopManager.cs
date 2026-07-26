@@ -61,9 +61,9 @@ namespace UI
             upgrade2Description.SetText(this.option2.description);
             upgrade3Description.SetText(this.option3.description);
             
-            upgrade1Cost.SetText($"{this.option1.cost} seconds");
-            upgrade2Cost.SetText($"{this.option2.cost} seconds");
-            upgrade3Cost.SetText($"{this.option3.cost} seconds");
+            upgrade1Cost.SetText($"-{this.option1.cost} seconds");
+            upgrade2Cost.SetText($"-{this.option2.cost} seconds");
+            upgrade3Cost.SetText($"-{this.option3.cost} seconds");
             
             upgrade1.gameObject.SetActive(true);
             upgrade2.gameObject.SetActive(true);
