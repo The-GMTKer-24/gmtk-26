@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7667213019859427849}
   - component: {fileID: 7718972039177687556}
   m_Layer: 0
-  m_Name: Gnome Die
+  m_Name: Door Slam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,9 +43,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8273608187144377990, guid: bc52d85a0463a8d4192c95fe3af3d0a2, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: dd60841488787924b9c85dc871ddadf4, type: 3}
+  m_Resource: {fileID: 8300000, guid: cc4aa29633a9445429dee56a37c6095b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.492
+  m_Volume: 0.425
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -89,7 +89,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.318
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

@@ -10,6 +10,7 @@ public class TutorialDoor : MonoBehaviour
     [SerializeField] private SpriteRenderer rend;
     [SerializeField] private BoxCollider2D col;
     [SerializeField] private GameObject successSound;
+    [SerializeField] private GameObject closeSound;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -27,7 +28,7 @@ public class TutorialDoor : MonoBehaviour
     public void OpenDoors()
     {
         rend.sortingOrder = -1;
-        rend.sprite = otherDoor.open;
+        rend.sprite = otherDoor.openHorizontal;
         col.enabled = false;
         Hidden = false;
         shadowCaster.enabled = false;
@@ -36,21 +37,13 @@ public class TutorialDoor : MonoBehaviour
 
     public void CloseDoors()
     {
-        rend.sprite = otherDoor.closed;
+        rend.sprite = otherDoor.closedHorizontal;
         rend.sortingOrder = 2;
         col.enabled = true;
         Hidden = false;
         shadowCaster.enabled = true;
         otherDoor.CloseDoor();
-    }
-
-    public void HideDoors()// maybe disable and replace with wall?
-    {
-        rend.sprite = otherDoor.noDoor;
-        col.enabled = true;
-        Hidden = true;
-        shadowCaster.enabled = true;
-        otherDoor.HideDoor();
+        SoundManager.Instance.CreateSound(closeSound);
     }
 
     public void GnomeDown()
