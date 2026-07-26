@@ -722,11 +722,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5153167073418736874, guid: 8e73e103b604e5947a4bb884f6c6517c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5513
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5153167073418736874, guid: 8e73e103b604e5947a4bb884f6c6517c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.71613
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5153167073418736874, guid: 8e73e103b604e5947a4bb884f6c6517c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1970,8 +1970,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.WeaponManager
   gunEnabled: 1
-  shotgunEnabled: 0
-  bombEnabled: 0
+  shotgunEnabled: 1
+  bombEnabled: 1
   playerShoot: {fileID: 823347872}
   shotgun: {fileID: 823347877}
   bomb: {fileID: 823347879}
