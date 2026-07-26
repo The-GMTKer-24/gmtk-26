@@ -35,8 +35,7 @@ namespace Main_Menu
         {
             PlayerPrefs.Save();
             
-            Debug.Log("The system will play game now!");
-
+            
             if (easyModeToggle.isOn)
             {
                 Instantiate(easyModeUpgrade);
@@ -56,7 +55,6 @@ namespace Main_Menu
         {
             PlayerPrefs.Save();
             
-            Debug.Log("The system will shut down now!");
             #if UNITY_EDITOR
                 EditorApplication.isPlaying = false;
             #else
@@ -68,7 +66,6 @@ namespace Main_Menu
         {
             PlayerPrefs.Save();
             
-            Debug.Log("The system will credits now!");
             
             mainMenuObjects.SetActive(false);
             creditsMenuObjects.SetActive(true);
@@ -77,14 +74,12 @@ namespace Main_Menu
         {
             PlayerPrefs.Save();
             
-            Debug.Log("The system will MainMenu now!");
             
             SceneManager.LoadScene(mainMenu);
         }
 
         public void CloseCredits()
         {
-            Debug.Log("The system will close credits now!");
             
             mainMenuObjects.SetActive(true);
             creditsMenuObjects.SetActive(false);

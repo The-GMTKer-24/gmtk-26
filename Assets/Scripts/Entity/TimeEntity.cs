@@ -34,7 +34,8 @@ namespace Entity
 
         public void DealDamage(float damage)
         {
-            TextParticleSystem2D.Instance.Spawn($"-{damage} s", transform.position, Color.softRed);
+            if (TextParticleSystem2D.Instance)
+                TextParticleSystem2D.Instance.Spawn($"-{damage} s", transform.position, Color.softRed);
             currentTime -= damage;
             CheckDeath(false);
             if (damageSounds.Count != 0) SoundManager.Instance.CreateSoundAtPosition(damageSounds[Random.Range(0,damageSounds.Count)], transform.position);
@@ -69,7 +70,8 @@ namespace Entity
             {
                 if (deathSound) SoundManager.Instance.CreateSoundAtPosition(deathSound, transform.position);
                 if (!natural)
-                    Instantiate(dropOnDeath, transform.position, Quaternion.identity);
+                    if (dropOnDeath)
+                        Instantiate(dropOnDeath, transform.position, Quaternion.identity);
                 if (spawnOnDeath)
                     Instantiate(spawnOnDeath, transform.position, Quaternion.identity);
                 dead = true;

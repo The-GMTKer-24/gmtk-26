@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Attacks;
 using Entity;
 using UnityEngine;
@@ -8,11 +6,11 @@ using UnityEngine.Serialization;
 
 public class TelegraphedLaserBeamAttack: MonoBehaviour, IAttack
 {
-    [SerializeField] public float damage = 10f;
-    [SerializeField] public float range = 10f;
-    [SerializeField] public float staminaCost = 10f;
-    [SerializeField] public float timeCost = 10f;
-    [SerializeField] public float turnSpeed = 10f;
+    [SerializeField, Min(0f)] public float damage = 10f;
+    [SerializeField, Min(0f)] public float range = 10f;
+    [SerializeField, Min(0f)] public float staminaCost = 10f;
+    [SerializeField, Min(0f)] public float timeCost = 10f;
+    [SerializeField, Min(0f)] public float turnSpeed = 10f;
     
     [FormerlySerializedAs("directionalAnimation")] [SerializeField] private GameObject telegraphAnimation;
     [SerializeField] GameObject beamAnimation;
@@ -24,18 +22,26 @@ public class TelegraphedLaserBeamAttack: MonoBehaviour, IAttack
     protected TimeEntity TimeEntity;
     protected StaminaEntity StaminaEntity;
 
-    protected void Awake()
+    private void Awake()
     {
         _attackInstances = new List<AttackInstance>();
-        TimeEntity = this.gameObject.GetComponent<TimeEntity>();
-        if (TimeEntity == null && timeCost != 0)
+        TimeEntity = GetComponent<TimeEntity>();
+        StaminaEntity = GetComponent<StaminaEntity>();
+
+        if (TimeEntity == null && timeCost > 0f)
         {
-            throw new Exception("Cannot apply a nonzero time-cost attack to an object with no TimeEntity!");
+            Debug.LogError(
+                "TelegraphedLaserBeamAttack requires a TimeEntity when its time cost is nonzero.",
+                this
+            );
         }
-        StaminaEntity = this.gameObject.GetComponent<StaminaEntity>();
-        if (StaminaEntity == null && staminaCost != 0)
+
+        if (StaminaEntity == null && staminaCost > 0f)
         {
-            throw new Exception("Cannot apply a nonzero stamina-cost attack to an object with no StaminaEntity!");
+            Debug.LogError(
+                "TelegraphedLaserBeamAttack requires a StaminaEntity when its stamina cost is nonzero.",
+                this
+            );
         }
     }
 
@@ -46,39 +52,69 @@ public class TelegraphedLaserBeamAttack: MonoBehaviour, IAttack
     
     public float GetDamage()
     {
-        return damage;
+        return Mathf.Max(0f, damage);
     }
     
     public float GetStaminaCost()
     {
-        return staminaCost;
+        return Mathf.Max(0f, staminaCost);
     }
     
     public float GetTimeCost()
     {
-        return timeCost;
+        return Mathf.Max(0f, timeCost);
     }
     
     public float GetRange()
     {
-        return range;
+        return Mathf.Max(0f, range);
     }
 
     public float GetDelay()
     {
-        return attackDelay;
+        return Mathf.Max(0f, attackDelay);
     }
 
     public float CountFriendlyFires(Vector2 targetPosition)
     {
-        RaycastHit2D[] hits = Physics2D.RaycastAll(this.gameObject.transform.position,
-            targetPosition - (Vector2)this.gameObject.transform.position, range);
+        if (GnomeTracker.Instance == null)
+        {
+            return 0f;
+        }
+
+        Vector2 direction = targetPosition - (Vector2)transform.position;
+        float attackRange = GetRange();
+
+        if (direction.sqrMagnitude <= Mathf.Epsilon ||
+            attackRange <= 0f)
+        {
+            return 0f;
+        }
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            transform.position,
+            direction.normalized,
+            attackRange
+        );
 
         float friendlyFires = 0f;
+        HashSet<EntityId> countedGnomes = new HashSet<EntityId>();
         
         foreach (RaycastHit2D hit in hits)
         {
-            friendlyFires += GnomeTracker.Instance.DoesGnomeExist(hit.collider.gameObject.GetEntityId()) ? 1f : 0f;
+            if (hit.collider == null)
+            {
+                continue;
+            }
+
+            GnomeAI gnome = hit.collider.GetComponentInParent<GnomeAI>();
+
+            if (gnome != null &&
+                gnome.gameObject != gameObject &&
+                countedGnomes.Add(gnome.gameObject.GetEntityId()))
+            {
+                friendlyFires += 1f;
+            }
         }
         
         return friendlyFires;
@@ -87,8 +123,9 @@ public class TelegraphedLaserBeamAttack: MonoBehaviour, IAttack
     public bool CanHit(Vector2 targetPosition)
     {
         float distanceSq = Vector2.SqrMagnitude(targetPosition - (Vector2)transform.position);
+        float attackRange = GetRange();
 
-        return distanceSq <= range * range;
+        return distanceSq <= attackRange * attackRange;
     }
 
     public float OutOfRangeDistance(Vector2 targetPosition)
@@ -103,13 +140,17 @@ public class TelegraphedLaserBeamAttack: MonoBehaviour, IAttack
     {
         foreach (AttackInstance instance in _attackInstances)
         {
-            Vector2 vec = instance.Target.transform.position - this.transform.position;
-            instance.DirectionController.Update(vec, Time.deltaTime);
-            print(instance.DirectionController.print);
+            if (instance.Target != null)
+            {
+                Vector2 toTarget =
+                    instance.Target.transform.position - transform.position;
+
+                instance.DirectionController.Update(toTarget, Time.deltaTime);
+            }
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         List<AttackInstance> remove = new List<AttackInstance>();
         
@@ -119,17 +160,23 @@ public class TelegraphedLaserBeamAttack: MonoBehaviour, IAttack
 
             if (instance.RemainingAttackTime <= 0)
             {
-                LaserAttack(instance, Player.Player.Instance.gameObject.transform.position);
-                instance.DisplayObject.SetActive(false);
-                instance.DisplayObject.GetComponent<SpriteRenderer>().enabled = false;
-                Destroy(instance.DisplayObject);
+                LaserAttack(instance);
+                DestroyDisplay(instance);
                 remove.Add(instance);
                 continue;
             }
             
-            //print("new rot: " + instance.DirectionController.direction);
-            instance.DisplayObject.transform.position = gameObject.transform.position;
-            instance.DisplayObject.transform.rotation = Quaternion.Euler(0, 0, instance.DirectionController.direction);
+            if (instance.DisplayObject != null)
+            {
+                instance.DisplayObject.transform.position =
+                    transform.position;
+                instance.DisplayObject.transform.rotation =
+                    Quaternion.Euler(
+                        0f,
+                        0f,
+                        instance.DirectionController.direction
+                    );
+            }
         }
 
         foreach (AttackInstance instance in remove)
@@ -140,81 +187,149 @@ public class TelegraphedLaserBeamAttack: MonoBehaviour, IAttack
 
     public void Attack(GameObject target)
     {
-        print("A");
-        if (StaminaEntity.GetStamina() <= staminaCost) return;
-        print("B");
-        
-        GameObject displayObject = null;
+        if (target == null)
+        {
+            return;
+        }
 
-        if (telegraphAnimation)
+        if (telegraphAnimation == null)
         {
-            displayObject = Instantiate(telegraphAnimation, transform.position, Quaternion.identity);
-            displayObject.transform.rotation = Quaternion.Euler(0, 0, -Vector2.SignedAngle(target.transform.position - transform.position, Vector2.up));
+            Debug.LogError(
+                "TelegraphedLaserBeamAttack has no telegraph animation assigned.",
+                this
+            );
+            return;
         }
-        else
+
+        float safeTimeCost = GetTimeCost();
+        float safeStaminaCost = GetStaminaCost();
+
+        if (safeTimeCost > 0f && TimeEntity == null)
         {
-            throw new Exception("aaaaaaaadasfilakyfuaswy");
+            return;
         }
+
+        if (safeStaminaCost > 0f &&
+            (StaminaEntity == null ||
+             !StaminaEntity.ConsumeStaminaIf(safeStaminaCost)))
+        {
+            return;
+        }
+
+        GameObject displayObject = Instantiate(
+            telegraphAnimation,
+            transform.position,
+            Quaternion.identity
+        );
+
+        displayObject.transform.rotation = Quaternion.Euler(
+            0f,
+            0f,
+            -Vector2.SignedAngle(
+                target.transform.position - transform.position,
+                Vector2.up
+            )
+        );
         
-        AttackInstance instance = new AttackInstance(this.gameObject, target, attackDelay, displayObject, turnSpeed);
+        AttackInstance instance = new AttackInstance(
+            gameObject,
+            target,
+            Mathf.Max(0f, attackDelay),
+            displayObject,
+            turnSpeed
+        );
         
         _attackInstances.Add(instance);
-        
-        StaminaEntity.ConsumeStaminaIf(staminaCost);
     }
     
-    private void LaserAttack(AttackInstance instance, Vector2 targetPosition)
+    private void LaserAttack(AttackInstance instance)
     {
         float rot = instance.DirectionController.direction;
-        Vector2 direction = new Vector2(-Mathf.Sin(Mathf.Deg2Rad*rot), Mathf.Cos(Mathf.Deg2Rad*rot));
-        //print("dir: " + direction);
-        Vector2 endPosition = direction * range + (Vector2)this.gameObject.transform.position;
-        //Instantiate(this.gameObject, endPosition, Quaternion.identity); // WOW!
-        
-        RaycastHit2D[] hits = Physics2D.RaycastAll(this.gameObject.transform.position, direction, range);
+        Vector2 direction = new Vector2(
+            -Mathf.Sin(Mathf.Deg2Rad * rot),
+            Mathf.Cos(Mathf.Deg2Rad * rot)
+        );
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            transform.position,
+            direction,
+            GetRange()
+        );
+        HashSet<EntityId> damagedEntities = new HashSet<EntityId>();
 
         foreach (RaycastHit2D rayHit in hits)
         {
-            GameObject hit = rayHit.collider.gameObject;
-            
-            TimeEntity targetTimeEntity;
-            if (Player.Player.Instance.gameObject.Equals(hit)) targetTimeEntity = Player.Player.Instance.TimeEntity;
-            else
-            {
-                GnomeAI potentialGnome = GnomeTracker.Instance.GetGnome(hit.GetEntityId());
-                if (potentialGnome)
-                {
-                    targetTimeEntity = potentialGnome.timeEntity;
-                }
-                else
-                {
-                    targetTimeEntity = hit.GetComponent<TimeEntity>();
-                }
-            }
-
-            if (!targetTimeEntity)
+            if (rayHit.collider == null)
             {
                 continue;
             }
 
-            targetTimeEntity.DealDamage(damage);
+            TimeEntity targetTimeEntity =
+                AttackUtility.FindTimeEntity(rayHit.collider.gameObject);
+
+            if (targetTimeEntity == null ||
+                targetTimeEntity == TimeEntity ||
+                !damagedEntities.Add(
+                    targetTimeEntity.gameObject.GetEntityId()
+                ))
+            {
+                continue;
+            }
+
+            float safeDamage = GetDamage();
+
+            if (safeDamage > 0f)
+            {
+                targetTimeEntity.DealDamage(safeDamage);
+            }
         }
-        
-        GameObject beam = Instantiate(this.beamAnimation, transform.position, Quaternion.identity);
-        beam.transform.rotation = Quaternion.Euler(0, 0, instance.DirectionController.direction);
-        
-        TimeEntity.DealDamage(timeCost);
+
+        if (beamAnimation != null)
+        {
+            GameObject beam = Instantiate(
+                beamAnimation,
+                transform.position,
+                Quaternion.identity
+            );
+
+            beam.transform.rotation = Quaternion.Euler(
+                0f,
+                0f,
+                instance.DirectionController.direction
+            );
+        }
+
+        float safeTimeCost = GetTimeCost();
+
+        if (safeTimeCost > 0f && TimeEntity != null)
+        {
+            TimeEntity.DealDamage(safeTimeCost);
+        }
     }
 
-    /*public Collection<GameObject> GetAllInRange(float factor)
+    private void OnDestroy()
     {
-        return InternalAttack.GetAllInRange(factor);
+        if (_attackInstances == null)
+        {
+            return;
+        }
+
+        foreach (AttackInstance instance in _attackInstances)
+        {
+            DestroyDisplay(instance);
+        }
+
+        _attackInstances.Clear();
     }
 
-    public Collection<GameObject> GetAllInRange()
+    private void DestroyDisplay(AttackInstance instance)
     {
-        return InternalAttack.GetAllInRange();
-    }*/
+        if (instance.DisplayObject != null)
+        {
+            Destroy(instance.DisplayObject);
+            instance.DisplayObject = null;
+        }
+    }
 
     private class AttackInstance
     {
@@ -229,9 +344,10 @@ public class TelegraphedLaserBeamAttack: MonoBehaviour, IAttack
             DisplayObject = displayObject;
             RemainingAttackTime = attackWait;
             Vector2 delta = Target.transform.position - source.transform.position;
-            DirectionController = new DirectionController((Unity.Mathematics.math.atan2(delta.y, delta.x) / Unity.Mathematics.math.PI2 * 360 + 360 - 90f) % 360, moveSpeed); // TODO: ???? my brain is less reliable than an llm
-            
-            //print("Attack: " + RemainingAttackTime + ", Display: " + RemainingDisplayTime);
+            DirectionController = new DirectionController(
+                -Vector2.SignedAngle(delta, Vector2.up),
+                moveSpeed
+            );
         }
     }
 }

@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 using Attacks;
 using Entity;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class LaserBeamAttack : GenericAttack, IAttack
 {
@@ -14,14 +14,44 @@ public class LaserBeamAttack : GenericAttack, IAttack
 
     public override float CountFriendlyFires(Vector2 targetPosition)
     {
-        RaycastHit2D[] hits = Physics2D.RaycastAll(this.gameObject.transform.position,
-            targetPosition - (Vector2)this.gameObject.transform.position, range);
+        if (GnomeTracker.Instance == null)
+        {
+            return 0f;
+        }
+
+        Vector2 direction = targetPosition - (Vector2)transform.position;
+        float attackRange = GetRange();
+
+        if (direction.sqrMagnitude <= Mathf.Epsilon ||
+            attackRange <= 0f)
+        {
+            return 0f;
+        }
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            transform.position,
+            direction.normalized,
+            attackRange
+        );
 
         float friendlyFires = 0f;
+        HashSet<EntityId> countedGnomes = new HashSet<EntityId>();
         
         foreach (RaycastHit2D hit in hits)
         {
-            friendlyFires += GnomeTracker.Instance.DoesGnomeExist(hit.collider.gameObject.GetEntityId()) ? 1f : 0f;
+            if (hit.collider == null)
+            {
+                continue;
+            }
+
+            GnomeAI gnome = hit.collider.GetComponentInParent<GnomeAI>();
+
+            if (gnome != null &&
+                gnome.gameObject != gameObject &&
+                countedGnomes.Add(gnome.gameObject.GetEntityId()))
+            {
+                friendlyFires += 1f;
+            }
         }
         
         return friendlyFires;
@@ -29,50 +59,80 @@ public class LaserBeamAttack : GenericAttack, IAttack
 
     public override void Attack(GameObject target)
     {
-        if (!(StaminaEntity.GetStamina() >= staminaCost)) return;
-        
-        RaycastHit2D[] hits = Physics2D.RaycastAll(this.gameObject.transform.position,
-            (Vector2)target.transform.position - (Vector2)this.gameObject.transform.position, range);
+        if (target == null)
+        {
+            return;
+        }
+
+        Vector2 direction =
+            (Vector2)target.transform.position - (Vector2)transform.position;
+        float attackRange = GetRange();
+
+        if (direction.sqrMagnitude <= Mathf.Epsilon ||
+            attackRange <= 0f ||
+            !TryConsumeStaminaCost())
+        {
+            return;
+        }
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            transform.position,
+            direction.normalized,
+            attackRange
+        );
+        HashSet<EntityId> damagedEntities = new HashSet<EntityId>();
 
         foreach (RaycastHit2D rayHit in hits)
         {
-            GameObject hit = rayHit.collider.gameObject;
-            
-            TimeEntity targetTimeEntity;
-            if (Player.Player.Instance.gameObject.Equals(hit)) targetTimeEntity = Player.Player.Instance.TimeEntity;
-            else
-            {
-                GnomeAI potentialGnome = GnomeTracker.Instance.GetGnome(hit.GetEntityId());
-                if (potentialGnome)
-                {
-                    targetTimeEntity = potentialGnome.timeEntity;
-                }
-                else
-                {
-                    targetTimeEntity = hit.GetComponent<TimeEntity>();
-                }
-            }
-
-            if (!targetTimeEntity)
+            if (rayHit.collider == null)
             {
                 continue;
             }
 
-            targetTimeEntity.DealDamage(damage);
+            TimeEntity targetTimeEntity =
+                AttackUtility.FindTimeEntity(rayHit.collider.gameObject);
+
+            if (targetTimeEntity == null ||
+                targetTimeEntity == TimeEntity ||
+                !damagedEntities.Add(
+                    targetTimeEntity.gameObject.GetEntityId()
+                ))
+            {
+                continue;
+            }
+
+            float safeDamage = GetDamage();
+
+            if (safeDamage > 0f)
+            {
+                targetTimeEntity.DealDamage(safeDamage);
+            }
         }
-        
-        GameObject beam = Instantiate(this.beamAnimation, transform.position, Quaternion.identity);
-        beam.transform.rotation = Quaternion.Euler(0, 0, -Vector2.SignedAngle(target.transform.position - transform.position, Vector2.up));
-        
-        TimeEntity.DealDamage(timeCost);
-        StaminaEntity.ConsumeStaminaIf(staminaCost);
+
+        if (beamAnimation != null)
+        {
+            GameObject beam = Instantiate(
+                beamAnimation,
+                transform.position,
+                Quaternion.identity
+            );
+
+            beam.transform.rotation = Quaternion.Euler(
+                0f,
+                0f,
+                -Vector2.SignedAngle(direction, Vector2.up)
+            );
+        }
+
+        ApplyTimeCost();
     }
 
     public override bool CanHit(Vector2 targetPosition)
     {
         float distanceSq = Vector2.SqrMagnitude(targetPosition - (Vector2)transform.position);
+        float attackRange = GetRange();
         
-        return distanceSq <= range * range;
+        return distanceSq <= attackRange * attackRange;
     }
     
     public override float OutOfRangeDistance(Vector2 targetPosition)

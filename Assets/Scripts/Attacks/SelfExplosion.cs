@@ -1,5 +1,3 @@
-using System;
-using System.Collections.ObjectModel;
 using Attacks;
 using Entity;
 using UnityEngine;
@@ -9,18 +7,32 @@ public class SelfExplosion : GenericAttack, IAttack
     [SerializeField] private GameObject explosion;
     [SerializeField] private GameObject explosionSound;
     [SerializeField] private GameObject boomGnomeAttack;
-    [SerializeField] private float boomDelay=.5f;
+    [SerializeField, Min(0f)] private float boomDelay = .5f;
+
+    private bool _isExploding;
+    private bool _hasExploded;
     
     public override bool IsAoe()
     {
         return true;
     }
+
+    public override float GetDelay()
+    {
+        return Mathf.Max(0f, boomDelay);
+    }
     
     public override bool CanHit(Vector2 targetPosition)
     {
+        if (_isExploding)
+        {
+            return false;
+        }
+
         float distanceSq = Vector2.SqrMagnitude(targetPosition - (Vector2)transform.position);
+        float attackRange = GetRange();
         
-        return distanceSq <= range * range;
+        return distanceSq <= attackRange * attackRange;
     }
     
     public override float OutOfRangeDistance(Vector2 targetPosition)
@@ -33,10 +45,17 @@ public class SelfExplosion : GenericAttack, IAttack
     public override float CountFriendlyFires(Vector2 targetPosition)
     {
         float hits = 0f;
-        
+
+        if (GnomeTracker.Instance == null)
+        {
+            return hits;
+        }
+
         foreach (GnomeAI gnomeAI in GnomeTracker.Instance.GetGnomeEnumerator())
         {
-            if (CanHit(gnomeAI.transform.position))
+            if (gnomeAI != null &&
+                gnomeAI.gameObject != gameObject &&
+                CanHit(gnomeAI.transform.position))
             {
                 hits += 1f;
             }
@@ -47,47 +66,73 @@ public class SelfExplosion : GenericAttack, IAttack
 
     public override void Attack(GameObject desiredTarget)
     {
-        if (!(StaminaEntity.GetStamina() >= staminaCost)) return;
-        
-        foreach (GameObject hit in GetAllInRange())
+        if (_isExploding || !TryConsumeStaminaCost())
         {
-            TimeEntity targetTimeEntity;
-            if (Player.Player.Instance.gameObject.Equals(hit)) targetTimeEntity = Player.Player.Instance.TimeEntity;
-            else
-            {
-                GnomeAI potentialGnome = GnomeTracker.Instance.GetGnome(hit.GetEntityId());
-                if (potentialGnome)
-                {
-                    targetTimeEntity = potentialGnome.timeEntity;
-                }
-                else
-                {
-                    targetTimeEntity = hit.GetComponent<TimeEntity>();
-                }
-            }
-
-            if (!targetTimeEntity)
-            {
-                continue;
-            }
-
-            targetTimeEntity.DealDamage(damage);
+            return;
         }
+
+        _isExploding = true;
         
-        //print (GnomeTracker.Instance.GetGnome(target.GetEntityId()));
-        int layer = GnomeTracker.Instance.GetGnome(this.gameObject.GetEntityId()).GetSortingOrder();
-        // targetTimeEntity.DealDamage(damage);
-        SoundManager.Instance.CreateSoundAtPosition(boomGnomeAttack, transform.position);
-        Invoke(nameof(Explode),boomDelay);
-        
-        TimeEntity.DealDamage(timeCost);
-        StaminaEntity.ConsumeStaminaIf(staminaCost);
+        if (boomGnomeAttack != null && SoundManager.Instance != null)
+        {
+            SoundManager.Instance.CreateSoundAtPosition(
+                boomGnomeAttack,
+                transform.position
+            );
+        }
+
+        float safeDelay = Mathf.Max(0f, boomDelay);
+
+        if (safeDelay <= 0f)
+        {
+            Explode();
+        }
+        else
+        {
+            Invoke(nameof(Explode), safeDelay);
+        }
     }
 
     private void Explode()
     {
-        Instantiate(explosion,transform.position,Quaternion.identity);
-        SoundManager.Instance.CreateSoundAtPosition(explosionSound, transform.position);
+        if (!_isExploding || _hasExploded)
+        {
+            return;
+        }
+
+        _hasExploded = true;
+
+        foreach (GameObject hit in GetAllInRange())
+        {
+            TimeEntity targetTimeEntity = AttackUtility.FindTimeEntity(hit);
+
+            if (targetTimeEntity == null)
+            {
+                continue;
+            }
+
+            float safeDamage = GetDamage();
+
+            if (safeDamage > 0f)
+            {
+                targetTimeEntity.DealDamage(safeDamage);
+            }
+        }
+
+        if (explosion != null)
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+        }
+
+        if (explosionSound != null && SoundManager.Instance != null)
+        {
+            SoundManager.Instance.CreateSoundAtPosition(
+                explosionSound,
+                transform.position
+            );
+        }
+
+        ApplyTimeCost();
         Destroy(gameObject);
     }
 }

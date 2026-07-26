@@ -1,8 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Attacks;
-using Entity;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,18 +13,32 @@ public class TelegraphedAttack : MonoBehaviour, IAttack
 
     private List<AttackInstance> _attackInstances;
     private IAttack _internalAttack;
+
+    private bool HasInternalAttack =>
+        InternalAttackMB != null &&
+        _internalAttack != null;
     
     // TODO: Telegraph with sprite change
     
-    void Awake()
+    private void Awake()
     {
         _attackInstances = new List<AttackInstance>();
-        if (InternalAttackMB == null) throw new Exception("No attack given to telegraph!");
-        _internalAttack = (IAttack)InternalAttackMB;
+
+        if (InternalAttackMB is not IAttack internalAttack ||
+            ReferenceEquals(InternalAttackMB, this))
+        {
+            Debug.LogError(
+                "TelegraphedAttack requires a different component that implements IAttack.",
+                this
+            );
+            enabled = false;
+            return;
+        }
+
+        _internalAttack = internalAttack;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         List<AttackInstance> remove = new List<AttackInstance>();
         
@@ -37,20 +47,31 @@ public class TelegraphedAttack : MonoBehaviour, IAttack
             instance.RemainingAttackTime -= Time.fixedDeltaTime;
             instance.RemainingDisplayTime -= Time.fixedDeltaTime;
 
-            if (instance.Displaying && instance.RemainingDisplayTime <= 0 && instance.DisplayObject)
+            if (instance.Displaying &&
+                instance.RemainingDisplayTime <= 0f)
             {
                 instance.Displaying = false;
-                
-                instance.DisplayObject.SetActive(false);
-                instance.DisplayObject.GetComponent<SpriteRenderer>().enabled = false;
-                //print("DESTROY!");
-                Destroy(instance.DisplayObject);
+
+                foreach (GameObject displayObject in instance.DisplayObjects)
+                {
+                    if (displayObject != null)
+                    {
+                        Destroy(displayObject);
+                    }
+                }
+
+                instance.DisplayObjects.Clear();
             }
 
-            if (instance.RemainingAttackTime <= 0)
+            if (instance.Waiting &&
+                instance.RemainingAttackTime <= 0f)
             {
-                _internalAttack.Attack(instance.Target);
                 instance.Waiting = false;
+
+                if (instance.Target != null && HasInternalAttack)
+                {
+                    _internalAttack.Attack(instance.Target);
+                }
             }
 
             if (!instance.Displaying && !instance.Waiting)
@@ -67,113 +88,155 @@ public class TelegraphedAttack : MonoBehaviour, IAttack
 
     public bool IsAoe()
     {
-        return _internalAttack.IsAoe();
+        return HasInternalAttack && _internalAttack.IsAoe();
     }
     
     public float GetDelay()
     {
-        return attackDelay;
+        return Mathf.Max(0f, attackDelay);
     }
 
     public float GetDamage()
     {
-        return _internalAttack.GetDamage();
+        return HasInternalAttack
+            ? Mathf.Max(0f, _internalAttack.GetDamage())
+            : 0f;
     }
 
     public float GetStaminaCost()
     {
-        return _internalAttack.GetStaminaCost();
+        return HasInternalAttack
+            ? Mathf.Max(0f, _internalAttack.GetStaminaCost())
+            : 0f;
     }
 
     public float GetTimeCost()
     {
-        return _internalAttack.GetTimeCost();
+        return HasInternalAttack
+            ? Mathf.Max(0f, _internalAttack.GetTimeCost())
+            : 0f;
     }
     
     public float GetRange()
     {
-        return _internalAttack.GetRange();
+        return HasInternalAttack
+            ? Mathf.Max(0f, _internalAttack.GetRange())
+            : 0f;
     }
 
     public bool CanHit(Vector2 targetPosition)
     {
-        return _internalAttack.CanHit(targetPosition);
+        return HasInternalAttack &&
+               _internalAttack.CanHit(targetPosition);
     }
 
     public float OutOfRangeDistance(Vector2 targetPosition)
     {
-        return _internalAttack.OutOfRangeDistance(targetPosition);
+        return HasInternalAttack
+            ? _internalAttack.OutOfRangeDistance(targetPosition)
+            : float.PositiveInfinity;
     }
 
     public float CountFriendlyFires(Vector2 targetPosition)
     {
-        return _internalAttack.CountFriendlyFires(targetPosition);
+        return HasInternalAttack
+            ? Mathf.Max(
+                0f,
+                _internalAttack.CountFriendlyFires(targetPosition)
+            )
+            : 0f;
     }
 
     public void Attack(GameObject target)
     {
-        GameObject displayObject = null;
-
-        if (directionalAnimation)
+        if (!HasInternalAttack || target == null)
         {
-            displayObject = Instantiate(directionalAnimation, transform.position, Quaternion.identity);
-            displayObject.transform.rotation = Quaternion.Euler(0, 0, -Vector2.SignedAngle(target.transform.position - transform.position, Vector2.up));
+            return;
         }
 
-        if (targetedAnimation)
+        List<GameObject> displayObjects = new List<GameObject>();
+
+        if (directionalAnimation != null)
         {
-            displayObject = Instantiate(targetedAnimation, target.transform.position, Quaternion.identity);
+            GameObject displayObject = Instantiate(
+                directionalAnimation,
+                transform.position,
+                Quaternion.identity
+            );
+
+            displayObject.transform.rotation = Quaternion.Euler(0, 0, -Vector2.SignedAngle(target.transform.position - transform.position, Vector2.up));
+            displayObjects.Add(displayObject);
+        }
+
+        if (targetedAnimation != null)
+        {
+            displayObjects.Add(
+                Instantiate(
+                    targetedAnimation,
+                    target.transform.position,
+                    Quaternion.identity
+                )
+            );
         }
         
-        AttackInstance instance = new AttackInstance(target, attackDelay, attackDelay + animationLinger, displayObject);
+        AttackInstance instance = new AttackInstance(
+            target,
+            Mathf.Max(0f, attackDelay),
+            Mathf.Max(0f, attackDelay + animationLinger),
+            displayObjects
+        );
         
         _attackInstances.Add(instance);
     }
 
     public bool InRange(Vector2 targetPosition)
     {
-        return _internalAttack.CanHit(targetPosition);
+        return CanHit(targetPosition);
     }
 
-    /*public Collection<GameObject> GetAllInRange(float factor)
+    private void OnDestroy()
     {
-        return InternalAttack.GetAllInRange(factor);
-    }
+        if (_attackInstances == null)
+        {
+            return;
+        }
 
-    public Collection<GameObject> GetAllInRange()
-    {
-        return InternalAttack.GetAllInRange();
-    }*/
+        foreach (AttackInstance instance in _attackInstances)
+        {
+            foreach (GameObject displayObject in instance.DisplayObjects)
+            {
+                if (displayObject != null)
+                {
+                    Destroy(displayObject);
+                }
+            }
+        }
+
+        _attackInstances.Clear();
+    }
 
     private class AttackInstance
     {
         public GameObject Target;
-        public GameObject DisplayObject;
+        public readonly List<GameObject> DisplayObjects;
         public float RemainingAttackTime;
         public float RemainingDisplayTime;
         public bool Waiting;
         public bool Displaying;
 
-        public AttackInstance(GameObject target, float attackWait, float displayLength, GameObject displayObject)
+        public AttackInstance(
+            GameObject target,
+            float attackWait,
+            float displayLength,
+            List<GameObject> displayObjects
+        )
         {
             Target = target;
-            DisplayObject = displayObject;
-            Displaying = displayObject;
-            
-            if (displayLength > 0)
-            {
-                RemainingDisplayTime = displayLength;
-                Displaying = true;
-            }
-            else
-            {
-                RemainingDisplayTime = 0f;
-                Displaying = false;
-            }
-
+            DisplayObjects = displayObjects;
+            RemainingDisplayTime = displayLength;
             RemainingAttackTime = attackWait;
-            
-            //print("Attack: " + RemainingAttackTime + ", Display: " + RemainingDisplayTime);
+            Waiting = true;
+            Displaying = displayObjects.Count > 0;
         }
     }
 }

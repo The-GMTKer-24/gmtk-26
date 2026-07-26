@@ -29,7 +29,6 @@ public class Trap : MonoBehaviour
         {
             TimeEntity time =  other.gameObject.GetComponent<TimeEntity>();
             time.DealDamage( (float) Math.Round( time.GetTime()/4));
-            print("Player!");
             gameObject.GetComponent<SpriteRenderer>().sprite = triggeredSprite;
             _soundManager.CreateSoundAtPosition(timeTrapSound, transform.position);
             hasTriggered = true;

@@ -1,5 +1,3 @@
-using System;
-using System.Collections.ObjectModel;
 using Attacks;
 using Entity;
 using UnityEngine;
@@ -18,8 +16,9 @@ public class SelfAreaAttack : GenericAttack, IAttack
     public override bool CanHit(Vector2 targetPosition)
     {
         float distanceSq = Vector2.SqrMagnitude(targetPosition - (Vector2)transform.position);
+        float attackRange = GetRange();
         
-        return distanceSq <= range * range;
+        return distanceSq <= attackRange * attackRange;
     }
     
     public override float OutOfRangeDistance(Vector2 targetPosition)
@@ -32,10 +31,17 @@ public class SelfAreaAttack : GenericAttack, IAttack
     public override float CountFriendlyFires(Vector2 targetPosition)
     {
         float hits = 0f;
-        
+
+        if (GnomeTracker.Instance == null)
+        {
+            return hits;
+        }
+
         foreach (GnomeAI gnomeAI in GnomeTracker.Instance.GetGnomeEnumerator())
         {
-            if (CanHit(gnomeAI.transform.position))
+            if (gnomeAI != null &&
+                gnomeAI.gameObject != gameObject &&
+                CanHit(gnomeAI.transform.position))
             {
                 hits += 1f;
             }
@@ -46,44 +52,63 @@ public class SelfAreaAttack : GenericAttack, IAttack
 
     public override void Attack(GameObject target)
     {
-        if (!(StaminaEntity.GetStamina() >= staminaCost)) return;
+        if (!TryConsumeStaminaCost())
+        {
+            return;
+        }
         
         foreach (GameObject hit in GetAllInRange())
         {
-            TimeEntity targetTimeEntity;
-            if (Player.Player.Instance.gameObject.Equals(hit)) targetTimeEntity = Player.Player.Instance.TimeEntity;
-            else
-            {
-                GnomeAI potentialGnome = GnomeTracker.Instance.GetGnome(hit.GetEntityId());
-                if (potentialGnome)
-                {
-                    targetTimeEntity = potentialGnome.timeEntity;
-                }
-                else
-                {
-                    targetTimeEntity = hit.GetComponent<TimeEntity>();
-                }
-            }
+            TimeEntity targetTimeEntity = AttackUtility.FindTimeEntity(hit);
 
-            if (!targetTimeEntity)
+            if (targetTimeEntity == null)
             {
                 continue;
             }
 
-            targetTimeEntity.DealDamage(damage);
+            float safeDamage = GetDamage();
+
+            if (safeDamage > 0f)
+            {
+                targetTimeEntity.DealDamage(safeDamage);
+            }
         }
 
-        //print (GnomeTracker.Instance.GetGnome(hit.GetEntityId()));
-        int layer = GnomeTracker.Instance.GetGnome(this.gameObject.GetEntityId()).GetSortingOrder();
-        if (frontAnimation)
-            Instantiate(frontAnimation, transform.position, Quaternion.identity).GetComponent<SpriteRenderer>()
-                .sortingOrder = layer + SortingOrderHandler.RecommendedOffset(-0.3f);
-        if (backAnimation)
-            Instantiate(backAnimation, transform.position, Quaternion.identity).GetComponent<SpriteRenderer>()
-                .sortingOrder = layer - 1;
-        if (soundEffect) SoundManager.Instance.CreateSoundAtPosition(soundEffect, transform.position);
+        int layer = AttackUtility.GetSortingOrder(gameObject);
+
+        if (frontAnimation != null)
+        {
+            GameObject animationObject = Instantiate(
+                frontAnimation,
+                transform.position,
+                Quaternion.identity
+            );
+
+            AttackUtility.SetSortingOrder(
+                animationObject,
+                layer + SortingOrderHandler.RecommendedOffset(-0.3f)
+            );
+        }
+
+        if (backAnimation != null)
+        {
+            GameObject animationObject = Instantiate(
+                backAnimation,
+                transform.position,
+                Quaternion.identity
+            );
+
+            AttackUtility.SetSortingOrder(animationObject, layer - 1);
+        }
+
+        if (soundEffect != null && SoundManager.Instance != null)
+        {
+            SoundManager.Instance.CreateSoundAtPosition(
+                soundEffect,
+                transform.position
+            );
+        }
         
-        TimeEntity.DealDamage(timeCost);
-        StaminaEntity.ConsumeStaminaIf(staminaCost);
+        ApplyTimeCost();
     }
 }

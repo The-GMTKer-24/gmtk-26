@@ -169,10 +169,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI.MainMenu.MenuButtons
   mainMenuObjects: {fileID: 48574912}
   creditsMenuObjects: {fileID: 1101770501}
+  easyModeUpgrade: {fileID: 8970273558985301401, guid: 184bb315667566c4d8f254e1f42e538d, type: 3}
   sceneToLoad: Main
   mainScene: Main
   mainMenu: Main Menu
   speedrunTimerToggle: {fileID: 1101687436}
+  easyModeToggle: {fileID: 1621661420}
   musicDuckInMenu: 0.1
 --- !u!114 &46889064
 MonoBehaviour:
@@ -250,6 +252,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1621661419}
   - {fileID: 48574913}
   - {fileID: 1101770502}
   - {fileID: 1428861455}
@@ -2130,6 +2133,131 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620214339}
   m_CullTransparentMesh: 1
+--- !u!1001 &1621661418
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 46889067}
+    m_Modifications:
+    - target: {fileID: 4050596862131120460, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_Name
+      value: Enable Easy Mode
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 169.2458
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 25.9437
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 848.80005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -33.299988
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+--- !u!224 &1621661419 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+  m_PrefabInstance: {fileID: 1621661418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1621661420 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8226468582172518358, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+  m_PrefabInstance: {fileID: 1621661418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Toggle
 --- !u!1 &1881375465
 GameObject:
   m_ObjectHideFlags: 0

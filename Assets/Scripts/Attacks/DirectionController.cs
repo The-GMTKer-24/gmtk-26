@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Attacks
@@ -6,8 +5,7 @@ namespace Attacks
     public class DirectionController
     {
         public float direction;
-        private float speed;
-        public String print;
+        private readonly float speed;
 
         public DirectionController(float direction, float speed)
         {
@@ -17,28 +15,20 @@ namespace Attacks
 
         public void Update(Vector2 delta, float deltaTime)
         {
-            float desiredDirection = (Unity.Mathematics.math.atan2(delta.y, delta.x) / Unity.Mathematics.math.PI2 * 360 + 360 - 90f) % 360;
-            float lowerDesiredDirection = desiredDirection - 360;
-            float currentDirection = direction;
-            if (direction > desiredDirection)
+            if (delta.sqrMagnitude <= Mathf.Epsilon)
             {
-                currentDirection = direction - 360;
-            }
-            float movement = speed * deltaTime;
-            float distance = desiredDirection - currentDirection;
-            if (desiredDirection - currentDirection > currentDirection - lowerDesiredDirection)
-            {
-                movement = -movement;
-                distance = lowerDesiredDirection - currentDirection;
+                return;
             }
 
-            if (Mathf.Abs(movement) >= Mathf.Abs(distance))
-            {
-                movement = distance;
-            }
+            float desiredDirection =
+                -Vector2.SignedAngle(delta, Vector2.up);
+            float maxDelta =
+                Mathf.Max(0f, speed) * Mathf.Max(0f, deltaTime);
 
-            print = ("Update: " + desiredDirection + ", " + movement + ", " + distance + ", " + currentDirection);
-            direction = (direction + movement + 360 * 10) % 360;
+            direction = Mathf.Repeat(
+                Mathf.MoveTowardsAngle(direction, desiredDirection, maxDelta),
+                360f
+            );
         }
     }
 }

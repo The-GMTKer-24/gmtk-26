@@ -122,7 +122,6 @@ namespace UI
         {
             UIManager.Instance.UnPause();
             UIManager.Instance.SetContext(null);
-            Debug.Log("Canceled");
             option1 = null;
             option2 = null;
             option3 = null;

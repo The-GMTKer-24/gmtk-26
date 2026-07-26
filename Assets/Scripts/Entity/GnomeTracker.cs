@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
 using UnityEngine;
 
 namespace Entity
@@ -23,6 +19,16 @@ namespace Entity
 
         public void Awake()
         {
+            if (Instance != null && Instance != this)
+            {
+                Debug.LogError(
+                    "Multiple GnomeTracker instances are active. The newer instance was disabled.",
+                    this
+                );
+                enabled = false;
+                return;
+            }
+
             Instance = this;
         }
 
@@ -33,24 +39,49 @@ namespace Entity
         
         public bool IsGnomeOfTag(GnomeAI gnomeAI, String tag)
         {
-            return _gnomeDict.ContainsKey(tag) && _gnomeDict[tag].Contains(gnomeAI.gameObject.GetEntityId());
+            return gnomeAI != null &&
+                   tag != null &&
+                   _gnomeDict.TryGetValue(tag, out SortedSet<EntityId> ids) &&
+                   ids.Contains(gnomeAI.gameObject.GetEntityId());
         }
 
         public bool IsGnome(GnomeAI gnomeAI)
         {
-            return _gnomeSet.Contains(gnomeAI.gameObject.GetEntityId());
+            return gnomeAI != null &&
+                   _gnomeSet.Contains(gnomeAI.gameObject.GetEntityId());
         }
 
         public void AddGnome(GnomeAI gnomeAI, HashSet<String> tags)
         {
-            //print("AddGnome: " + gnomeAI.ToString() + ", " + gnomeAI.gameObject.GetEntityId());
-            _gnomeSet.Add(gnomeAI.gameObject.GetEntityId());
-            _gnomes.Add(gnomeAI.gameObject.GetEntityId(), gnomeAI);
-            
-            foreach (String gnomeTag in tags)
+            if (gnomeAI == null)
             {
-                if (!_gnomeDict.ContainsKey(gnomeTag)) _gnomeDict.Add(gnomeTag, new SortedSet<EntityId>());
-                _gnomeDict[gnomeTag].Add(gnomeAI.gameObject.GetEntityId());
+                return;
+            }
+
+            EntityId entityId = gnomeAI.gameObject.GetEntityId();
+            _gnomeSet.Add(entityId);
+            _gnomes[entityId] = gnomeAI;
+            
+            if (tags != null)
+            {
+                foreach (String gnomeTag in tags)
+                {
+                    if (String.IsNullOrEmpty(gnomeTag))
+                    {
+                        continue;
+                    }
+
+                    if (!_gnomeDict.TryGetValue(
+                            gnomeTag,
+                            out SortedSet<EntityId> taggedIds
+                        ))
+                    {
+                        taggedIds = new SortedSet<EntityId>();
+                        _gnomeDict.Add(gnomeTag, taggedIds);
+                    }
+
+                    taggedIds.Add(entityId);
+                }
             }
             
             gnomeCount = _gnomeSet.Count;
@@ -63,26 +94,38 @@ namespace Entity
 
         public void RemoveGnome(GnomeAI gnomeAI)
         {
+            // Unity objects can compare equal to null while OnDestroy is
+            // running, but their managed reference is still usable here.
+            if (ReferenceEquals(gnomeAI, null))
+            {
+                return;
+            }
+
+            EntityId entityId = gnomeAI.gameObject.GetEntityId();
+
             // Possibly a source of performance issues. Better to try every possible tag, or to store tags per entityid in another dict?
             foreach (KeyValuePair<String, SortedSet<EntityId>> entry in _gnomeDict)
             {
-                entry.Value.Remove(gnomeAI.gameObject.GetEntityId());
+                entry.Value.Remove(entityId);
             }
             
-            _gnomeSet.Remove(gnomeAI.gameObject.GetEntityId());
-            _gnomes.Remove(gnomeAI.gameObject.GetEntityId());
+            _gnomeSet.Remove(entityId);
+            _gnomes.Remove(entityId);
             
             gnomeCount = _gnomeSet.Count;
         }
 
         public SortedSet<EntityId> GetGnomeIds(String tag)
         {
-            return _gnomeDict[tag];
+            return tag != null &&
+                   _gnomeDict.TryGetValue(tag, out SortedSet<EntityId> ids)
+                ? new SortedSet<EntityId>(ids)
+                : new SortedSet<EntityId>();
         }
 
         public SortedSet<EntityId> GetGnomeIds()
         {
-            return _gnomeSet;
+            return new SortedSet<EntityId>(_gnomeSet);
         }
 
         /*public HashSet<GnomeAI> GetGnomes()
@@ -90,21 +133,30 @@ namespace Entity
             return _gnomes;
         }*/
 
-        public IEnumerable<GnomeAI> GetGnomeEnumerator()
+        public Dictionary<EntityId, GnomeAI>.ValueCollection
+            GetGnomeEnumerator()
         {
-            return _gnomes.Values.AsEnumerable();
+            return _gnomes.Values;
         }
 
         public GnomeAI GetGnome(EntityId entityId)
         {
-            //print("GetGnome: " + _gnomeSet.Count + ", " + _gnomes.Count + ", " + entityId.ToString());
-            return _gnomes.ContainsKey(entityId) ? _gnomes[entityId] : null;
+            return _gnomes.TryGetValue(entityId, out GnomeAI gnome)
+                ? gnome
+                : null;
         }
 
         public bool DoesGnomeExist(EntityId entityId)
         {
-            //print("DoesGnomeExist: " + _gnomeSet.Count + ", " + _gnomes.Count + ", " + entityId.ToString());
             return _gnomes.ContainsKey(entityId);
+        }
+
+        private void OnDestroy()
+        {
+            if (Instance == this)
+            {
+                Instance = null;
+            }
         }
     }
 }

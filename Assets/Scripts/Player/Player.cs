@@ -37,16 +37,20 @@ namespace Player
         {
             timeEntity = GetComponent<TimeEntity>();
             RigidBody = GetComponent<Rigidbody2D>();
-            
-            _currentTime = timeEntity.GetTime();
+            if (timeEntity)
+                _currentTime = timeEntity.GetTime();
         }
 
         public void OnDestroy()
         {
-            PlayerManager.Instance.LoadSceneAfterDelay(mainMenu, delay);
-            
-            countdownClock.TickPulse();
-            countdownClock.TickSound();
+            if (PlayerManager.Instance)
+                PlayerManager.Instance.LoadSceneAfterDelay(mainMenu, delay);
+
+            if (countdownClock)
+            {
+                countdownClock.TickPulse();
+                countdownClock.TickSound();
+            }
         }
 
         public void FixedUpdate()
@@ -61,7 +65,8 @@ namespace Player
             
             // Keep track in seconds
             _previousSecond = _currentSecond;
-            _currentSecond = (int)timeEntity.GetTime();
+            if (timeEntity)
+                _currentSecond = (int)timeEntity.GetTime();
             
             // New change in a whole second!
             if (_previousSecond != _currentSecond)

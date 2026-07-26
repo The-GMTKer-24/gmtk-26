@@ -1,5 +1,3 @@
-using System;
-using System.Collections.ObjectModel;
 using Attacks;
 using Entity;
 using UnityEngine;
@@ -16,8 +14,9 @@ public class MeleeAttack : GenericAttack, IAttack
     public override bool CanHit(Vector2 targetPosition)
     {
         float distanceSq = Vector2.SqrMagnitude(targetPosition - (Vector2)transform.position);
+        float attackRange = GetRange();
         
-        return distanceSq <= range * range;
+        return distanceSq <= attackRange * attackRange;
     }
     
     public override float OutOfRangeDistance(Vector2 targetPosition)
@@ -34,31 +33,34 @@ public class MeleeAttack : GenericAttack, IAttack
 
     public override void Attack(GameObject target)
     {
-        if (!(StaminaEntity.GetStamina() >= staminaCost)) return;
-            
-        TimeEntity targetTimeEntity;
-        if (Player.Player.Instance.gameObject.Equals(target)) targetTimeEntity = Player.Player.Instance.TimeEntity;
-        else
+        if (target == null)
         {
-            GnomeAI potentialGnome = GnomeTracker.Instance.GetGnome(target.GetEntityId());
-            if (potentialGnome != null)
-            {
-                targetTimeEntity = potentialGnome.timeEntity;
-            }
-            else
-            {
-                targetTimeEntity = target.GetComponent<TimeEntity>();
-            }
+            return;
         }
+
+        TimeEntity targetTimeEntity = AttackUtility.FindTimeEntity(target);
 
         if (targetTimeEntity == null)
         {
-            throw new Exception("Target entity cannot take damage!");
+            Debug.LogWarning(
+                "MeleeAttack target has no TimeEntity and cannot take damage.",
+                target
+            );
+            return;
         }
-            
-        targetTimeEntity.DealDamage(damage);
-        
-        TimeEntity.DealDamage(timeCost);
-        StaminaEntity.ConsumeStaminaIf(staminaCost);
+
+        if (!TryConsumeStaminaCost())
+        {
+            return;
+        }
+
+        float safeDamage = GetDamage();
+
+        if (safeDamage > 0f)
+        {
+            targetTimeEntity.DealDamage(safeDamage);
+        }
+
+        ApplyTimeCost();
     }
 }

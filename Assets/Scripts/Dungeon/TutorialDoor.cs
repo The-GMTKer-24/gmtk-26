@@ -27,12 +27,15 @@ public class TutorialDoor : MonoBehaviour
 
     public void OpenDoors()
     {
-        rend.sortingOrder = -1;
-        rend.sprite = otherDoor.openHorizontal;
-        col.enabled = false;
-        Hidden = false;
-        shadowCaster.enabled = false;
-        otherDoor.OpenDoor();
+        if (rend)
+        {
+            rend.sortingOrder = -1;
+            rend.sprite = otherDoor.openHorizontal;
+            col.enabled = false;
+            Hidden = false;
+            shadowCaster.enabled = false;
+            otherDoor.OpenDoor();
+        }
     }
 
     public void CloseDoors()
@@ -49,6 +52,7 @@ public class TutorialDoor : MonoBehaviour
     public void GnomeDown()
     {
         OpenDoors();
-        SoundManager.Instance.CreateSound(successSound);
+        if (SoundManager.Instance)
+            SoundManager.Instance.CreateSound(successSound);
     }
 }

@@ -27,7 +27,6 @@ namespace Entity
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                print("Hit player");
                 Player.Player.Instance.TimeEntity.Heal(amount);
                 shrinking = true;
             }
