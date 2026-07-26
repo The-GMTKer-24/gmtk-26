@@ -33,7 +33,7 @@ namespace Entity
 
         public void DealDamage(float damage)
         {
-            TextParticleSystem2D.Instance.Spawn($"-{damage}s", transform.position, Color.softRed);
+            TextParticleSystem2D.Instance.Spawn($"-{damage} s", transform.position, Color.softRed);
             currentTime -= damage;
             CheckDeath(false);
             if (damageSounds.Count != 0) SoundManager.Instance.CreateSoundAtPosition(damageSounds[Random.Range(0,damageSounds.Count)], transform.position);
@@ -41,7 +41,7 @@ namespace Entity
 
         public void Heal(float time)
         {
-            TextParticleSystem2D.Instance.Spawn($"+{time}s", transform.position, Color.lightGreen);
+            TextParticleSystem2D.Instance.Spawn($"+{time} s", transform.position, Color.lightGreen);
             currentTime += time;
             currentTime = Mathf.Min(currentTime, maxTime);
         }
