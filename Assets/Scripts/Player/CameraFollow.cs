@@ -9,6 +9,8 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float defaultCameraShakeSpeed = 0.02f;
     [SerializeField] private float zoomOutSpeed = 2f;
 
+    public bool DisableLerping { get; set; }
+    
     private float cameraScale;
     private float followSpeed;
     private float shakeAmount;
@@ -49,7 +51,11 @@ public class CameraFollow : MonoBehaviour
         targetPosition += Random.insideUnitSphere * shakeAmount;
         // Set the position without changing the Z
         transform.position = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
-        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, cameraScale, Time.deltaTime * zoomOutSpeed);
+
+        if (!DisableLerping)
+        {
+            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, cameraScale, Time.deltaTime * zoomOutSpeed);
+        }
     }
 
     public void FreezeCameraTemporarily()

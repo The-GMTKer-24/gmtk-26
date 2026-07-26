@@ -14,12 +14,27 @@ namespace Boss
         private float startSize;
         private bool started;
 
+        private Camera camera;
+        private CameraFollow cameraFollow;
+        
+        void Awake()
+        {
+            camera = Camera.main;
+            if (camera != null)
+            {
+                cameraFollow = camera.GetComponent<CameraFollow>();
+                if (cameraFollow == null)
+                {
+                    Debug.LogError("Where the fuck is the camera follow script");
+                }
+            }
+        }
+        
         public void Update()
         {
             if (started)
             {
-                PlayerManager.Instance.playerCamera.orthographicSize =
-                    Mathf.Lerp(startSize, size, sizeCurve.Evaluate(progress / timeToSize));
+                camera.orthographicSize = Mathf.Lerp(startSize, size, sizeCurve.Evaluate(progress / timeToSize));
                 progress += Time.deltaTime;
                 if (progress > timeToSize)
                 {
@@ -33,8 +48,9 @@ namespace Boss
         {
             if (other.CompareTag("Player"))
             {
-                PlayerManager.Instance.playerCamera.GetComponent<CameraFollow>().target = newTarget;
-                startSize = PlayerManager.Instance.playerCamera.orthographicSize;
+                cameraFollow.target = newTarget;
+                cameraFollow.DisableLerping = true;
+                startSize = camera.orthographicSize;
                 started = true;
             }
         }
