@@ -85,7 +85,11 @@ namespace Player
 
         public void Reload(InputAction.CallbackContext context)
         {
-            if (!context.started || !enabled || uiManager) return;
+            print("Reloading!");
+            print(enabled);
+            print(uiManager);
+            if (!context.started || !enabled || !uiManager) return;
+            print("Starting reload");
             Reload();
         }
 
