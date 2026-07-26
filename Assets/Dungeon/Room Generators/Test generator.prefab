@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6441160507127902320}
   - component: {fileID: 5290469622885338928}
   m_Layer: 0
-  m_Name: Room Generator
+  m_Name: Test generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,24 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ceaee1a69c69364982dfb3393407ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomManager
-  startRoom: {fileID: 5836369874643543531, guid: b975948fd3c1ecc4cad41b6511bfc774, type: 3}
+  startRoom: {fileID: 5836369874643543531, guid: 6e42751a3ceda99488f44fddefe5ea6d, type: 3}
   endRoom: {fileID: 5836369874643543531, guid: f8ed627e855f1b84f96a872a82cefbd6, type: 3}
   roomChances:
-  - room: {fileID: 5836369874643543531, guid: 97f8977f10abbb4409207f506c987467, type: 3}
-    weight: 1
-    targetCount: 0
   - room: {fileID: 5836369874643543531, guid: bdd07978ed1e64748a87e622b14ea8ff, type: 3}
-    weight: 2
+    weight: 5
     targetCount: 0
-  - room: {fileID: 5836369874643543531, guid: de0188bfdc26a1e4295cbb0433935a29, type: 3}
+    EnemyPool: {fileID: 11400000, guid: e2e9e7c659c04ba47805ceb9101dd539, type: 2}
+  - room: {fileID: 5836369874643543531, guid: d263d506323d4074bb4e4457220cf874, type: 3}
     weight: 1
-    targetCount: 0
-  - room: {fileID: 5836369874643543531, guid: 767a5db6dc83b104dace5f443aab41d1, type: 3}
-    weight: 1
-    targetCount: 0
-  maxRoomTarget: 50
-  minDistanceToExit: 4
-  maxDistanceToExit: 10
+    targetCount: 1
+    EnemyPool: {fileID: 11400000, guid: 96266b9c6236eca43b2f92ad00c312bd, type: 2}
+  maxRoomTarget: 4
+  minDistanceToExit: 1
+  maxDistanceToExit: 3
   exitRoomChanceFromDistance:
     serializedVersion: 2
     m_Curve:
