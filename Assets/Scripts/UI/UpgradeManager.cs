@@ -21,5 +21,10 @@ namespace UI
             GameObject upgradeObj = Instantiate(upgrade.upgradePrefab, transform);
             upgradeObjects.Add(upgradeObj);
         }
+
+        public bool DoesHaveUpgrade(Upgrade upgrade)
+        {
+            return upgrades.Contains(upgrade);
+        }
     }
 }
