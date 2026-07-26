@@ -139,7 +139,7 @@ PrefabInstance:
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: roomChances.Array.data[2].EnemyPool
       value: 
-      objectReference: {fileID: 11400000, guid: eaf9957535743924dbc9045e9963ee4a, type: 2}
+      objectReference: {fileID: 11400000, guid: 03090fb368a1dcd42baef78f7b7b2a9f, type: 2}
     - target: {fileID: 5290469622885338928, guid: aa430b833a9edfe45bbbbdf2495acc73, type: 3}
       propertyPath: roomChances.Array.data[3].EnemyPool
       value: 
