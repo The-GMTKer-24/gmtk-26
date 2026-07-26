@@ -18,6 +18,7 @@ namespace Entity
 
         [SerializeField] private List<Upgrade> upgrades = new();
         [SerializeField] private InputAction interactAction;
+        [SerializeField] private GameObject interactPrompt;
 
         private readonly Upgrade[] rolled = new Upgrade[UpgradeChoices];
 
@@ -69,6 +70,21 @@ namespace Entity
                 this);
         }
 #endif
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                interactPrompt.SetActive(true);
+            }
+        }
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                interactPrompt.SetActive(false);
+            }
+        }
 
         private void OnTriggerStay2D(Collider2D other)
         {
