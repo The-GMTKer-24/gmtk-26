@@ -3040,6 +3040,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1186192565}
     m_Modifications:
+    - target: {fileID: 21365186460760253, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -7.299999
+      objectReference: {fileID: 0}
     - target: {fileID: 3644962577781846330, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_Name
       value: Countdown
@@ -3077,6 +3081,18 @@ PrefabInstance:
       value: 274.12
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3106,11 +3122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -128.02002
+      value: -102.6
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 134.32
+      value: 107.7
       objectReference: {fileID: 0}
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3123,6 +3139,10 @@ PrefabInstance:
     - target: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940706245385080735, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.2000008
       objectReference: {fileID: 0}
     - target: {fileID: 8833120265944339782, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
       propertyPath: player
@@ -3951,7 +3971,7 @@ MonoBehaviour:
   particlePrefab: {fileID: -3926772996689640900, guid: 5de286debc5152640b29bcb33e2633ca, type: 3}
   prewarmCount: 16
   defaultColor: {r: 0.6792453, g: 0.056601092, b: 0.0032039948, a: 1}
-  fontSize: 4
+  fontSize: 3
   lifetime: 0.9
   startScale: 0.85
   endScale: 1.1

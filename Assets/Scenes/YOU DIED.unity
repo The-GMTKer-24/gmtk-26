@@ -171,6 +171,7 @@ MonoBehaviour:
   creditsMenuObjects: {fileID: 1101770501}
   sceneToLoad: Main
   mainMenu: Main Menu
+  musicDuckInMenu: 0.1
 --- !u!114 &46889064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +327,8 @@ GameObject:
   - component: {fileID: 56530788}
   - component: {fileID: 56530787}
   - component: {fileID: 56530786}
+  - component: {fileID: 56530790}
+  - component: {fileID: 56530789}
   m_Layer: 5
   m_Name: Quit BTN
   m_TagString: Untagged
@@ -447,6 +450,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56530784}
   m_CullTransparentMesh: 1
+--- !u!114 &56530789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56530784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 56530790}
+          m_TargetAssemblyTypeName: ShopItemAnimation, Assembly-CSharp
+          m_MethodName: PointerEnter
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 56530790}
+          m_TargetAssemblyTypeName: ShopItemAnimation, Assembly-CSharp
+          m_MethodName: PointerExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &56530790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56530784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27d206cea84aed4b83fa69d5870327c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopItemAnimation
+  scaleFactor: 1.05
+  scaleSpeed: 10
 --- !u!1 &232511119
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,6 +948,8 @@ GameObject:
   - component: {fileID: 865900192}
   - component: {fileID: 865900191}
   - component: {fileID: 865900190}
+  - component: {fileID: 865900193}
+  - component: {fileID: 865900194}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -1007,6 +1071,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 865900188}
   m_CullTransparentMesh: 1
+--- !u!114 &865900193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865900188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27d206cea84aed4b83fa69d5870327c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopItemAnimation
+  scaleFactor: 1.05
+  scaleSpeed: 10
+--- !u!114 &865900194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865900188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 865900193}
+          m_TargetAssemblyTypeName: ShopItemAnimation, Assembly-CSharp
+          m_MethodName: PointerEnter
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 865900193}
+          m_TargetAssemblyTypeName: ShopItemAnimation, Assembly-CSharp
+          m_MethodName: PointerExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &927283757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,6 +1141,8 @@ GameObject:
   - component: {fileID: 927283758}
   - component: {fileID: 927283760}
   - component: {fileID: 927283759}
+  - component: {fileID: 927283762}
+  - component: {fileID: 927283761}
   m_Layer: 5
   m_Name: Game title
   m_TagString: Untagged
@@ -1144,6 +1269,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927283757}
   m_CullTransparentMesh: 1
+--- !u!114 &927283761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927283757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 927283762}
+          m_TargetAssemblyTypeName: ShopItemAnimation, Assembly-CSharp
+          m_MethodName: PointerEnter
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 927283762}
+          m_TargetAssemblyTypeName: ShopItemAnimation, Assembly-CSharp
+          m_MethodName: PointerExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &927283762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927283757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27d206cea84aed4b83fa69d5870327c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopItemAnimation
+  scaleFactor: 1.05
+  scaleSpeed: 10
 --- !u!1 &1049443454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1340,8 @@ GameObject:
   - component: {fileID: 1049443458}
   - component: {fileID: 1049443457}
   - component: {fileID: 1049443456}
+  - component: {fileID: 1049443460}
+  - component: {fileID: 1049443459}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -1277,6 +1463,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049443454}
   m_CullTransparentMesh: 1
+--- !u!114 &1049443459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049443454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1049443460}
+          m_TargetAssemblyTypeName: ShopItemAnimation, Assembly-CSharp
+          m_MethodName: PointerEnter
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1049443460}
+          m_TargetAssemblyTypeName: ShopItemAnimation, Assembly-CSharp
+          m_MethodName: PointerExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1049443460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049443454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27d206cea84aed4b83fa69d5870327c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopItemAnimation
+  scaleFactor: 1.05
+  scaleSpeed: 10
 --- !u!1 &1101770501
 GameObject:
   m_ObjectHideFlags: 0
