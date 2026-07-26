@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6928e37b12f74ee492571f8ed886d358, type: 3}
-  m_Name: Shotgun Damage Scale Upgrade
+  m_Name: Sniper
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
-  upgradeName: Shotgun Damage Upgrade
-  description: Increase shotgun damage by 1.2%
-  cost: 30
-  upgradePrefab: {fileID: 8970273558985301401, guid: f895c126d251fd540b813c939c581762, type: 3}
+  upgradeName: Sniper
+  description: Shoot 500% slower, Bullets do 400% more damage, Bullets travel 200%
+    faster
+  cost: 45
+  upgradePrefab: {fileID: 8970273558985301401, guid: bf3b359ac6fdb4149b9e11c3a38c728d, type: 3}

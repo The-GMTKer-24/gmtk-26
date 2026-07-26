@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6928e37b12f74ee492571f8ed886d358, type: 3}
-  m_Name: Shot Speed Upgrade
+  m_Name: Hail of bullets
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
-  upgradeName: Faster shooting
-  description: Bullets move 3 times faster
+  upgradeName: Hail of bullets
+  description: Shoot 1000% faster but bullets are 70% slower and deal 20% of the
+    original damage
   cost: 30
-  upgradePrefab: {fileID: 8970273558985301401, guid: c95582a5427ac1743aff2e4b244a6102, type: 3}
+  upgradePrefab: {fileID: 8970273558985301401, guid: bf3b359ac6fdb4149b9e11c3a38c728d, type: 3}

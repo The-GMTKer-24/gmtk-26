@@ -153,13 +153,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity.ShopKeeper
   upgrades:
+  - {fileID: 11400000, guid: 093cc805b0a809b4d9539bb73afe70eb, type: 2}
   - {fileID: 11400000, guid: 375a5f69fe7f5d14193a978d704317b8, type: 2}
   - {fileID: 11400000, guid: 2d2cea7d054af1d4e80eaaec9a1d3937, type: 2}
   - {fileID: 11400000, guid: e2d89c7eff9a79147b0ffcd7ad28a525, type: 2}
   - {fileID: 11400000, guid: d53374de8f2672d48b03ae1fb53ef1bd, type: 2}
   - {fileID: 11400000, guid: 73a7d97b959583948a7f254038207168, type: 2}
   - {fileID: 11400000, guid: b1d7bc75944acf34d9a4e8e31faf2e68, type: 2}
+  - {fileID: 11400000, guid: 56181ec97e4b5484fb9eca6c68d7c9a1, type: 2}
   - {fileID: 11400000, guid: 4cfc48d85f3380744b88c451b70800c6, type: 2}
+  - {fileID: 11400000, guid: 079b6f7c009121641abbedb4a6f56183, type: 2}
   - {fileID: 11400000, guid: d3337f6805911c84e8b419efc84ad579, type: 2}
   - {fileID: 11400000, guid: bc34c6b336481354fac8ba6458700e5d, type: 2}
   - {fileID: 11400000, guid: 0dbcc420a125a19499fe9fa30171b2f8, type: 2}
