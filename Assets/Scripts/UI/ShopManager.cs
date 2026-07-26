@@ -31,6 +31,8 @@ namespace UI
         [Header("Close :D")]
         [SerializeField] private Button closeButton;
 
+        [SerializeField] private GameObject background;
+
         private Upgrade option1;
         private Upgrade option2;
         private Upgrade option3;
@@ -40,6 +42,7 @@ namespace UI
         public void Awake()
         {
             Instance = this;
+            HideShop();
         }
 
         public void ShowShop(Upgrade option1, Upgrade option2, Upgrade option3)
@@ -66,6 +69,7 @@ namespace UI
             upgrade2.gameObject.SetActive(true);
             upgrade3.gameObject.SetActive(true);
             closeButton.gameObject.SetActive(true);
+            background.gameObject.SetActive(true);
         }
 
         public void BuyUpgrade(int option)
@@ -120,10 +124,17 @@ namespace UI
             option1 = null;
             option2 = null;
             option3 = null;
+            purchaseCount = 0;
+            HideShop();
+        }
+
+        public void HideShop()
+        {
             upgrade1.gameObject.SetActive(false);
             upgrade2.gameObject.SetActive(false);
             upgrade3.gameObject.SetActive(false);
             closeButton.gameObject.SetActive(false);
+            background.gameObject.SetActive(false);
         }
     }
 }
