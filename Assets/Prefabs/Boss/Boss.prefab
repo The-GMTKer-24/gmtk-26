@@ -506,13 +506,13 @@ MonoBehaviour:
   startSound: {fileID: 3734932179283865293, guid: bd4b3d2337871e545920569d55f1613f, type: 3}
   attackStats:
   - attack: 1
-    damage: 25
+    damage: 15
     duration: 5
   - attack: 3
     damage: 40
     duration: 5
   - attack: 2
-    damage: 25
+    damage: 10
     duration: 3
   attackCooldown: 0
   bulletWaveOffsetTime: 0.1
