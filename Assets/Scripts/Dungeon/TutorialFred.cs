@@ -19,7 +19,6 @@ public class TutorialFred : MonoBehaviour
     
     [SerializeField] private List<string> privateDialoguesList;
 
-    [SerializeField] private string exhaustedDialogueText;
 
     private int lineCount;
     private int grumbleCount;
@@ -51,13 +50,11 @@ public class TutorialFred : MonoBehaviour
                 held = true;
                 if (currentLine == lineCount)
                 {
-                    textField.text = exhaustedDialogueText;
+                    currentLine = 0;
+                    // textField.text = exhaustedDialogueText;
                 }
-                else
-                {
-                    textField.text = privateDialoguesList[currentLine];
-                    currentLine++;
-                }
+                textField.text = privateDialoguesList[currentLine];
+                currentLine++;
             }
             else
             {

@@ -36,8 +36,8 @@ public class TrapPlacer : MonoBehaviour
         Vector2 halfSize = box.size * 0.5f;
 
         Vector2 localPoint = box.offset + new Vector2(
-            Random.Range(-halfSize.x, halfSize.x),
-            Random.Range(-halfSize.y, halfSize.y)
+            Mathf.Floor(Random.Range(-halfSize.x, halfSize.x))+.5f,
+            Mathf.Floor( Random.Range(-halfSize.y, halfSize.y))+.5f
         );
 
         return box.transform.TransformPoint(
