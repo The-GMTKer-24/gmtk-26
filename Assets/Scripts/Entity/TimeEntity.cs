@@ -10,6 +10,7 @@ namespace Entity
         [SerializeField] private float currentTime;
         [SerializeField] private GameObject spawnOnDeath;
         [SerializeField] private GameObject dropOnDeath;
+        [SerializeField] private GameObject deathSound;
         private bool dead;
         public void Awake()
         {
@@ -53,6 +54,7 @@ namespace Entity
             }
             if (currentTime <= 0)
             {
+                if (deathSound) SoundManager.Instance.CreateSoundAtPosition(deathSound, transform.position);
                 if (!natural)
                     Instantiate(dropOnDeath, transform.position, Quaternion.identity);
                 if (spawnOnDeath)

@@ -13,6 +13,7 @@ namespace Player
         [SerializeField] private PlayerShoot playerShoot;
         [SerializeField] private Shotgun shotgun;
         [SerializeField] private PlayerBomb bomb;
+        [SerializeField] private GameObject changeWeaponSound;
 
         private IShoot active;
         
@@ -26,6 +27,11 @@ namespace Player
             active = playerShoot;
         }
 
+        private void PlayChangeSound()
+        {
+            SoundManager.Instance.CreateSoundAtPosition(changeWeaponSound, transform.position);
+        }
+
         public void ActivateGun(InputAction.CallbackContext context)
         {
             if (!context.started) return;
@@ -35,6 +41,7 @@ namespace Player
             playerShoot.enabled = true;
             shotgun.enabled = false;
             bomb.enabled = false;
+            PlayChangeSound();
         }
         public void ActivateShotgun(InputAction.CallbackContext context)
         {
@@ -45,6 +52,7 @@ namespace Player
             playerShoot.enabled = false;
             shotgun.enabled = true;
             bomb.enabled = false;
+            PlayChangeSound();
         }
         public void ActivateBomb(InputAction.CallbackContext context)
         {
@@ -55,6 +63,7 @@ namespace Player
             playerShoot.enabled = false;
             shotgun.enabled = false;
             bomb.enabled = true;
+            PlayChangeSound();
         }
 
         public float GetReloadPercentage()

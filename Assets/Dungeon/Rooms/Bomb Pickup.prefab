@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 920228404825643896}
   - component: {fileID: 3019381278052644305}
   - component: {fileID: 6925136063363959311}
-  - component: {fileID: 8950409579061890721}
+  - component: {fileID: 5101953661771551889}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -4945,7 +4945,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8950409579061890721
+--- !u!114 &5101953661771551889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4954,9 +4954,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4509312891237605307}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed860fb947cb92444944ea1d14b797fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 4dc9e3022f56991439d2d94eaded86cb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::PickupBomb
   pickupSound: {fileID: 3734932179283865293, guid: e8a29c393b3184b45b9893e9594fd1e5, type: 3}
 --- !u!1 &5478244720052070971
 GameObject:
