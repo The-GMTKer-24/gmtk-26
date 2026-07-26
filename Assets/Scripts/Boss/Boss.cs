@@ -126,25 +126,29 @@ namespace Boss
 
         private void BulletShips(AttackInfo info)
         {
-            print("Printing bullet ships");
             IEnumerator Ships(AttackInfo shipInfo)
             {
                 for (int i = 0; i < bulletShips; i++)
                 {
                     Vector2 position;
                     Vector2 velocity;
+                    float speed;
                     if (i % 2 == 0) {
                         position = leftBulletShipPositions[Random.Range(0, leftBulletShipPositions.Count)].transform.position;
                         velocity = new Vector2(bulletShipSpeed, 0);
+                        speed = 45;
                     }
                     else {
                         position = rightBulletShipPositions[Random.Range(0, rightBulletShipPositions.Count)].transform.position;
                         velocity = new Vector2(-bulletShipSpeed, 0);
+                        speed = -45;
                     }
                     BulletShip ship = Instantiate(bulletShip, position, Quaternion.identity);
                     ship.damage = shipInfo.damage;
                     ship.velocity = velocity;
-                    
+                    Speen speen = ship.GetComponent<Speen>();
+                    if (speen)
+                        speen.speed = speed;
                     yield return new WaitForSeconds(bulletShipDelay);
                 }
             }
