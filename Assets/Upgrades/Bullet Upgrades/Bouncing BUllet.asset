@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Bouncing BUllet
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
   upgradeName: Bouncing Bullets
-  description: Bullets bounce 3 addional times
+  description: Bullets bounce 3 additional times
   cost: 30
   upgradePrefab: {fileID: 8970273558985301401, guid: 7f7ba56efb459b4468ffcb2d43a48fdd, type: 3}

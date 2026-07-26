@@ -56,6 +56,7 @@ namespace UI
 
         public void ExitToMenu()
         {
+            UnPause();
             SceneManager.LoadScene(mainMenu);
         }
     }

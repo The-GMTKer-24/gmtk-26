@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Last stand
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
   upgradeName: Last stand
-  description: Deal 3 times damage when only 10 seconds remain
+  description: Deal 300% damage when only 10 seconds remain
   cost: 15
   upgradePrefab: {fileID: 8970273558985301401, guid: 7bab4946f3620894cb91ff964ffb2ea7, type: 3}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Dash Speed Upgrade
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
   upgradeName: Faster Dashes
-  description: Reduces time between dashes
+  description: Reduce time between dashes by 25%
   cost: 30
   upgradePrefab: {fileID: 8970273558985301401, guid: 4e14118b6acb82843933d61350e08da2, type: 3}

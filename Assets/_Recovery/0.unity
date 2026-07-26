@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 0000000035f5796f8f711f0171311f3abd2bed990be4fc20
+  m_ApplyToSortingLayers: 0000000035f5796f8f711f0171311f3abd2bed99
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Intensity: 0.02
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 0000000035f5796f0be4fc20
+  m_ApplyToSortingLayers: 0000000035f5796f
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -841,7 +841,7 @@ Transform:
   m_GameObject: {fileID: 665944577}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 11}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 50, y: 50, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -892,9 +892,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 553444363
-  m_SortingLayer: 4
-  m_SortingOrder: 32767
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 50
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -1389,7 +1389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerShoot
   bullet: {fileID: 1970712963920005506, guid: e2f3b9dc39956d64fb4ef4e6935a13ad, type: 3}
-  shootSound: {fileID: 3734932179283865293, guid: ce189779662c3bb46b75d4dbf60b390c, type: 3}
 --- !u!114 &823347873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1617,7 +1616,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Shotgun
   bullet: {fileID: 1970712963920005506, guid: c3c4e92357b52ee4980080716c9aac79, type: 3}
-  shotgunSound: {fileID: 3734932179283865293, guid: 99dd7094cbf827e4cbb294a73ad2475c, type: 3}
 --- !u!114 &823347878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1631,8 +1629,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.WeaponManager
   gunEnabled: 1
-  shotgunEnabled: 0
-  bombEnabled: 0
+  shotgunEnabled: 1
+  bombEnabled: 1
   playerShoot: {fileID: 823347872}
   shotgun: {fileID: 823347877}
   bomb: {fileID: 823347879}
@@ -2372,7 +2370,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 1184654864}
-  m_PlaneDistance: 2
+  m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -2830,6 +2828,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1348686789
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 578760874929067545, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.5113018
+      objectReference: {fileID: 0}
+    - target: {fileID: 578760874929067545, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5098723
+      objectReference: {fileID: 0}
+    - target: {fileID: 578760874929067545, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578760874929067545, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 578760874929067545, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578760874929067545, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578760874929067545, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578760874929067545, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578760874929067545, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578760874929067545, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668845359676843419, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
+      propertyPath: m_Name
+      value: Shop keeper
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
 --- !u!1 &1437090250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3080,8 +3135,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 25, y: -50}
+  m_SizeDelta: {x: -50, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1622159529
 MonoBehaviour:
@@ -3146,7 +3201,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706554485}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -4499.9995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4206,3 +4261,4 @@ SceneRoots:
   - {fileID: 1992215563}
   - {fileID: 606989586}
   - {fileID: 1792742004}
+  - {fileID: 1348686789}

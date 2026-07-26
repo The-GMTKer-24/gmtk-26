@@ -10,18 +10,25 @@ namespace UI
     {
         public static ShopManager Instance;
 
+        [Header("Upgrade 1")]
         [SerializeField] private TMP_Text upgrade1Title;
-        [SerializeField] private TMP_Text upgrade2Title;
-        [SerializeField] private TMP_Text upgrade3Title;
         [SerializeField] private TMP_Text upgrade1Description;
-        [SerializeField] private TMP_Text upgrade2Description;
-        [SerializeField] private TMP_Text upgrade3Description;
         [SerializeField] private TMP_Text upgrade1Cost;
-        [SerializeField] private TMP_Text upgrade2Cost;
-        [SerializeField] private TMP_Text upgrade3Cost;
         [SerializeField] private Button upgrade1;
+
+        [Header("Upgrade 2")]
+        [SerializeField] private TMP_Text upgrade2Title;
+        [SerializeField] private TMP_Text upgrade2Description;
+        [SerializeField] private TMP_Text upgrade2Cost;
         [SerializeField] private Button upgrade2;
+
+        [Header("Upgrade 3")]
+        [SerializeField] private TMP_Text upgrade3Title;
+        [SerializeField] private TMP_Text upgrade3Description;
+        [SerializeField] private TMP_Text upgrade3Cost;
         [SerializeField] private Button upgrade3;
+
+        [Header("Close :D")]
         [SerializeField] private Button closeButton;
 
         private Upgrade option1;

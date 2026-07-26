@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Bomb speed
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.Upgrade
   upgradeName: Bomb Speed
-  description: Throw Bombs Further
+  description: Throw bombs further
   cost: 15
   upgradePrefab: {fileID: 8970273558985301401, guid: 51759e01169544342b9a0dc4de89b67e, type: 3}

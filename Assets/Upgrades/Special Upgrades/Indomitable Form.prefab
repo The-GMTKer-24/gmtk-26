@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6737958996182111820}
   - component: {fileID: 4905876181912217525}
   - component: {fileID: 4120854736633545737}
+  - component: {fileID: 6173350872992299348}
   m_Layer: 0
   m_Name: Indomitable Form
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e226bd098f4325a22af938abd504d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.BasicStatUpgrade
-  factor: 2
+  factor: 1.5
   stat: 0
   type: 1
 --- !u!114 &4905876181912217525
@@ -77,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e226bd098f4325a22af938abd504d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.BasicStatUpgrade
-  factor: 0.2
+  factor: 0.05
   stat: 2
   type: 0
 --- !u!114 &4120854736633545737
@@ -92,6 +93,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e226bd098f4325a22af938abd504d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades.BasicStatUpgrade
-  factor: 0
+  factor: 0.05
   stat: 6
+  type: 1
+--- !u!114 &6173350872992299348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8970273558985301401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e226bd098f4325a22af938abd504d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Upgrades.BasicStatUpgrade
+  factor: 1.5
+  stat: 7
   type: 1
