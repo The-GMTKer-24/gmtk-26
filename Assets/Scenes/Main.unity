@@ -707,8 +707,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 100606774597265087, guid: 30d6849e80f7f0e4c9d223de63a05076, type: 3}
   m_PrefabInstance: {fileID: 343660879}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!1001 &372657085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -770,7 +768,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 629f0bb000507e847a870e70c52a96f5, type: 3}
->>>>>>> 485b0ae (Many a change)
 --- !u!224 &585999368 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4321425927914005542, guid: 1a27aa2f93597554e9c81de17be0a0ee, type: 3}
