@@ -23,7 +23,7 @@ public class TrapPlacer : MonoBehaviour
                     position = GetRandomPoint(bounds);
                 }
                 spawnedPoints.Add(position);
-                Vector3 offsetSpawn = position + transform.position;
+                Vector3 offsetSpawn = position;
                 Instantiate(trap, offsetSpawn, Quaternion.identity, transform);
             }
         }
