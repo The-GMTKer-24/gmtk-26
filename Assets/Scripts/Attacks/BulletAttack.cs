@@ -73,9 +73,9 @@ public class BulletAttack : GenericAttack, IAttack
 
         if (StaminaEntity.GetStamina() >= staminaCost)
         {
-            GameObject bullet = Instantiate(this.bulletPrefab, transform.position, Quaternion.identity);
-            bullet.GetComponent<EnemyBullet>().velocity =
-                this.speed * Vector2.Normalize(target.transform.position - transform.position);
+            Vector2 vel = Vector2.Normalize(target.transform.position - transform.position);
+            GameObject bullet = Instantiate(this.bulletPrefab, (Vector2)transform.position + vel * 0.6f, Quaternion.identity);
+            bullet.GetComponent<EnemyBullet>().velocity = this.speed * vel;
             bullet.GetComponent<EnemyBullet>().remainingTime = range / speed;
             bullet.GetComponent<Rigidbody2D>().rotation = -Vector2.SignedAngle(target.transform.position - transform.position, Vector2.up);
             
