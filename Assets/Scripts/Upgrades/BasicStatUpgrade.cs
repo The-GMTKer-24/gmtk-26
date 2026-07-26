@@ -11,7 +11,8 @@ namespace Upgrades
         [SerializeField] private ModifierType type;
         public void Start()
         {
-            Player.Player.Instance.PlayerModifier.AddModifier(stat, type, factor,
+            if (Player.Player.Instance)
+                Player.Player.Instance.PlayerModifier.AddModifier(stat, type, factor,
                 this);
         }
     }
