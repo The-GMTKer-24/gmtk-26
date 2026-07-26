@@ -1727,6 +1727,7 @@ MonoBehaviour:
   spawnOnDeath: {fileID: 6312313018138299983, guid: 67e2a57097e1c8043bcfa5c289ecfcfc, type: 3}
   dropOnDeath: {fileID: 0}
   deathSound: {fileID: 0}
+  healSound: {fileID: 3734932179283865293, guid: 638e8aacf59cf024887bfc229abcfea8, type: 3}
   damageSounds:
   - {fileID: 3734932179283865293, guid: 99dea5ff17ba4074abe61239cb1c0c74, type: 3}
   - {fileID: 3734932179283865293, guid: 798e7bd255ac3f54886a3bcddffd184c, type: 3}
@@ -2801,42 +2802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f537561a66b174fb5a50ad6b5cff40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  endZoom: 6
-  startZoom: 12
-  duration: 2
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 3.6163852
-      outSlope: 3.6163852
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.24043101
-      value: 0.86949116
-      inSlope: 0.5721021
-      outSlope: 0.5721021
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 1
-      outWeight: 0.13724509
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0.1718196
-      outSlope: 0.1718196
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1186192561
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ namespace Entity
         [SerializeField] private GameObject spawnOnDeath;
         [SerializeField] private GameObject dropOnDeath;
         [SerializeField] private GameObject deathSound;
+        [SerializeField] private GameObject healSound;
         [SerializeField] private List<GameObject> damageSounds;
         private bool dead;
         public void Awake()
@@ -44,6 +45,10 @@ namespace Entity
             TextParticleSystem2D.Instance.Spawn($"+{time} s", transform.position, Color.lightGreen);
             currentTime += time;
             currentTime = Mathf.Min(currentTime, maxTime);
+            if (healSound)
+            {
+                SoundManager.Instance.CreateSoundAtPosition(healSound, transform.position);
+            }
         }
 
         public float GetMaxTime()
