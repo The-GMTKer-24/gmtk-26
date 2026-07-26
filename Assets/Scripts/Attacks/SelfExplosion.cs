@@ -77,7 +77,8 @@ public class SelfExplosion : GenericAttack, IAttack
         //print (GnomeTracker.Instance.GetGnome(target.GetEntityId()));
         int layer = GnomeTracker.Instance.GetGnome(this.gameObject.GetEntityId()).GetSortingOrder();
         // targetTimeEntity.DealDamage(damage);
-        SoundManager.Instance.CreateSoundAtPosition(boomGnomeAttack, transform.position);
+        if (SoundManager.Instance)
+            SoundManager.Instance.CreateSoundAtPosition(boomGnomeAttack, transform.position);
         Invoke(nameof(Explode),boomDelay);
         
         // TimeEntity.DealDamage(timeCost);
