@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7688476764850467404}
   - component: {fileID: 95159770385088884}
   - component: {fileID: 2932769972421947415}
+  - component: {fileID: -8399079612215343626}
   m_Layer: 6
   m_Name: BoomGnome
   m_TagString: Enemy
@@ -161,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1bd1a69c2cf9d13941819ac27c5e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GnomeAI
+  attackContainer: {fileID: -8399079612215343626}
   animationSpeed: 1
   speed: 4
   forceDropoff: 0.2
@@ -168,7 +170,6 @@ MonoBehaviour:
   directionHysteresis: 0.08
   dispersionRadius: 5
   decisionInterval: 0.15
-  attackSwitchThreshold: 0.1
   minimumAttackInterval: 0.25
   crowdCheckInterval: 0.1
   canRepeatAttacks: 1
@@ -199,6 +200,8 @@ MonoBehaviour:
   currentTime: 50
   spawnOnDeath: {fileID: 6312313018138299983, guid: 879752367e0b4a84ba56ad9428125ccb, type: 3}
   dropOnDeath: {fileID: 313304383076649194, guid: 921bcea2d77b9b64487ccb34243b21e3, type: 3}
+  deathSound: {fileID: 0}
+  damageSounds: []
 --- !u!114 &935281606156217579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,3 +298,18 @@ MonoBehaviour:
   explosionSound: {fileID: 3734932179283865293, guid: 6760a4b4bd0f69b4498adc4923ca31cb, type: 3}
   boomGnomeAttack: {fileID: 3734932179283865293, guid: 383cacf831896a0499d8a932f782d054, type: 3}
   boomDelay: 0.5
+--- !u!114 &-8399079612215343626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677830866020430554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ef53cf6a8b4eb1b10d556189434de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Attacks.AttackContainer
+  randomProportion: 1
+  attacks:
+  - {fileID: 2932769972421947415}

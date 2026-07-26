@@ -1,15 +1,39 @@
+using System;
 using System.Collections.ObjectModel;
 using Entity;
 using UnityEngine;
 
 namespace Attacks
 {
-    public class GenericAttack : MonoBehaviour, IAttack
+    public abstract class GenericAttack : MonoBehaviour, IAttack
     {
         [SerializeField] public float damage = 10f;
         [SerializeField] public float range = 10f;
         [SerializeField] public float staminaCost = 10f;
         [SerializeField] public float timeCost = 10f;
+        
+        protected TimeEntity TimeEntity;
+        protected StaminaEntity StaminaEntity;
+
+        protected void Awake()
+        {
+            TimeEntity = this.gameObject.GetComponent<TimeEntity>();
+            if (TimeEntity == null && timeCost != 0)
+            {
+                throw new Exception("Cannot apply a nonzero time-cost attack to an object with no TimeEntity!");
+            }
+            StaminaEntity = this.gameObject.GetComponent<StaminaEntity>();
+            if (StaminaEntity == null && staminaCost != 0)
+            {
+                throw new Exception("Cannot apply a nonzero stamina-cost attack to an object with no StaminaEntity!");
+            }
+        }
+
+        public abstract bool IsAoe();
+        public abstract void Attack(GameObject target);
+        public abstract bool CanHit(Vector2 targetPosition);
+        public abstract float OutOfRangeDistance(Vector2 targetPosition);
+        public abstract float CountFriendlyFires(Vector2 targetPosition);
         
         public float GetDelay() {
                 return 0f;
@@ -43,7 +67,7 @@ namespace Attacks
         }
     
         // Returns all entities that can take damage within range
-        public Collection<GameObject> GetAllInRange(float factor)
+        protected Collection<GameObject> GetAllInRange(float factor)
         {
             Collection<GameObject> targets = new Collection<GameObject>();
             foreach (GnomeAI gnomeAI in GnomeTracker.Instance.GetGnomeEnumerator())
@@ -59,7 +83,7 @@ namespace Attacks
             return targets;
         }
     
-        public Collection<GameObject> GetAllInRange()
+        protected Collection<GameObject> GetAllInRange()
         {
             return GetAllInRange(1f);
         }
