@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Text_Particles;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Entity
 {
@@ -11,6 +13,7 @@ namespace Entity
         [SerializeField] private GameObject spawnOnDeath;
         [SerializeField] private GameObject dropOnDeath;
         [SerializeField] private GameObject deathSound;
+        [SerializeField] private List<GameObject> damageSounds;
         private bool dead;
         public void Awake()
         {
@@ -33,6 +36,7 @@ namespace Entity
             TextParticleSystem2D.Instance.Spawn($"-{damage}s", transform.position, Color.softRed);
             currentTime -= damage;
             CheckDeath(false);
+            if (damageSounds.Count != 0) SoundManager.Instance.CreateSoundAtPosition(damageSounds[Random.Range(0,damageSounds.Count)], transform.position);
         }
 
         public void Heal(float time)

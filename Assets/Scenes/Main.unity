@@ -1673,6 +1673,11 @@ MonoBehaviour:
   spawnOnDeath: {fileID: 6312313018138299983, guid: 67e2a57097e1c8043bcfa5c289ecfcfc, type: 3}
   dropOnDeath: {fileID: 0}
   deathSound: {fileID: 0}
+  damageSounds:
+  - {fileID: 3734932179283865293, guid: 99dea5ff17ba4074abe61239cb1c0c74, type: 3}
+  - {fileID: 3734932179283865293, guid: 798e7bd255ac3f54886a3bcddffd184c, type: 3}
+  - {fileID: 3734932179283865293, guid: a814ffb5d45d0734ca54a3c646f46012, type: 3}
+  - {fileID: 3734932179283865293, guid: 31cb976ec115c434a8f1d2465bf7132f, type: 3}
 --- !u!114 &823347872
 MonoBehaviour:
   m_ObjectHideFlags: 0
