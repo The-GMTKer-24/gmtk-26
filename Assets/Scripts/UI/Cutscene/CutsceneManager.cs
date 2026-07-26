@@ -40,11 +40,7 @@ namespace UI.Cutscene
         
             if (currentCutsceneIndex >= cutsceneFrames.Length)
             {
-                if (MusicManager.Instance != null)
-                {
-                    MusicManager.Instance.SetVolume(1);
-                }
-                SceneManager.LoadScene(nextSceneToLoad);
+                SkipCutscene();
                 return;
             }
 
@@ -61,6 +57,10 @@ namespace UI.Cutscene
 
         public void SkipCutscene()
         {
+            if (MusicManager.Instance != null)
+            {
+                MusicManager.Instance.SetVolume(1);
+            }
             SceneManager.LoadScene(nextSceneToLoad);
         }
     }
