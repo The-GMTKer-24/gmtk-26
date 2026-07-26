@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2152045899666123538 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6329237112495198961, guid: 77ab8adb66984a643ba1085de6061546, type: 3}
-  m_PrefabInstance: {fileID: 5334634469759498723}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!224 &7175387211339606255 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2998400574230532364, guid: 77ab8adb66984a643ba1085de6061546, type: 3}
-  m_PrefabInstance: {fileID: 5334634469759498723}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2438273819670854161
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -7.5, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 259241772690304480}
@@ -101,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 5213229242370633579, guid: 489cd11ef0de6d147a9383fe0c1aa5db, type: 3}
+  m_Sprite: {fileID: -1625593156, guid: 01fe3af4548b26b48aeb5152f987f7d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,17 +130,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0022373497, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.9352806, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &125697570528120694
 MonoBehaviour:
@@ -203,7 +187,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: -2
-      type: {class: '', ns: '', asm: ''}
+      type: {class: , ns: , asm: }
     - rid: 5296362366967742609
       type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
@@ -211,50 +195,140 @@ MonoBehaviour:
       type: {class: ShadowMesh2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
         m_Vertices:
-        - position: {x: 0.44999695, y: 0.44999695, z: 0}
-          tangent: {x: -1, y: 0, z: -0.44999695, w: 0.44999695}
-        - position: {x: -0.44999695, y: 0.44999695, z: 0}
-          tangent: {x: -1, y: 0, z: -0.44999695, w: -0.44999695}
-        - position: {x: -0.44999695, y: -0.44999695, z: 0}
-          tangent: {x: -1, y: 0, z: 0.44999695, w: -0.44999695}
-        - position: {x: 0.44999695, y: -0.44999695, z: 0}
-          tangent: {x: -1, y: 0, z: 0.44999695, w: 0.44999695}
-        - position: {x: 0.44999695, y: 0.44999695, z: 0}
-          tangent: {x: 0, y: 0, z: -0.44999695, w: 0.44999695}
-        - position: {x: -0.44999695, y: 0.44999695, z: 0}
-          tangent: {x: 0, y: 0, z: 0.44999695, w: 0.44999695}
-        - position: {x: 0.44999695, y: 0.44999695, z: 0}
-          tangent: {x: 1, y: 0, z: -0.44999695, w: 0.44999695}
-        - position: {x: 0.44999695, y: 0.44999695, z: 0}
-          tangent: {x: 3, y: 0, z: -0.44999695, w: 0.44999695}
-        - position: {x: -0.44999695, y: 0.44999695, z: 0}
-          tangent: {x: 0, y: 0, z: -0.44999695, w: -0.44999695}
-        - position: {x: -0.44999695, y: -0.44999695, z: 0}
-          tangent: {x: 0, y: 0, z: -0.44999695, w: 0.44999695}
-        - position: {x: -0.44999695, y: 0.44999695, z: 0}
-          tangent: {x: 1, y: 0, z: -0.44999695, w: -0.44999695}
-        - position: {x: -0.44999695, y: 0.44999695, z: 0}
-          tangent: {x: 3, y: 0, z: -0.44999695, w: -0.44999695}
-        - position: {x: -0.44999695, y: -0.44999695, z: 0}
-          tangent: {x: 0, y: 0, z: 0.44999695, w: -0.44999695}
-        - position: {x: 0.44999695, y: -0.44999695, z: 0}
-          tangent: {x: 0, y: 0, z: -0.44999695, w: -0.44999695}
-        - position: {x: -0.44999695, y: -0.44999695, z: 0}
-          tangent: {x: 1, y: 0, z: 0.44999695, w: -0.44999695}
-        - position: {x: -0.44999695, y: -0.44999695, z: 0}
-          tangent: {x: 3, y: 0, z: 0.44999695, w: -0.44999695}
-        - position: {x: 0.44999695, y: -0.44999695, z: 0}
-          tangent: {x: 0, y: 0, z: 0.44999695, w: 0.44999695}
-        - position: {x: 0.44999695, y: 0.44999695, z: 0}
-          tangent: {x: 0, y: 0, z: 0.44999695, w: -0.44999695}
-        - position: {x: 0.44999695, y: -0.44999695, z: 0}
-          tangent: {x: 1, y: 0, z: 0.44999695, w: 0.44999695}
-        - position: {x: 0.44999695, y: -0.44999695, z: 0}
-          tangent: {x: 3, y: 0, z: 0.44999695, w: 0.44999695}
-        m_Indices: 000000000400000005000000050000000100000000000000010000000800000009000000090000000200000001000000020000000c0000000d0000000d0000000300000002000000030000001000000011000000110000000000000003000000000000000600000007000000010000000a0000000b000000020000000e0000000f000000030000001200000013000000
+        - position: {x: 0.94999695, y: 0.44999695, z: 0}
+          tangent: {x: -1, y: 0, z: 0.66804504, w: 0.44999695}
+        - position: {x: 0.66804504, y: 0.44999695, z: 0}
+          tangent: {x: -1, y: 0, z: 0.6371765, w: 0.4345703}
+        - position: {x: 0.6371765, y: 0.4345703, z: 0}
+          tangent: {x: -1, y: 0, z: 0.54919434, w: 0.05331421}
+        - position: {x: 0.54919434, y: 0.05331421, z: 0}
+          tangent: {x: -1, y: 0, z: 0.51875305, w: -0.15979004}
+        - position: {x: 0.51875305, y: -0.15979004, z: 0}
+          tangent: {x: -1, y: 0, z: 0.51875305, w: -0.36320496}
+        - position: {x: 0.51875305, y: -0.36320496, z: 0}
+          tangent: {x: -1, y: 0, z: 0.56214905, w: -0.44999695}
+        - position: {x: 0.56214905, y: -0.44999695, z: 0}
+          tangent: {x: -1, y: 0, z: 0.94999695, w: -0.44999695}
+        - position: {x: 0.94999695, y: -0.44999695, z: 0}
+          tangent: {x: -1, y: 0, z: 0.94999695, w: 0.44999695}
+        - position: {x: -0.51875305, y: 0.24093628, z: 0}
+          tangent: {x: -1, y: 0, z: -0.5971527, w: 0.44999695}
+        - position: {x: -0.5971527, y: 0.44999695, z: 0}
+          tangent: {x: -1, y: 0, z: -0.94999695, w: 0.44999695}
+        - position: {x: -0.94999695, y: 0.44999695, z: 0}
+          tangent: {x: -1, y: 0, z: -0.94999695, w: -0.44999695}
+        - position: {x: -0.94999695, y: -0.44999695, z: 0}
+          tangent: {x: -1, y: 0, z: -0.51875305, w: -0.44999695}
+        - position: {x: -0.51875305, y: -0.44999695, z: 0}
+          tangent: {x: -1, y: 0, z: -0.51875305, w: 0.24093628}
+        - position: {x: 0.94999695, y: 0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: 0.66804504, w: 0.44999695}
+        - position: {x: 0.66804504, y: 0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: 0.94999695, w: 0.44999695}
+        - position: {x: 0.94999695, y: 0.44999695, z: 0}
+          tangent: {x: 1, y: 0, z: 0.66804504, w: 0.44999695}
+        - position: {x: 0.94999695, y: 0.44999695, z: 0}
+          tangent: {x: 3, y: 0, z: 0.66804504, w: 0.44999695}
+        - position: {x: 0.66804504, y: 0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: 0.6371765, w: 0.4345703}
+        - position: {x: 0.6371765, y: 0.4345703, z: 0}
+          tangent: {x: 0, y: 0, z: 0.66804504, w: 0.44999695}
+        - position: {x: 0.66804504, y: 0.44999695, z: 0}
+          tangent: {x: 1, y: 0, z: 0.6371765, w: 0.4345703}
+        - position: {x: 0.66804504, y: 0.44999695, z: 0}
+          tangent: {x: 3, y: 0, z: 0.6371765, w: 0.4345703}
+        - position: {x: 0.6371765, y: 0.4345703, z: 0}
+          tangent: {x: 0, y: 0, z: 0.54919434, w: 0.05331421}
+        - position: {x: 0.54919434, y: 0.05331421, z: 0}
+          tangent: {x: 0, y: 0, z: 0.6371765, w: 0.4345703}
+        - position: {x: 0.6371765, y: 0.4345703, z: 0}
+          tangent: {x: 1, y: 0, z: 0.54919434, w: 0.05331421}
+        - position: {x: 0.6371765, y: 0.4345703, z: 0}
+          tangent: {x: 3, y: 0, z: 0.54919434, w: 0.05331421}
+        - position: {x: 0.54919434, y: 0.05331421, z: 0}
+          tangent: {x: 0, y: 0, z: 0.51875305, w: -0.15979004}
+        - position: {x: 0.51875305, y: -0.15979004, z: 0}
+          tangent: {x: 0, y: 0, z: 0.54919434, w: 0.05331421}
+        - position: {x: 0.54919434, y: 0.05331421, z: 0}
+          tangent: {x: 1, y: 0, z: 0.51875305, w: -0.15979004}
+        - position: {x: 0.54919434, y: 0.05331421, z: 0}
+          tangent: {x: 3, y: 0, z: 0.51875305, w: -0.15979004}
+        - position: {x: 0.51875305, y: -0.15979004, z: 0}
+          tangent: {x: 0, y: 0, z: 0.51875305, w: -0.36320496}
+        - position: {x: 0.51875305, y: -0.36320496, z: 0}
+          tangent: {x: 0, y: 0, z: 0.51875305, w: -0.15979004}
+        - position: {x: 0.51875305, y: -0.15979004, z: 0}
+          tangent: {x: 1, y: 0, z: 0.51875305, w: -0.36320496}
+        - position: {x: 0.51875305, y: -0.15979004, z: 0}
+          tangent: {x: 3, y: 0, z: 0.51875305, w: -0.36320496}
+        - position: {x: 0.51875305, y: -0.36320496, z: 0}
+          tangent: {x: 0, y: 0, z: 0.56214905, w: -0.44999695}
+        - position: {x: 0.56214905, y: -0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: 0.51875305, w: -0.36320496}
+        - position: {x: 0.51875305, y: -0.36320496, z: 0}
+          tangent: {x: 1, y: 0, z: 0.56214905, w: -0.44999695}
+        - position: {x: 0.51875305, y: -0.36320496, z: 0}
+          tangent: {x: 3, y: 0, z: 0.56214905, w: -0.44999695}
+        - position: {x: 0.56214905, y: -0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: 0.94999695, w: -0.44999695}
+        - position: {x: 0.94999695, y: -0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: 0.56214905, w: -0.44999695}
+        - position: {x: 0.56214905, y: -0.44999695, z: 0}
+          tangent: {x: 1, y: 0, z: 0.94999695, w: -0.44999695}
+        - position: {x: 0.56214905, y: -0.44999695, z: 0}
+          tangent: {x: 3, y: 0, z: 0.94999695, w: -0.44999695}
+        - position: {x: 0.94999695, y: -0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: 0.94999695, w: 0.44999695}
+        - position: {x: 0.94999695, y: 0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: 0.94999695, w: -0.44999695}
+        - position: {x: 0.94999695, y: -0.44999695, z: 0}
+          tangent: {x: 1, y: 0, z: 0.94999695, w: 0.44999695}
+        - position: {x: 0.94999695, y: -0.44999695, z: 0}
+          tangent: {x: 3, y: 0, z: 0.94999695, w: 0.44999695}
+        - position: {x: -0.51875305, y: 0.24093628, z: 0}
+          tangent: {x: 0, y: 0, z: -0.5971527, w: 0.44999695}
+        - position: {x: -0.5971527, y: 0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: -0.51875305, w: 0.24093628}
+        - position: {x: -0.51875305, y: 0.24093628, z: 0}
+          tangent: {x: 1, y: 0, z: -0.5971527, w: 0.44999695}
+        - position: {x: -0.51875305, y: 0.24093628, z: 0}
+          tangent: {x: 3, y: 0, z: -0.5971527, w: 0.44999695}
+        - position: {x: -0.5971527, y: 0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: -0.94999695, w: 0.44999695}
+        - position: {x: -0.94999695, y: 0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: -0.5971527, w: 0.44999695}
+        - position: {x: -0.5971527, y: 0.44999695, z: 0}
+          tangent: {x: 1, y: 0, z: -0.94999695, w: 0.44999695}
+        - position: {x: -0.5971527, y: 0.44999695, z: 0}
+          tangent: {x: 3, y: 0, z: -0.94999695, w: 0.44999695}
+        - position: {x: -0.94999695, y: 0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: -0.94999695, w: -0.44999695}
+        - position: {x: -0.94999695, y: -0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: -0.94999695, w: 0.44999695}
+        - position: {x: -0.94999695, y: 0.44999695, z: 0}
+          tangent: {x: 1, y: 0, z: -0.94999695, w: -0.44999695}
+        - position: {x: -0.94999695, y: 0.44999695, z: 0}
+          tangent: {x: 3, y: 0, z: -0.94999695, w: -0.44999695}
+        - position: {x: -0.94999695, y: -0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: -0.51875305, w: -0.44999695}
+        - position: {x: -0.51875305, y: -0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: -0.94999695, w: -0.44999695}
+        - position: {x: -0.94999695, y: -0.44999695, z: 0}
+          tangent: {x: 1, y: 0, z: -0.51875305, w: -0.44999695}
+        - position: {x: -0.94999695, y: -0.44999695, z: 0}
+          tangent: {x: 3, y: 0, z: -0.51875305, w: -0.44999695}
+        - position: {x: -0.51875305, y: -0.44999695, z: 0}
+          tangent: {x: 0, y: 0, z: -0.51875305, w: 0.24093628}
+        - position: {x: -0.51875305, y: 0.24093628, z: 0}
+          tangent: {x: 0, y: 0, z: -0.51875305, w: -0.44999695}
+        - position: {x: -0.51875305, y: -0.44999695, z: 0}
+          tangent: {x: 1, y: 0, z: -0.51875305, w: 0.24093628}
+        - position: {x: -0.51875305, y: -0.44999695, z: 0}
+          tangent: {x: 3, y: 0, z: -0.51875305, w: 0.24093628}
+        m_Indices: 000000000d0000000e0000000e000000010000000000000001000000110000001200000012000000020000000100000002000000150000001600000016000000030000000200000003000000190000001a0000001a0000000400000003000000040000001d0000001e0000001e000000050000000400000005000000210000002200000022000000060000000500000006000000250000002600000026000000070000000600000007000000290000002a0000002a0000000000000007000000000000000f00000010000000010000001300000014000000020000001700000018000000030000001b0000001c000000040000001f00000020000000050000002300000024000000060000002700000028000000070000002b0000002c000000080000002d0000002e0000002e0000000900000008000000090000003100000032000000320000000a000000090000000a0000003500000036000000360000000b0000000a0000000b000000390000003a0000003a0000000c0000000b0000000c0000003d0000003e0000003e000000080000000c000000080000002f000000300000000900000033000000340000000a00000037000000380000000b0000003b0000003c0000000c0000003f00000040000000
         m_LocalBounds:
           m_Center: {x: 0, y: 0, z: 0}
-          m_Extent: {x: 0.44999695, y: 0.44999695, z: 0}
+          m_Extent: {x: 0.94999695, y: 0.44999695, z: 0}
         m_EdgeProcessing: 1
         m_TrimEdge: 0.05
         m_FlipX: 0
@@ -269,8 +343,7 @@ MonoBehaviour:
         m_Provider2DCache:
           rid: 5296362377009430951
     - rid: 5296362377009430951
-      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider,
-          Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
         m_Cache:
         - m_Key:
@@ -309,6 +382,7 @@ MonoBehaviour:
   rend: {fileID: 28637093430228621}
   col: {fileID: 8613603944549654726}
   successSound: {fileID: 3734932179283865293, guid: a6d225c03166478469f905eab2515ac4, type: 3}
+  closeSound: {fileID: 3734932179283865293, guid: a6f969f20c1f1e748b249cf097f6e351, type: 3}
 --- !u!1 &3322140553504993865
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,16 +508,6 @@ MonoBehaviour:
   enemyToSpawn: {fileID: 677830866020430554, guid: d8a2cae8d0b61d6f994a82e0d40ee5ba, type: 3}
   spawnPoint: {fileID: 6046343078279790240}
   tutorialDoor: {fileID: 6261881690144321197}
---- !u!1 &4802700977970726220 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 625704436681702575, guid: 77ab8adb66984a643ba1085de6061546, type: 3}
-  m_PrefabInstance: {fileID: 5334634469759498723}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4859775782250568920 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 682587376182551867, guid: 77ab8adb66984a643ba1085de6061546, type: 3}
-  m_PrefabInstance: {fileID: 5334634469759498723}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5478244720052070971
 GameObject:
   m_ObjectHideFlags: 0
@@ -4421,7 +4485,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: -2
-      type: {class: '', ns: '', asm: ''}
+      type: {class: , ns: , asm: }
     - rid: 5296362366967742555
       type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
@@ -4429,6 +4493,12 @@ MonoBehaviour:
       type: {class: ShadowMesh2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
         m_Vertices:
+        - position: {x: -4.1875, y: -9, z: 0}
+          tangent: {x: -1, y: 0, z: -1.40625, w: -9}
+        - position: {x: -1.40625, y: -9, z: 0}
+          tangent: {x: -1, y: 0, z: -1.1875, w: -8.65625}
+        - position: {x: -1.1875, y: -8.65625, z: 0}
+          tangent: {x: -1, y: 0, z: -1.1875, w: -5.59375}
         - position: {x: -1.1875, y: -5.59375, z: 0}
           tangent: {x: -1, y: 0, z: -1.25, w: -5.5}
         - position: {x: -1.25, y: -5.5, z: 0}
@@ -4456,56 +4526,8 @@ MonoBehaviour:
         - position: {x: -5.4375, y: -3.0625, z: 0}
           tangent: {x: -1, y: 0, z: -5.5, w: -3}
         - position: {x: -5.5, y: -3, z: 0}
-          tangent: {x: -1, y: 0, z: -6.1875, w: -3}
-        - position: {x: -6.1875, y: -3, z: 0}
-          tangent: {x: -1, y: 0, z: -6.1875, w: -2.59375}
-        - position: {x: -6.1875, y: -2.59375, z: 0}
-          tangent: {x: -1, y: 0, z: -6.25, w: -2.5}
-        - position: {x: -6.25, y: -2.5, z: 0}
-          tangent: {x: -1, y: 0, z: -6.4375, w: -2.0625}
-        - position: {x: -6.4375, y: -2.0625, z: 0}
-          tangent: {x: -1, y: 0, z: -6.5, w: -2}
-        - position: {x: -6.5, y: -2, z: 0}
-          tangent: {x: -1, y: 0, z: -7.1875, w: -2}
-        - position: {x: -7.1875, y: -2, z: 0}
-          tangent: {x: -1, y: 0, z: -7.1875, w: 0}
-        - position: {x: -7.1875, y: 0, z: 0}
-          tangent: {x: -1, y: 0, z: -6.40625, w: 0}
-        - position: {x: -6.40625, y: 0, z: 0}
-          tangent: {x: -1, y: 0, z: -6.1875, w: 0.34375}
-        - position: {x: -6.1875, y: 0.34375, z: 0}
-          tangent: {x: -1, y: 0, z: -6.1875, w: 1}
-        - position: {x: -6.1875, y: 1, z: 0}
-          tangent: {x: -1, y: 0, z: -5.40625, w: 1}
-        - position: {x: -5.40625, y: 1, z: 0}
-          tangent: {x: -1, y: 0, z: -5.1875, w: 1.34375}
-        - position: {x: -5.1875, y: 1.34375, z: 0}
-          tangent: {x: -1, y: 0, z: -5.1875, w: 2}
-        - position: {x: -5.1875, y: 2, z: 0}
-          tangent: {x: -1, y: 0, z: -3.40625, w: 2}
-        - position: {x: -3.40625, y: 2, z: 0}
-          tangent: {x: -1, y: 0, z: -3.1875, w: 2.34375}
-        - position: {x: -3.1875, y: 2.34375, z: 0}
-          tangent: {x: -1, y: 0, z: -3.1875, w: 3}
-        - position: {x: -3.1875, y: 3, z: 0}
-          tangent: {x: -1, y: 0, z: -6, w: 3}
-        - position: {x: -6, y: 3, z: 0}
-          tangent: {x: -1, y: 0, z: -6, w: 2}
-        - position: {x: -6, y: 2, z: 0}
-          tangent: {x: -1, y: 0, z: -7, w: 2}
-        - position: {x: -7, y: 2, z: 0}
-          tangent: {x: -1, y: 0, z: -7, w: 1}
-        - position: {x: -7, y: 1, z: 0}
-          tangent: {x: -1, y: 0, z: -8, w: 1}
-        - position: {x: -8, y: 1, z: 0}
-          tangent: {x: -1, y: 0, z: -8, w: -3}
-        - position: {x: -8, y: -3, z: 0}
-          tangent: {x: -1, y: 0, z: -7, w: -3}
-        - position: {x: -7, y: -3, z: 0}
-          tangent: {x: -1, y: 0, z: -7, w: -4}
-        - position: {x: -7, y: -4, z: 0}
-          tangent: {x: -1, y: 0, z: -6, w: -4}
-        - position: {x: -6, y: -4, z: 0}
+          tangent: {x: -1, y: 0, z: -6, w: -3}
+        - position: {x: -6, y: -3, z: 0}
           tangent: {x: -1, y: 0, z: -6, w: -5}
         - position: {x: -6, y: -5, z: 0}
           tangent: {x: -1, y: 0, z: -4, w: -5}
@@ -4516,31 +4538,99 @@ MonoBehaviour:
         - position: {x: -2, y: -6, z: 0}
           tangent: {x: -1, y: 0, z: -2, w: -8}
         - position: {x: -2, y: -8, z: 0}
-          tangent: {x: -1, y: 0, z: -1.1875, w: -8}
-        - position: {x: -1.1875, y: -8, z: 0}
-          tangent: {x: -1, y: 0, z: -1.1875, w: -5.59375}
-        - position: {x: -2.1875, y: -1.65625, z: 0}
-          tangent: {x: -1, y: 0, z: -2.1875, w: -0.59375}
-        - position: {x: -2.1875, y: -0.59375, z: 0}
-          tangent: {x: -1, y: 0, z: -2.25, w: -0.5}
-        - position: {x: -2.25, y: -0.5, z: 0}
-          tangent: {x: -1, y: 0, z: -2.4375, w: -0.0625}
-        - position: {x: -2.4375, y: -0.0625, z: 0}
-          tangent: {x: -1, y: 0, z: -2.5, w: 0}
-        - position: {x: -2.5, y: 0, z: 0}
-          tangent: {x: -1, y: 0, z: -3.625, w: 0}
-        - position: {x: -3.625, y: 0, z: 0}
-          tangent: {x: -1, y: 0, z: -3.84375, w: -0.40625}
-        - position: {x: -3.84375, y: -0.40625, z: 0}
-          tangent: {x: -1, y: 0, z: -3.84375, w: -1.625}
-        - position: {x: -3.84375, y: -1.625, z: 0}
-          tangent: {x: -1, y: 0, z: -3.59375, w: -1.96875}
-        - position: {x: -3.59375, y: -1.96875, z: 0}
-          tangent: {x: -1, y: 0, z: -3.5625, w: -2}
-        - position: {x: -3.5625, y: -2, z: 0}
-          tangent: {x: -1, y: 0, z: -2.40625, w: -2}
-        - position: {x: -2.40625, y: -2, z: 0}
-          tangent: {x: -1, y: 0, z: -2.1875, w: -1.65625}
+          tangent: {x: -1, y: 0, z: -4.625, w: -8}
+        - position: {x: -4.625, y: -8, z: 0}
+          tangent: {x: -1, y: 0, z: -4.84375, w: -8.40625}
+        - position: {x: -4.84375, y: -8.40625, z: 0}
+          tangent: {x: -1, y: 0, z: -4.84375, w: -9}
+        - position: {x: -4.84375, y: -9, z: 0}
+          tangent: {x: -1, y: 0, z: -5, w: -9}
+        - position: {x: -5, y: -9, z: 0}
+          tangent: {x: -1, y: 0, z: -5, w: -13}
+        - position: {x: -5, y: -13, z: 0}
+          tangent: {x: -1, y: 0, z: -4.1875, w: -13}
+        - position: {x: -4.1875, y: -13, z: 0}
+          tangent: {x: -1, y: 0, z: -4.1875, w: -9}
+        - position: {x: 5, y: -9, z: 0}
+          tangent: {x: -1, y: 0, z: 4.8125, w: -9}
+        - position: {x: 4.8125, y: -9, z: 0}
+          tangent: {x: -1, y: 0, z: 4.8125, w: -8.59375}
+        - position: {x: 4.8125, y: -8.59375, z: 0}
+          tangent: {x: -1, y: 0, z: 4.75, w: -8.5}
+        - position: {x: 4.75, y: -8.5, z: 0}
+          tangent: {x: -1, y: 0, z: 4.5625, w: -8.0625}
+        - position: {x: 4.5625, y: -8.0625, z: 0}
+          tangent: {x: -1, y: 0, z: 4.5, w: -8}
+        - position: {x: 4.5, y: -8, z: 0}
+          tangent: {x: -1, y: 0, z: 2, w: -8}
+        - position: {x: 2, y: -8, z: 0}
+          tangent: {x: -1, y: 0, z: 2, w: -6}
+        - position: {x: 2, y: -6, z: 0}
+          tangent: {x: -1, y: 0, z: 4, w: -6}
+        - position: {x: 4, y: -6, z: 0}
+          tangent: {x: -1, y: 0, z: 4, w: -5}
+        - position: {x: 4, y: -5, z: 0}
+          tangent: {x: -1, y: 0, z: 6, w: -5}
+        - position: {x: 6, y: -5, z: 0}
+          tangent: {x: -1, y: 0, z: 6, w: -4}
+        - position: {x: 6, y: -4, z: 0}
+          tangent: {x: -1, y: 0, z: 7, w: -4}
+        - position: {x: 7, y: -4, z: 0}
+          tangent: {x: -1, y: 0, z: 7, w: -3}
+        - position: {x: 7, y: -3, z: 0}
+          tangent: {x: -1, y: 0, z: 5.375, w: -3}
+        - position: {x: 5.375, y: -3, z: 0}
+          tangent: {x: -1, y: 0, z: 5.15625, w: -3.40625}
+        - position: {x: 5.15625, y: -3.40625, z: 0}
+          tangent: {x: -1, y: 0, z: 5.15625, w: -4}
+        - position: {x: 5.15625, y: -4, z: 0}
+          tangent: {x: -1, y: 0, z: 3.375, w: -4}
+        - position: {x: 3.375, y: -4, z: 0}
+          tangent: {x: -1, y: 0, z: 3.15625, w: -4.40625}
+        - position: {x: 3.15625, y: -4.40625, z: 0}
+          tangent: {x: -1, y: 0, z: 3.15625, w: -5}
+        - position: {x: 3.15625, y: -5, z: 0}
+          tangent: {x: -1, y: 0, z: 1.375, w: -5}
+        - position: {x: 1.375, y: -5, z: 0}
+          tangent: {x: -1, y: 0, z: 1.15625, w: -5.40625}
+        - position: {x: 1.15625, y: -5.40625, z: 0}
+          tangent: {x: -1, y: 0, z: 1.15625, w: -8.625}
+        - position: {x: 1.15625, y: -8.625, z: 0}
+          tangent: {x: -1, y: 0, z: 1.40625, w: -8.96875}
+        - position: {x: 1.40625, y: -8.96875, z: 0}
+          tangent: {x: -1, y: 0, z: 1.4375, w: -9}
+        - position: {x: 1.4375, y: -9, z: 0}
+          tangent: {x: -1, y: 0, z: 4.15625, w: -9}
+        - position: {x: 4.15625, y: -9, z: 0}
+          tangent: {x: -1, y: 0, z: 4.15625, w: -13}
+        - position: {x: 4.15625, y: -13, z: 0}
+          tangent: {x: -1, y: 0, z: 5, w: -13}
+        - position: {x: 5, y: -13, z: 0}
+          tangent: {x: -1, y: 0, z: 5, w: -9}
+        - position: {x: -4.1875, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: -1.40625, w: -9}
+        - position: {x: -1.40625, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: -4.1875, w: -9}
+        - position: {x: -4.1875, y: -9, z: 0}
+          tangent: {x: 1, y: 0, z: -1.40625, w: -9}
+        - position: {x: -4.1875, y: -9, z: 0}
+          tangent: {x: 3, y: 0, z: -1.40625, w: -9}
+        - position: {x: -1.40625, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: -1.1875, w: -8.65625}
+        - position: {x: -1.1875, y: -8.65625, z: 0}
+          tangent: {x: 0, y: 0, z: -1.40625, w: -9}
+        - position: {x: -1.40625, y: -9, z: 0}
+          tangent: {x: 1, y: 0, z: -1.1875, w: -8.65625}
+        - position: {x: -1.40625, y: -9, z: 0}
+          tangent: {x: 3, y: 0, z: -1.1875, w: -8.65625}
+        - position: {x: -1.1875, y: -8.65625, z: 0}
+          tangent: {x: 0, y: 0, z: -1.1875, w: -5.59375}
+        - position: {x: -1.1875, y: -5.59375, z: 0}
+          tangent: {x: 0, y: 0, z: -1.1875, w: -8.65625}
+        - position: {x: -1.1875, y: -8.65625, z: 0}
+          tangent: {x: 1, y: 0, z: -1.1875, w: -5.59375}
+        - position: {x: -1.1875, y: -8.65625, z: 0}
+          tangent: {x: 3, y: 0, z: -1.1875, w: -5.59375}
         - position: {x: -1.1875, y: -5.59375, z: 0}
           tangent: {x: 0, y: 0, z: -1.25, w: -5.5}
         - position: {x: -1.25, y: -5.5, z: 0}
@@ -4646,212 +4736,20 @@ MonoBehaviour:
         - position: {x: -5.4375, y: -3.0625, z: 0}
           tangent: {x: 3, y: 0, z: -5.5, w: -3}
         - position: {x: -5.5, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: -3}
-        - position: {x: -6.1875, y: -3, z: 0}
+          tangent: {x: 0, y: 0, z: -6, w: -3}
+        - position: {x: -6, y: -3, z: 0}
           tangent: {x: 0, y: 0, z: -5.5, w: -3}
         - position: {x: -5.5, y: -3, z: 0}
-          tangent: {x: 1, y: 0, z: -6.1875, w: -3}
+          tangent: {x: 1, y: 0, z: -6, w: -3}
         - position: {x: -5.5, y: -3, z: 0}
-          tangent: {x: 3, y: 0, z: -6.1875, w: -3}
-        - position: {x: -6.1875, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: -2.59375}
-        - position: {x: -6.1875, y: -2.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: -3}
-        - position: {x: -6.1875, y: -3, z: 0}
-          tangent: {x: 1, y: 0, z: -6.1875, w: -2.59375}
-        - position: {x: -6.1875, y: -3, z: 0}
-          tangent: {x: 3, y: 0, z: -6.1875, w: -2.59375}
-        - position: {x: -6.1875, y: -2.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -6.25, w: -2.5}
-        - position: {x: -6.25, y: -2.5, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: -2.59375}
-        - position: {x: -6.1875, y: -2.59375, z: 0}
-          tangent: {x: 1, y: 0, z: -6.25, w: -2.5}
-        - position: {x: -6.1875, y: -2.59375, z: 0}
-          tangent: {x: 3, y: 0, z: -6.25, w: -2.5}
-        - position: {x: -6.25, y: -2.5, z: 0}
-          tangent: {x: 0, y: 0, z: -6.4375, w: -2.0625}
-        - position: {x: -6.4375, y: -2.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -6.25, w: -2.5}
-        - position: {x: -6.25, y: -2.5, z: 0}
-          tangent: {x: 1, y: 0, z: -6.4375, w: -2.0625}
-        - position: {x: -6.25, y: -2.5, z: 0}
-          tangent: {x: 3, y: 0, z: -6.4375, w: -2.0625}
-        - position: {x: -6.4375, y: -2.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -6.5, w: -2}
-        - position: {x: -6.5, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -6.4375, w: -2.0625}
-        - position: {x: -6.4375, y: -2.0625, z: 0}
-          tangent: {x: 1, y: 0, z: -6.5, w: -2}
-        - position: {x: -6.4375, y: -2.0625, z: 0}
-          tangent: {x: 3, y: 0, z: -6.5, w: -2}
-        - position: {x: -6.5, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -7.1875, w: -2}
-        - position: {x: -7.1875, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -6.5, w: -2}
-        - position: {x: -6.5, y: -2, z: 0}
-          tangent: {x: 1, y: 0, z: -7.1875, w: -2}
-        - position: {x: -6.5, y: -2, z: 0}
-          tangent: {x: 3, y: 0, z: -7.1875, w: -2}
-        - position: {x: -7.1875, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -7.1875, w: 0}
-        - position: {x: -7.1875, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -7.1875, w: -2}
-        - position: {x: -7.1875, y: -2, z: 0}
-          tangent: {x: 1, y: 0, z: -7.1875, w: 0}
-        - position: {x: -7.1875, y: -2, z: 0}
-          tangent: {x: 3, y: 0, z: -7.1875, w: 0}
-        - position: {x: -7.1875, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -6.40625, w: 0}
-        - position: {x: -6.40625, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -7.1875, w: 0}
-        - position: {x: -7.1875, y: 0, z: 0}
-          tangent: {x: 1, y: 0, z: -6.40625, w: 0}
-        - position: {x: -7.1875, y: 0, z: 0}
-          tangent: {x: 3, y: 0, z: -6.40625, w: 0}
-        - position: {x: -6.40625, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: 0.34375}
-        - position: {x: -6.1875, y: 0.34375, z: 0}
-          tangent: {x: 0, y: 0, z: -6.40625, w: 0}
-        - position: {x: -6.40625, y: 0, z: 0}
-          tangent: {x: 1, y: 0, z: -6.1875, w: 0.34375}
-        - position: {x: -6.40625, y: 0, z: 0}
-          tangent: {x: 3, y: 0, z: -6.1875, w: 0.34375}
-        - position: {x: -6.1875, y: 0.34375, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: 1}
-        - position: {x: -6.1875, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: 0.34375}
-        - position: {x: -6.1875, y: 0.34375, z: 0}
-          tangent: {x: 1, y: 0, z: -6.1875, w: 1}
-        - position: {x: -6.1875, y: 0.34375, z: 0}
-          tangent: {x: 3, y: 0, z: -6.1875, w: 1}
-        - position: {x: -6.1875, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -5.40625, w: 1}
-        - position: {x: -5.40625, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: 1}
-        - position: {x: -6.1875, y: 1, z: 0}
-          tangent: {x: 1, y: 0, z: -5.40625, w: 1}
-        - position: {x: -6.1875, y: 1, z: 0}
-          tangent: {x: 3, y: 0, z: -5.40625, w: 1}
-        - position: {x: -5.40625, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -5.1875, w: 1.34375}
-        - position: {x: -5.1875, y: 1.34375, z: 0}
-          tangent: {x: 0, y: 0, z: -5.40625, w: 1}
-        - position: {x: -5.40625, y: 1, z: 0}
-          tangent: {x: 1, y: 0, z: -5.1875, w: 1.34375}
-        - position: {x: -5.40625, y: 1, z: 0}
-          tangent: {x: 3, y: 0, z: -5.1875, w: 1.34375}
-        - position: {x: -5.1875, y: 1.34375, z: 0}
-          tangent: {x: 0, y: 0, z: -5.1875, w: 2}
-        - position: {x: -5.1875, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -5.1875, w: 1.34375}
-        - position: {x: -5.1875, y: 1.34375, z: 0}
-          tangent: {x: 1, y: 0, z: -5.1875, w: 2}
-        - position: {x: -5.1875, y: 1.34375, z: 0}
-          tangent: {x: 3, y: 0, z: -5.1875, w: 2}
-        - position: {x: -5.1875, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -3.40625, w: 2}
-        - position: {x: -3.40625, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -5.1875, w: 2}
-        - position: {x: -5.1875, y: 2, z: 0}
-          tangent: {x: 1, y: 0, z: -3.40625, w: 2}
-        - position: {x: -5.1875, y: 2, z: 0}
-          tangent: {x: 3, y: 0, z: -3.40625, w: 2}
-        - position: {x: -3.40625, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -3.1875, w: 2.34375}
-        - position: {x: -3.1875, y: 2.34375, z: 0}
-          tangent: {x: 0, y: 0, z: -3.40625, w: 2}
-        - position: {x: -3.40625, y: 2, z: 0}
-          tangent: {x: 1, y: 0, z: -3.1875, w: 2.34375}
-        - position: {x: -3.40625, y: 2, z: 0}
-          tangent: {x: 3, y: 0, z: -3.1875, w: 2.34375}
-        - position: {x: -3.1875, y: 2.34375, z: 0}
-          tangent: {x: 0, y: 0, z: -3.1875, w: 3}
-        - position: {x: -3.1875, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: -3.1875, w: 2.34375}
-        - position: {x: -3.1875, y: 2.34375, z: 0}
-          tangent: {x: 1, y: 0, z: -3.1875, w: 3}
-        - position: {x: -3.1875, y: 2.34375, z: 0}
-          tangent: {x: 3, y: 0, z: -3.1875, w: 3}
-        - position: {x: -3.1875, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: 3}
-        - position: {x: -6, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: -3.1875, w: 3}
-        - position: {x: -3.1875, y: 3, z: 0}
-          tangent: {x: 1, y: 0, z: -6, w: 3}
-        - position: {x: -3.1875, y: 3, z: 0}
-          tangent: {x: 3, y: 0, z: -6, w: 3}
-        - position: {x: -6, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: 2}
-        - position: {x: -6, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: 3}
-        - position: {x: -6, y: 3, z: 0}
-          tangent: {x: 1, y: 0, z: -6, w: 2}
-        - position: {x: -6, y: 3, z: 0}
-          tangent: {x: 3, y: 0, z: -6, w: 2}
-        - position: {x: -6, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: 2}
-        - position: {x: -7, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: 2}
-        - position: {x: -6, y: 2, z: 0}
-          tangent: {x: 1, y: 0, z: -7, w: 2}
-        - position: {x: -6, y: 2, z: 0}
-          tangent: {x: 3, y: 0, z: -7, w: 2}
-        - position: {x: -7, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: 1}
-        - position: {x: -7, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: 2}
-        - position: {x: -7, y: 2, z: 0}
-          tangent: {x: 1, y: 0, z: -7, w: 1}
-        - position: {x: -7, y: 2, z: 0}
-          tangent: {x: 3, y: 0, z: -7, w: 1}
-        - position: {x: -7, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -8, w: 1}
-        - position: {x: -8, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: 1}
-        - position: {x: -7, y: 1, z: 0}
-          tangent: {x: 1, y: 0, z: -8, w: 1}
-        - position: {x: -7, y: 1, z: 0}
-          tangent: {x: 3, y: 0, z: -8, w: 1}
-        - position: {x: -8, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -8, w: -3}
-        - position: {x: -8, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -8, w: 1}
-        - position: {x: -8, y: 1, z: 0}
-          tangent: {x: 1, y: 0, z: -8, w: -3}
-        - position: {x: -8, y: 1, z: 0}
-          tangent: {x: 3, y: 0, z: -8, w: -3}
-        - position: {x: -8, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: -3}
-        - position: {x: -7, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -8, w: -3}
-        - position: {x: -8, y: -3, z: 0}
-          tangent: {x: 1, y: 0, z: -7, w: -3}
-        - position: {x: -8, y: -3, z: 0}
-          tangent: {x: 3, y: 0, z: -7, w: -3}
-        - position: {x: -7, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: -4}
-        - position: {x: -7, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: -3}
-        - position: {x: -7, y: -3, z: 0}
-          tangent: {x: 1, y: 0, z: -7, w: -4}
-        - position: {x: -7, y: -3, z: 0}
-          tangent: {x: 3, y: 0, z: -7, w: -4}
-        - position: {x: -7, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: -4}
-        - position: {x: -6, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: -4}
-        - position: {x: -7, y: -4, z: 0}
-          tangent: {x: 1, y: 0, z: -6, w: -4}
-        - position: {x: -7, y: -4, z: 0}
-          tangent: {x: 3, y: 0, z: -6, w: -4}
-        - position: {x: -6, y: -4, z: 0}
+          tangent: {x: 3, y: 0, z: -6, w: -3}
+        - position: {x: -6, y: -3, z: 0}
           tangent: {x: 0, y: 0, z: -6, w: -5}
         - position: {x: -6, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: -4}
-        - position: {x: -6, y: -4, z: 0}
+          tangent: {x: 0, y: 0, z: -6, w: -3}
+        - position: {x: -6, y: -3, z: 0}
           tangent: {x: 1, y: 0, z: -6, w: -5}
-        - position: {x: -6, y: -4, z: 0}
+        - position: {x: -6, y: -3, z: 0}
           tangent: {x: 3, y: 0, z: -6, w: -5}
         - position: {x: -6, y: -5, z: 0}
           tangent: {x: 0, y: 0, z: -4, w: -5}
@@ -4886,719 +4784,172 @@ MonoBehaviour:
         - position: {x: -2, y: -6, z: 0}
           tangent: {x: 3, y: 0, z: -2, w: -8}
         - position: {x: -2, y: -8, z: 0}
-          tangent: {x: 0, y: 0, z: -1.1875, w: -8}
-        - position: {x: -1.1875, y: -8, z: 0}
+          tangent: {x: 0, y: 0, z: -4.625, w: -8}
+        - position: {x: -4.625, y: -8, z: 0}
           tangent: {x: 0, y: 0, z: -2, w: -8}
         - position: {x: -2, y: -8, z: 0}
-          tangent: {x: 1, y: 0, z: -1.1875, w: -8}
+          tangent: {x: 1, y: 0, z: -4.625, w: -8}
         - position: {x: -2, y: -8, z: 0}
-          tangent: {x: 3, y: 0, z: -1.1875, w: -8}
-        - position: {x: -1.1875, y: -8, z: 0}
-          tangent: {x: 0, y: 0, z: -1.1875, w: -5.59375}
-        - position: {x: -1.1875, y: -5.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -1.1875, w: -8}
-        - position: {x: -1.1875, y: -8, z: 0}
-          tangent: {x: 1, y: 0, z: -1.1875, w: -5.59375}
-        - position: {x: -1.1875, y: -8, z: 0}
-          tangent: {x: 3, y: 0, z: -1.1875, w: -5.59375}
-        - position: {x: -2.1875, y: -1.65625, z: 0}
-          tangent: {x: 0, y: 0, z: -2.1875, w: -0.59375}
-        - position: {x: -2.1875, y: -0.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -2.1875, w: -1.65625}
-        - position: {x: -2.1875, y: -1.65625, z: 0}
-          tangent: {x: 1, y: 0, z: -2.1875, w: -0.59375}
-        - position: {x: -2.1875, y: -1.65625, z: 0}
-          tangent: {x: 3, y: 0, z: -2.1875, w: -0.59375}
-        - position: {x: -2.1875, y: -0.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -2.25, w: -0.5}
-        - position: {x: -2.25, y: -0.5, z: 0}
-          tangent: {x: 0, y: 0, z: -2.1875, w: -0.59375}
-        - position: {x: -2.1875, y: -0.59375, z: 0}
-          tangent: {x: 1, y: 0, z: -2.25, w: -0.5}
-        - position: {x: -2.1875, y: -0.59375, z: 0}
-          tangent: {x: 3, y: 0, z: -2.25, w: -0.5}
-        - position: {x: -2.25, y: -0.5, z: 0}
-          tangent: {x: 0, y: 0, z: -2.4375, w: -0.0625}
-        - position: {x: -2.4375, y: -0.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -2.25, w: -0.5}
-        - position: {x: -2.25, y: -0.5, z: 0}
-          tangent: {x: 1, y: 0, z: -2.4375, w: -0.0625}
-        - position: {x: -2.25, y: -0.5, z: 0}
-          tangent: {x: 3, y: 0, z: -2.4375, w: -0.0625}
-        - position: {x: -2.4375, y: -0.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -2.5, w: 0}
-        - position: {x: -2.5, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -2.4375, w: -0.0625}
-        - position: {x: -2.4375, y: -0.0625, z: 0}
-          tangent: {x: 1, y: 0, z: -2.5, w: 0}
-        - position: {x: -2.4375, y: -0.0625, z: 0}
-          tangent: {x: 3, y: 0, z: -2.5, w: 0}
-        - position: {x: -2.5, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -3.625, w: 0}
-        - position: {x: -3.625, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -2.5, w: 0}
-        - position: {x: -2.5, y: 0, z: 0}
-          tangent: {x: 1, y: 0, z: -3.625, w: 0}
-        - position: {x: -2.5, y: 0, z: 0}
-          tangent: {x: 3, y: 0, z: -3.625, w: 0}
-        - position: {x: -3.625, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -3.84375, w: -0.40625}
-        - position: {x: -3.84375, y: -0.40625, z: 0}
-          tangent: {x: 0, y: 0, z: -3.625, w: 0}
-        - position: {x: -3.625, y: 0, z: 0}
-          tangent: {x: 1, y: 0, z: -3.84375, w: -0.40625}
-        - position: {x: -3.625, y: 0, z: 0}
-          tangent: {x: 3, y: 0, z: -3.84375, w: -0.40625}
-        - position: {x: -3.84375, y: -0.40625, z: 0}
-          tangent: {x: 0, y: 0, z: -3.84375, w: -1.625}
-        - position: {x: -3.84375, y: -1.625, z: 0}
-          tangent: {x: 0, y: 0, z: -3.84375, w: -0.40625}
-        - position: {x: -3.84375, y: -0.40625, z: 0}
-          tangent: {x: 1, y: 0, z: -3.84375, w: -1.625}
-        - position: {x: -3.84375, y: -0.40625, z: 0}
-          tangent: {x: 3, y: 0, z: -3.84375, w: -1.625}
-        - position: {x: -3.84375, y: -1.625, z: 0}
-          tangent: {x: 0, y: 0, z: -3.59375, w: -1.96875}
-        - position: {x: -3.59375, y: -1.96875, z: 0}
-          tangent: {x: 0, y: 0, z: -3.84375, w: -1.625}
-        - position: {x: -3.84375, y: -1.625, z: 0}
-          tangent: {x: 1, y: 0, z: -3.59375, w: -1.96875}
-        - position: {x: -3.84375, y: -1.625, z: 0}
-          tangent: {x: 3, y: 0, z: -3.59375, w: -1.96875}
-        - position: {x: -3.59375, y: -1.96875, z: 0}
-          tangent: {x: 0, y: 0, z: -3.5625, w: -2}
-        - position: {x: -3.5625, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -3.59375, w: -1.96875}
-        - position: {x: -3.59375, y: -1.96875, z: 0}
-          tangent: {x: 1, y: 0, z: -3.5625, w: -2}
-        - position: {x: -3.59375, y: -1.96875, z: 0}
-          tangent: {x: 3, y: 0, z: -3.5625, w: -2}
-        - position: {x: -3.5625, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -2.40625, w: -2}
-        - position: {x: -2.40625, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -3.5625, w: -2}
-        - position: {x: -3.5625, y: -2, z: 0}
-          tangent: {x: 1, y: 0, z: -2.40625, w: -2}
-        - position: {x: -3.5625, y: -2, z: 0}
-          tangent: {x: 3, y: 0, z: -2.40625, w: -2}
-        - position: {x: -2.40625, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -2.1875, w: -1.65625}
-        - position: {x: -2.1875, y: -1.65625, z: 0}
-          tangent: {x: 0, y: 0, z: -2.40625, w: -2}
-        - position: {x: -2.40625, y: -2, z: 0}
-          tangent: {x: 1, y: 0, z: -2.1875, w: -1.65625}
-        - position: {x: -2.40625, y: -2, z: 0}
-          tangent: {x: 3, y: 0, z: -2.1875, w: -1.65625}
-        m_Indices: 000000003800000039000000390000000100000000000000010000003c0000003d0000003d0000000200000001000000020000004000000041000000410000000300000002000000030000004400000045000000450000000400000003000000040000004800000049000000490000000500000004000000050000004c0000004d0000004d0000000600000005000000060000005000000051000000510000000700000006000000070000005400000055000000550000000800000007000000080000005800000059000000590000000900000008000000090000005c0000005d0000005d0000000a000000090000000a0000006000000061000000610000000b0000000a0000000b0000006400000065000000650000000c0000000b0000000c0000006800000069000000690000000d0000000c0000000d0000006c0000006d0000006d0000000e0000000d0000000e0000007000000071000000710000000f0000000e0000000f000000740000007500000075000000100000000f000000100000007800000079000000790000001100000010000000110000007c0000007d0000007d0000001200000011000000120000008000000081000000810000001300000012000000130000008400000085000000850000001400000013000000140000008800000089000000890000001500000014000000150000008c0000008d0000008d0000001600000015000000160000009000000091000000910000001700000016000000170000009400000095000000950000001800000017000000180000009800000099000000990000001900000018000000190000009c0000009d0000009d0000001a000000190000001a000000a0000000a1000000a10000001b0000001a0000001b000000a4000000a5000000a50000001c0000001b0000001c000000a8000000a9000000a90000001d0000001c0000001d000000ac000000ad000000ad0000001e0000001d0000001e000000b0000000b1000000b10000001f0000001e0000001f000000b4000000b5000000b5000000200000001f00000020000000b8000000b9000000b9000000210000002000000021000000bc000000bd000000bd000000220000002100000022000000c0000000c1000000c1000000230000002200000023000000c4000000c5000000c5000000240000002300000024000000c8000000c9000000c9000000250000002400000025000000cc000000cd000000cd000000260000002500000026000000d0000000d1000000d1000000270000002600000027000000d4000000d5000000d5000000280000002700000028000000d8000000d9000000d9000000290000002800000029000000dc000000dd000000dd0000002a000000290000002a000000e0000000e1000000e10000002b0000002a0000002b000000e4000000e5000000e50000002c0000002b0000002c000000e8000000e9000000e9000000000000002c000000000000003a0000003b000000010000003e0000003f000000020000004200000043000000030000004600000047000000040000004a0000004b000000050000004e0000004f000000060000005200000053000000070000005600000057000000080000005a0000005b000000090000005e0000005f0000000a00000062000000630000000b00000066000000670000000c0000006a0000006b0000000d0000006e0000006f0000000e00000072000000730000000f0000007600000077000000100000007a0000007b000000110000007e0000007f000000120000008200000083000000130000008600000087000000140000008a0000008b000000150000008e0000008f000000160000009200000093000000170000009600000097000000180000009a0000009b000000190000009e0000009f0000001a000000a2000000a30000001b000000a6000000a70000001c000000aa000000ab0000001d000000ae000000af0000001e000000b2000000b30000001f000000b6000000b700000020000000ba000000bb00000021000000be000000bf00000022000000c2000000c300000023000000c6000000c700000024000000ca000000cb00000025000000ce000000cf00000026000000d2000000d300000027000000d6000000d700000028000000da000000db00000029000000de000000df0000002a000000e2000000e30000002b000000e6000000e70000002c000000ea000000eb0000002d000000ec000000ed000000ed0000002e0000002d0000002e000000f0000000f1000000f10000002f0000002e0000002f000000f4000000f5000000f5000000300000002f00000030000000f8000000f9000000f9000000310000003000000031000000fc000000fd000000fd0000003200000031000000320000000001000001010000010100003300000032000000330000000401000005010000050100003400000033000000340000000801000009010000090100003500000034000000350000000c0100000d0100000d0100003600000035000000360000001001000011010000110100003700000036000000370000001401000015010000150100002d000000370000002d000000ee000000ef0000002e000000f2000000f30000002f000000f6000000f700000030000000fa000000fb00000031000000fe000000ff000000320000000201000003010000330000000601000007010000340000000a0100000b010000350000000e0100000f010000360000001201000013010000370000001601000017010000
-        m_LocalBounds:
-          m_Center: {x: -4.59375, y: -2.5, z: 0}
-          m_Extent: {x: 3.40625, y: 5.5, z: 0}
-        m_EdgeProcessing: 1
-        m_TrimEdge: 0
-        m_FlipX: 0
-        m_FlipY: 0
-        m_InitialTrim: 0
-    - rid: 5296362366967742556
-      type: {class: ShadowMesh2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
-      data:
-        m_Vertices:
-        - position: {x: -1.1875, y: -5.59375, z: 0}
-          tangent: {x: -1, y: 0, z: -1.25, w: -5.5}
-        - position: {x: -1.25, y: -5.5, z: 0}
-          tangent: {x: -1, y: 0, z: -1.4375, w: -5.0625}
-        - position: {x: -1.4375, y: -5.0625, z: 0}
-          tangent: {x: -1, y: 0, z: -1.5, w: -5}
-        - position: {x: -1.5, y: -5, z: 0}
-          tangent: {x: -1, y: 0, z: -3.1875, w: -5}
-        - position: {x: -3.1875, y: -5, z: 0}
-          tangent: {x: -1, y: 0, z: -3.1875, w: -4.59375}
-        - position: {x: -3.1875, y: -4.59375, z: 0}
-          tangent: {x: -1, y: 0, z: -3.25, w: -4.5}
-        - position: {x: -3.25, y: -4.5, z: 0}
-          tangent: {x: -1, y: 0, z: -3.4375, w: -4.0625}
-        - position: {x: -3.4375, y: -4.0625, z: 0}
-          tangent: {x: -1, y: 0, z: -3.5, w: -4}
-        - position: {x: -3.5, y: -4, z: 0}
-          tangent: {x: -1, y: 0, z: -5.1875, w: -4}
-        - position: {x: -5.1875, y: -4, z: 0}
-          tangent: {x: -1, y: 0, z: -5.1875, w: -3.59375}
-        - position: {x: -5.1875, y: -3.59375, z: 0}
-          tangent: {x: -1, y: 0, z: -5.25, w: -3.5}
-        - position: {x: -5.25, y: -3.5, z: 0}
-          tangent: {x: -1, y: 0, z: -5.4375, w: -3.0625}
-        - position: {x: -5.4375, y: -3.0625, z: 0}
-          tangent: {x: -1, y: 0, z: -5.5, w: -3}
-        - position: {x: -5.5, y: -3, z: 0}
-          tangent: {x: -1, y: 0, z: -6.1875, w: -3}
-        - position: {x: -6.1875, y: -3, z: 0}
-          tangent: {x: -1, y: 0, z: -6.1875, w: -2.59375}
-        - position: {x: -6.1875, y: -2.59375, z: 0}
-          tangent: {x: -1, y: 0, z: -6.25, w: -2.5}
-        - position: {x: -6.25, y: -2.5, z: 0}
-          tangent: {x: -1, y: 0, z: -6.4375, w: -2.0625}
-        - position: {x: -6.4375, y: -2.0625, z: 0}
-          tangent: {x: -1, y: 0, z: -6.5, w: -2}
-        - position: {x: -6.5, y: -2, z: 0}
-          tangent: {x: -1, y: 0, z: -7.1875, w: -2}
-        - position: {x: -7.1875, y: -2, z: 0}
-          tangent: {x: -1, y: 0, z: -7.1875, w: 0}
-        - position: {x: -7.1875, y: 0, z: 0}
-          tangent: {x: -1, y: 0, z: -6.40625, w: 0}
-        - position: {x: -6.40625, y: 0, z: 0}
-          tangent: {x: -1, y: 0, z: -6.1875, w: 0.34375}
-        - position: {x: -6.1875, y: 0.34375, z: 0}
-          tangent: {x: -1, y: 0, z: -6.1875, w: 1}
-        - position: {x: -6.1875, y: 1, z: 0}
-          tangent: {x: -1, y: 0, z: -5.40625, w: 1}
-        - position: {x: -5.40625, y: 1, z: 0}
-          tangent: {x: -1, y: 0, z: -5.1875, w: 1.34375}
-        - position: {x: -5.1875, y: 1.34375, z: 0}
-          tangent: {x: -1, y: 0, z: -5.1875, w: 2}
-        - position: {x: -5.1875, y: 2, z: 0}
-          tangent: {x: -1, y: 0, z: -3.40625, w: 2}
-        - position: {x: -3.40625, y: 2, z: 0}
-          tangent: {x: -1, y: 0, z: -3.1875, w: 2.34375}
-        - position: {x: -3.1875, y: 2.34375, z: 0}
-          tangent: {x: -1, y: 0, z: -3.1875, w: 3}
-        - position: {x: -3.1875, y: 3, z: 0}
-          tangent: {x: -1, y: 0, z: 3.15625, w: 3}
-        - position: {x: 3.15625, y: 3, z: 0}
-          tangent: {x: -1, y: 0, z: 3.15625, w: 2.375}
-        - position: {x: 3.15625, y: 2.375, z: 0}
-          tangent: {x: -1, y: 0, z: 3.40625, w: 2.03125}
-        - position: {x: 3.40625, y: 2.03125, z: 0}
-          tangent: {x: -1, y: 0, z: 3.4375, w: 2}
-        - position: {x: 3.4375, y: 2, z: 0}
-          tangent: {x: -1, y: 0, z: 5.15625, w: 2}
-        - position: {x: 5.15625, y: 2, z: 0}
-          tangent: {x: -1, y: 0, z: 5.15625, w: 1.375}
-        - position: {x: 5.15625, y: 1.375, z: 0}
-          tangent: {x: -1, y: 0, z: 5.40625, w: 1.03125}
-        - position: {x: 5.40625, y: 1.03125, z: 0}
-          tangent: {x: -1, y: 0, z: 5.4375, w: 1}
-        - position: {x: 5.4375, y: 1, z: 0}
-          tangent: {x: -1, y: 0, z: 6.15625, w: 1}
-        - position: {x: 6.15625, y: 1, z: 0}
-          tangent: {x: -1, y: 0, z: 6.15625, w: 0.375}
-        - position: {x: 6.15625, y: 0.375, z: 0}
-          tangent: {x: -1, y: 0, z: 6.40625, w: 0.03125}
-        - position: {x: 6.40625, y: 0.03125, z: 0}
-          tangent: {x: -1, y: 0, z: 6.4375, w: 0}
-        - position: {x: 6.4375, y: 0, z: 0}
-          tangent: {x: -1, y: 0, z: 7.15625, w: 0}
-        - position: {x: 7.15625, y: 0, z: 0}
-          tangent: {x: -1, y: 0, z: 7.15625, w: -2}
-        - position: {x: 7.15625, y: -2, z: 0}
-          tangent: {x: -1, y: 0, z: 6.375, w: -2}
-        - position: {x: 6.375, y: -2, z: 0}
-          tangent: {x: -1, y: 0, z: 6.15625, w: -2.40625}
-        - position: {x: 6.15625, y: -2.40625, z: 0}
-          tangent: {x: -1, y: 0, z: 6.15625, w: -3}
-        - position: {x: 6.15625, y: -3, z: 0}
-          tangent: {x: -1, y: 0, z: 5.375, w: -3}
-        - position: {x: 5.375, y: -3, z: 0}
-          tangent: {x: -1, y: 0, z: 5.15625, w: -3.40625}
-        - position: {x: 5.15625, y: -3.40625, z: 0}
-          tangent: {x: -1, y: 0, z: 5.15625, w: -4}
-        - position: {x: 5.15625, y: -4, z: 0}
-          tangent: {x: -1, y: 0, z: 3.375, w: -4}
-        - position: {x: 3.375, y: -4, z: 0}
-          tangent: {x: -1, y: 0, z: 3.15625, w: -4.40625}
-        - position: {x: 3.15625, y: -4.40625, z: 0}
-          tangent: {x: -1, y: 0, z: 3.15625, w: -5}
-        - position: {x: 3.15625, y: -5, z: 0}
-          tangent: {x: -1, y: 0, z: 1.375, w: -5}
-        - position: {x: 1.375, y: -5, z: 0}
-          tangent: {x: -1, y: 0, z: 1.15625, w: -5.40625}
-        - position: {x: 1.15625, y: -5.40625, z: 0}
-          tangent: {x: -1, y: 0, z: 1.15625, w: -7}
-        - position: {x: 1.15625, y: -7, z: 0}
-          tangent: {x: -1, y: 0, z: 2, w: -7}
-        - position: {x: 2, y: -7, z: 0}
-          tangent: {x: -1, y: 0, z: 2, w: -6}
+          tangent: {x: 3, y: 0, z: -4.625, w: -8}
+        - position: {x: -4.625, y: -8, z: 0}
+          tangent: {x: 0, y: 0, z: -4.84375, w: -8.40625}
+        - position: {x: -4.84375, y: -8.40625, z: 0}
+          tangent: {x: 0, y: 0, z: -4.625, w: -8}
+        - position: {x: -4.625, y: -8, z: 0}
+          tangent: {x: 1, y: 0, z: -4.84375, w: -8.40625}
+        - position: {x: -4.625, y: -8, z: 0}
+          tangent: {x: 3, y: 0, z: -4.84375, w: -8.40625}
+        - position: {x: -4.84375, y: -8.40625, z: 0}
+          tangent: {x: 0, y: 0, z: -4.84375, w: -9}
+        - position: {x: -4.84375, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: -4.84375, w: -8.40625}
+        - position: {x: -4.84375, y: -8.40625, z: 0}
+          tangent: {x: 1, y: 0, z: -4.84375, w: -9}
+        - position: {x: -4.84375, y: -8.40625, z: 0}
+          tangent: {x: 3, y: 0, z: -4.84375, w: -9}
+        - position: {x: -4.84375, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: -5, w: -9}
+        - position: {x: -5, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: -4.84375, w: -9}
+        - position: {x: -4.84375, y: -9, z: 0}
+          tangent: {x: 1, y: 0, z: -5, w: -9}
+        - position: {x: -4.84375, y: -9, z: 0}
+          tangent: {x: 3, y: 0, z: -5, w: -9}
+        - position: {x: -5, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: -5, w: -13}
+        - position: {x: -5, y: -13, z: 0}
+          tangent: {x: 0, y: 0, z: -5, w: -9}
+        - position: {x: -5, y: -9, z: 0}
+          tangent: {x: 1, y: 0, z: -5, w: -13}
+        - position: {x: -5, y: -9, z: 0}
+          tangent: {x: 3, y: 0, z: -5, w: -13}
+        - position: {x: -5, y: -13, z: 0}
+          tangent: {x: 0, y: 0, z: -4.1875, w: -13}
+        - position: {x: -4.1875, y: -13, z: 0}
+          tangent: {x: 0, y: 0, z: -5, w: -13}
+        - position: {x: -5, y: -13, z: 0}
+          tangent: {x: 1, y: 0, z: -4.1875, w: -13}
+        - position: {x: -5, y: -13, z: 0}
+          tangent: {x: 3, y: 0, z: -4.1875, w: -13}
+        - position: {x: -4.1875, y: -13, z: 0}
+          tangent: {x: 0, y: 0, z: -4.1875, w: -9}
+        - position: {x: -4.1875, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: -4.1875, w: -13}
+        - position: {x: -4.1875, y: -13, z: 0}
+          tangent: {x: 1, y: 0, z: -4.1875, w: -9}
+        - position: {x: -4.1875, y: -13, z: 0}
+          tangent: {x: 3, y: 0, z: -4.1875, w: -9}
+        - position: {x: 5, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: 4.8125, w: -9}
+        - position: {x: 4.8125, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: 5, w: -9}
+        - position: {x: 5, y: -9, z: 0}
+          tangent: {x: 1, y: 0, z: 4.8125, w: -9}
+        - position: {x: 5, y: -9, z: 0}
+          tangent: {x: 3, y: 0, z: 4.8125, w: -9}
+        - position: {x: 4.8125, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: 4.8125, w: -8.59375}
+        - position: {x: 4.8125, y: -8.59375, z: 0}
+          tangent: {x: 0, y: 0, z: 4.8125, w: -9}
+        - position: {x: 4.8125, y: -9, z: 0}
+          tangent: {x: 1, y: 0, z: 4.8125, w: -8.59375}
+        - position: {x: 4.8125, y: -9, z: 0}
+          tangent: {x: 3, y: 0, z: 4.8125, w: -8.59375}
+        - position: {x: 4.8125, y: -8.59375, z: 0}
+          tangent: {x: 0, y: 0, z: 4.75, w: -8.5}
+        - position: {x: 4.75, y: -8.5, z: 0}
+          tangent: {x: 0, y: 0, z: 4.8125, w: -8.59375}
+        - position: {x: 4.8125, y: -8.59375, z: 0}
+          tangent: {x: 1, y: 0, z: 4.75, w: -8.5}
+        - position: {x: 4.8125, y: -8.59375, z: 0}
+          tangent: {x: 3, y: 0, z: 4.75, w: -8.5}
+        - position: {x: 4.75, y: -8.5, z: 0}
+          tangent: {x: 0, y: 0, z: 4.5625, w: -8.0625}
+        - position: {x: 4.5625, y: -8.0625, z: 0}
+          tangent: {x: 0, y: 0, z: 4.75, w: -8.5}
+        - position: {x: 4.75, y: -8.5, z: 0}
+          tangent: {x: 1, y: 0, z: 4.5625, w: -8.0625}
+        - position: {x: 4.75, y: -8.5, z: 0}
+          tangent: {x: 3, y: 0, z: 4.5625, w: -8.0625}
+        - position: {x: 4.5625, y: -8.0625, z: 0}
+          tangent: {x: 0, y: 0, z: 4.5, w: -8}
+        - position: {x: 4.5, y: -8, z: 0}
+          tangent: {x: 0, y: 0, z: 4.5625, w: -8.0625}
+        - position: {x: 4.5625, y: -8.0625, z: 0}
+          tangent: {x: 1, y: 0, z: 4.5, w: -8}
+        - position: {x: 4.5625, y: -8.0625, z: 0}
+          tangent: {x: 3, y: 0, z: 4.5, w: -8}
+        - position: {x: 4.5, y: -8, z: 0}
+          tangent: {x: 0, y: 0, z: 2, w: -8}
+        - position: {x: 2, y: -8, z: 0}
+          tangent: {x: 0, y: 0, z: 4.5, w: -8}
+        - position: {x: 4.5, y: -8, z: 0}
+          tangent: {x: 1, y: 0, z: 2, w: -8}
+        - position: {x: 4.5, y: -8, z: 0}
+          tangent: {x: 3, y: 0, z: 2, w: -8}
+        - position: {x: 2, y: -8, z: 0}
+          tangent: {x: 0, y: 0, z: 2, w: -6}
         - position: {x: 2, y: -6, z: 0}
-          tangent: {x: -1, y: 0, z: 4, w: -6}
+          tangent: {x: 0, y: 0, z: 2, w: -8}
+        - position: {x: 2, y: -8, z: 0}
+          tangent: {x: 1, y: 0, z: 2, w: -6}
+        - position: {x: 2, y: -8, z: 0}
+          tangent: {x: 3, y: 0, z: 2, w: -6}
+        - position: {x: 2, y: -6, z: 0}
+          tangent: {x: 0, y: 0, z: 4, w: -6}
         - position: {x: 4, y: -6, z: 0}
-          tangent: {x: -1, y: 0, z: 4, w: -5}
+          tangent: {x: 0, y: 0, z: 2, w: -6}
+        - position: {x: 2, y: -6, z: 0}
+          tangent: {x: 1, y: 0, z: 4, w: -6}
+        - position: {x: 2, y: -6, z: 0}
+          tangent: {x: 3, y: 0, z: 4, w: -6}
+        - position: {x: 4, y: -6, z: 0}
+          tangent: {x: 0, y: 0, z: 4, w: -5}
         - position: {x: 4, y: -5, z: 0}
-          tangent: {x: -1, y: 0, z: 6, w: -5}
+          tangent: {x: 0, y: 0, z: 4, w: -6}
+        - position: {x: 4, y: -6, z: 0}
+          tangent: {x: 1, y: 0, z: 4, w: -5}
+        - position: {x: 4, y: -6, z: 0}
+          tangent: {x: 3, y: 0, z: 4, w: -5}
+        - position: {x: 4, y: -5, z: 0}
+          tangent: {x: 0, y: 0, z: 6, w: -5}
         - position: {x: 6, y: -5, z: 0}
-          tangent: {x: -1, y: 0, z: 6, w: -4}
+          tangent: {x: 0, y: 0, z: 4, w: -5}
+        - position: {x: 4, y: -5, z: 0}
+          tangent: {x: 1, y: 0, z: 6, w: -5}
+        - position: {x: 4, y: -5, z: 0}
+          tangent: {x: 3, y: 0, z: 6, w: -5}
+        - position: {x: 6, y: -5, z: 0}
+          tangent: {x: 0, y: 0, z: 6, w: -4}
         - position: {x: 6, y: -4, z: 0}
-          tangent: {x: -1, y: 0, z: 7, w: -4}
+          tangent: {x: 0, y: 0, z: 6, w: -5}
+        - position: {x: 6, y: -5, z: 0}
+          tangent: {x: 1, y: 0, z: 6, w: -4}
+        - position: {x: 6, y: -5, z: 0}
+          tangent: {x: 3, y: 0, z: 6, w: -4}
+        - position: {x: 6, y: -4, z: 0}
+          tangent: {x: 0, y: 0, z: 7, w: -4}
         - position: {x: 7, y: -4, z: 0}
-          tangent: {x: -1, y: 0, z: 7, w: -3}
+          tangent: {x: 0, y: 0, z: 6, w: -4}
+        - position: {x: 6, y: -4, z: 0}
+          tangent: {x: 1, y: 0, z: 7, w: -4}
+        - position: {x: 6, y: -4, z: 0}
+          tangent: {x: 3, y: 0, z: 7, w: -4}
+        - position: {x: 7, y: -4, z: 0}
+          tangent: {x: 0, y: 0, z: 7, w: -3}
         - position: {x: 7, y: -3, z: 0}
-          tangent: {x: -1, y: 0, z: 8, w: -3}
-        - position: {x: 8, y: -3, z: 0}
-          tangent: {x: -1, y: 0, z: 8, w: 1}
-        - position: {x: 8, y: 1, z: 0}
-          tangent: {x: -1, y: 0, z: 7, w: 1}
-        - position: {x: 7, y: 1, z: 0}
-          tangent: {x: -1, y: 0, z: 7, w: 2}
-        - position: {x: 7, y: 2, z: 0}
-          tangent: {x: -1, y: 0, z: 6, w: 2}
-        - position: {x: 6, y: 2, z: 0}
-          tangent: {x: -1, y: 0, z: 6, w: 3}
-        - position: {x: 6, y: 3, z: 0}
-          tangent: {x: -1, y: 0, z: 4, w: 3}
-        - position: {x: 4, y: 3, z: 0}
-          tangent: {x: -1, y: 0, z: 4, w: 4}
-        - position: {x: 4, y: 4, z: 0}
-          tangent: {x: -1, y: 0, z: -4, w: 4}
-        - position: {x: -4, y: 4, z: 0}
-          tangent: {x: -1, y: 0, z: -4, w: 3}
-        - position: {x: -4, y: 3, z: 0}
-          tangent: {x: -1, y: 0, z: -6, w: 3}
-        - position: {x: -6, y: 3, z: 0}
-          tangent: {x: -1, y: 0, z: -6, w: 2}
-        - position: {x: -6, y: 2, z: 0}
-          tangent: {x: -1, y: 0, z: -7, w: 2}
-        - position: {x: -7, y: 2, z: 0}
-          tangent: {x: -1, y: 0, z: -7, w: 1}
-        - position: {x: -7, y: 1, z: 0}
-          tangent: {x: -1, y: 0, z: -8, w: 1}
-        - position: {x: -8, y: 1, z: 0}
-          tangent: {x: -1, y: 0, z: -8, w: -3}
-        - position: {x: -8, y: -3, z: 0}
-          tangent: {x: -1, y: 0, z: -7, w: -3}
-        - position: {x: -7, y: -3, z: 0}
-          tangent: {x: -1, y: 0, z: -7, w: -4}
-        - position: {x: -7, y: -4, z: 0}
-          tangent: {x: -1, y: 0, z: -6, w: -4}
-        - position: {x: -6, y: -4, z: 0}
-          tangent: {x: -1, y: 0, z: -6, w: -5}
-        - position: {x: -6, y: -5, z: 0}
-          tangent: {x: -1, y: 0, z: -4, w: -5}
-        - position: {x: -4, y: -5, z: 0}
-          tangent: {x: -1, y: 0, z: -4, w: -6}
-        - position: {x: -4, y: -6, z: 0}
-          tangent: {x: -1, y: 0, z: -2, w: -6}
-        - position: {x: -2, y: -6, z: 0}
-          tangent: {x: -1, y: 0, z: -2, w: -7}
-        - position: {x: -2, y: -7, z: 0}
-          tangent: {x: -1, y: 0, z: -1.1875, w: -7}
-        - position: {x: -1.1875, y: -7, z: 0}
-          tangent: {x: -1, y: 0, z: -1.1875, w: -5.59375}
-        - position: {x: 3.8125, y: -1.65625, z: 0}
-          tangent: {x: -1, y: 0, z: 3.8125, w: -0.59375}
-        - position: {x: 3.8125, y: -0.59375, z: 0}
-          tangent: {x: -1, y: 0, z: 3.75, w: -0.5}
-        - position: {x: 3.75, y: -0.5, z: 0}
-          tangent: {x: -1, y: 0, z: 3.5625, w: -0.0625}
-        - position: {x: 3.5625, y: -0.0625, z: 0}
-          tangent: {x: -1, y: 0, z: 3.5, w: 0}
-        - position: {x: 3.5, y: 0, z: 0}
-          tangent: {x: -1, y: 0, z: 2.375, w: 0}
-        - position: {x: 2.375, y: 0, z: 0}
-          tangent: {x: -1, y: 0, z: 2.15625, w: -0.40625}
-        - position: {x: 2.15625, y: -0.40625, z: 0}
-          tangent: {x: -1, y: 0, z: 2.15625, w: -1.625}
-        - position: {x: 2.15625, y: -1.625, z: 0}
-          tangent: {x: -1, y: 0, z: 2.40625, w: -1.96875}
-        - position: {x: 2.40625, y: -1.96875, z: 0}
-          tangent: {x: -1, y: 0, z: 2.4375, w: -2}
-        - position: {x: 2.4375, y: -2, z: 0}
-          tangent: {x: -1, y: 0, z: 3.59375, w: -2}
-        - position: {x: 3.59375, y: -2, z: 0}
-          tangent: {x: -1, y: 0, z: 3.8125, w: -1.65625}
-        - position: {x: -2.1875, y: -1.65625, z: 0}
-          tangent: {x: -1, y: 0, z: -2.1875, w: -0.59375}
-        - position: {x: -2.1875, y: -0.59375, z: 0}
-          tangent: {x: -1, y: 0, z: -2.25, w: -0.5}
-        - position: {x: -2.25, y: -0.5, z: 0}
-          tangent: {x: -1, y: 0, z: -2.4375, w: -0.0625}
-        - position: {x: -2.4375, y: -0.0625, z: 0}
-          tangent: {x: -1, y: 0, z: -2.5, w: 0}
-        - position: {x: -2.5, y: 0, z: 0}
-          tangent: {x: -1, y: 0, z: -3.625, w: 0}
-        - position: {x: -3.625, y: 0, z: 0}
-          tangent: {x: -1, y: 0, z: -3.84375, w: -0.40625}
-        - position: {x: -3.84375, y: -0.40625, z: 0}
-          tangent: {x: -1, y: 0, z: -3.84375, w: -1.625}
-        - position: {x: -3.84375, y: -1.625, z: 0}
-          tangent: {x: -1, y: 0, z: -3.59375, w: -1.96875}
-        - position: {x: -3.59375, y: -1.96875, z: 0}
-          tangent: {x: -1, y: 0, z: -3.5625, w: -2}
-        - position: {x: -3.5625, y: -2, z: 0}
-          tangent: {x: -1, y: 0, z: -2.40625, w: -2}
-        - position: {x: -2.40625, y: -2, z: 0}
-          tangent: {x: -1, y: 0, z: -2.1875, w: -1.65625}
-        - position: {x: -1.1875, y: -5.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -1.25, w: -5.5}
-        - position: {x: -1.25, y: -5.5, z: 0}
-          tangent: {x: 0, y: 0, z: -1.1875, w: -5.59375}
-        - position: {x: -1.1875, y: -5.59375, z: 0}
-          tangent: {x: 1, y: 0, z: -1.25, w: -5.5}
-        - position: {x: -1.1875, y: -5.59375, z: 0}
-          tangent: {x: 3, y: 0, z: -1.25, w: -5.5}
-        - position: {x: -1.25, y: -5.5, z: 0}
-          tangent: {x: 0, y: 0, z: -1.4375, w: -5.0625}
-        - position: {x: -1.4375, y: -5.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -1.25, w: -5.5}
-        - position: {x: -1.25, y: -5.5, z: 0}
-          tangent: {x: 1, y: 0, z: -1.4375, w: -5.0625}
-        - position: {x: -1.25, y: -5.5, z: 0}
-          tangent: {x: 3, y: 0, z: -1.4375, w: -5.0625}
-        - position: {x: -1.4375, y: -5.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -1.5, w: -5}
-        - position: {x: -1.5, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: -1.4375, w: -5.0625}
-        - position: {x: -1.4375, y: -5.0625, z: 0}
-          tangent: {x: 1, y: 0, z: -1.5, w: -5}
-        - position: {x: -1.4375, y: -5.0625, z: 0}
-          tangent: {x: 3, y: 0, z: -1.5, w: -5}
-        - position: {x: -1.5, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: -3.1875, w: -5}
-        - position: {x: -3.1875, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: -1.5, w: -5}
-        - position: {x: -1.5, y: -5, z: 0}
-          tangent: {x: 1, y: 0, z: -3.1875, w: -5}
-        - position: {x: -1.5, y: -5, z: 0}
-          tangent: {x: 3, y: 0, z: -3.1875, w: -5}
-        - position: {x: -3.1875, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: -3.1875, w: -4.59375}
-        - position: {x: -3.1875, y: -4.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -3.1875, w: -5}
-        - position: {x: -3.1875, y: -5, z: 0}
-          tangent: {x: 1, y: 0, z: -3.1875, w: -4.59375}
-        - position: {x: -3.1875, y: -5, z: 0}
-          tangent: {x: 3, y: 0, z: -3.1875, w: -4.59375}
-        - position: {x: -3.1875, y: -4.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -3.25, w: -4.5}
-        - position: {x: -3.25, y: -4.5, z: 0}
-          tangent: {x: 0, y: 0, z: -3.1875, w: -4.59375}
-        - position: {x: -3.1875, y: -4.59375, z: 0}
-          tangent: {x: 1, y: 0, z: -3.25, w: -4.5}
-        - position: {x: -3.1875, y: -4.59375, z: 0}
-          tangent: {x: 3, y: 0, z: -3.25, w: -4.5}
-        - position: {x: -3.25, y: -4.5, z: 0}
-          tangent: {x: 0, y: 0, z: -3.4375, w: -4.0625}
-        - position: {x: -3.4375, y: -4.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -3.25, w: -4.5}
-        - position: {x: -3.25, y: -4.5, z: 0}
-          tangent: {x: 1, y: 0, z: -3.4375, w: -4.0625}
-        - position: {x: -3.25, y: -4.5, z: 0}
-          tangent: {x: 3, y: 0, z: -3.4375, w: -4.0625}
-        - position: {x: -3.4375, y: -4.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -3.5, w: -4}
-        - position: {x: -3.5, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: -3.4375, w: -4.0625}
-        - position: {x: -3.4375, y: -4.0625, z: 0}
-          tangent: {x: 1, y: 0, z: -3.5, w: -4}
-        - position: {x: -3.4375, y: -4.0625, z: 0}
-          tangent: {x: 3, y: 0, z: -3.5, w: -4}
-        - position: {x: -3.5, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: -5.1875, w: -4}
-        - position: {x: -5.1875, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: -3.5, w: -4}
-        - position: {x: -3.5, y: -4, z: 0}
-          tangent: {x: 1, y: 0, z: -5.1875, w: -4}
-        - position: {x: -3.5, y: -4, z: 0}
-          tangent: {x: 3, y: 0, z: -5.1875, w: -4}
-        - position: {x: -5.1875, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: -5.1875, w: -3.59375}
-        - position: {x: -5.1875, y: -3.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -5.1875, w: -4}
-        - position: {x: -5.1875, y: -4, z: 0}
-          tangent: {x: 1, y: 0, z: -5.1875, w: -3.59375}
-        - position: {x: -5.1875, y: -4, z: 0}
-          tangent: {x: 3, y: 0, z: -5.1875, w: -3.59375}
-        - position: {x: -5.1875, y: -3.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -5.25, w: -3.5}
-        - position: {x: -5.25, y: -3.5, z: 0}
-          tangent: {x: 0, y: 0, z: -5.1875, w: -3.59375}
-        - position: {x: -5.1875, y: -3.59375, z: 0}
-          tangent: {x: 1, y: 0, z: -5.25, w: -3.5}
-        - position: {x: -5.1875, y: -3.59375, z: 0}
-          tangent: {x: 3, y: 0, z: -5.25, w: -3.5}
-        - position: {x: -5.25, y: -3.5, z: 0}
-          tangent: {x: 0, y: 0, z: -5.4375, w: -3.0625}
-        - position: {x: -5.4375, y: -3.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -5.25, w: -3.5}
-        - position: {x: -5.25, y: -3.5, z: 0}
-          tangent: {x: 1, y: 0, z: -5.4375, w: -3.0625}
-        - position: {x: -5.25, y: -3.5, z: 0}
-          tangent: {x: 3, y: 0, z: -5.4375, w: -3.0625}
-        - position: {x: -5.4375, y: -3.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -5.5, w: -3}
-        - position: {x: -5.5, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -5.4375, w: -3.0625}
-        - position: {x: -5.4375, y: -3.0625, z: 0}
-          tangent: {x: 1, y: 0, z: -5.5, w: -3}
-        - position: {x: -5.4375, y: -3.0625, z: 0}
-          tangent: {x: 3, y: 0, z: -5.5, w: -3}
-        - position: {x: -5.5, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: -3}
-        - position: {x: -6.1875, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -5.5, w: -3}
-        - position: {x: -5.5, y: -3, z: 0}
-          tangent: {x: 1, y: 0, z: -6.1875, w: -3}
-        - position: {x: -5.5, y: -3, z: 0}
-          tangent: {x: 3, y: 0, z: -6.1875, w: -3}
-        - position: {x: -6.1875, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: -2.59375}
-        - position: {x: -6.1875, y: -2.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: -3}
-        - position: {x: -6.1875, y: -3, z: 0}
-          tangent: {x: 1, y: 0, z: -6.1875, w: -2.59375}
-        - position: {x: -6.1875, y: -3, z: 0}
-          tangent: {x: 3, y: 0, z: -6.1875, w: -2.59375}
-        - position: {x: -6.1875, y: -2.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -6.25, w: -2.5}
-        - position: {x: -6.25, y: -2.5, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: -2.59375}
-        - position: {x: -6.1875, y: -2.59375, z: 0}
-          tangent: {x: 1, y: 0, z: -6.25, w: -2.5}
-        - position: {x: -6.1875, y: -2.59375, z: 0}
-          tangent: {x: 3, y: 0, z: -6.25, w: -2.5}
-        - position: {x: -6.25, y: -2.5, z: 0}
-          tangent: {x: 0, y: 0, z: -6.4375, w: -2.0625}
-        - position: {x: -6.4375, y: -2.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -6.25, w: -2.5}
-        - position: {x: -6.25, y: -2.5, z: 0}
-          tangent: {x: 1, y: 0, z: -6.4375, w: -2.0625}
-        - position: {x: -6.25, y: -2.5, z: 0}
-          tangent: {x: 3, y: 0, z: -6.4375, w: -2.0625}
-        - position: {x: -6.4375, y: -2.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -6.5, w: -2}
-        - position: {x: -6.5, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -6.4375, w: -2.0625}
-        - position: {x: -6.4375, y: -2.0625, z: 0}
-          tangent: {x: 1, y: 0, z: -6.5, w: -2}
-        - position: {x: -6.4375, y: -2.0625, z: 0}
-          tangent: {x: 3, y: 0, z: -6.5, w: -2}
-        - position: {x: -6.5, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -7.1875, w: -2}
-        - position: {x: -7.1875, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -6.5, w: -2}
-        - position: {x: -6.5, y: -2, z: 0}
-          tangent: {x: 1, y: 0, z: -7.1875, w: -2}
-        - position: {x: -6.5, y: -2, z: 0}
-          tangent: {x: 3, y: 0, z: -7.1875, w: -2}
-        - position: {x: -7.1875, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -7.1875, w: 0}
-        - position: {x: -7.1875, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -7.1875, w: -2}
-        - position: {x: -7.1875, y: -2, z: 0}
-          tangent: {x: 1, y: 0, z: -7.1875, w: 0}
-        - position: {x: -7.1875, y: -2, z: 0}
-          tangent: {x: 3, y: 0, z: -7.1875, w: 0}
-        - position: {x: -7.1875, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -6.40625, w: 0}
-        - position: {x: -6.40625, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -7.1875, w: 0}
-        - position: {x: -7.1875, y: 0, z: 0}
-          tangent: {x: 1, y: 0, z: -6.40625, w: 0}
-        - position: {x: -7.1875, y: 0, z: 0}
-          tangent: {x: 3, y: 0, z: -6.40625, w: 0}
-        - position: {x: -6.40625, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: 0.34375}
-        - position: {x: -6.1875, y: 0.34375, z: 0}
-          tangent: {x: 0, y: 0, z: -6.40625, w: 0}
-        - position: {x: -6.40625, y: 0, z: 0}
-          tangent: {x: 1, y: 0, z: -6.1875, w: 0.34375}
-        - position: {x: -6.40625, y: 0, z: 0}
-          tangent: {x: 3, y: 0, z: -6.1875, w: 0.34375}
-        - position: {x: -6.1875, y: 0.34375, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: 1}
-        - position: {x: -6.1875, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: 0.34375}
-        - position: {x: -6.1875, y: 0.34375, z: 0}
-          tangent: {x: 1, y: 0, z: -6.1875, w: 1}
-        - position: {x: -6.1875, y: 0.34375, z: 0}
-          tangent: {x: 3, y: 0, z: -6.1875, w: 1}
-        - position: {x: -6.1875, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -5.40625, w: 1}
-        - position: {x: -5.40625, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -6.1875, w: 1}
-        - position: {x: -6.1875, y: 1, z: 0}
-          tangent: {x: 1, y: 0, z: -5.40625, w: 1}
-        - position: {x: -6.1875, y: 1, z: 0}
-          tangent: {x: 3, y: 0, z: -5.40625, w: 1}
-        - position: {x: -5.40625, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -5.1875, w: 1.34375}
-        - position: {x: -5.1875, y: 1.34375, z: 0}
-          tangent: {x: 0, y: 0, z: -5.40625, w: 1}
-        - position: {x: -5.40625, y: 1, z: 0}
-          tangent: {x: 1, y: 0, z: -5.1875, w: 1.34375}
-        - position: {x: -5.40625, y: 1, z: 0}
-          tangent: {x: 3, y: 0, z: -5.1875, w: 1.34375}
-        - position: {x: -5.1875, y: 1.34375, z: 0}
-          tangent: {x: 0, y: 0, z: -5.1875, w: 2}
-        - position: {x: -5.1875, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -5.1875, w: 1.34375}
-        - position: {x: -5.1875, y: 1.34375, z: 0}
-          tangent: {x: 1, y: 0, z: -5.1875, w: 2}
-        - position: {x: -5.1875, y: 1.34375, z: 0}
-          tangent: {x: 3, y: 0, z: -5.1875, w: 2}
-        - position: {x: -5.1875, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -3.40625, w: 2}
-        - position: {x: -3.40625, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -5.1875, w: 2}
-        - position: {x: -5.1875, y: 2, z: 0}
-          tangent: {x: 1, y: 0, z: -3.40625, w: 2}
-        - position: {x: -5.1875, y: 2, z: 0}
-          tangent: {x: 3, y: 0, z: -3.40625, w: 2}
-        - position: {x: -3.40625, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -3.1875, w: 2.34375}
-        - position: {x: -3.1875, y: 2.34375, z: 0}
-          tangent: {x: 0, y: 0, z: -3.40625, w: 2}
-        - position: {x: -3.40625, y: 2, z: 0}
-          tangent: {x: 1, y: 0, z: -3.1875, w: 2.34375}
-        - position: {x: -3.40625, y: 2, z: 0}
-          tangent: {x: 3, y: 0, z: -3.1875, w: 2.34375}
-        - position: {x: -3.1875, y: 2.34375, z: 0}
-          tangent: {x: 0, y: 0, z: -3.1875, w: 3}
-        - position: {x: -3.1875, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: -3.1875, w: 2.34375}
-        - position: {x: -3.1875, y: 2.34375, z: 0}
-          tangent: {x: 1, y: 0, z: -3.1875, w: 3}
-        - position: {x: -3.1875, y: 2.34375, z: 0}
-          tangent: {x: 3, y: 0, z: -3.1875, w: 3}
-        - position: {x: -3.1875, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: 3.15625, w: 3}
-        - position: {x: 3.15625, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: -3.1875, w: 3}
-        - position: {x: -3.1875, y: 3, z: 0}
-          tangent: {x: 1, y: 0, z: 3.15625, w: 3}
-        - position: {x: -3.1875, y: 3, z: 0}
-          tangent: {x: 3, y: 0, z: 3.15625, w: 3}
-        - position: {x: 3.15625, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: 3.15625, w: 2.375}
-        - position: {x: 3.15625, y: 2.375, z: 0}
-          tangent: {x: 0, y: 0, z: 3.15625, w: 3}
-        - position: {x: 3.15625, y: 3, z: 0}
-          tangent: {x: 1, y: 0, z: 3.15625, w: 2.375}
-        - position: {x: 3.15625, y: 3, z: 0}
-          tangent: {x: 3, y: 0, z: 3.15625, w: 2.375}
-        - position: {x: 3.15625, y: 2.375, z: 0}
-          tangent: {x: 0, y: 0, z: 3.40625, w: 2.03125}
-        - position: {x: 3.40625, y: 2.03125, z: 0}
-          tangent: {x: 0, y: 0, z: 3.15625, w: 2.375}
-        - position: {x: 3.15625, y: 2.375, z: 0}
-          tangent: {x: 1, y: 0, z: 3.40625, w: 2.03125}
-        - position: {x: 3.15625, y: 2.375, z: 0}
-          tangent: {x: 3, y: 0, z: 3.40625, w: 2.03125}
-        - position: {x: 3.40625, y: 2.03125, z: 0}
-          tangent: {x: 0, y: 0, z: 3.4375, w: 2}
-        - position: {x: 3.4375, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: 3.40625, w: 2.03125}
-        - position: {x: 3.40625, y: 2.03125, z: 0}
-          tangent: {x: 1, y: 0, z: 3.4375, w: 2}
-        - position: {x: 3.40625, y: 2.03125, z: 0}
-          tangent: {x: 3, y: 0, z: 3.4375, w: 2}
-        - position: {x: 3.4375, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: 5.15625, w: 2}
-        - position: {x: 5.15625, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: 3.4375, w: 2}
-        - position: {x: 3.4375, y: 2, z: 0}
-          tangent: {x: 1, y: 0, z: 5.15625, w: 2}
-        - position: {x: 3.4375, y: 2, z: 0}
-          tangent: {x: 3, y: 0, z: 5.15625, w: 2}
-        - position: {x: 5.15625, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: 5.15625, w: 1.375}
-        - position: {x: 5.15625, y: 1.375, z: 0}
-          tangent: {x: 0, y: 0, z: 5.15625, w: 2}
-        - position: {x: 5.15625, y: 2, z: 0}
-          tangent: {x: 1, y: 0, z: 5.15625, w: 1.375}
-        - position: {x: 5.15625, y: 2, z: 0}
-          tangent: {x: 3, y: 0, z: 5.15625, w: 1.375}
-        - position: {x: 5.15625, y: 1.375, z: 0}
-          tangent: {x: 0, y: 0, z: 5.40625, w: 1.03125}
-        - position: {x: 5.40625, y: 1.03125, z: 0}
-          tangent: {x: 0, y: 0, z: 5.15625, w: 1.375}
-        - position: {x: 5.15625, y: 1.375, z: 0}
-          tangent: {x: 1, y: 0, z: 5.40625, w: 1.03125}
-        - position: {x: 5.15625, y: 1.375, z: 0}
-          tangent: {x: 3, y: 0, z: 5.40625, w: 1.03125}
-        - position: {x: 5.40625, y: 1.03125, z: 0}
-          tangent: {x: 0, y: 0, z: 5.4375, w: 1}
-        - position: {x: 5.4375, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: 5.40625, w: 1.03125}
-        - position: {x: 5.40625, y: 1.03125, z: 0}
-          tangent: {x: 1, y: 0, z: 5.4375, w: 1}
-        - position: {x: 5.40625, y: 1.03125, z: 0}
-          tangent: {x: 3, y: 0, z: 5.4375, w: 1}
-        - position: {x: 5.4375, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: 6.15625, w: 1}
-        - position: {x: 6.15625, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: 5.4375, w: 1}
-        - position: {x: 5.4375, y: 1, z: 0}
-          tangent: {x: 1, y: 0, z: 6.15625, w: 1}
-        - position: {x: 5.4375, y: 1, z: 0}
-          tangent: {x: 3, y: 0, z: 6.15625, w: 1}
-        - position: {x: 6.15625, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: 6.15625, w: 0.375}
-        - position: {x: 6.15625, y: 0.375, z: 0}
-          tangent: {x: 0, y: 0, z: 6.15625, w: 1}
-        - position: {x: 6.15625, y: 1, z: 0}
-          tangent: {x: 1, y: 0, z: 6.15625, w: 0.375}
-        - position: {x: 6.15625, y: 1, z: 0}
-          tangent: {x: 3, y: 0, z: 6.15625, w: 0.375}
-        - position: {x: 6.15625, y: 0.375, z: 0}
-          tangent: {x: 0, y: 0, z: 6.40625, w: 0.03125}
-        - position: {x: 6.40625, y: 0.03125, z: 0}
-          tangent: {x: 0, y: 0, z: 6.15625, w: 0.375}
-        - position: {x: 6.15625, y: 0.375, z: 0}
-          tangent: {x: 1, y: 0, z: 6.40625, w: 0.03125}
-        - position: {x: 6.15625, y: 0.375, z: 0}
-          tangent: {x: 3, y: 0, z: 6.40625, w: 0.03125}
-        - position: {x: 6.40625, y: 0.03125, z: 0}
-          tangent: {x: 0, y: 0, z: 6.4375, w: 0}
-        - position: {x: 6.4375, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: 6.40625, w: 0.03125}
-        - position: {x: 6.40625, y: 0.03125, z: 0}
-          tangent: {x: 1, y: 0, z: 6.4375, w: 0}
-        - position: {x: 6.40625, y: 0.03125, z: 0}
-          tangent: {x: 3, y: 0, z: 6.4375, w: 0}
-        - position: {x: 6.4375, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: 7.15625, w: 0}
-        - position: {x: 7.15625, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: 6.4375, w: 0}
-        - position: {x: 6.4375, y: 0, z: 0}
-          tangent: {x: 1, y: 0, z: 7.15625, w: 0}
-        - position: {x: 6.4375, y: 0, z: 0}
-          tangent: {x: 3, y: 0, z: 7.15625, w: 0}
-        - position: {x: 7.15625, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: 7.15625, w: -2}
-        - position: {x: 7.15625, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: 7.15625, w: 0}
-        - position: {x: 7.15625, y: 0, z: 0}
-          tangent: {x: 1, y: 0, z: 7.15625, w: -2}
-        - position: {x: 7.15625, y: 0, z: 0}
-          tangent: {x: 3, y: 0, z: 7.15625, w: -2}
-        - position: {x: 7.15625, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: 6.375, w: -2}
-        - position: {x: 6.375, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: 7.15625, w: -2}
-        - position: {x: 7.15625, y: -2, z: 0}
-          tangent: {x: 1, y: 0, z: 6.375, w: -2}
-        - position: {x: 7.15625, y: -2, z: 0}
-          tangent: {x: 3, y: 0, z: 6.375, w: -2}
-        - position: {x: 6.375, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: 6.15625, w: -2.40625}
-        - position: {x: 6.15625, y: -2.40625, z: 0}
-          tangent: {x: 0, y: 0, z: 6.375, w: -2}
-        - position: {x: 6.375, y: -2, z: 0}
-          tangent: {x: 1, y: 0, z: 6.15625, w: -2.40625}
-        - position: {x: 6.375, y: -2, z: 0}
-          tangent: {x: 3, y: 0, z: 6.15625, w: -2.40625}
-        - position: {x: 6.15625, y: -2.40625, z: 0}
-          tangent: {x: 0, y: 0, z: 6.15625, w: -3}
-        - position: {x: 6.15625, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: 6.15625, w: -2.40625}
-        - position: {x: 6.15625, y: -2.40625, z: 0}
-          tangent: {x: 1, y: 0, z: 6.15625, w: -3}
-        - position: {x: 6.15625, y: -2.40625, z: 0}
-          tangent: {x: 3, y: 0, z: 6.15625, w: -3}
-        - position: {x: 6.15625, y: -3, z: 0}
+          tangent: {x: 0, y: 0, z: 7, w: -4}
+        - position: {x: 7, y: -4, z: 0}
+          tangent: {x: 1, y: 0, z: 7, w: -3}
+        - position: {x: 7, y: -4, z: 0}
+          tangent: {x: 3, y: 0, z: 7, w: -3}
+        - position: {x: 7, y: -3, z: 0}
           tangent: {x: 0, y: 0, z: 5.375, w: -3}
         - position: {x: 5.375, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: 6.15625, w: -3}
-        - position: {x: 6.15625, y: -3, z: 0}
+          tangent: {x: 0, y: 0, z: 7, w: -3}
+        - position: {x: 7, y: -3, z: 0}
           tangent: {x: 1, y: 0, z: 5.375, w: -3}
-        - position: {x: 6.15625, y: -3, z: 0}
+        - position: {x: 7, y: -3, z: 0}
           tangent: {x: 3, y: 0, z: 5.375, w: -3}
         - position: {x: 5.375, y: -3, z: 0}
           tangent: {x: 0, y: 0, z: 5.15625, w: -3.40625}
@@ -5657,465 +5008,65 @@ MonoBehaviour:
         - position: {x: 1.375, y: -5, z: 0}
           tangent: {x: 3, y: 0, z: 1.15625, w: -5.40625}
         - position: {x: 1.15625, y: -5.40625, z: 0}
-          tangent: {x: 0, y: 0, z: 1.15625, w: -7}
-        - position: {x: 1.15625, y: -7, z: 0}
+          tangent: {x: 0, y: 0, z: 1.15625, w: -8.625}
+        - position: {x: 1.15625, y: -8.625, z: 0}
           tangent: {x: 0, y: 0, z: 1.15625, w: -5.40625}
         - position: {x: 1.15625, y: -5.40625, z: 0}
-          tangent: {x: 1, y: 0, z: 1.15625, w: -7}
+          tangent: {x: 1, y: 0, z: 1.15625, w: -8.625}
         - position: {x: 1.15625, y: -5.40625, z: 0}
-          tangent: {x: 3, y: 0, z: 1.15625, w: -7}
-        - position: {x: 1.15625, y: -7, z: 0}
-          tangent: {x: 0, y: 0, z: 2, w: -7}
-        - position: {x: 2, y: -7, z: 0}
-          tangent: {x: 0, y: 0, z: 1.15625, w: -7}
-        - position: {x: 1.15625, y: -7, z: 0}
-          tangent: {x: 1, y: 0, z: 2, w: -7}
-        - position: {x: 1.15625, y: -7, z: 0}
-          tangent: {x: 3, y: 0, z: 2, w: -7}
-        - position: {x: 2, y: -7, z: 0}
-          tangent: {x: 0, y: 0, z: 2, w: -6}
-        - position: {x: 2, y: -6, z: 0}
-          tangent: {x: 0, y: 0, z: 2, w: -7}
-        - position: {x: 2, y: -7, z: 0}
-          tangent: {x: 1, y: 0, z: 2, w: -6}
-        - position: {x: 2, y: -7, z: 0}
-          tangent: {x: 3, y: 0, z: 2, w: -6}
-        - position: {x: 2, y: -6, z: 0}
-          tangent: {x: 0, y: 0, z: 4, w: -6}
-        - position: {x: 4, y: -6, z: 0}
-          tangent: {x: 0, y: 0, z: 2, w: -6}
-        - position: {x: 2, y: -6, z: 0}
-          tangent: {x: 1, y: 0, z: 4, w: -6}
-        - position: {x: 2, y: -6, z: 0}
-          tangent: {x: 3, y: 0, z: 4, w: -6}
-        - position: {x: 4, y: -6, z: 0}
-          tangent: {x: 0, y: 0, z: 4, w: -5}
-        - position: {x: 4, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: 4, w: -6}
-        - position: {x: 4, y: -6, z: 0}
-          tangent: {x: 1, y: 0, z: 4, w: -5}
-        - position: {x: 4, y: -6, z: 0}
-          tangent: {x: 3, y: 0, z: 4, w: -5}
-        - position: {x: 4, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: 6, w: -5}
-        - position: {x: 6, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: 4, w: -5}
-        - position: {x: 4, y: -5, z: 0}
-          tangent: {x: 1, y: 0, z: 6, w: -5}
-        - position: {x: 4, y: -5, z: 0}
-          tangent: {x: 3, y: 0, z: 6, w: -5}
-        - position: {x: 6, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: 6, w: -4}
-        - position: {x: 6, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: 6, w: -5}
-        - position: {x: 6, y: -5, z: 0}
-          tangent: {x: 1, y: 0, z: 6, w: -4}
-        - position: {x: 6, y: -5, z: 0}
-          tangent: {x: 3, y: 0, z: 6, w: -4}
-        - position: {x: 6, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: 7, w: -4}
-        - position: {x: 7, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: 6, w: -4}
-        - position: {x: 6, y: -4, z: 0}
-          tangent: {x: 1, y: 0, z: 7, w: -4}
-        - position: {x: 6, y: -4, z: 0}
-          tangent: {x: 3, y: 0, z: 7, w: -4}
-        - position: {x: 7, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: 7, w: -3}
-        - position: {x: 7, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: 7, w: -4}
-        - position: {x: 7, y: -4, z: 0}
-          tangent: {x: 1, y: 0, z: 7, w: -3}
-        - position: {x: 7, y: -4, z: 0}
-          tangent: {x: 3, y: 0, z: 7, w: -3}
-        - position: {x: 7, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: 8, w: -3}
-        - position: {x: 8, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: 7, w: -3}
-        - position: {x: 7, y: -3, z: 0}
-          tangent: {x: 1, y: 0, z: 8, w: -3}
-        - position: {x: 7, y: -3, z: 0}
-          tangent: {x: 3, y: 0, z: 8, w: -3}
-        - position: {x: 8, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: 8, w: 1}
-        - position: {x: 8, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: 8, w: -3}
-        - position: {x: 8, y: -3, z: 0}
-          tangent: {x: 1, y: 0, z: 8, w: 1}
-        - position: {x: 8, y: -3, z: 0}
-          tangent: {x: 3, y: 0, z: 8, w: 1}
-        - position: {x: 8, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: 7, w: 1}
-        - position: {x: 7, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: 8, w: 1}
-        - position: {x: 8, y: 1, z: 0}
-          tangent: {x: 1, y: 0, z: 7, w: 1}
-        - position: {x: 8, y: 1, z: 0}
-          tangent: {x: 3, y: 0, z: 7, w: 1}
-        - position: {x: 7, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: 7, w: 2}
-        - position: {x: 7, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: 7, w: 1}
-        - position: {x: 7, y: 1, z: 0}
-          tangent: {x: 1, y: 0, z: 7, w: 2}
-        - position: {x: 7, y: 1, z: 0}
-          tangent: {x: 3, y: 0, z: 7, w: 2}
-        - position: {x: 7, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: 6, w: 2}
-        - position: {x: 6, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: 7, w: 2}
-        - position: {x: 7, y: 2, z: 0}
-          tangent: {x: 1, y: 0, z: 6, w: 2}
-        - position: {x: 7, y: 2, z: 0}
-          tangent: {x: 3, y: 0, z: 6, w: 2}
-        - position: {x: 6, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: 6, w: 3}
-        - position: {x: 6, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: 6, w: 2}
-        - position: {x: 6, y: 2, z: 0}
-          tangent: {x: 1, y: 0, z: 6, w: 3}
-        - position: {x: 6, y: 2, z: 0}
-          tangent: {x: 3, y: 0, z: 6, w: 3}
-        - position: {x: 6, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: 4, w: 3}
-        - position: {x: 4, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: 6, w: 3}
-        - position: {x: 6, y: 3, z: 0}
-          tangent: {x: 1, y: 0, z: 4, w: 3}
-        - position: {x: 6, y: 3, z: 0}
-          tangent: {x: 3, y: 0, z: 4, w: 3}
-        - position: {x: 4, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: 4, w: 4}
-        - position: {x: 4, y: 4, z: 0}
-          tangent: {x: 0, y: 0, z: 4, w: 3}
-        - position: {x: 4, y: 3, z: 0}
-          tangent: {x: 1, y: 0, z: 4, w: 4}
-        - position: {x: 4, y: 3, z: 0}
-          tangent: {x: 3, y: 0, z: 4, w: 4}
-        - position: {x: 4, y: 4, z: 0}
-          tangent: {x: 0, y: 0, z: -4, w: 4}
-        - position: {x: -4, y: 4, z: 0}
-          tangent: {x: 0, y: 0, z: 4, w: 4}
-        - position: {x: 4, y: 4, z: 0}
-          tangent: {x: 1, y: 0, z: -4, w: 4}
-        - position: {x: 4, y: 4, z: 0}
-          tangent: {x: 3, y: 0, z: -4, w: 4}
-        - position: {x: -4, y: 4, z: 0}
-          tangent: {x: 0, y: 0, z: -4, w: 3}
-        - position: {x: -4, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: -4, w: 4}
-        - position: {x: -4, y: 4, z: 0}
-          tangent: {x: 1, y: 0, z: -4, w: 3}
-        - position: {x: -4, y: 4, z: 0}
-          tangent: {x: 3, y: 0, z: -4, w: 3}
-        - position: {x: -4, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: 3}
-        - position: {x: -6, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: -4, w: 3}
-        - position: {x: -4, y: 3, z: 0}
-          tangent: {x: 1, y: 0, z: -6, w: 3}
-        - position: {x: -4, y: 3, z: 0}
-          tangent: {x: 3, y: 0, z: -6, w: 3}
-        - position: {x: -6, y: 3, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: 2}
-        - position: {x: -6, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: 3}
-        - position: {x: -6, y: 3, z: 0}
-          tangent: {x: 1, y: 0, z: -6, w: 2}
-        - position: {x: -6, y: 3, z: 0}
-          tangent: {x: 3, y: 0, z: -6, w: 2}
-        - position: {x: -6, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: 2}
-        - position: {x: -7, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: 2}
-        - position: {x: -6, y: 2, z: 0}
-          tangent: {x: 1, y: 0, z: -7, w: 2}
-        - position: {x: -6, y: 2, z: 0}
-          tangent: {x: 3, y: 0, z: -7, w: 2}
-        - position: {x: -7, y: 2, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: 1}
-        - position: {x: -7, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: 2}
-        - position: {x: -7, y: 2, z: 0}
-          tangent: {x: 1, y: 0, z: -7, w: 1}
-        - position: {x: -7, y: 2, z: 0}
-          tangent: {x: 3, y: 0, z: -7, w: 1}
-        - position: {x: -7, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -8, w: 1}
-        - position: {x: -8, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: 1}
-        - position: {x: -7, y: 1, z: 0}
-          tangent: {x: 1, y: 0, z: -8, w: 1}
-        - position: {x: -7, y: 1, z: 0}
-          tangent: {x: 3, y: 0, z: -8, w: 1}
-        - position: {x: -8, y: 1, z: 0}
-          tangent: {x: 0, y: 0, z: -8, w: -3}
-        - position: {x: -8, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -8, w: 1}
-        - position: {x: -8, y: 1, z: 0}
-          tangent: {x: 1, y: 0, z: -8, w: -3}
-        - position: {x: -8, y: 1, z: 0}
-          tangent: {x: 3, y: 0, z: -8, w: -3}
-        - position: {x: -8, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: -3}
-        - position: {x: -7, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -8, w: -3}
-        - position: {x: -8, y: -3, z: 0}
-          tangent: {x: 1, y: 0, z: -7, w: -3}
-        - position: {x: -8, y: -3, z: 0}
-          tangent: {x: 3, y: 0, z: -7, w: -3}
-        - position: {x: -7, y: -3, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: -4}
-        - position: {x: -7, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: -3}
-        - position: {x: -7, y: -3, z: 0}
-          tangent: {x: 1, y: 0, z: -7, w: -4}
-        - position: {x: -7, y: -3, z: 0}
-          tangent: {x: 3, y: 0, z: -7, w: -4}
-        - position: {x: -7, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: -4}
-        - position: {x: -6, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: -7, w: -4}
-        - position: {x: -7, y: -4, z: 0}
-          tangent: {x: 1, y: 0, z: -6, w: -4}
-        - position: {x: -7, y: -4, z: 0}
-          tangent: {x: 3, y: 0, z: -6, w: -4}
-        - position: {x: -6, y: -4, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: -5}
-        - position: {x: -6, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: -4}
-        - position: {x: -6, y: -4, z: 0}
-          tangent: {x: 1, y: 0, z: -6, w: -5}
-        - position: {x: -6, y: -4, z: 0}
-          tangent: {x: 3, y: 0, z: -6, w: -5}
-        - position: {x: -6, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: -4, w: -5}
-        - position: {x: -4, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: -6, w: -5}
-        - position: {x: -6, y: -5, z: 0}
-          tangent: {x: 1, y: 0, z: -4, w: -5}
-        - position: {x: -6, y: -5, z: 0}
-          tangent: {x: 3, y: 0, z: -4, w: -5}
-        - position: {x: -4, y: -5, z: 0}
-          tangent: {x: 0, y: 0, z: -4, w: -6}
-        - position: {x: -4, y: -6, z: 0}
-          tangent: {x: 0, y: 0, z: -4, w: -5}
-        - position: {x: -4, y: -5, z: 0}
-          tangent: {x: 1, y: 0, z: -4, w: -6}
-        - position: {x: -4, y: -5, z: 0}
-          tangent: {x: 3, y: 0, z: -4, w: -6}
-        - position: {x: -4, y: -6, z: 0}
-          tangent: {x: 0, y: 0, z: -2, w: -6}
-        - position: {x: -2, y: -6, z: 0}
-          tangent: {x: 0, y: 0, z: -4, w: -6}
-        - position: {x: -4, y: -6, z: 0}
-          tangent: {x: 1, y: 0, z: -2, w: -6}
-        - position: {x: -4, y: -6, z: 0}
-          tangent: {x: 3, y: 0, z: -2, w: -6}
-        - position: {x: -2, y: -6, z: 0}
-          tangent: {x: 0, y: 0, z: -2, w: -7}
-        - position: {x: -2, y: -7, z: 0}
-          tangent: {x: 0, y: 0, z: -2, w: -6}
-        - position: {x: -2, y: -6, z: 0}
-          tangent: {x: 1, y: 0, z: -2, w: -7}
-        - position: {x: -2, y: -6, z: 0}
-          tangent: {x: 3, y: 0, z: -2, w: -7}
-        - position: {x: -2, y: -7, z: 0}
-          tangent: {x: 0, y: 0, z: -1.1875, w: -7}
-        - position: {x: -1.1875, y: -7, z: 0}
-          tangent: {x: 0, y: 0, z: -2, w: -7}
-        - position: {x: -2, y: -7, z: 0}
-          tangent: {x: 1, y: 0, z: -1.1875, w: -7}
-        - position: {x: -2, y: -7, z: 0}
-          tangent: {x: 3, y: 0, z: -1.1875, w: -7}
-        - position: {x: -1.1875, y: -7, z: 0}
-          tangent: {x: 0, y: 0, z: -1.1875, w: -5.59375}
-        - position: {x: -1.1875, y: -5.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -1.1875, w: -7}
-        - position: {x: -1.1875, y: -7, z: 0}
-          tangent: {x: 1, y: 0, z: -1.1875, w: -5.59375}
-        - position: {x: -1.1875, y: -7, z: 0}
-          tangent: {x: 3, y: 0, z: -1.1875, w: -5.59375}
-        - position: {x: 3.8125, y: -1.65625, z: 0}
-          tangent: {x: 0, y: 0, z: 3.8125, w: -0.59375}
-        - position: {x: 3.8125, y: -0.59375, z: 0}
-          tangent: {x: 0, y: 0, z: 3.8125, w: -1.65625}
-        - position: {x: 3.8125, y: -1.65625, z: 0}
-          tangent: {x: 1, y: 0, z: 3.8125, w: -0.59375}
-        - position: {x: 3.8125, y: -1.65625, z: 0}
-          tangent: {x: 3, y: 0, z: 3.8125, w: -0.59375}
-        - position: {x: 3.8125, y: -0.59375, z: 0}
-          tangent: {x: 0, y: 0, z: 3.75, w: -0.5}
-        - position: {x: 3.75, y: -0.5, z: 0}
-          tangent: {x: 0, y: 0, z: 3.8125, w: -0.59375}
-        - position: {x: 3.8125, y: -0.59375, z: 0}
-          tangent: {x: 1, y: 0, z: 3.75, w: -0.5}
-        - position: {x: 3.8125, y: -0.59375, z: 0}
-          tangent: {x: 3, y: 0, z: 3.75, w: -0.5}
-        - position: {x: 3.75, y: -0.5, z: 0}
-          tangent: {x: 0, y: 0, z: 3.5625, w: -0.0625}
-        - position: {x: 3.5625, y: -0.0625, z: 0}
-          tangent: {x: 0, y: 0, z: 3.75, w: -0.5}
-        - position: {x: 3.75, y: -0.5, z: 0}
-          tangent: {x: 1, y: 0, z: 3.5625, w: -0.0625}
-        - position: {x: 3.75, y: -0.5, z: 0}
-          tangent: {x: 3, y: 0, z: 3.5625, w: -0.0625}
-        - position: {x: 3.5625, y: -0.0625, z: 0}
-          tangent: {x: 0, y: 0, z: 3.5, w: 0}
-        - position: {x: 3.5, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: 3.5625, w: -0.0625}
-        - position: {x: 3.5625, y: -0.0625, z: 0}
-          tangent: {x: 1, y: 0, z: 3.5, w: 0}
-        - position: {x: 3.5625, y: -0.0625, z: 0}
-          tangent: {x: 3, y: 0, z: 3.5, w: 0}
-        - position: {x: 3.5, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: 2.375, w: 0}
-        - position: {x: 2.375, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: 3.5, w: 0}
-        - position: {x: 3.5, y: 0, z: 0}
-          tangent: {x: 1, y: 0, z: 2.375, w: 0}
-        - position: {x: 3.5, y: 0, z: 0}
-          tangent: {x: 3, y: 0, z: 2.375, w: 0}
-        - position: {x: 2.375, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: 2.15625, w: -0.40625}
-        - position: {x: 2.15625, y: -0.40625, z: 0}
-          tangent: {x: 0, y: 0, z: 2.375, w: 0}
-        - position: {x: 2.375, y: 0, z: 0}
-          tangent: {x: 1, y: 0, z: 2.15625, w: -0.40625}
-        - position: {x: 2.375, y: 0, z: 0}
-          tangent: {x: 3, y: 0, z: 2.15625, w: -0.40625}
-        - position: {x: 2.15625, y: -0.40625, z: 0}
-          tangent: {x: 0, y: 0, z: 2.15625, w: -1.625}
-        - position: {x: 2.15625, y: -1.625, z: 0}
-          tangent: {x: 0, y: 0, z: 2.15625, w: -0.40625}
-        - position: {x: 2.15625, y: -0.40625, z: 0}
-          tangent: {x: 1, y: 0, z: 2.15625, w: -1.625}
-        - position: {x: 2.15625, y: -0.40625, z: 0}
-          tangent: {x: 3, y: 0, z: 2.15625, w: -1.625}
-        - position: {x: 2.15625, y: -1.625, z: 0}
-          tangent: {x: 0, y: 0, z: 2.40625, w: -1.96875}
-        - position: {x: 2.40625, y: -1.96875, z: 0}
-          tangent: {x: 0, y: 0, z: 2.15625, w: -1.625}
-        - position: {x: 2.15625, y: -1.625, z: 0}
-          tangent: {x: 1, y: 0, z: 2.40625, w: -1.96875}
-        - position: {x: 2.15625, y: -1.625, z: 0}
-          tangent: {x: 3, y: 0, z: 2.40625, w: -1.96875}
-        - position: {x: 2.40625, y: -1.96875, z: 0}
-          tangent: {x: 0, y: 0, z: 2.4375, w: -2}
-        - position: {x: 2.4375, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: 2.40625, w: -1.96875}
-        - position: {x: 2.40625, y: -1.96875, z: 0}
-          tangent: {x: 1, y: 0, z: 2.4375, w: -2}
-        - position: {x: 2.40625, y: -1.96875, z: 0}
-          tangent: {x: 3, y: 0, z: 2.4375, w: -2}
-        - position: {x: 2.4375, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: 3.59375, w: -2}
-        - position: {x: 3.59375, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: 2.4375, w: -2}
-        - position: {x: 2.4375, y: -2, z: 0}
-          tangent: {x: 1, y: 0, z: 3.59375, w: -2}
-        - position: {x: 2.4375, y: -2, z: 0}
-          tangent: {x: 3, y: 0, z: 3.59375, w: -2}
-        - position: {x: 3.59375, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: 3.8125, w: -1.65625}
-        - position: {x: 3.8125, y: -1.65625, z: 0}
-          tangent: {x: 0, y: 0, z: 3.59375, w: -2}
-        - position: {x: 3.59375, y: -2, z: 0}
-          tangent: {x: 1, y: 0, z: 3.8125, w: -1.65625}
-        - position: {x: 3.59375, y: -2, z: 0}
-          tangent: {x: 3, y: 0, z: 3.8125, w: -1.65625}
-        - position: {x: -2.1875, y: -1.65625, z: 0}
-          tangent: {x: 0, y: 0, z: -2.1875, w: -0.59375}
-        - position: {x: -2.1875, y: -0.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -2.1875, w: -1.65625}
-        - position: {x: -2.1875, y: -1.65625, z: 0}
-          tangent: {x: 1, y: 0, z: -2.1875, w: -0.59375}
-        - position: {x: -2.1875, y: -1.65625, z: 0}
-          tangent: {x: 3, y: 0, z: -2.1875, w: -0.59375}
-        - position: {x: -2.1875, y: -0.59375, z: 0}
-          tangent: {x: 0, y: 0, z: -2.25, w: -0.5}
-        - position: {x: -2.25, y: -0.5, z: 0}
-          tangent: {x: 0, y: 0, z: -2.1875, w: -0.59375}
-        - position: {x: -2.1875, y: -0.59375, z: 0}
-          tangent: {x: 1, y: 0, z: -2.25, w: -0.5}
-        - position: {x: -2.1875, y: -0.59375, z: 0}
-          tangent: {x: 3, y: 0, z: -2.25, w: -0.5}
-        - position: {x: -2.25, y: -0.5, z: 0}
-          tangent: {x: 0, y: 0, z: -2.4375, w: -0.0625}
-        - position: {x: -2.4375, y: -0.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -2.25, w: -0.5}
-        - position: {x: -2.25, y: -0.5, z: 0}
-          tangent: {x: 1, y: 0, z: -2.4375, w: -0.0625}
-        - position: {x: -2.25, y: -0.5, z: 0}
-          tangent: {x: 3, y: 0, z: -2.4375, w: -0.0625}
-        - position: {x: -2.4375, y: -0.0625, z: 0}
-          tangent: {x: 0, y: 0, z: -2.5, w: 0}
-        - position: {x: -2.5, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -2.4375, w: -0.0625}
-        - position: {x: -2.4375, y: -0.0625, z: 0}
-          tangent: {x: 1, y: 0, z: -2.5, w: 0}
-        - position: {x: -2.4375, y: -0.0625, z: 0}
-          tangent: {x: 3, y: 0, z: -2.5, w: 0}
-        - position: {x: -2.5, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -3.625, w: 0}
-        - position: {x: -3.625, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -2.5, w: 0}
-        - position: {x: -2.5, y: 0, z: 0}
-          tangent: {x: 1, y: 0, z: -3.625, w: 0}
-        - position: {x: -2.5, y: 0, z: 0}
-          tangent: {x: 3, y: 0, z: -3.625, w: 0}
-        - position: {x: -3.625, y: 0, z: 0}
-          tangent: {x: 0, y: 0, z: -3.84375, w: -0.40625}
-        - position: {x: -3.84375, y: -0.40625, z: 0}
-          tangent: {x: 0, y: 0, z: -3.625, w: 0}
-        - position: {x: -3.625, y: 0, z: 0}
-          tangent: {x: 1, y: 0, z: -3.84375, w: -0.40625}
-        - position: {x: -3.625, y: 0, z: 0}
-          tangent: {x: 3, y: 0, z: -3.84375, w: -0.40625}
-        - position: {x: -3.84375, y: -0.40625, z: 0}
-          tangent: {x: 0, y: 0, z: -3.84375, w: -1.625}
-        - position: {x: -3.84375, y: -1.625, z: 0}
-          tangent: {x: 0, y: 0, z: -3.84375, w: -0.40625}
-        - position: {x: -3.84375, y: -0.40625, z: 0}
-          tangent: {x: 1, y: 0, z: -3.84375, w: -1.625}
-        - position: {x: -3.84375, y: -0.40625, z: 0}
-          tangent: {x: 3, y: 0, z: -3.84375, w: -1.625}
-        - position: {x: -3.84375, y: -1.625, z: 0}
-          tangent: {x: 0, y: 0, z: -3.59375, w: -1.96875}
-        - position: {x: -3.59375, y: -1.96875, z: 0}
-          tangent: {x: 0, y: 0, z: -3.84375, w: -1.625}
-        - position: {x: -3.84375, y: -1.625, z: 0}
-          tangent: {x: 1, y: 0, z: -3.59375, w: -1.96875}
-        - position: {x: -3.84375, y: -1.625, z: 0}
-          tangent: {x: 3, y: 0, z: -3.59375, w: -1.96875}
-        - position: {x: -3.59375, y: -1.96875, z: 0}
-          tangent: {x: 0, y: 0, z: -3.5625, w: -2}
-        - position: {x: -3.5625, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -3.59375, w: -1.96875}
-        - position: {x: -3.59375, y: -1.96875, z: 0}
-          tangent: {x: 1, y: 0, z: -3.5625, w: -2}
-        - position: {x: -3.59375, y: -1.96875, z: 0}
-          tangent: {x: 3, y: 0, z: -3.5625, w: -2}
-        - position: {x: -3.5625, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -2.40625, w: -2}
-        - position: {x: -2.40625, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -3.5625, w: -2}
-        - position: {x: -3.5625, y: -2, z: 0}
-          tangent: {x: 1, y: 0, z: -2.40625, w: -2}
-        - position: {x: -3.5625, y: -2, z: 0}
-          tangent: {x: 3, y: 0, z: -2.40625, w: -2}
-        - position: {x: -2.40625, y: -2, z: 0}
-          tangent: {x: 0, y: 0, z: -2.1875, w: -1.65625}
-        - position: {x: -2.1875, y: -1.65625, z: 0}
-          tangent: {x: 0, y: 0, z: -2.40625, w: -2}
-        - position: {x: -2.40625, y: -2, z: 0}
-          tangent: {x: 1, y: 0, z: -2.1875, w: -1.65625}
-        - position: {x: -2.40625, y: -2, z: 0}
-          tangent: {x: 3, y: 0, z: -2.1875, w: -1.65625}
-        m_Indices: 000000006f00000070000000700000000100000000000000010000007300000074000000740000000200000001000000020000007700000078000000780000000300000002000000030000007b0000007c0000007c0000000400000003000000040000007f00000080000000800000000500000004000000050000008300000084000000840000000600000005000000060000008700000088000000880000000700000006000000070000008b0000008c0000008c0000000800000007000000080000008f00000090000000900000000900000008000000090000009300000094000000940000000a000000090000000a0000009700000098000000980000000b0000000a0000000b0000009b0000009c0000009c0000000c0000000b0000000c0000009f000000a0000000a00000000d0000000c0000000d000000a3000000a4000000a40000000e0000000d0000000e000000a7000000a8000000a80000000f0000000e0000000f000000ab000000ac000000ac000000100000000f00000010000000af000000b0000000b0000000110000001000000011000000b3000000b4000000b4000000120000001100000012000000b7000000b8000000b8000000130000001200000013000000bb000000bc000000bc000000140000001300000014000000bf000000c0000000c0000000150000001400000015000000c3000000c4000000c4000000160000001500000016000000c7000000c8000000c8000000170000001600000017000000cb000000cc000000cc000000180000001700000018000000cf000000d0000000d0000000190000001800000019000000d3000000d4000000d40000001a000000190000001a000000d7000000d8000000d80000001b0000001a0000001b000000db000000dc000000dc0000001c0000001b0000001c000000df000000e0000000e00000001d0000001c0000001d000000e3000000e4000000e40000001e0000001d0000001e000000e7000000e8000000e80000001f0000001e0000001f000000eb000000ec000000ec000000200000001f00000020000000ef000000f0000000f0000000210000002000000021000000f3000000f4000000f4000000220000002100000022000000f7000000f8000000f8000000230000002200000023000000fb000000fc000000fc000000240000002300000024000000ff00000000010000000100002500000024000000250000000301000004010000040100002600000025000000260000000701000008010000080100002700000026000000270000000b0100000c0100000c0100002800000027000000280000000f01000010010000100100002900000028000000290000001301000014010000140100002a000000290000002a0000001701000018010000180100002b0000002a0000002b0000001b0100001c0100001c0100002c0000002b0000002c0000001f01000020010000200100002d0000002c0000002d0000002301000024010000240100002e0000002d0000002e0000002701000028010000280100002f0000002e0000002f0000002b0100002c0100002c010000300000002f000000300000002f01000030010000300100003100000030000000310000003301000034010000340100003200000031000000320000003701000038010000380100003300000032000000330000003b0100003c0100003c0100003400000033000000340000003f01000040010000400100003500000034000000350000004301000044010000440100003600000035000000360000004701000048010000480100003700000036000000370000004b0100004c0100004c0100003800000037000000380000004f01000050010000500100003900000038000000390000005301000054010000540100003a000000390000003a0000005701000058010000580100003b0000003a0000003b0000005b0100005c0100005c0100003c0000003b0000003c0000005f01000060010000600100003d0000003c0000003d0000006301000064010000640100003e0000003d0000003e0000006701000068010000680100003f0000003e0000003f0000006b0100006c0100006c010000400000003f000000400000006f01000070010000700100004100000040000000410000007301000074010000740100004200000041000000420000007701000078010000780100004300000042000000430000007b0100007c0100007c0100004400000043000000440000007f01000080010000800100004500000044000000450000008301000084010000840100004600000045000000460000008701000088010000880100004700000046000000470000008b0100008c0100008c0100004800000047000000480000008f01000090010000900100004900000048000000490000009301000094010000940100004a000000490000004a0000009701000098010000980100004b0000004a0000004b0000009b0100009c0100009c0100004c0000004b0000004c0000009f010000a0010000a00100004d0000004c0000004d000000a3010000a4010000a40100004e0000004d0000004e000000a7010000a8010000a80100004f0000004e0000004f000000ab010000ac010000ac010000500000004f00000050000000af010000b0010000b0010000510000005000000051000000b3010000b4010000b4010000520000005100000052000000b7010000b8010000b8010000530000005200000053000000bb010000bc010000bc010000540000005300000054000000bf010000c0010000c0010000550000005400000055000000c3010000c4010000c4010000560000005500000056000000c7010000c8010000c8010000570000005600000057000000cb010000cc010000cc010000580000005700000058000000cf010000d0010000d0010000000000005800000000000000710000007200000001000000750000007600000002000000790000007a000000030000007d0000007e00000004000000810000008200000005000000850000008600000006000000890000008a000000070000008d0000008e0000000800000091000000920000000900000095000000960000000a000000990000009a0000000b0000009d0000009e0000000c000000a1000000a20000000d000000a5000000a60000000e000000a9000000aa0000000f000000ad000000ae00000010000000b1000000b200000011000000b5000000b600000012000000b9000000ba00000013000000bd000000be00000014000000c1000000c200000015000000c5000000c600000016000000c9000000ca00000017000000cd000000ce00000018000000d1000000d200000019000000d5000000d60000001a000000d9000000da0000001b000000dd000000de0000001c000000e1000000e20000001d000000e5000000e60000001e000000e9000000ea0000001f000000ed000000ee00000020000000f1000000f200000021000000f5000000f600000022000000f9000000fa00000023000000fd000000fe00000024000000010100000201000025000000050100000601000026000000090100000a010000270000000d0100000e0100002800000011010000120100002900000015010000160100002a000000190100001a0100002b0000001d0100001e0100002c00000021010000220100002d00000025010000260100002e000000290100002a0100002f0000002d0100002e01000030000000310100003201000031000000350100003601000032000000390100003a010000330000003d0100003e01000034000000410100004201000035000000450100004601000036000000490100004a010000370000004d0100004e0100003800000051010000520100003900000055010000560100003a000000590100005a0100003b0000005d0100005e0100003c00000061010000620100003d00000065010000660100003e000000690100006a0100003f0000006d0100006e01000040000000710100007201000041000000750100007601000042000000790100007a010000430000007d0100007e01000044000000810100008201000045000000850100008601000046000000890100008a010000470000008d0100008e0100004800000091010000920100004900000095010000960100004a000000990100009a0100004b0000009d0100009e0100004c000000a1010000a20100004d000000a5010000a60100004e000000a9010000aa0100004f000000ad010000ae01000050000000b1010000b201000051000000b5010000b601000052000000b9010000ba01000053000000bd010000be01000054000000c1010000c201000055000000c5010000c601000056000000c9010000ca01000057000000cd010000ce01000058000000d1010000d201000059000000d3010000d4010000d40100005a000000590000005a000000d7010000d8010000d80100005b0000005a0000005b000000db010000dc010000dc0100005c0000005b0000005c000000df010000e0010000e00100005d0000005c0000005d000000e3010000e4010000e40100005e0000005d0000005e000000e7010000e8010000e80100005f0000005e0000005f000000eb010000ec010000ec010000600000005f00000060000000ef010000f0010000f0010000610000006000000061000000f3010000f4010000f4010000620000006100000062000000f7010000f8010000f8010000630000006200000063000000fb010000fc010000fc010000590000006300000059000000d5010000d60100005a000000d9010000da0100005b000000dd010000de0100005c000000e1010000e20100005d000000e5010000e60100005e000000e9010000ea0100005f000000ed010000ee01000060000000f1010000f201000061000000f5010000f601000062000000f9010000fa01000063000000fd010000fe01000064000000ff01000000020000000200006500000064000000650000000302000004020000040200006600000065000000660000000702000008020000080200006700000066000000670000000b0200000c0200000c0200006800000067000000680000000f02000010020000100200006900000068000000690000001302000014020000140200006a000000690000006a0000001702000018020000180200006b0000006a0000006b0000001b0200001c0200001c0200006c0000006b0000006c0000001f02000020020000200200006d0000006c0000006d0000002302000024020000240200006e0000006d0000006e000000270200002802000028020000640000006e00000064000000010200000202000065000000050200000602000066000000090200000a020000670000000d0200000e0200006800000011020000120200006900000015020000160200006a000000190200001a0200006b0000001d0200001e0200006c00000021020000220200006d00000025020000260200006e000000290200002a020000
+          tangent: {x: 3, y: 0, z: 1.15625, w: -8.625}
+        - position: {x: 1.15625, y: -8.625, z: 0}
+          tangent: {x: 0, y: 0, z: 1.40625, w: -8.96875}
+        - position: {x: 1.40625, y: -8.96875, z: 0}
+          tangent: {x: 0, y: 0, z: 1.15625, w: -8.625}
+        - position: {x: 1.15625, y: -8.625, z: 0}
+          tangent: {x: 1, y: 0, z: 1.40625, w: -8.96875}
+        - position: {x: 1.15625, y: -8.625, z: 0}
+          tangent: {x: 3, y: 0, z: 1.40625, w: -8.96875}
+        - position: {x: 1.40625, y: -8.96875, z: 0}
+          tangent: {x: 0, y: 0, z: 1.4375, w: -9}
+        - position: {x: 1.4375, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: 1.40625, w: -8.96875}
+        - position: {x: 1.40625, y: -8.96875, z: 0}
+          tangent: {x: 1, y: 0, z: 1.4375, w: -9}
+        - position: {x: 1.40625, y: -8.96875, z: 0}
+          tangent: {x: 3, y: 0, z: 1.4375, w: -9}
+        - position: {x: 1.4375, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: 4.15625, w: -9}
+        - position: {x: 4.15625, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: 1.4375, w: -9}
+        - position: {x: 1.4375, y: -9, z: 0}
+          tangent: {x: 1, y: 0, z: 4.15625, w: -9}
+        - position: {x: 1.4375, y: -9, z: 0}
+          tangent: {x: 3, y: 0, z: 4.15625, w: -9}
+        - position: {x: 4.15625, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: 4.15625, w: -13}
+        - position: {x: 4.15625, y: -13, z: 0}
+          tangent: {x: 0, y: 0, z: 4.15625, w: -9}
+        - position: {x: 4.15625, y: -9, z: 0}
+          tangent: {x: 1, y: 0, z: 4.15625, w: -13}
+        - position: {x: 4.15625, y: -9, z: 0}
+          tangent: {x: 3, y: 0, z: 4.15625, w: -13}
+        - position: {x: 4.15625, y: -13, z: 0}
+          tangent: {x: 0, y: 0, z: 5, w: -13}
+        - position: {x: 5, y: -13, z: 0}
+          tangent: {x: 0, y: 0, z: 4.15625, w: -13}
+        - position: {x: 4.15625, y: -13, z: 0}
+          tangent: {x: 1, y: 0, z: 5, w: -13}
+        - position: {x: 4.15625, y: -13, z: 0}
+          tangent: {x: 3, y: 0, z: 5, w: -13}
+        - position: {x: 5, y: -13, z: 0}
+          tangent: {x: 0, y: 0, z: 5, w: -9}
+        - position: {x: 5, y: -9, z: 0}
+          tangent: {x: 0, y: 0, z: 5, w: -13}
+        - position: {x: 5, y: -13, z: 0}
+          tangent: {x: 1, y: 0, z: 5, w: -9}
+        - position: {x: 5, y: -13, z: 0}
+          tangent: {x: 3, y: 0, z: 5, w: -9}
+        m_Indices: 00000000390000003a0000003a0000000100000000000000010000003d0000003e0000003e000000020000000100000002000000410000004200000042000000030000000200000003000000450000004600000046000000040000000300000004000000490000004a0000004a0000000500000004000000050000004d0000004e0000004e000000060000000500000006000000510000005200000052000000070000000600000007000000550000005600000056000000080000000700000008000000590000005a0000005a0000000900000008000000090000005d0000005e0000005e0000000a000000090000000a0000006100000062000000620000000b0000000a0000000b0000006500000066000000660000000c0000000b0000000c000000690000006a0000006a0000000d0000000c0000000d0000006d0000006e0000006e0000000e0000000d0000000e0000007100000072000000720000000f0000000e0000000f000000750000007600000076000000100000000f00000010000000790000007a0000007a0000001100000010000000110000007d0000007e0000007e000000120000001100000012000000810000008200000082000000130000001200000013000000850000008600000086000000140000001300000014000000890000008a0000008a0000001500000014000000150000008d0000008e0000008e000000160000001500000016000000910000009200000092000000170000001600000017000000950000009600000096000000180000001700000018000000990000009a0000009a0000001900000018000000190000009d0000009e0000009e0000001a000000190000001a000000a1000000a2000000a20000001b0000001a0000001b000000a5000000a6000000a60000001c0000001b0000001c000000a9000000aa000000aa000000000000001c000000000000003b0000003c000000010000003f00000040000000020000004300000044000000030000004700000048000000040000004b0000004c000000050000004f00000050000000060000005300000054000000070000005700000058000000080000005b0000005c000000090000005f000000600000000a00000063000000640000000b00000067000000680000000c0000006b0000006c0000000d0000006f000000700000000e00000073000000740000000f0000007700000078000000100000007b0000007c000000110000007f00000080000000120000008300000084000000130000008700000088000000140000008b0000008c000000150000008f00000090000000160000009300000094000000170000009700000098000000180000009b0000009c000000190000009f000000a00000001a000000a3000000a40000001b000000a7000000a80000001c000000ab000000ac0000001d000000ad000000ae000000ae0000001e0000001d0000001e000000b1000000b2000000b20000001f0000001e0000001f000000b5000000b6000000b6000000200000001f00000020000000b9000000ba000000ba000000210000002000000021000000bd000000be000000be000000220000002100000022000000c1000000c2000000c2000000230000002200000023000000c5000000c6000000c6000000240000002300000024000000c9000000ca000000ca000000250000002400000025000000cd000000ce000000ce000000260000002500000026000000d1000000d2000000d2000000270000002600000027000000d5000000d6000000d6000000280000002700000028000000d9000000da000000da000000290000002800000029000000dd000000de000000de0000002a000000290000002a000000e1000000e2000000e20000002b0000002a0000002b000000e5000000e6000000e60000002c0000002b0000002c000000e9000000ea000000ea0000002d0000002c0000002d000000ed000000ee000000ee0000002e0000002d0000002e000000f1000000f2000000f20000002f0000002e0000002f000000f5000000f6000000f6000000300000002f00000030000000f9000000fa000000fa000000310000003000000031000000fd000000fe000000fe000000320000003100000032000000010100000201000002010000330000003200000033000000050100000601000006010000340000003300000034000000090100000a0100000a0100003500000034000000350000000d0100000e0100000e010000360000003500000036000000110100001201000012010000370000003600000037000000150100001601000016010000380000003700000038000000190100001a0100001a0100001d000000380000001d000000af000000b00000001e000000b3000000b40000001f000000b7000000b800000020000000bb000000bc00000021000000bf000000c000000022000000c3000000c400000023000000c7000000c800000024000000cb000000cc00000025000000cf000000d000000026000000d3000000d400000027000000d7000000d800000028000000db000000dc00000029000000df000000e00000002a000000e3000000e40000002b000000e7000000e80000002c000000eb000000ec0000002d000000ef000000f00000002e000000f3000000f40000002f000000f7000000f800000030000000fb000000fc00000031000000ff00000000010000320000000301000004010000330000000701000008010000340000000b0100000c010000350000000f01000010010000360000001301000014010000370000001701000018010000380000001b0100001c010000
         m_LocalBounds:
-          m_Center: {x: 0, y: -1.5, z: 0}
-          m_Extent: {x: 8, y: 5.5, z: 0}
+          m_Center: {x: 0.5, y: -8, z: 0}
+          m_Extent: {x: 6.5, y: 5, z: 0}
         m_EdgeProcessing: 1
         m_TrimEdge: 0
         m_FlipX: 0
@@ -6130,8 +5081,7 @@ MonoBehaviour:
         m_Provider2DCache:
           rid: 5296362366967742560
     - rid: 5296362366967742560
-      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider,
-          Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
         m_Cache:
         - m_Key:
@@ -6144,11 +5094,6 @@ MonoBehaviour:
     - rid: 5296362366967742561
       type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
---- !u!4 &287785209846374502 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1801595323373853462, guid: f57df84e059834941a647c9e29c64420, type: 3}
-  m_PrefabInstance: {fileID: 1945245496875760496}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8832024438128494661
 GameObject:
   m_ObjectHideFlags: 0
@@ -6226,6 +5171,8 @@ MonoBehaviour:
   enemyPool: {fileID: 0}
   spawnLocations: []
   spawnDistance: 0
+  clearSound: {fileID: 3734932179283865293, guid: a6d225c03166478469f905eab2515ac4, type: 3}
+  lockSound: {fileID: 3734932179283865293, guid: a6f969f20c1f1e748b249cf097f6e351, type: 3}
 --- !u!1001 &1945245496875760496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6295,6 +5242,97 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f57df84e059834941a647c9e29c64420, type: 3}
+--- !u!4 &287785209846374502 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1801595323373853462, guid: f57df84e059834941a647c9e29c64420, type: 3}
+  m_PrefabInstance: {fileID: 1945245496875760496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1951994367089620352
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 706747796363999956}
+    m_Modifications:
+    - target: {fileID: 1712686896370341562, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712686896370341562, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -19.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712686896370341562, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712686896370341562, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712686896370341562, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712686896370341562, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712686896370341562, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712686896370341562, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712686896370341562, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712686896370341562, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1955042722037663073, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 5836369874643543531}
+    - target: {fileID: 3495124717602639760, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: direction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537077081935884115, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+      propertyPath: m_Name
+      value: South
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+--- !u!4 &923887874845074234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1712686896370341562, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+  m_PrefabInstance: {fileID: 1951994367089620352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3141205632499333648 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3495124717602639760, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+  m_PrefabInstance: {fileID: 1951994367089620352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323413194183154387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5aeb29b7e126cd46ab8f7e7b4383c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!1 &6323413194183154387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5537077081935884115, guid: 59517d2f3f782e146a55881579b6a4e1, type: 3}
+  m_PrefabInstance: {fileID: 1951994367089620352}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2029329802312262816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6328,16 +5366,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4811347498075442861}
     - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362376783462622]
-      value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider,
-        Unity.RenderPipelines.Universal.2D.Runtime]]
+      propertyPath: 'managedReferences[5296362376783462622]'
+      value: 'Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider,
+        Unity.RenderPipelines.Universal.2D.Runtime]]'
       objectReference: {fileID: 0}
     - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362376783462623]
+      propertyPath: 'managedReferences[5296362376783462623]'
       value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.ShadowShape2DProvider_Collider2D
       objectReference: {fileID: 0}
     - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362376783462624]
+      propertyPath: 'managedReferences[5296362376783462624]'
       value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.ShadowShape2DProvider_SpriteRenderer
       objectReference: {fileID: 0}
     - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
@@ -6473,195 +5511,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9178116056332150417, guid: 29d4398b79141e140bf686352722deed, type: 3}
   m_PrefabInstance: {fileID: 2029329802312262816}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2926901194313088066
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 706747796363999956}
-    m_Modifications:
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_Priority
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_HasRenderer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_PreviousTrimEdge
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_PreviousEdgeProcessing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_PreviousShadowCastingSource
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_PreviousShadowShape2DSource
-      value: 
-      objectReference: {fileID: 8535032240417887823}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362377009431275]
-      value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider,
-        Unity.RenderPipelines.Universal.2D.Runtime]]
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362377009431276]
-      value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.ShadowShape2DProvider_Collider2D
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362377009431277]
-      value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.ShadowShape2DProvider_SpriteRenderer
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362366967742611].m_Provider2DCache
-      value: 5296362377009431275
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362377009431275].m_Cache.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362377009431275].m_Cache.Array.data[0].m_Key.m_TypeName
-      value: ShadowShape2DProvider_Collider2D
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362377009431275].m_Cache.Array.data[1].m_Key.m_TypeName
-      value: ShadowShape2DProvider_SpriteRenderer
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362377009431275].m_Cache.Array.data[0].m_Key.m_Component
-      value: 
-      objectReference: {fileID: 116690019465986052}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362377009431275].m_Cache.Array.data[1].m_Key.m_Component
-      value: 
-      objectReference: {fileID: 8535032240417887823}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362377009431275].m_Cache.Array.data[0].m_Value.m_Provider
-      value: 5296362377009431276
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362377009431275].m_Cache.Array.data[1].m_Value.m_Provider
-      value: 5296362377009431277
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362377009431275].m_Cache.Array.data[0].m_Key.m_UsesComponent
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362377009431275].m_Cache.Array.data[1].m_Key.m_UsesComponent
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 218913597108422226, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -19.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2929914089407155363, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: room
-      value: 
-      objectReference: {fileID: 5836369874643543531}
-    - target: {fileID: 6705941170197164384, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178116056332150417, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_Name
-      value: South
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178116056332150417, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 29d4398b79141e140bf686352722deed, type: 3}
---- !u!61 &116690019465986052 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 2954609659101068358, guid: 29d4398b79141e140bf686352722deed, type: 3}
-  m_PrefabInstance: {fileID: 2926901194313088066}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &923887874845074234 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2615533655125974904, guid: 29d4398b79141e140bf686352722deed, type: 3}
-  m_PrefabInstance: {fileID: 2926901194313088066}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3141205632499333648 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 218913597108422226, guid: 29d4398b79141e140bf686352722deed, type: 3}
-  m_PrefabInstance: {fileID: 2926901194313088066}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6323413194183154387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5aeb29b7e126cd46ab8f7e7b4383c10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
---- !u!1 &6323413194183154387 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9178116056332150417, guid: 29d4398b79141e140bf686352722deed, type: 3}
-  m_PrefabInstance: {fileID: 2926901194313088066}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &8535032240417887823 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6840114316049377805, guid: 29d4398b79141e140bf686352722deed, type: 3}
-  m_PrefabInstance: {fileID: 2926901194313088066}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3957338516631127878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6695,16 +5544,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7496168819336605003}
     - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362376783462628]
-      value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider,
-        Unity.RenderPipelines.Universal.2D.Runtime]]
+      propertyPath: 'managedReferences[5296362376783462628]'
+      value: 'Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider,
+        Unity.RenderPipelines.Universal.2D.Runtime]]'
       objectReference: {fileID: 0}
     - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362376783462629]
+      propertyPath: 'managedReferences[5296362376783462629]'
       value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.ShadowShape2DProvider_Collider2D
       objectReference: {fileID: 0}
     - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362376783462630]
+      propertyPath: 'managedReferences[5296362376783462630]'
       value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.ShadowShape2DProvider_SpriteRenderer
       objectReference: {fileID: 0}
     - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
@@ -6933,6 +5782,32 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77ab8adb66984a643ba1085de6061546, type: 3}
+--- !u!114 &2152045899666123538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6329237112495198961, guid: 77ab8adb66984a643ba1085de6061546, type: 3}
+  m_PrefabInstance: {fileID: 5334634469759498723}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &4802700977970726220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 625704436681702575, guid: 77ab8adb66984a643ba1085de6061546, type: 3}
+  m_PrefabInstance: {fileID: 5334634469759498723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4859775782250568920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 682587376182551867, guid: 77ab8adb66984a643ba1085de6061546, type: 3}
+  m_PrefabInstance: {fileID: 5334634469759498723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &7175387211339606255 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2998400574230532364, guid: 77ab8adb66984a643ba1085de6061546, type: 3}
+  m_PrefabInstance: {fileID: 5334634469759498723}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6901493199312442322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6966,16 +5841,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 84425747403717087}
     - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362376783462831]
-      value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider,
-        Unity.RenderPipelines.Universal.2D.Runtime]]
+      propertyPath: 'managedReferences[5296362376783462831]'
+      value: 'Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider,
+        Unity.RenderPipelines.Universal.2D.Runtime]]'
       objectReference: {fileID: 0}
     - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362376783462832]
+      propertyPath: 'managedReferences[5296362376783462832]'
       value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.ShadowShape2DProvider_Collider2D
       objectReference: {fileID: 0}
     - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
-      propertyPath: managedReferences[5296362376783462833]
+      propertyPath: 'managedReferences[5296362376783462833]'
       value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.ShadowShape2DProvider_SpriteRenderer
       objectReference: {fileID: 0}
     - target: {fileID: -2362177911343787018, guid: 29d4398b79141e140bf686352722deed, type: 3}
