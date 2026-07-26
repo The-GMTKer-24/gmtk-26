@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GnomeAI
   attackContainer: {fileID: 5095756338674659169}
   animationSpeed: 2
-  speed: 4
+  speed: 3
   forceDropoff: 0.2
   animationMovementThreshold: 0.05
   directionHysteresis: 0.08
@@ -175,10 +175,10 @@ MonoBehaviour:
   decisionInterval: 0.15
   minimumAttackInterval: 0.25
   crowdCheckInterval: 0.1
-  canRepeatAttacks: 1
+  canRepeatAttacks: 0
   timeConservationPreference: 0
   selfishness: 0.1
-  outOfRangeLossPerUnit: 1
+  outOfRangeLossPerUnit: 5
   telegraphLoss: 3
   desperationTimeCutoff: 5
   desperationInstantAttackPreference: 10
@@ -353,7 +353,7 @@ MonoBehaviour:
   range: 4
   staminaCost: 3
   timeCost: 0
-  speed: 25
+  speed: 20
   bulletPrefab: {fileID: 6960090236962132424, guid: 651f525069020e084b930e8b3c016878, type: 3}
 --- !u!114 &9089388246351712275
 MonoBehaviour:
@@ -371,5 +371,5 @@ MonoBehaviour:
   range: 15
   staminaCost: 2
   timeCost: 0
-  speed: 35
+  speed: 25
   bulletPrefab: {fileID: 6960090236962132424, guid: 651f525069020e084b930e8b3c016878, type: 3}
