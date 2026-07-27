@@ -30,17 +30,12 @@ namespace Main_Menu
                 musicManager.DuckEQToValue(musicDuckInMenu);
             
             speedrunTimerToggle.isOn = PlayerPrefs.GetInt("SpeedrunTimer") > 0;
+            easyModeToggle.isOn = PlayerPrefs.GetInt("EasyMode") > 0;
         }
         
         public void PlayGame()
         {
             PlayerPrefs.Save();
-            
-            
-            if (easyModeToggle.isOn)
-            {
-                Instantiate(easyModeUpgrade);
-            }
             
             if (speedrunTimerToggle.isOn)
             {
@@ -90,6 +85,14 @@ namespace Main_Menu
         {
             bool speedrunTimer = speedrunTimerToggle.isOn;
             PlayerPrefs.SetInt("SpeedrunTimer", speedrunTimer ? 1 : 0);
+            PlayerPrefs.Save();
+        }
+        
+        public void ToggleEasyMode()
+        {
+            bool easyMode = easyModeToggle.isOn;
+            print(easyModeToggle.isOn);
+            PlayerPrefs.SetInt("EasyMode", easyMode ? 1 : 0);
             PlayerPrefs.Save();
         }
     }

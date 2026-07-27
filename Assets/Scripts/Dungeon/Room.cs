@@ -23,6 +23,7 @@ public class Room : MonoBehaviour
     [SerializeField] private float spawnDistance;
     [SerializeField] private GameObject clearSound;
     [SerializeField] private GameObject lockSound;
+    [SerializeField] private float spawnDelay = .25f;
 
     private Door northDoorComponent;
     private Door eastDoorComponent;
@@ -267,6 +268,15 @@ public class Room : MonoBehaviour
             activeEnemies.Add(spawned);
         }
 
+        foreach (GameObject enemy in activeEnemies)
+        {
+            
+            enemy.GetComponent<GnomeAI>().enabled = false;
+            enemy.GetComponent<Animator>().enabled = false;
+        }
+        
+        Invoke(nameof(EnableGnomes),spawnDelay);
+
         foreach (Direction direction in EnabledDirections())
         {
             GetDoorComponent(direction)?.CloseDoor();
@@ -277,6 +287,19 @@ public class Room : MonoBehaviour
             SoundManager.Instance.CreateSound(lockSound);
         }
         locked = true;
+    }
+
+    private void EnableGnomes()
+    {
+        foreach (GameObject enemy in activeEnemies)
+        {
+            if (enemy)
+            {
+                enemy.GetComponent<GnomeAI>().enabled = true;
+                enemy.GetComponent<Animator>().enabled = true;
+            }
+        }
+        
     }
 
     private void CacheDoorComponents()

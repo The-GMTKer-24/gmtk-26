@@ -15,6 +15,12 @@ namespace Entity
         [SerializeField] private GameObject deathSound;
         [SerializeField] private GameObject healSound;
         [SerializeField] private List<GameObject> damageSounds;
+
+        [Header("Player Camera Shake")] 
+        [SerializeField] private CameraFollow camera;
+        [SerializeField] private float shakeDuration;
+        [SerializeField] private float shakeIntensity;
+        
         private bool dead;
         public void Awake()
         {
@@ -37,8 +43,9 @@ namespace Entity
             if (TextParticleSystem2D.Instance)
                 TextParticleSystem2D.Instance.Spawn($"-{damage} s", transform.position, Color.softRed);
             currentTime -= damage;
-            CheckDeath(false);
             if (damageSounds.Count != 0) SoundManager.Instance.CreateSoundAtPosition(damageSounds[Random.Range(0,damageSounds.Count)], transform.position);
+            if (camera) camera.StartCameraShake(shakeIntensity,shakeDuration);
+            CheckDeath(false);
         }
 
         public void Heal(float time)

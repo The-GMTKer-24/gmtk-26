@@ -2155,7 +2155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2163,7 +2163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
       propertyPath: m_AnchorMin.y
@@ -2171,7 +2171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 169.2458
+      value: 169.24585
       objectReference: {fileID: 0}
     - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2219,11 +2219,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 848.80005
+      value: -136
       objectReference: {fileID: 0}
     - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -33.299988
+      value: -29
       objectReference: {fileID: 0}
     - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2236,6 +2236,14 @@ PrefabInstance:
     - target: {fileID: 8204960670185361334, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226468582172518358, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 46889063}
+    - target: {fileID: 8226468582172518358, guid: c9f2c8b46749ee344b0fa027addde9c7, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleEasyMode
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

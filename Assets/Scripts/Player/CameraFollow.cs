@@ -43,7 +43,10 @@ public class CameraFollow : MonoBehaviour
             return;
         // Return follow speed to default
         followSpeed = Mathf.Lerp(followSpeed, baseFollowSpeed, Time.deltaTime * returnToBaseFollowSpeed);
-        shakeAmount = Mathf.Lerp(shakeAmount, 0, Time.deltaTime * shakeResetTime);
+        shakeAmount = Mathf.Lerp(0, shakeAmount, shakeResetTime);
+
+        shakeResetTime -= Time.deltaTime;
+        shakeResetTime = Mathf.Clamp(shakeResetTime, 0, 1);
         
         // Move to target
         Vector3 targetPosition = Vector3.Lerp(transform.position, target.transform.position, followSpeed * Time.deltaTime);

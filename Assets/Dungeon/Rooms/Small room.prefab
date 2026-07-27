@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrapPlacer
   trap: {fileID: 5276186253173263932, guid: 319b9d73720b7524780c3d0c2cedbb47, type: 3}
-  maxTraps: 4
+  maxTraps: 2
   trapSpawnRate: 0.3
 --- !u!61 &4656660820636215517
 BoxCollider2D:
@@ -3500,6 +3500,37 @@ MonoBehaviour:
     - rid: 5296362366967742601
       type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
+--- !u!1 &7777034091558121224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5303152187853368453}
+  m_Layer: 0
+  m_Name: Spawn point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5303152187853368453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7777034091558121224}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.01, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 706747796363999956}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8832024438128494661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3538,6 +3569,7 @@ Transform:
   - {fileID: 2040459393878528718}
   - {fileID: 4838465255673680621}
   - {fileID: 8706207244475056058}
+  - {fileID: 5303152187853368453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &2543845425110322211
@@ -3573,8 +3605,8 @@ MonoBehaviour:
   maxDoors: 3
   enemyPool: {fileID: 11400000, guid: e2e9e7c659c04ba47805ceb9101dd539, type: 2}
   spawnLocations:
-  - {fileID: 706747796363999956}
-  spawnDistance: 2
+  - {fileID: 5303152187853368453}
+  spawnDistance: 3
   clearSound: {fileID: 3734932179283865293, guid: a6d225c03166478469f905eab2515ac4, type: 3}
   lockSound: {fileID: 3734932179283865293, guid: a6f969f20c1f1e748b249cf097f6e351, type: 3}
 --- !u!1001 &543965138909260168

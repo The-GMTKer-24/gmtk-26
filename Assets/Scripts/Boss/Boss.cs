@@ -127,9 +127,13 @@ namespace Boss
                         SoundManager.Instance.CreateSoundAtPosition(bombSound, transform.position);
                     }   
                     bomb.damage = bombInfo.damage;
+                    if (Player.Player.Instance)
+                    {
+                        
                     Vector2 target = Player.Player.Instance.RigidBody.position;
                     bomb.velocity = bombVelocity *
                                     (target - (Vector2)bulletWavePosition.position).normalized;
+                    }
                     
                     yield return new WaitForSeconds(bombDelay);
                 }
@@ -188,12 +192,16 @@ namespace Boss
                         SoundManager.Instance.CreateSoundAtPosition(bulletShootSound, transform.position);
                     }   
                     bullet.damage = waveInfo.damage;
+                    if (Player.Player.Instance)
+                    {
+                        
                     Vector2 target = Player.Player.Instance.RigidBody.position;
                     bullet.velocity = bulletWaveVelocity *
                                       (target - (Vector2)bulletWavePosition.position).normalized;
                     bullet.remainingTime = 10000;
                     bullet.GetComponent<Rigidbody2D>().rotation =
                         -Vector2.SignedAngle(target - (Vector2)transform.position, Vector2.up);
+                    }
                     
                     yield return new WaitForSeconds(bulletWaveOffsetTime);
                 }
